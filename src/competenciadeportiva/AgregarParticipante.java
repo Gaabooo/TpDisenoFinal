@@ -83,6 +83,11 @@ public class AgregarParticipante extends javax.swing.JFrame {
         });
 
         jButton3.setText("CANCELAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nombre");
 
@@ -198,6 +203,10 @@ public class AgregarParticipante extends javax.swing.JFrame {
         AME_Participante ventana1= new AME_Participante();
         ventana1.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

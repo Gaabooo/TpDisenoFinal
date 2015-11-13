@@ -43,6 +43,7 @@ public class AltaCompDeportiva extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(null);
 
         jLabel2.setText("NOMBRE DE COMPETENCIA");
