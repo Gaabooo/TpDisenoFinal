@@ -56,6 +56,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        ATRAS1 = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
         jSpinner2b = new javax.swing.JSpinner();
@@ -183,13 +184,16 @@ public class AltaCompetencia extends javax.swing.JPanel {
         ACEPTAR.setBounds(554, 508, 114, 23);
 
         ATRAS.setText("ATRAS");
+        ATRAS.setMaximumSize(new java.awt.Dimension(73, 23));
+        ATRAS.setMinimumSize(new java.awt.Dimension(73, 23));
+        ATRAS.setPreferredSize(new java.awt.Dimension(73, 23));
         ATRAS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ATRASActionPerformed(evt);
             }
         });
         add(ATRAS);
-        ATRAS.setBounds(69, 508, 90, 23);
+        ATRAS.setBounds(170, 508, 90, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Dar de Alta Competencia Deportiva");
@@ -235,6 +239,15 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton3);
         jButton3.setBounds(280, 180, 70, 23);
 
+        ATRAS1.setText("MENU P.");
+        ATRAS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ATRAS1ActionPerformed(evt);
+            }
+        });
+        add(ATRAS1);
+        ATRAS1.setBounds(69, 508, 90, 23);
+
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
@@ -243,13 +256,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
         jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));
         ((NumberEditor)jSpinner2.getEditor()).getTextField().setEditable(false);
-        jSpinner2.setPreferredSize(new java.awt.Dimension(29, 20));
+        jSpinner2.setMinimumSize(new java.awt.Dimension(47, 20));
+        jSpinner2.setPreferredSize(new java.awt.Dimension(47, 20));
         add(jSpinner2);
-        jSpinner2.setBounds(670, 220, 40, 20);
+        jSpinner2.setBounds(670, 220, 47, 20);
 
         jSpinner2b.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner2b);
-        jSpinner2b.setBounds(670, 220, 40, 20);
+        jSpinner2b.setBounds(670, 220, 47, 20);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(3, 1, 999, 1));
         jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -258,7 +272,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner3);
-        jSpinner3.setBounds(670, 250, 40, 20);
+        jSpinner3.setBounds(670, 250, 47, 20);
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -267,7 +281,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner4);
-        jSpinner4.setBounds(670, 280, 40, 20);
+        jSpinner4.setBounds(670, 280, 47, 20);
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
         jSpinner5.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -276,7 +290,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner5);
-        jSpinner5.setBounds(670, 340, 40, 20);
+        jSpinner5.setBounds(670, 340, 47, 20);
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -330,7 +344,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
-        V.get().menu();
+        V.get().listarCD();
     }//GEN-LAST:event_ATRASActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
@@ -357,6 +371,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             jLabel8.setVisible(false);
             jSpinner5.setVisible(false);
         }
+        // TODO: Se pone gris cuando tenes sets y blanco cuando tenes otra cosa, ver que onda
     }//GEN-LAST:event_jCheckBox5StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -413,10 +428,15 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_jSpinner5StateChanged
 
+    private void ATRAS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRAS1ActionPerformed
+        V.get().menu();
+    }//GEN-LAST:event_ATRAS1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACEPTAR;
     private javax.swing.JButton ATRAS;
+    private javax.swing.JButton ATRAS1;
     private javax.swing.JComboBox DeporteAsociado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
