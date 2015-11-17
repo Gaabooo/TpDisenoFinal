@@ -371,7 +371,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
             jLabel8.setVisible(false);
             jSpinner5.setVisible(false);
         }
-        // TODO: Se pone gris cuando tenes sets y blanco cuando tenes otra cosa, ver que onda
     }//GEN-LAST:event_jCheckBox5StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
