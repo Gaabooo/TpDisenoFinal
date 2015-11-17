@@ -12,9 +12,6 @@ import java.util.logging.Logger;
 import modelo.*;
 
 public class CompetenciaDaoJDBC {
-    
-   
-    
     private static final String _SQL_INSERT_COMPETENCIA = "INSERT INTO "+ "competencia" +" "
             + "(id_competencia,id_estado,id_forma_Puntuacion,id_modalidad,id_deporte,id_disponibiliad,"
             + "id_usuario, id_tablaPosicionesParticipante,id_fixture,nombre,reglamento,"
@@ -29,6 +26,44 @@ public class CompetenciaDaoJDBC {
     private static final String _SQL_FIND_ALL_TABLA_POSICIONES_PARTICIPANTE="SELECT * FROM"+ "tabla_posiciones";
     private static final String _SQL_FIND_ALL_DEPORTE = "SELECT * FROM " + "deporte";
     private static final String _SQL_FIND_ALL_FIXTURE="SELECT * FROM"+ "fixture";
+    
+    // Completar
+    public static ArrayList<Competencia> getCompetencias (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
+        String _SQL_FIND_COMPETENCIAS = "SELECT * FROM competencia WHERE ";
+        Connection conn = null; 
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            ResultSet rs;
+            if (nombreCD != null) {
+                _SQL_FIND_COMPETENCIAS = _SQL_FIND_COMPETENCIAS + "nombre LIKE '%" + nombreCD + "%'"; }
+            if (nombreDeporte != null) {
+                String _SQL_FIND_ID_DEPORTE = "SELECT id_deporte FROM deporte WHERE nombre LIKE '%" + nombreDeporte + "%'";
+                rs = statement.executeQuery(_SQL_FIND_ID_DEPORTE);
+                int IDDeporte = rs.getInt("id_deporte");
+                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_deporte = " + IDDeporte + ", "; }
+            if (nombreModalidad != null) {
+                String _SQL_FIND_ID_MODALIDAD = "SELECT id_modalidad FROM modalidad WHERE nombre LIKE '%" + nombreModalidad + "%'";
+                rs = statement.executeQuery(_SQL_FIND_ID_MODALIDAD);
+                int IDModalidad = rs.getInt("id_modalidad");
+                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_modalidad = " + IDModalidad + ", "; }
+            if (nombreEstado != null) {
+                String _SQL_FIND_ID_ESTADO = "SELECT id_estado FROM estado WHERE nombre LIKE '%" + nombreEstado + "%'";
+                rs = statement.executeQuery(_SQL_FIND_ID_ESTADO);
+                int IDEstado = rs.getInt("id_estado");
+                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_estado = " + IDEstado; }
+            rs = statement.executeQuery(_SQL_FIND_COMPETENCIAS);
+            while (rs.next()) {
+                
+            }
+            rs.close(); }
+        catch (SQLException ex) {
+            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
     
     public static void persistirEstado(Estado unEstado){
         

@@ -35,19 +35,6 @@ public class V extends javax.swing.JFrame {
         remove(aux);
     }
     
-    public void listarCD(){
-        limpiar();
-        aux=new Auxiliar();
-        add(aux);
-        //SELF.invalidate(); NO
-        revalidate();
-        repaint();
-        //SELF.pack(); NO
-        /*
-        Panel.add(Cliente, BorderLayout.CENTER);
-        this.pack();*/
-    }
-    
     public void menu(){
         limpiar();
         aux = new Menu();
@@ -55,6 +42,27 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    
+    public void listarCD(){
+        limpiar();
+        aux=new ListarCompetencias();
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    
+    public void altaCompetencia(){
+        limpiar();
+        aux = new AltaCompetencia();
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    
+    public void salir(){
+        System.exit(0);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,8 +73,9 @@ public class V extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 630));
+        setPreferredSize(new java.awt.Dimension(800, 630));
+        setResizable(false);
         setLocationRelativeTo(null);
         
         aux=new Bienvenido();

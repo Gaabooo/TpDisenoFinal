@@ -5,16 +5,18 @@
  */
 package ventanas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Martin
  */
-public class Auxiliar extends javax.swing.JPanel {
+public class ListarCompetencias extends javax.swing.JPanel {
 
     /**
      * Creates new form Auxiliar
      */
-    public Auxiliar() {
+    public ListarCompetencias() {
         initComponents();
     }
 
@@ -42,6 +44,7 @@ public class Auxiliar extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -69,16 +72,16 @@ public class Auxiliar extends javax.swing.JPanel {
         jLabel2.setText("Nombre de la Competencia");
 
         // HACER -> Buscar en la BD y que devuelva una lista
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Basket", "Futbol", "Voley" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Basket", "Futbol", "Voley" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Creada", "Planificada", "EnDisputa", "Finalizada" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sistema de Liga", "Sistema de Eliminatoria Simple", "Sistema de Eliminatoria Doble" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
 
         jLabel6.setText("Modalidad");
 
@@ -169,7 +172,18 @@ public class Auxiliar extends javax.swing.JPanel {
             new String [] {
                 "Nombre", "Deporte", "Modalidad", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setFocusable(false);
+        jTable1.getTableHeader().setResizingAllowed(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
@@ -182,7 +196,7 @@ public class Auxiliar extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(470, 510, 140, 23);
+        jButton3.setBounds(460, 510, 150, 23);
 
         jButton4.setText("Ver Competencia");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -193,17 +207,24 @@ public class Auxiliar extends javax.swing.JPanel {
         add(jButton4);
         jButton4.setBounds(630, 510, 140, 23);
 
+        jLabel3.setText(" *");
+        add(jLabel3);
+        jLabel3.setBounds(770, 510, 20, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
-
+        V.get().menu();
     }//GEN-LAST:event_SALIRActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if(jComboBox2.getSelectedIndex()==0 && jComboBox3.getSelectedIndex()==0 &&
+                jComboBox1.getSelectedIndex()==0 && jTextField1.getText().isEmpty()){
+            errorFiltros();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -211,13 +232,17 @@ public class Auxiliar extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        V.get().altaCompetencia();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void errorFiltros(){
+        JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SALIR;
@@ -229,6 +254,7 @@ public class Auxiliar extends javax.swing.JPanel {
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
