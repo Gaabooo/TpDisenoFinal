@@ -6,6 +6,7 @@
 package ventanas;
 
 import java.util.Vector;
+import javax.swing.JSpinner.NumberEditor;
 
 /**
  *
@@ -240,6 +241,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner1.setBounds(200, 180, 70, 20);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
+        jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));
+        ((NumberEditor)jSpinner2.getEditor()).getTextField().setEditable(false);
         jSpinner2.setPreferredSize(new java.awt.Dimension(29, 20));
         add(jSpinner2);
         jSpinner2.setBounds(670, 220, 40, 20);
@@ -249,14 +252,29 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner2b.setBounds(670, 220, 40, 20);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(3, 1, 999, 1));
+        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner3StateChanged(evt);
+            }
+        });
         add(jSpinner3);
         jSpinner3.setBounds(670, 250, 40, 20);
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
+        jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner4StateChanged(evt);
+            }
+        });
         add(jSpinner4);
         jSpinner4.setBounds(670, 280, 40, 20);
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
+        jSpinner5.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner5StateChanged(evt);
+            }
+        });
         add(jSpinner5);
         jSpinner5.setBounds(670, 340, 40, 20);
         add(jLabel6);
@@ -359,6 +377,42 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+        
+        int value = (int)jSpinner3.getValue();
+        
+        if(value<(int)jSpinner4.getValue()){
+            jSpinner4.setValue(value);
+        }
+        if(value<(int)jSpinner5.getValue()){
+            jSpinner5.setValue(value);
+        }
+    }//GEN-LAST:event_jSpinner3StateChanged
+
+    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
+        
+        int value = (int)jSpinner4.getValue();
+        
+        if(value>(int)jSpinner3.getValue()){
+            jSpinner3.setValue(value);
+        }/*
+        if(value<(int)jSpinner5.getValue()){
+            jSpinner5.setValue(value);
+        }*/
+        
+    }//GEN-LAST:event_jSpinner4StateChanged
+
+    private void jSpinner5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner5StateChanged
+        int value = (int)jSpinner5.getValue();
+        
+        if(value>(int)jSpinner3.getValue()){
+            jSpinner3.setValue(value);
+        }/*
+        if(value<(int)jSpinner4.getValue()){
+            jSpinner4.setValue(value);
+        }*/
+    }//GEN-LAST:event_jSpinner5StateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACEPTAR;
@@ -428,18 +482,21 @@ public class AltaCompetencia extends javax.swing.JPanel {
     //Habilitacion de campos para forma de puntuacion, puntuacion
     private void formaPPuntuacion(){
         jLabel11.setVisible(true);
-        jSpinner2.setVisible(true);
+        jSpinner2b.setVisible(true);
+        jSpinner2.setVisible(false);
         jLabel11.setText("Tantos por no presentarse");
     }
     //Habilitacion de campos para forma de puntuacion, sets
     private void formaPSets(){
         jLabel11.setVisible(true);
         jSpinner2.setVisible(true);
+        jSpinner2b.setVisible(false);
         jLabel11.setText("Cant. max. de sets");
     }
     //Habilitacion de campos para forma de puntuacion, Resultado final
     private void formaPResultadoFinal(){
         jLabel11.setVisible(false);
+        jSpinner2b.setVisible(false);
         jSpinner2.setVisible(false);
     }
     
