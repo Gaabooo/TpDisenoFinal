@@ -210,8 +210,6 @@ public class ListarCompetencias extends javax.swing.JPanel {
         jLabel3.setText(" *");
         add(jLabel3);
         jLabel3.setBounds(770, 510, 20, 20);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -224,6 +222,11 @@ public class ListarCompetencias extends javax.swing.JPanel {
         if(jComboBox2.getSelectedIndex()==0 && jComboBox3.getSelectedIndex()==0 &&
                 jComboBox1.getSelectedIndex()==0 && jTextField1.getText().isEmpty()){
             errorFiltros();
+        }
+        else{
+            // Llamar a la funcion para rellenar la tabla (devuelve matriz)
+            
+            // Asignar los valores de la matriz a la tabla
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
