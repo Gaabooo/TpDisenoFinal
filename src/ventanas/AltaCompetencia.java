@@ -307,8 +307,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
         verificarPuntosEmpate();
         
         
-        jSpinner1.getValue();
-        
         
         
     }//GEN-LAST:event_ACEPTARActionPerformed
