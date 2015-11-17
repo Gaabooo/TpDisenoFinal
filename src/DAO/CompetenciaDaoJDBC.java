@@ -54,6 +54,7 @@ public class CompetenciaDaoJDBC {
                 _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_estado = " + IDEstado; }
             rs = statement.executeQuery(_SQL_FIND_COMPETENCIAS);
             while (rs.next()) {
+              
                 
             }
             rs.close(); }
@@ -63,7 +64,10 @@ public class CompetenciaDaoJDBC {
             if (conn!=null) try {
                 conn.close(); }
             catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
+                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } 
+        return null;
+            }
+        
     
     public static void persistirEstado(Estado unEstado){
         
@@ -458,11 +462,11 @@ public class CompetenciaDaoJDBC {
             ps.setString(10, c.getNombre());
             ps.setString(11, c.getReglamento());
             ps.setInt(12, c.getCantidadMaximaDeSets());
-            ps.setString(13,c.getTantosPorAusenciaDeRival());
+            ps.setInt(13,c.getTantosPorAusenciaDeRival());
             ps.setInt(14,c.getPuntosPorPresentacion());
             ps.setInt(15,c.getPuntosPorVictoria());
-            ps.setInt(16,c.getEmpatePermitido());
-            ps.setString(17,c.getPuntosPorPermitido());
+            ps.setBoolean(16,c.getEmpatePermitido());
+            ps.setInt(17,c.getPuntosPorPermitido());
            
             ps.close();
         } catch (SQLException ex) {
