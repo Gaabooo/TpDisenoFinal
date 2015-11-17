@@ -234,7 +234,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton3);
         jButton3.setBounds(280, 180, 70, 23);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 70, 20);
@@ -259,8 +259,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
         add(jSpinner5);
         jSpinner5.setBounds(670, 340, 40, 20);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -286,7 +284,33 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void ACEPTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACEPTARActionPerformed
-        // TODO add your handling code here:
+        // Verificar todos los campos
+        
+        String errores="";
+        
+        // Nombre de la competencia
+        verificarNombreCompetencia();
+        
+        // Tantos por no presentarse
+        verificarTantosNoPresentarse();
+        
+        // Cantidad de Sets
+        verificarCantidadSets();
+        
+        // Puntos por partido ganado
+        verificarPuntosPartidoGanado();
+        
+        // Puntos por presentarse
+        verificarPuntosPresentarse();
+        
+        // Puntos por empate
+        verificarPuntosEmpate();
+        
+        
+        jSpinner1.getValue();
+        
+        
+        
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
@@ -446,4 +470,55 @@ public class AltaCompetencia extends javax.swing.JPanel {
         //tabla.add(auxLocal);
     }
     
+    
+    // Nombre de la competencia
+    private String verificarNombreCompetencia(){
+        /*
+        if(CONDICION BD){
+            Nombre ya esta presente
+            return "-El nombre de competencia ya existe\n"
+        }
+        */
+        return "";
+    }
+        
+    // Tantos por no presentarse
+    private String verificarTantosNoPresentarse(){
+        if(jSpinner2b.isVisible()){
+            
+        }
+        return "";
+    }
+    
+    // Cantidad de Sets
+    private String verificarCantidadSets(){
+        if(jSpinner2.isVisible()){
+            
+        }
+        return "";
+    }
+    
+    // Puntos por partido ganado
+    private String verificarPuntosPartidoGanado(){
+        if(jSpinner3.isVisible()){
+            
+        }
+        return "";
+    }
+    
+    // Puntos por presentarse
+    private String verificarPuntosPresentarse(){
+        if(jSpinner4.isVisible()){
+            
+        }
+        return "";
+    }
+    
+    // Puntos por empate
+    private String verificarPuntosEmpate(){
+        if(jSpinner5.isVisible()){
+            
+        }
+        return "";
+    }
 }
