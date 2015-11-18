@@ -96,9 +96,67 @@ public class CompetenciaDaoJDBC {
                 _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_estado = " + IDEstado; }
             rs = statement.executeQuery(_SQL_FIND_COMPETENCIAS);
             while (rs.next()) {
-                 
+                     
+              Competencia comp= null;
+              Estado estado = null;
+              Modalidad modalidad=null;
+              Deporte deporte=null;
+                
+              String SQL_NOMBRECD = rs.getString("nombre");
+              String SQL_FIND_ESTADO = "SELECT nombre FROM estado WHERE id_estado="+ rs.getInt("id_estado");
+              String SQL_FIND_MODALIDAD = "SELECT nombre FROM modalidad WHERE id_estado="+ rs.getInt("id_modalidad");
+              String SQL_FIND_DEPORTE = "SELECT nombre FROM deporte WHERE id_estado="+ rs.getInt("id_deporte");     
+                     
+              estado.setNombre(SQL_FIND_ESTADO);
+              modalidad.setNombre(SQL_FIND_MODALIDAD);
+              deporte.setNombre(SQL_FIND_DEPORTE);
+              
+                     //id.estado --> nombreEstado
+                     //id.modalidad --> nombreModalidad
+                     //id.deporte --> nombreDeporte
+                        
+                    //arreglo1(nombre,nombreEstado,nombreEstado,nombreDeporte)
+                     
+                    //arreglo2 add(arreglo1);
+                     
+                     
+                   /* comp.setNombre(rs.getString("nombre"));
+                    comp.setReglamento(rs.getString("reglamento"));
+                    comp.setModalidad(rs.getInt("id_modalidad"));
+                    comp.setEstado(rs.getInt("id_estado"));
+                    comp.setFormaPuntuacion("formaPuntuacion");
+                    comp.setCantidadMaximaDeSets(rs.getInt("cantidadMaximaDeSets"));
+                    comp.setTantosPorAusenciaDeRival(rs.getInt("tantosPorAusenciaDeRival"));
+        comp.setPuntosPorPresentacion(rs.getInt("puntosPorPresentacion"));
+        comp.setPuntosPorVictoria(rs.getInt("puntosPorVictoria"));
+        comp.setEmpatePermitido(rs.getInt("empatePermitido"));
+        comp.setPuntosPorEmpate(rs.getInt"puntosPorEmpate");
+        comp.setDeporte(rs.getInt("id_deporte"));
+        comp.setListaDisponibilidades(rs.getInt("listaDisponibilidades"));*/
+                  
+                    
+                    //...
+                    
+                    //arregloCD add(comp);
+                    
+                    //for(int i i<arregloCD.long, i++)
+                        // arregloCD[i].setIdEstado
+                        //buscamos el el nombre Estado por medio del IdEstado
+                    
+                    // addTabla(nombre,estado,modalidad,deporte)
+        
+                    //arreglo();
+                    
+                    //for(int i, i<arregloCD.long,i++)
+                        //setNombre(arregloCD[i].nombre) 
+                        //setEstado(arregloCD[i].estado)
+                        //setModalidad(arregloCD[i].modalidad)
+                        //setDeporte(arregloCD[i].deporte)
+                        //--> o un Arreglo nuevo que tenga 4 espacios
+                        //uno para Nombre, uno para Estado otro para modalidad, otro para deporte 
+                        // lo buscamos con los arregloCD[i].IdEstado por ejemplo
             }
-            rs.close(); }
+            rs.close();  }
         catch (SQLException ex) {
             Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
         finally {
