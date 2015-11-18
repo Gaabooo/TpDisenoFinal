@@ -2,103 +2,212 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import modelo.*;
+
 
 public class pruebaJDBC {
   
-    public static int buscarEstado(String name){
-       
-    String _SQL_FK_ESTADO ="SELECT id_estado FROM estado WHERE nombre ="+ name ;
+    //CU - listar CD
     
-    Connection conn;
- 
+    public static Competencia filtroCD(Competencia unaCompretencia,Modalidad unaModaliadad,Estado unEstado){
+    
+    Competencia unaCompetencia= null;
+        
+    
+        return unaCompetencia;
+    }
+    
+    //CU - alta CD
+    public static Estado getEstado(String name){
+       
+    String _SQL_FK_ESTADO ="SELECT id_estado FROM estado WHERE nombre = '" + name + "' ";
+    
+        Connection conn;
+        Estado unEstado=null;
+        int id=0;
+        String nomb=null;
     try{
         conn = DBConnection.get();
         
+        ResultSet  rs;
+        
         Statement stmt = conn.createStatement();
-            
-            ResultSet rs;
-            
-            rs=stmt.executeQuery(_SQL_FK_ESTADO);
-                    
+         
+        rs=stmt.executeQuery(_SQL_FK_ESTADO);
+        
+        rs.next();
+        
+        nomb=name;
+        id= rs.getInt("id_estado");
+        
+        
+        unEstado = new Estado(id, nomb);
+                
     }
     catch(Exception e){
            System.out.println("Error de "+ e.getMessage());
        }  
-    
-    return Integer.parseInt(_SQL_FK_ESTADO);
+    /*Integer.parseInt*/
+      return unEstado; 
     }
     
-    public static int buscarModalidad(String name){
+    public static Modalidad getModalidad(String name){
     
-        String _SQL_FK_MODALIDAD ="SELECT id_modalidad FROM modalidad WHERE nombre ="+ name ;
+        String _SQL_FK_MODALIDAD ="SELECT id_modalidad FROM modalidad WHERE nombre = '" + name + "' ";
+        
         
         Connection conn;
+        Modalidad unaModalidad=null;
+        int id=0;
+        String nomb=null;
+        
  
     try{
+        
         conn = DBConnection.get();
         
+        ResultSet rs;
+        
         Statement stmt = conn.createStatement();
-            
-            ResultSet rs;
-            
-            rs=stmt.executeQuery(_SQL_FK_MODALIDAD);
-                    
+         
+        rs=stmt.executeQuery(_SQL_FK_MODALIDAD);
+        
+        rs.next();
+        
+        nomb=name;
+        int id_modalidad= rs.getInt("id_modalidad");
+        
+        unaModalidad = new Modalidad(id_modalidad, nomb);
+               
     }
     catch(Exception e){
         System.out.println("Error de "+ e.getMessage());
     }
         
-      return Integer.parseInt(_SQL_FK_MODALIDAD);  
+      return unaModalidad;  
     }
     
-    public static int buscarFormaPuntuacion(String name){
+    public static FormaPuntuacion getFormaPuntuacion(String name){
     
 
-        String _SQL_FK_FORMAPUNTUACION ="SELECT id_forma_puntuacion FROM forma_puntuacion WHERE nombre ="+ name ;
+        String _SQL_FK_FORMAPUNTUACION ="SELECT id_forma_puntuacion FROM forma_puntuacion WHERE nombre = '" + name + "' ";
         
+        FormaPuntuacion unaFormaPuntuacion = null;
         Connection conn;
        
+        int id=0;
+        String nomb=null;
+          
         try{
         conn = DBConnection.get();
         
+        ResultSet  rs;
+        
         Statement stmt = conn.createStatement();
-            
-            ResultSet rs;
-            
-            rs=stmt.executeQuery(_SQL_FK_FORMAPUNTUACION);
+         
+        rs=stmt.executeQuery(_SQL_FK_FORMAPUNTUACION);
+        
+        rs.next();
+        
+        int id_forma_puntuacion= rs.getInt("id_forma_puntuacion");
+        nomb=name;
+        
+        unaFormaPuntuacion = new FormaPuntuacion(id_forma_puntuacion, nomb);
                     
     }
     catch(Exception e){
         System.out.println("Error de "+ e.getMessage());
     }
         
-    return Integer.parseInt(_SQL_FK_FORMAPUNTUACION); 
+    return unaFormaPuntuacion; 
         
     }
     
-    public static int buscarDeporte(String name){
+    public static Deporte getDeporte(String name){
      
-    String _SQL_FK_DEPORTE ="SELECT id_deporte FROM deporte WHERE nombre ="+ name ;
-        
-    Connection conn;    
+    String _SQL_FK_DEPORTE ="SELECT id_deporte FROM deporte D WHERE D.nombre = '" + name + "' ";
+      
+    Deporte unDeporte = null;
+    Connection conn; 
+    
+    int id=0;
+        String nomb=null;
     
      try{
         conn = DBConnection.get();
         
+        ResultSet  rs;
+        
         Statement stmt = conn.createStatement();
-            
-            ResultSet rs;
-            
-            rs=stmt.executeQuery(_SQL_FK_DEPORTE);
+         
+        rs=stmt.executeQuery(_SQL_FK_DEPORTE);
+        
+        rs.next();
+        
+        int id_deporte= rs.getInt("id_deporte");
+        nomb=name;
+        
+        unDeporte = new Deporte(id_deporte, nomb);
                     
     }
     catch(Exception e){
         System.out.println("Error de "+ e.getMessage());
     }  
-      return Integer.parseInt(_SQL_FK_DEPORTE);
+      return unDeporte;
     }
+    
+    public static LugarRealizacion getLugarRealizacion(int idLugar){
+       
+    String _SQL_FK_LUGAR ="SELECT nombre FROM lugar WHERE id_lugar = '" + idLugar + "' ";
+    
+        Connection conn;
+        LugarRealizacion unLugar=null;
+        int id=0;
+        String nomb=null;
+    try{
+        conn = DBConnection.get();
+        
+        ResultSet  rs;
+        
+        Statement stmt = conn.createStatement();
+         
+        rs=stmt.executeQuery(_SQL_FK_LUGAR);
+        
+        rs.next();
+        
+        id=idLugar;
+        nomb= rs.getString("nombre");
+        
+        
+        unLugar = new LugarRealizacion(id, nomb,"A",null);
+                
+    }
+    catch(Exception e){
+           System.out.println("Error de "+ e.getMessage());
+       }  
+    
+      return unLugar; 
+    }
+    
+    
+    public static Disponibilidad crearDisponibilidad(int cantidad,LugarRealizacion lg){
+       
+    Disponibilidad unaDisponibilidad =null;
+    Job unaJob= new Job("a"); 
+   
+    unaDisponibilidad.setId(unaJob.jobID);
+    unaDisponibilidad.setLg(lg);
+    unaDisponibilidad.setCantidad(cantidad);
+    
+      return unaDisponibilidad;
+    }
+    
+    
+    
     
     public static int buscarUsuario(String name){
      
@@ -144,6 +253,40 @@ public class pruebaJDBC {
       return Integer.parseInt(_SQL_FK_LUGAR);  
     }
    
+    public static Competencia insertCompetencia(Estado unEstado, 
+            FormaPuntuacion unaFormaPuntuacion, Modalidad unaModalidad,Deporte unDeporte,
+            int id,String nombre, String reglamento,ArrayList<Disponibilidad> listaDisponibilidades,
+            int cantMaxDeSet,int tantoPorAusencia,int puntoPorPresencia,
+            int puntosPorVictoria,boolean empatePermitido,int puntosPorEmpate,int puntosPorPermitido){
+    
+        Competencia unaCompetencia= null;
+        
+        Fixture unFixture=null;
+        
+        unaCompetencia.setId(id);
+        unaCompetencia.setNombre(nombre);
+        unaCompetencia.setReglamento(reglamento);
+        
+        unaCompetencia.setCantidadMaximaDeSets(cantMaxDeSet);
+        unaCompetencia.setTantosPorAusenciaDeRival(tantoPorAusencia);
+        unaCompetencia.setPuntosPorPresentacion(puntoPorPresencia);
+        unaCompetencia.setPuntosPorVictoria(puntosPorEmpate);
+        unaCompetencia.setEmpatePermitido(empatePermitido);
+        unaCompetencia.setPuntosPorEmpate(puntosPorEmpate);
+        unaCompetencia.setEmpatePermitido(true);
+        unaCompetencia.setPuntosPorPermitido(1);
+        
+        unaCompetencia.setEstado(unEstado);
+        unaCompetencia.setFormaPuntuacion(unaFormaPuntuacion);
+        unaCompetencia.setModalidad(unaModalidad);
+        unaCompetencia.setFixture(unFixture);
+        unaCompetencia.setDeporte(unDeporte);
+        unaCompetencia.addDisponibilidad(null);
+        unaCompetencia.addTablaPosicionesParticipante(null);
+        
+        return unaCompetencia;
+    }
+    
     
     public static void insertarPais(int id, String name){
       
@@ -166,7 +309,7 @@ public class pruebaJDBC {
     
     public static boolean buscarPais(String name){
     
-         String _SQL_NAME_ALL_PAIS ="SELECT nombre FROM pais";
+         String _SQL_NAME_ALL_PAIS ="SELECT nombre FROM pais WHERE nombre="+name;
     
          Connection conn;
          boolean valor=false;
@@ -197,10 +340,10 @@ public class pruebaJDBC {
     public static void addCompetencia(String nombreDeporte,String nombreEstado,
             String nombreModalidad,String nombreFormaPuntuacion, String nombreUsuario ){
     
-    int estadoFK= buscarEstado(nombreEstado);
-    int modalidadFK = buscarModalidad(nombreModalidad);
+    /*int estadoFK= buscarEstado(nombreEstado);*/
+    /*int modalidadFK = buscarModalidad(nombreModalidad);
     int formaPuntuacionFK = buscarFormaPuntuacion(nombreFormaPuntuacion);
-    int deporteFK = buscarDeporte(nombreDeporte);
+    int deporteFK = buscarDeporte(nombreDeporte);*/
     int usuarioFK = buscarUsuario(nombreUsuario);
      
     }

@@ -1,23 +1,9 @@
 
 package DAO;
 
-import modelo.Participante;
-import DAO.participanteService;
-import DAO.participanteServiceImpl;
-
+import modelo.*;
 import DAO.CompetenciaDaoJDBC;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import java.sql.PreparedStatement;
-
-import modelo.Deporte;
+import java.util.ArrayList;
 
 public class zaraza extends javax.swing.JFrame {
  
@@ -159,11 +145,75 @@ public class zaraza extends javax.swing.JFrame {
     }//GEN-LAST:event_CONECTARActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        id = jTextField1.getText();  
-        nombre =jTextField2.getText();
+        
+        /*Estado  estado = new Estado(1,"cd");
+        
+        estado.nombre="s";
+        
+        System.out.println(estado.nombre);*/
+        
+        Estado e = pruebaJDBC.getEstado("Finalizada");
+        Modalidad m = pruebaJDBC.getModalidad("Liga");
+        FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
+        Deporte d = pruebaJDBC.getDeporte("Voley");
+        String matrizLugares[][] = new String[2][4];
+        
+        matrizLugares[0][0] = "lugar1";
+        matrizLugares[0][1] = "lugar2";
+        matrizLugares[0][2] = "lugar3";
+        matrizLugares[0][3] = "lugar4";
+        
+        matrizLugares[1][0] = "12";
+        matrizLugares[1][1] = "44";
+        matrizLugares[1][2] = "5";
+        matrizLugares[1][3] = "3";
+        
+        System.out.println(e.getNombre());
+        System.out.println(e.getID());
+        
+        System.out.println(m.getNombre());
+        System.out.println(m.getId());
+        
+        System.out.println(fp.getNombre());
+        System.out.println(fp.getId());
+        
+        System.out.println(d.getNombre());
+        System.out.println(d.getId());
+        
+        // Disponibilidades
+        ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
+        for (int i=0; i<matrizLugares[0].length; i++) {
+            String unNombreLR = (String)matrizLugares[0][i];
+            LugarRealizacion unLR = CompetenciaDaoJDBC.buscarLRPorNombre(unNombreLR);
+            Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[1][i]), unLR);
+            listaDisponibilidades.add(unaDisponibilidad); }
+        
+        for (int i=0; i<listaDisponibilidades.size(); i++) {
+            Disponibilidad unaDisponibilidad = listaDisponibilidades.get(i);
+            System.out.println(unaDisponibilidad.getCantidad());
+            System.out.println((unaDisponibilidad.getLg()).getNombre()); }
+        
+        Competencia nuevaCD = new Competencia("A", "B", d, m, e, listaDisponibilidades, fp, 1, 1, 1, 1, false, 1);
+        CompetenciaDaoJDBC.persistirCD(nuevaCD);
+        
+        /*System.out.println(lg.getNombre());*/
+        
+        /*Disponibilidad dispo= pruebaJDBC.crearDisponibilidad(8,lg);
+        
+        System.out.println(dispo.getCantidad());*/
+        
+         /*id_estado=unEstado.getID();
+         
+        System.out.println(id_estado);*/
         
         
+        /*id = jTextField1.getText();  
+        nombre =jTextField2.getText();*/
+        /*pruebaJDBC.buscarPais(nombre);*/
+        /*id_estado=pruebaJDBC.buscarEstado("Finalizada");*/
+        
+        /*System.out.println(pruebaJDBC.buscarPais(nombre));*/
+        /*System.out.println(id_estado);*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

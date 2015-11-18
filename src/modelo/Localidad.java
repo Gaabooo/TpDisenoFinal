@@ -46,7 +46,7 @@ public class Localidad {
     public Localidad(int id, String nombre, String coidgoPostal, ArrayList<Provincia> provincia) {
         this.id = id;
         this.nombre = nombre;
-        this.coidgoPostal = coidgoPostal;
+        this.coidgoPostal = codigoPostal;
         this.provincia = provincia;
     }
       
