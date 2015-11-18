@@ -197,9 +197,6 @@ public class pruebaJDBC {
     public static Disponibilidad crearDisponibilidad(int cantidad,LugarRealizacion lg){
        
     Disponibilidad unaDisponibilidad =null;
-    Job unaJob= new Job("a"); 
-   
-    unaDisponibilidad.setId(unaJob.jobID);
     unaDisponibilidad.setLg(lg);
     unaDisponibilidad.setCantidad(cantidad);
     
@@ -263,7 +260,6 @@ public class pruebaJDBC {
         
         Fixture unFixture=null;
         
-        unaCompetencia.setId(id);
         unaCompetencia.setNombre(nombre);
         unaCompetencia.setReglamento(reglamento);
         
@@ -274,14 +270,14 @@ public class pruebaJDBC {
         unaCompetencia.setEmpatePermitido(empatePermitido);
         unaCompetencia.setPuntosPorEmpate(puntosPorEmpate);
         unaCompetencia.setEmpatePermitido(true);
-        unaCompetencia.setPuntosPorPermitido(1);
+        unaCompetencia.setPuntosPorEmpate(1);
         
         unaCompetencia.setEstado(unEstado);
         unaCompetencia.setFormaPuntuacion(unaFormaPuntuacion);
         unaCompetencia.setModalidad(unaModalidad);
         unaCompetencia.setFixture(unFixture);
         unaCompetencia.setDeporte(unDeporte);
-        unaCompetencia.addDisponibilidad(null);
+        unaCompetencia.setListaDisponibilidades(null);
         unaCompetencia.addTablaPosicionesParticipante(null);
         
         return unaCompetencia;
