@@ -75,7 +75,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 260));
         add(jPanel1);
-        jPanel1.setBounds(50, 230, 300, 260);
+        jPanel1.setBounds(50, 230, 300, 270);
         revalidate();
         repaint();
 
@@ -202,7 +202,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         jLabel5.setText("Reglamento (opcional):");
         add(jLabel5);
-        jLabel5.setBounds(370, 360, 150, 14);
+        jLabel5.setBounds(370, 350, 150, 14);
 
         jLabel8.setText("Puntos por empate:");
         add(jLabel8);
@@ -221,11 +221,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabel11.setBounds(500, 220, 160, 14);
 
         jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(6);
         jScrollPane2.setViewportView(jTextArea1);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(370, 380, 340, 96);
+        jScrollPane2.setBounds(370, 370, 340, 114);
 
         jButton3.setText("Agregar");
         jButton3.setToolTipText("Agregar disponibilidad");
