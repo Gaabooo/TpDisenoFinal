@@ -328,9 +328,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
         verificarNombreCompetencia();
         
        //Llamada al Gestor
-        
-        
-        
+        darDeAltaCD(nombreComp.getText(), jTextArea1.getText(), DeporteAsociado.getSelectedItem().toString(),
+                    jComboBox2.getSelectedItem().toString(),String matrizLugares[][], jComboBox1.getSelectedItem().toString(),
+                    jSpinner2.getValue(),jSpinner2b.getValue(), jSpinner4.getValue(),jSpinner3.getValue(),
+                    jCheckBox5.isSelected(), jSpinner5.getValue());
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
@@ -555,43 +556,4 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }
     }
         
-    // Tantos por no presentarse
-    private String verificarTantosNoPresentarse(){
-        if(jSpinner2b.isVisible()){
-            
-        }
-        return "";
-    }
-    
-    // Cantidad de Sets
-    private String verificarCantidadSets(){
-        if(jSpinner2.isVisible()){
-            
-        }
-        return "";
-    }
-    
-    // Puntos por partido ganado
-    private String verificarPuntosPartidoGanado(){
-        if(jSpinner3.isVisible()){
-            
-        }
-        return "";
-    }
-    
-    // Puntos por presentarse
-    private String verificarPuntosPresentarse(){
-        if(jSpinner4.isVisible()){
-            
-        }
-        return "";
-    }
-    
-    // Puntos por empate
-    private String verificarPuntosEmpate(){
-        if(jSpinner5.isVisible()){
-            
-        }
-        return "";
-    }
 }

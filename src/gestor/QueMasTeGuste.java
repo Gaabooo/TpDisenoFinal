@@ -35,7 +35,12 @@ public class QueMasTeGuste {
         
         return vectorNombreDeportes;
     }
-    /*
+    
+    public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
+                         String matrizLugares[][], String nombreFormaPuntuacion, int cantMaximaDeSets,
+                         int tantosPorAusenciaDeRival, int puntosPorPresentacion,
+                         int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate){
+        
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
         FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
@@ -68,6 +73,6 @@ public class QueMasTeGuste {
         Competencia nuevaCD = new Competencia("A", "B", d, m, e, listaDisponibilidades, fp, 1, 1, 1, 1, false, 1);
         CompetenciaDaoJDBC.persistirCD(nuevaCD);
         
-        */
+    }
 }
 
