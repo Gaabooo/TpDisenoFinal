@@ -146,12 +146,6 @@ public class zaraza extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        /*Estado  estado = new Estado(1,"cd");
-        
-        estado.nombre="s";
-        
-        System.out.println(estado.nombre);*/
-        
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
         FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
