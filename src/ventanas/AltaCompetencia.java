@@ -7,6 +7,10 @@ package ventanas;
 
 import java.util.Vector;
 import javax.swing.JSpinner.NumberEditor;
+import modelo.*;
+import java.util.ArrayList;
+import DAO.*;
+        
 
 /**
  *
@@ -117,7 +121,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         if((String)jComboBox2.getSelectedItem()=="Liga"){modalidadLiga();}
         else modalidadEliminatoria();
 
-        DeporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Futbol", "Basquet", "Voley" }));
+        String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();
+        DeporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         DeporteAsociado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeporteAsociadoActionPerformed(evt);
@@ -249,7 +254,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(ATRAS1);
         ATRAS1.setBounds(69, 508, 90, 23);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 70, 20);
@@ -319,26 +324,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void ACEPTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACEPTARActionPerformed
         // Verificar todos los campos
         
-        String errores="";
-        
-        // Nombre de la competencia
+        // Verificar Nombre de la competencia
         verificarNombreCompetencia();
         
-        // Tantos por no presentarse
-        verificarTantosNoPresentarse();
-        
-        // Cantidad de Sets
-        verificarCantidadSets();
-        
-        // Puntos por partido ganado
-        verificarPuntosPartidoGanado();
-        
-        // Puntos por presentarse
-        verificarPuntosPresentarse();
-        
-        // Puntos por empate
-        verificarPuntosEmpate();
-        
+       //Llamada al Gestor
         
         
         
@@ -408,8 +397,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         
         int value = (int)jSpinner4.getValue();
         
-        if(value>(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value);
+        if(value>=(int)jSpinner3.getValue()){
+            jSpinner3.setValue(value + 1);
         }/*
         if(value<(int)jSpinner5.getValue()){
             jSpinner5.setValue(value);
@@ -420,8 +409,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void jSpinner5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner5StateChanged
         int value = (int)jSpinner5.getValue();
         
-        if(value>(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value);
+        if(value>=(int)jSpinner3.getValue()){
+            jSpinner3.setValue(value + 1);
         }/*
         if(value<(int)jSpinner4.getValue()){
             jSpinner4.setValue(value);
@@ -548,13 +537,22 @@ public class AltaCompetencia extends javax.swing.JPanel {
     
     // Nombre de la competencia
     private String verificarNombreCompetencia(){
-        /*
-        if(CONDICION BD){
-            Nombre ya esta presente
-            return "-El nombre de competencia ya existe\n"
+        
+        String aux = nombreComp.getText();
+        String aux2 = nombreComp.getText();
+        
+        aux2 = aux2.replaceAll(" ","");
+        
+        if(aux2.length() == 0 ){
+        // El usuario no ingreso nombre de Competencia.
+            return "-Por favor ingrese un nombre de Competencia.\n";
         }
-        */
-        return "";
+        else{
+            if (gestor.QueMasTeGuste.nombreUsado(aux) == true){
+                return "-Nombre de Competencia ya utilizado.\n";  
+            }
+            return nombreComp.getText();
+        }
     }
         
     // Tantos por no presentarse

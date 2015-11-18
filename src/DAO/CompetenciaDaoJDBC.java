@@ -26,6 +26,28 @@ public class CompetenciaDaoJDBC {
     private static final String _SQL_FIND_ALL_DEPORTE = "SELECT * FROM " + "deporte";
     private static final String _SQL_FIND_ALL_FIXTURE="SELECT * FROM"+ "fixture";
     
+    public static ArrayList<String> getListaDeportes() {
+        String _SQL_FIND_NOMBRES_DEPORTES = "SELECT nombre FROM deporte";   
+        Connection conn = null;
+        ArrayList<String> deportes = new ArrayList();
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_DEPORTES);
+            while (rs.next()) {
+                deportes.add(rs.getString("nombre")); }
+            rs.close();
+            return deportes; }
+        catch (SQLException ex) {
+            /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
+        return deportes; 
+    }
+    
     public static ArrayList<String> getNombresCD () {
         String _SQL_FIND_NOMBRES_LUGARES = "SELECT nombre FROM lugar";
         Connection conn = null;

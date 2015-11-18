@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class QueMasTeGuste {
     
-    public boolean nombreUsado (String nombreCD) {
+    public static boolean nombreUsado (String nombreCD) {
         ArrayList<String> listaNombres = CompetenciaDaoJDBC.getNombresCD();
         for (int i=0; i<listaNombres.size(); i++) {
            if (listaNombres.get(i).equals(nombreCD)){
@@ -26,6 +26,15 @@ public class QueMasTeGuste {
         }
         return false;
     }    
+    
+    public static String[] getListaDeportes () {
+        ArrayList<String> deportes = CompetenciaDaoJDBC.getListaDeportes();
+        
+        String[] vectorNombreDeportes = new String[deportes.size()];
+        vectorNombreDeportes = deportes.toArray(vectorNombreDeportes);
+        
+        return vectorNombreDeportes;
+    }
     /*
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
