@@ -36,6 +36,33 @@ public class QueMasTeGuste {
         return vectorNombreDeportes;
     }
     
+        public static String[] getListaLugares () {
+        ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares();
+        
+        String[] vectorNombreLugares = new String[lugares.size()];
+        vectorNombreLugares = lugares.toArray(vectorNombreLugares);
+        
+        return vectorNombreLugares;
+    }
+    
+        public static String[] getListaModalidades () {
+        ArrayList<String> modalidades = CompetenciaDaoJDBC.getListaModalidades();
+        
+        String[] vectorNombreModalidades = new String[modalidades.size()];
+        vectorNombreModalidades = modalidades.toArray(vectorNombreModalidades);
+        
+        return vectorNombreModalidades;
+    }
+        
+        public static String[] getListaPuntuaciones () {
+        ArrayList<String> puntuaciones = CompetenciaDaoJDBC.getListaPuntuaciones();
+        
+        String[] vectorNombrePuntuaciones = new String[puntuaciones.size()];
+        vectorNombrePuntuaciones = puntuaciones.toArray(vectorNombrePuntuaciones);
+        
+        return vectorNombrePuntuaciones;
+    }
+    
     public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
                          String matrizLugares[][], String nombreFormaPuntuacion, int cantMaximaDeSets,
                          int tantosPorAusenciaDeRival, int puntosPorPresentacion,
