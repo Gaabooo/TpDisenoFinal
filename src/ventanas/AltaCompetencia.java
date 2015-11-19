@@ -10,6 +10,7 @@ import javax.swing.JSpinner.NumberEditor;
 import modelo.*;
 import java.util.ArrayList;
 import DAO.*;
+import gestor.*;
         
 
 /**
@@ -328,10 +329,21 @@ public class AltaCompetencia extends javax.swing.JPanel {
         verificarNombreCompetencia();
         
        //Llamada al Gestor
-        darDeAltaCD(nombreComp.getText(), jTextArea1.getText(), DeporteAsociado.getSelectedItem().toString(),
-                    jComboBox2.getSelectedItem().toString(),String matrizLugares[][], jComboBox1.getSelectedItem().toString(),
-                    jSpinner2.getValue(),jSpinner2b.getValue(), jSpinner4.getValue(),jSpinner3.getValue(),
-                    jCheckBox5.isSelected(), jSpinner5.getValue());
+        String nombreCompetencia = nombreComp.getText().toString();
+        String reglamento = jTextArea1.getText().toString();
+        String deporte = DeporteAsociado.getSelectedItem().toString();
+        String modalidad = jComboBox2.getSelectedItem().toString();
+        // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
+        String matriz[][] = new String[2][4];
+        String puntuacion = jComboBox1.getSelectedItem().toString();
+        int j2 = (int) jSpinner2.getValue();
+        int j2b = (int) jSpinner2b.getValue();
+        int j4 = (int) jSpinner4.getValue();
+        int j3 = (int) jSpinner3.getValue();
+        boolean j5c = jCheckBox5.isSelected();
+        int j5a = (int) jSpinner5.getValue();
+        
+        gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed

@@ -45,7 +45,7 @@ public class QueMasTeGuste {
         Modalidad m = pruebaJDBC.getModalidad("Liga");
         FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
         Deporte d = pruebaJDBC.getDeporte("Voley");
-        String matrizLugares[][] = new String[2][4];
+        /*String matrizLugares[][] = new String[2][4];
         
         matrizLugares[0][0] = "lugar1";
         matrizLugares[0][1] = "lugar2";
@@ -55,7 +55,7 @@ public class QueMasTeGuste {
         matrizLugares[1][0] = "12";
         matrizLugares[1][1] = "44";
         matrizLugares[1][2] = "5";
-        matrizLugares[1][3] = "3";
+        matrizLugares[1][3] = "3";*/
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
