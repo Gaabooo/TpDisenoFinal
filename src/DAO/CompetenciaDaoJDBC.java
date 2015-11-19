@@ -48,6 +48,28 @@ public class CompetenciaDaoJDBC {
         return deportes; 
     }
     
+        public static ArrayList<String> getListaLugares() {
+        String _SQL_FIND_NOMBRES_DEPORTES = "SELECT nombre FROM deporte";   
+        Connection conn = null;
+        ArrayList<String> deportes = new ArrayList();
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_DEPORTES);
+            while (rs.next()) {
+                deportes.add(rs.getString("nombre")); }
+            rs.close();
+            return deportes; }
+        catch (SQLException ex) {
+            /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
+        return deportes; 
+    }
+    
     public static ArrayList<String> getNombresCD () {
         String _SQL_FIND_NOMBRES_LUGARES = "SELECT nombre FROM lugar";
         Connection conn = null;
@@ -70,103 +92,244 @@ public class CompetenciaDaoJDBC {
         return listaNombresCD; }
     
     // Completar
-    public static ArrayList<Competencia> getCompetencias (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
-        String _SQL_FIND_COMPETENCIAS = "SELECT * FROM competencia WHERE ";
+       public static ArrayList<CompetenciaAux> getCompetencias (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
+        
         Connection conn = null; 
+        
+        
+       String _SQL_FIND_COMPETENCIAS = "SELECT * FROM competencia WHERE nombre >= '☺' ";
+       String auxNombre="nombre >= '☺'",auxEstado="nombre >= '☺'", auxModalidad="nombre >= '☺'",auxDeporte="nombre >= '☺'";
+       String SQL_LISTA_COMPETENCIAS=null; 
+        ArrayList<CompetenciaAux> ls= new ArrayList <CompetenciaAux> ();
+  
         try {
+            
             conn = DBConnection.get();
+     
             Statement statement = conn.createStatement();
+ 
             ResultSet rs;
+            
+            
             if (nombreCD != null) {
-                _SQL_FIND_COMPETENCIAS = _SQL_FIND_COMPETENCIAS + "nombre LIKE '%" + nombreCD + "%'"; }
+                auxNombre = "nombre = '" + nombreCD + "'"; 
+                
+            }
             if (nombreDeporte != null) {
-                String _SQL_FIND_ID_DEPORTE = "SELECT id_deporte FROM deporte WHERE nombre ='" + nombreDeporte + "'";
+                String _SQL_FIND_ID_DEPORTE = "SELECT id_deporte FROM deporte WHERE nombre = '" + nombreDeporte + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_DEPORTE);
-                int IDDeporte = rs.getInt("id_deporte");
-                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_deporte = " + IDDeporte + ", "; }
+                while(rs.next()){
+                    int IDDeporte = rs.getInt("id_deporte");
+                    auxDeporte = "id_deporte = " + IDDeporte ; 
+                }
+            }
+            
             if (nombreModalidad != null) {
                 String _SQL_FIND_ID_MODALIDAD = "SELECT id_modalidad FROM modalidad WHERE nombre ='" + nombreModalidad + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_MODALIDAD);
-                int IDModalidad = rs.getInt("id_modalidad");
-                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_modalidad = " + IDModalidad + ", "; }
+                while(rs.next()){
+                    int IDModalidad = rs.getInt("id_modalidad");
+                    auxModalidad= "id_modalidad = " + IDModalidad;
+                    
+                }
+            }
             if (nombreEstado != null) {
                 String _SQL_FIND_ID_ESTADO = "SELECT id_estado FROM estado WHERE nombre LIKE '%" + nombreEstado + "%'";
                 rs = statement.executeQuery(_SQL_FIND_ID_ESTADO);
-                int IDEstado = rs.getInt("id_estado");
-                _SQL_FIND_COMPETENCIAS =_SQL_FIND_COMPETENCIAS + "id_estado = " + IDEstado; }
-            rs = statement.executeQuery(_SQL_FIND_COMPETENCIAS);
-            while (rs.next()) {
-                     
-              Competencia comp= null;
-              Estado estado = null;
-              Modalidad modalidad=null;
-              Deporte deporte=null;
-                
-              String SQL_NOMBRECD = rs.getString("nombre");
-              String SQL_FIND_ESTADO = "SELECT nombre FROM estado WHERE id_estado="+ rs.getInt("id_estado");
-              String SQL_FIND_MODALIDAD = "SELECT nombre FROM modalidad WHERE id_estado="+ rs.getInt("id_modalidad");
-              String SQL_FIND_DEPORTE = "SELECT nombre FROM deporte WHERE id_estado="+ rs.getInt("id_deporte");     
-                     
-              estado.setNombre(SQL_FIND_ESTADO);
-              modalidad.setNombre(SQL_FIND_MODALIDAD);
-              deporte.setNombre(SQL_FIND_DEPORTE);
-              
-                     //id.estado --> nombreEstado
-                     //id.modalidad --> nombreModalidad
-                     //id.deporte --> nombreDeporte
-                        
-                    //arreglo1(nombre,nombreEstado,nombreEstado,nombreDeporte)
-                     
-                    //arreglo2 add(arreglo1);
-                     
-                     
-                   /* comp.setNombre(rs.getString("nombre"));
-                    comp.setReglamento(rs.getString("reglamento"));
-                    comp.setModalidad(rs.getInt("id_modalidad"));
-                    comp.setEstado(rs.getInt("id_estado"));
-                    comp.setFormaPuntuacion("formaPuntuacion");
-                    comp.setCantidadMaximaDeSets(rs.getInt("cantidadMaximaDeSets"));
-                    comp.setTantosPorAusenciaDeRival(rs.getInt("tantosPorAusenciaDeRival"));
-        comp.setPuntosPorPresentacion(rs.getInt("puntosPorPresentacion"));
-        comp.setPuntosPorVictoria(rs.getInt("puntosPorVictoria"));
-        comp.setEmpatePermitido(rs.getInt("empatePermitido"));
-        comp.setPuntosPorEmpate(rs.getInt"puntosPorEmpate");
-        comp.setDeporte(rs.getInt("id_deporte"));
-        comp.setListaDisponibilidades(rs.getInt("listaDisponibilidades"));*/
-                  
-                    
-                    //...
-                    
-                    //arregloCD add(comp);
-                    
-                    //for(int i i<arregloCD.long, i++)
-                        // arregloCD[i].setIdEstado
-                        //buscamos el el nombre Estado por medio del IdEstado
-                    
-                    // addTabla(nombre,estado,modalidad,deporte)
-        
-                    //arreglo();
-                    
-                    //for(int i, i<arregloCD.long,i++)
-                        //setNombre(arregloCD[i].nombre) 
-                        //setEstado(arregloCD[i].estado)
-                        //setModalidad(arregloCD[i].modalidad)
-                        //setDeporte(arregloCD[i].deporte)
-                        //--> o un Arreglo nuevo que tenga 4 espacios
-                        //uno para Nombre, uno para Estado otro para modalidad, otro para deporte 
-                        // lo buscamos con los arregloCD[i].IdEstado por ejemplo
+                while(rs.next()){    
+                    int IDEstado = rs.getInt("id_estado");
+                    auxEstado ="id_estado = " + IDEstado; 
+                }
             }
-            rs.close();  }
+            
+            SQL_LISTA_COMPETENCIAS = _SQL_FIND_COMPETENCIAS + "and " + auxNombre + "and " + auxDeporte
+                    + "and " + auxModalidad + "and " + auxEstado; 
+               
+            
+              rs = statement.executeQuery(SQL_LISTA_COMPETENCIAS);
+              
+            while(rs.next()){
+                 
+                CompetenciaAux comp= new CompetenciaAux(setEstadoCD(rs.getInt("id_estado")),setDeporteCD(rs.getInt("id_deporte")),setModalidadCD(rs.getInt("id_modalidad")),setNombreCD(rs.getInt("id_competencia")));
+ 
+                /*comp.nombre=setNombreCD(rs.getInt("id_competencia"));
+                comp.estado=setEstadoCD(rs.getInt("id_estado"));
+                comp.deporte=setDeporteCD(rs.getInt("id_deporte"));
+                comp.modalidad=setModalidadCD(rs.getInt("id_modalidad"));
+                
+          */
+                
+                
+                ls.add(comp);     
+            }
+            
+            
+        }
         catch (SQLException ex) {
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); 
+        }
         finally {
             if (conn!=null) try {
                 conn.close(); }
             catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } 
-        return null;
-            }
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } 
+        } 
+        
+            return ls;
+        }
          
+        public static String setNombreCD(int id_comp){
+        
+            Connection conn = null;
+            String SQL_NOMBRE_CD ="SELECT nombre FROM competencia WHERE id_competencia = '" + id_comp + "' ";
+            String nomb=null;
+            
+            try{
+        
+                conn = DBConnection.get();
+                ResultSet  rs;
+                Statement stmt = conn.createStatement(); 
+                rs=stmt.executeQuery(SQL_NOMBRE_CD);
+        
+                rs.next();
+ 
+                nomb=rs.getString("nombre");
+ 
+
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+     
+        return nomb;
+        }
+    
+        public static Estado setEstadoCD(int idEstado){
+        
+         
+        String _SQL_FK_ESTADO ="SELECT nombre FROM estado  WHERE id_estado = '" + idEstado + "' ";
+        
+        Connection conn = null; 
+        Estado unEstado = null;
+        
+        try{
+        
+        conn = DBConnection.get();
+        
+        ResultSet  rs;
+        
+        Statement stmt = conn.createStatement();
+         
+        rs=stmt.executeQuery(_SQL_FK_ESTADO);
+        
+        rs.next();
+        
+        int id_estado= idEstado;
+        String nomb=rs.getString("nombre");
+        
+        unEstado = new Estado(id_estado, nomb);
+        
+        
+   
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            //no olvidar nunca cerrar todo!!!
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        return unEstado;
+    }
+        
+    public static Deporte setDeporteCD(int idDeporte){
+        
+         
+        String _SQL_FK_DEPORTE ="SELECT nombre FROM deporte  WHERE id_deporte = '" + idDeporte + "' ";
+        
+        Connection conn = null; 
+        Deporte unDeporte = null;
+        
+        try{
+        
+        conn = DBConnection.get();
+        
+        ResultSet  rs;
+        
+        Statement stmt = conn.createStatement();
+         
+        rs=stmt.executeQuery(_SQL_FK_DEPORTE);
+        
+        rs.next();
+        
+        int id_deporte= idDeporte;
+        String nomb=rs.getString("nombre");
+        
+        unDeporte = new Deporte(id_deporte, nomb);
+        
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            //no olvidar nunca cerrar todo!!!
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        return unDeporte;
+    }    
+        
+    public static Modalidad setModalidadCD(int idModalidad){
+        
+         
+        String _SQL_FK_MODALIDAD ="SELECT nombre FROM modalidad WHERE id_modalidad = '" + idModalidad + "' ";
+        
+        Connection conn = null; 
+        Modalidad unaModalidad = null;
+        
+        try{
+        
+        conn = DBConnection.get();
+        
+        ResultSet  rs;
+        
+        Statement stmt = conn.createStatement();
+         
+        rs=stmt.executeQuery(_SQL_FK_MODALIDAD);
+        
+        rs.next();
+        
+        int id_modalidad= idModalidad;
+        String nomb=rs.getString("nombre");
+        
+        unaModalidad = new Modalidad(id_modalidad, nomb);
+ 
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            //no olvidar nunca cerrar todo!!!
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        return unaModalidad;
+    }    
+        
+ 
     public static Estado persistirEstado(String name){
         
          //int unIdEstado = unEstado.getID(); 
@@ -198,13 +361,13 @@ public class CompetenciaDaoJDBC {
    
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
         return unEstado;
@@ -227,13 +390,13 @@ public class CompetenciaDaoJDBC {
    
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
       return unaFormaPuntuacion;
@@ -256,13 +419,13 @@ public class CompetenciaDaoJDBC {
    
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
       return unaModalidad;
@@ -285,13 +448,13 @@ public class CompetenciaDaoJDBC {
    
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -307,13 +470,13 @@ public class CompetenciaDaoJDBC {
             Statement statement = conn.createStatement();
             statement.executeUpdate(insertarDisponibilidad); }
         catch (SQLException ex) {
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
         finally {
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close(); }
             catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
     
     public static void persistirCD(Competencia unaCompetencia){
         Estado estado = unaCompetencia.getEstado();
@@ -333,7 +496,7 @@ public class CompetenciaDaoJDBC {
         int unPuntosPorEmpate=unaCompetencia.getPuntosPorEmpate();
                
         String insertarCD = "INSERT INTO " + "competencia VALUES (default, 1, " +
-                estado.getID() + ", " + formaPuntuacion.getId() +
+                estado.getId() + ", " + formaPuntuacion.getId() +
                 ", " + modalidad.getId() + ", " + deporte.getId() + ", '" + unNombreCompetencia +
                 "', '" + unReglamento + "' , " + unaCantidadMaximaDeSets + 
                 ", " + unTantosPorAusenciaDeRival + ", " + unPuntosPorPresentacion +
@@ -355,12 +518,12 @@ public class CompetenciaDaoJDBC {
                 persistirDisponibilidad(listaDisponibilidades.get(i), IDCD); }
             rs.close(); }
         catch (SQLException ex) {
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
         finally {
             if(conn!=null)try {
                 conn.close(); }
             catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } } }
     
     public String estadoC(String e){
     
@@ -440,13 +603,13 @@ public class CompetenciaDaoJDBC {
    
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return null;
@@ -494,13 +657,13 @@ public class CompetenciaDaoJDBC {
             
         }catch (SQLException ex) {
             
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     
@@ -532,13 +695,13 @@ public class CompetenciaDaoJDBC {
            
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             //no olvidar nunca cerrar todo!!!
             if(conn!=null)try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }   
     }
