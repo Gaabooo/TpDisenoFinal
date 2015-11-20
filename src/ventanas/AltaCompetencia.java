@@ -339,12 +339,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
         // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
         String matriz[][] = new String[2][4];
         String puntuacion = jComboBox1.getSelectedItem().toString();
-        Integer j2 = (Integer) jSpinner2.getValue();
-        Integer j2b = (Integer) jSpinner2b.getValue();
-        Integer j4 = (Integer) jSpinner4.getValue();
-        Integer j3 = (Integer) jSpinner3.getValue();
+        int j2 = (int) jSpinner2.getValue();
+        int j2b = (int) jSpinner2b.getValue();
+        int j4 = (int) jSpinner4.getValue();
+        int j3 = (int) jSpinner3.getValue();
         boolean j5c = jCheckBox5.isSelected();
-        Integer j5a = (Integer) jSpinner5.getValue();
+        int j5a = (int) jSpinner5.getValue();
         
         gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
     }//GEN-LAST:event_ACEPTARActionPerformed

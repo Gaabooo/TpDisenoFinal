@@ -64,9 +64,9 @@ public class QueMasTeGuste {
     }
     
     public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
-                         String matrizLugares[][], String nombreFormaPuntuacion, Integer cantMaximaDeSets,
-                         Integer tantosPorAusenciaDeRival, Integer puntosPorPresentacion,
-                         Integer puntosPorVictoria, boolean empatePermitido, Integer puntosPorEmpate){
+                         String matrizLugares[][], String nombreFormaPuntuacion, int cantMaximaDeSets,
+                         int tantosPorAusenciaDeRival, int puntosPorPresentacion,
+                         int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate){
         
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
