@@ -64,15 +64,15 @@ public class QueMasTeGuste {
     }
     
     public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
-                         String matrizLugares[][], String nombreFormaPuntuacion, int cantMaximaDeSets,
-                         int tantosPorAusenciaDeRival, int puntosPorPresentacion,
-                         int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate){
+                         String matrizLugares[][], String nombreFormaPuntuacion, Integer cantMaximaDeSets,
+                         Integer tantosPorAusenciaDeRival, Integer puntosPorPresentacion,
+                         Integer puntosPorVictoria, boolean empatePermitido, Integer puntosPorEmpate){
         
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
         FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
         Deporte d = pruebaJDBC.getDeporte("Voley");
-        /*String matrizLugares[][] = new String[2][4];
+        /*String matrizLugares[][] = new String[2][4];*/
         
         matrizLugares[0][0] = "lugar1";
         matrizLugares[0][1] = "lugar2";
@@ -82,7 +82,7 @@ public class QueMasTeGuste {
         matrizLugares[1][0] = "12";
         matrizLugares[1][1] = "44";
         matrizLugares[1][2] = "5";
-        matrizLugares[1][3] = "3";*/
+        matrizLugares[1][3] = "3";
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
