@@ -93,6 +93,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabel2.setBounds(40, 80, 180, 14);
 
         String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
+        //String[] cadena2 = gestor.QueMasTeGuste.getListaPuntuaciones();
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -111,6 +112,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         else formaPResultadoFinal();
 
         String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
+        //String[] cadena = gestor.QueMasTeGuste.getListaModalidades();
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(cadena));
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -170,7 +172,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(305, 508, 231, 23);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        String[] cadena3l = gestor.QueMasTeGuste.getListaLugares();
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
