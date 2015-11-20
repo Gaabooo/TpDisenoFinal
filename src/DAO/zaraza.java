@@ -1,9 +1,15 @@
 
 package DAO;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import modelo.*;
-import DAO.CompetenciaDaoJDBC;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class zaraza extends javax.swing.JFrame {
  
@@ -145,6 +151,12 @@ public class zaraza extends javax.swing.JFrame {
     }//GEN-LAST:event_CONECTARActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        /*Estado  estado = new Estado(1,"cd");
+        
+        estado.nombre="s";
+        
+        System.out.println(estado.nombre);*/
         
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
