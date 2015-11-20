@@ -48,14 +48,14 @@ public class CompetenciaDaoJDBC {
         return deportes; 
     }
     
-        public static ArrayList<String> getListaLugares() {
-        String _SQL_FIND_NOMBRES_DEPORTES = "SELECT nombre FROM deporte";   
+    public static ArrayList<String> getListaLugares() {
+        String _SQL_FIND_NOMBRES_LUGARES = "SELECT nombre FROM lugar";   
         Connection conn = null;
         ArrayList<String> lugares = new ArrayList();
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_DEPORTES);
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_LUGARES);
             while (rs.next()) {
                 lugares.add(rs.getString("nombre")); }
             rs.close();
@@ -68,6 +68,50 @@ public class CompetenciaDaoJDBC {
             catch (SQLException ex) {
                 /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
         return lugares; 
+    }
+        
+    public static ArrayList<String> getListaModalidades() {
+        String _SQL_FIND_NOMBRES_MODALIDADES = "SELECT nombre FROM modalidad";   
+        Connection conn = null;
+        ArrayList<String> modalidades = new ArrayList();
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_MODALIDADES);
+            while (rs.next()) {
+                modalidades.add(rs.getString("nombre")); }
+            rs.close();
+            return modalidades; }
+        catch (SQLException ex) {
+            /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
+        return modalidades; 
+    }
+    
+    public static ArrayList<String> getListaPuntuaciones() {
+        String _SQL_FIND_NOMBRES_PUNTUACIONES = "SELECT nombre FROM forma_puntuacion";   
+        Connection conn = null;
+        ArrayList<String> puntuaciones = new ArrayList();
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_PUNTUACIONES);
+            while (rs.next()) {
+                puntuaciones.add(rs.getString("nombre")); }
+            rs.close();
+            return puntuaciones; }
+        catch (SQLException ex) {
+            /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
+        return puntuaciones; 
     }
     
     public static ArrayList<String> getNombresCD () {
