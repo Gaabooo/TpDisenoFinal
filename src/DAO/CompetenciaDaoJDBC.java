@@ -51,15 +51,15 @@ public class CompetenciaDaoJDBC {
         public static ArrayList<String> getListaLugares() {
         String _SQL_FIND_NOMBRES_DEPORTES = "SELECT nombre FROM deporte";   
         Connection conn = null;
-        ArrayList<String> deportes = new ArrayList();
+        ArrayList<String> lugares = new ArrayList();
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_DEPORTES);
             while (rs.next()) {
-                deportes.add(rs.getString("nombre")); }
+                lugares.add(rs.getString("nombre")); }
             rs.close();
-            return deportes; }
+            return lugares; }
         catch (SQLException ex) {
             /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
         finally {
@@ -67,7 +67,7 @@ public class CompetenciaDaoJDBC {
                 conn.close(); }
             catch (SQLException ex) {
                 /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
-        return deportes; 
+        return lugares; 
     }
     
     public static ArrayList<String> getNombresCD () {
