@@ -157,7 +157,7 @@ public class zaraza extends javax.swing.JFrame {
         estado.nombre="s";
         
         System.out.println(estado.nombre);*/
-        
+        /*
         Estado e = pruebaJDBC.getEstado("Finalizada");
         Modalidad m = pruebaJDBC.getModalidad("Liga");
         FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
@@ -175,7 +175,7 @@ public class zaraza extends javax.swing.JFrame {
         matrizLugares[1][3] = "3";
         
         System.out.println(e.getNombre());
-        System.out.println(e.getID());
+        System.out.println(e.getId());
         
         System.out.println(m.getNombre());
         System.out.println(m.getId());
@@ -200,7 +200,7 @@ public class zaraza extends javax.swing.JFrame {
             System.out.println((unaDisponibilidad.getLg()).getNombre()); }
         
         Competencia nuevaCD = new Competencia("A", "B", d, m, e, listaDisponibilidades, fp, 1, 1, 1, 1, false, 1);
-        CompetenciaDaoJDBC.persistirCD(nuevaCD);
+        CompetenciaDaoJDBC.persistirCD(nuevaCD);*/
         
         /*System.out.println(lg.getNombre());*/
         
@@ -220,6 +220,19 @@ public class zaraza extends javax.swing.JFrame {
         
         /*System.out.println(pruebaJDBC.buscarPais(nombre));*/
         /*System.out.println(id_estado);*/
+        
+        ArrayList<CompetenciaAux> listaprueba = CompetenciaDaoJDBC.getCompetencias(null, null, null, "Eliminatoria Doble");
+        
+        int i;
+        for(i=0;i < listaprueba.size();i++) 
+        System.out.println(listaprueba.get(i).getNombre() + "  " +
+                listaprueba.get(i).deporte.getNombre() + "  " +
+                listaprueba.get(i).modalidad.getNombre() + "  " +
+                listaprueba.get(i).estado.getNombre());
+
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

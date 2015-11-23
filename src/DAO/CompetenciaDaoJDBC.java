@@ -26,7 +26,7 @@ public class CompetenciaDaoJDBC {
     private static final String _SQL_FIND_ALL_DEPORTE = "SELECT * FROM " + "deporte";
     private static final String _SQL_FIND_ALL_FIXTURE="SELECT * FROM"+ "fixture";
     
-    public static ArrayList<String> getListaDeportes() {
+  public static ArrayList<String> getListaDeportes() {
         String _SQL_FIND_NOMBRES_DEPORTES = "SELECT nombre FROM deporte";   
         Connection conn = null;
         ArrayList<String> deportes = new ArrayList();
@@ -102,15 +102,15 @@ public class CompetenciaDaoJDBC {
             ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_PUNTUACIONES);
             while (rs.next()) {
                 puntuaciones.add(rs.getString("nombre")); }
-            rs.close();
+            
             return puntuaciones; }
         catch (SQLException ex) {
-            /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
+            /* Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);*/  }
         finally {
             if (conn!=null) try {
                 conn.close(); }
             catch (SQLException ex) {
-                /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
+                /* Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ } } 
         return puntuaciones; 
     }
     
@@ -124,7 +124,7 @@ public class CompetenciaDaoJDBC {
             ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_LUGARES);
             while (rs.next()) {
                 listaNombresCD.add(rs.getString("nombre")); }
-            rs.close();
+           
             return listaNombresCD; }
         catch (SQLException ex) {
             /* Logger.getLogger(participanteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); */ }
@@ -159,7 +159,7 @@ public class CompetenciaDaoJDBC {
                 auxNombre = "nombre = '" + nombreCD + "'"; 
                 
             }
-            if (nombreDeporte != null) {
+            if ("Futbol".equals(nombreDeporte) || "Basket".equals(nombreDeporte) || "Voley".equals(nombreDeporte)  ) {
                 String _SQL_FIND_ID_DEPORTE = "SELECT id_deporte FROM deporte WHERE nombre = '" + nombreDeporte + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_DEPORTE);
                 while(rs.next()){

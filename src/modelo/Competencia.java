@@ -148,23 +148,25 @@ public class Competencia {
                        int tantosPorAusenciaDeRival, int puntosPorPresentacion, int puntosPorVictoria,
                        boolean empatePermitido, int puntosPorEmpate) {
         
-        setNombre(nombre);
-        setReglamento(reglamento);
-        setCantidadMaximaDeSets(cantidadMaximaDeSets);
-        setTantosPorAusenciaDeRival(tantosPorAusenciaDeRival);
-        setPuntosPorPresentacion(puntosPorPresentacion);
-        setPuntosPorVictoria(puntosPorVictoria);
-        setEmpatePermitido(empatePermitido);
-        setPuntosPorEmpate(puntosPorEmpate);
- 
-        setEstado(estado);
-        setFormaPuntuacion(formaPuntuacion);
-        setModalidad(modalidad);
-        setDeporte(deporte);
-        setListaDisponibilidades(listaDisponibilidades);
-        
-       
+        this.nombre=nombre;
+        this.reglamento=reglamento;
+        this.deporte=deporte;
+        this.modalidad=modalidad;
+        this.estado=estado;
         this.disponibilidad = listaDisponibilidades;
+        this.formaPuntuacion=formaPuntuacion;
+        this.cantidadMaximaDeSets=cantidadMaximaDeSets;
+        this.tantosPorAusenciaDeRival= tantosPorAusenciaDeRival;
+        this.puntosPorPresentacion=puntosPorPresentacion;
+        this.puntosPorVictoria=puntosPorVictoria;
+        this.empatePermitido=empatePermitido;
+        this.puntosPorEmpate=puntosPorEmpate;
+ 
+        
+        
+        
+        
+        
         
         this.tablaPosicionesParticipante = new ArrayList<>();
     }

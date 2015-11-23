@@ -16,5 +16,7 @@ public class CompetenciaAux {
     
     }
     
-    
+    public String getNombre() {
+        return nombre;
+    }
 }

@@ -97,7 +97,8 @@ public class QueMasTeGuste {
             System.out.println(unaDisponibilidad.getCantidad());
             System.out.println((unaDisponibilidad.getLg()).getNombre()); }
         
-        Competencia nuevaCD = new Competencia("A", "B", d, m, e, listaDisponibilidades, fp, 1, 1, 1, 1, false, 1);
+        Competencia nuevaCD = new Competencia(nombre, reglamento, d, m, e, listaDisponibilidades, fp, cantMaximaDeSets, 
+                tantosPorAusenciaDeRival, puntosPorPresentacion, puntosPorVictoria, empatePermitido, puntosPorEmpate);
         CompetenciaDaoJDBC.persistirCD(nuevaCD);
         
     }
