@@ -20,7 +20,7 @@ public class Estado {
         this.nombre = nombre;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 

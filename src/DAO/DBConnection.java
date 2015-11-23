@@ -14,7 +14,7 @@ public class DBConnection {
     //private static final String url ="jdbc:h2:mem:taller";
     //tcp://localhost/server~/dbname
     private static final String user="postgres";
-    private static final String pass="1234";
+    private static final String pass="admin";
     
     private DBConnection(){
         // no se pueden crear instancias de esta clase

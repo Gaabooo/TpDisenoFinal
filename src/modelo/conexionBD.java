@@ -17,7 +17,7 @@ public class conexionBD {
     public Connection conexion(){
       
       String url = "jdbc:postgresql://localhost:5432/postgres";
-      String password = "1234";  
+      String password = "admin";  
       
       try{
           Class.forName("org.postgresql.Driver");

@@ -43,10 +43,10 @@ public class Localidad {
         return provincia;
     }
 
-    public Localidad(int id, String nombre, String coidgoPostal, ArrayList<Provincia> provincia) {
+    public Localidad(int id, String nombre, String codigoPostal, ArrayList<Provincia> provincia) {
         this.id = id;
         this.nombre = nombre;
-        this.coidgoPostal = coidgoPostal;
+        this.coidgoPostal = codigoPostal;
         this.provincia = provincia;
     }
       
