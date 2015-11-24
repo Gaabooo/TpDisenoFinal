@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import modelo.*;
 
 public class gestorCD {
-    
+    /*
 public void listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
     
-    ArrayList<Competencia> listaCompetencias = CompetenciaDaoJDBC.getCompetencias(nombreCD, nombreDeporte, 
+    ArrayList<CompetenciaAux> listaCompetencias = CompetenciaDaoJDBC.getCompetencias(nombreCD, nombreDeporte, 
             nombreModalidad, nombreEstado);    
 }    
 
@@ -66,5 +66,5 @@ public static void darDeAltaCD(String nombre, String reglamento, String nombreDe
         CompetenciaDaoJDBC.asociarDisponibilidad(listaDisponibilidades.get(i), nuevaCD); }    
 }
 
-    
+    */
 }

@@ -11,6 +11,8 @@ import modelo.*;
 import java.util.ArrayList;
 import DAO.*;
 import gestor.*;
+import java.awt.Color;
+import sonidos.alertaSuave;
         
 
 /**
@@ -68,6 +70,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner3 = new javax.swing.JSpinner();
         jSpinner4 = new javax.swing.JSpinner();
         jSpinner5 = new javax.swing.JSpinner();
+        jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -147,9 +150,9 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jCheckBox5);
         jCheckBox5.setBounds(680, 310, 20, 20);
 
-        nombreComp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreCompActionPerformed(evt);
+        nombreComp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreCompFocusGained(evt);
             }
         });
         add(nombreComp);
@@ -258,7 +261,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(ATRAS1);
         ATRAS1.setBounds(69, 508, 90, 23);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 70, 20);
@@ -301,6 +304,11 @@ public class AltaCompetencia extends javax.swing.JPanel {
         });
         add(jSpinner5);
         jSpinner5.setBounds(670, 340, 47, 20);
+
+        jLabel12.setText("* Nombre ya existente");
+        jLabel12.setVisible(false);
+        add(jLabel12);
+        jLabel12.setBounds(280, 100, 140, 20);
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -312,10 +320,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void DeporteAsociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeporteAsociadoActionPerformed
 
     }//GEN-LAST:event_DeporteAsociadoActionPerformed
-
-    private void nombreCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCompActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreCompActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -329,24 +333,31 @@ public class AltaCompetencia extends javax.swing.JPanel {
         // Verificar todos los campos
         
         // Verificar Nombre de la competencia
-        verificarNombreCompetencia();
-        
-       //Llamada al Gestor
-        String nombreCompetencia = nombreComp.getText().toString();
-        String reglamento = jTextArea1.getText().toString();
-        String deporte = DeporteAsociado.getSelectedItem().toString();
-        String modalidad = jComboBox2.getSelectedItem().toString();
-        // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
-        String matriz[][] = new String[2][4];
-        String puntuacion = jComboBox1.getSelectedItem().toString();
-        int j2 = (int) jSpinner2.getValue();
-        int j2b = (int) jSpinner2b.getValue();
-        int j4 = (int) jSpinner4.getValue();
-        int j3 = (int) jSpinner3.getValue();
-        boolean j5c = jCheckBox5.isSelected();
-        int j5a = (int) jSpinner5.getValue();
-        
-        gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
+        if(verificarNombreCompetencia()){
+            jLabel12.setVisible(true);
+            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
+            Thread thread = new Thread(new alertaSuave());
+            thread.start();
+        }
+        else{
+            //Llamada al Gestor
+            String nombreCompetencia = nombreComp.getText().toString();
+            String reglamento = jTextArea1.getText().toString();
+            String deporte = DeporteAsociado.getSelectedItem().toString();
+            String modalidad = jComboBox2.getSelectedItem().toString();
+            // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
+            String matriz[][] = new String[2][4];
+            String puntuacion = jComboBox1.getSelectedItem().toString();
+            int j2 = (int) jSpinner2.getValue();
+            int j2b = (int) jSpinner2b.getValue();
+            int j4 = (int) jSpinner4.getValue();
+            int j3 = (int) jSpinner3.getValue();
+            boolean j5c = jCheckBox5.isSelected();
+            int j5a = (int) jSpinner5.getValue();
+            
+            gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte,
+                    modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
+        }
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
@@ -380,25 +391,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox5StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
         int a= (int)jSpinner1.getValue();
         if (a>0 ){
             agregarATabla((String)jComboBox3.getSelectedItem(),a);
         }
-        /*
-        if (jFormattedTextField1.getText().isEmpty()){
-            
-        }
-        else{
-            int a= Integer.parseInt(jFormattedTextField1.getText());
-            if(a>0){
-                agregarATabla((String)jComboBox3.getSelectedItem(),a);
-            }
-        }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
-        
+
         int value = (int)jSpinner3.getValue();
         
         if(value<(int)jSpinner4.getValue()){
@@ -414,7 +414,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         int value = (int)jSpinner4.getValue();
         
         if(value>=(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value + 1);
+            jSpinner3.setValue(value+1);
         }/*
         if(value<(int)jSpinner5.getValue()){
             jSpinner5.setValue(value);
@@ -426,7 +426,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         int value = (int)jSpinner5.getValue();
         
         if(value>=(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value + 1);
+            jSpinner3.setValue(value);
         }/*
         if(value<(int)jSpinner4.getValue()){
             jSpinner4.setValue(value);
@@ -436,6 +436,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void ATRAS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRAS1ActionPerformed
         V.get().menu();
     }//GEN-LAST:event_ATRAS1ActionPerformed
+
+    private void nombreCompFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreCompFocusGained
+        nombreComp.setBackground(Color.WHITE);
+    }//GEN-LAST:event_nombreCompFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -452,6 +456,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -543,32 +548,29 @@ public class AltaCompetencia extends javax.swing.JPanel {
     
     private void agregarATabla(String lugar, int cantidad){
         tablaDisp.addFila(lugar, cantidad);
-        /*Vector<Object> auxLocal= new Vector<>();
-        auxLocal.add(lugar);
-        auxLocal.add(cantidad);
-        auxLocal.add("BOTON");*/
-        //tabla.add(auxLocal);
     }
     
     
     // Nombre de la competencia
-    private String verificarNombreCompetencia(){
+    private boolean verificarNombreCompetencia(){
         
         String aux = nombreComp.getText();
-        String aux2 = nombreComp.getText();
         
-        aux2 = aux2.replaceAll(" ","");
+        // ELimina espacios al inicio y final
+        aux = aux.trim();
+        nombreComp.setText(aux);
         
-        if(aux2.length() == 0 ){
-        // El usuario no ingreso nombre de Competencia.
-            return "-Por favor ingrese un nombre de Competencia.\n";
+        if(aux.length() == 0 ){
+            // El usuario no ingreso nombre de Competencia.
+            jLabel12.setText("* Ingrese un nombre");
+            return true;
         }
-        else{
-            if (gestor.QueMasTeGuste.nombreUsado(aux) == true){
-                return "-Nombre de Competencia ya utilizado.\n";  
+        else if (gestor.QueMasTeGuste.nombreUsado(aux)){
+            // Nombre de competencia ya existe.
+            jLabel12.setText("* Nombre ya existente");
+            return true;
             }
-            return nombreComp.getText();
-        }
+        else return false;
     }
         
 }
