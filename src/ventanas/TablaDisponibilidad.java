@@ -180,4 +180,19 @@ public class TablaDisponibilidad extends JPanel{
         model.addRow(fila);
         table.revalidate();
     }
+    
+    public String[][] getContenido(){
+        String[][] nuevo=new String[0][0];
+        
+        //model;
+        int cols = model.getColumnCount(); 
+        int fils = model.getRowCount();
+        nuevo= new String[fils][cols];
+        for(int i=0; i<fils; i++) { 
+            for(int j=0; j<cols; j++) 
+                nuevo[i][j]=(String)model.getValueAt(i,j); 
+        }
+        
+        return nuevo;
+    }
 }

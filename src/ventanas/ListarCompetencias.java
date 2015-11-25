@@ -2,6 +2,8 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -62,8 +64,13 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jLabel2.setText("Nombre de la Competencia");
 
-        // HACER -> Buscar en la BD y que devuelva una lista
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Basket", "Futbol", "Voley" }));
+        String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();
+        String[] listaND= new String[listaNombresDeportes.length+1];
+        listaND[0]="";
+        for(int j=0; j<listaNombresDeportes.length; j++){
+            listaND[j+1]=listaNombresDeportes[j];
+        }
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(listaND));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -133,6 +140,17 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(41, 41, 41))
         );
+
+        jTextField1.addKeyListener(new KeyAdapter() {
+
+            public void keyTyped(KeyEvent e) {
+                char keyChar = e.getKeyChar();
+                if (Character.isLowerCase(keyChar)) {
+                    e.setKeyChar(Character.toUpperCase(keyChar));
+                }
+            }
+
+        });
 
         add(jPanel2);
         jPanel2.setBounds(28, 77, 197, 418);
@@ -211,6 +229,8 @@ public class ListarCompetencias extends javax.swing.JPanel {
         jLabel3.setText(" *");
         add(jLabel3);
         jLabel3.setBounds(770, 510, 20, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -235,14 +255,14 @@ public class ListarCompetencias extends javax.swing.JPanel {
             String textModalidad= String.valueOf(modalidad);
             
             String nombre=jTextField1.getText();
-            
+            /*
             System.out.println(jTextField1.getText());
             System.out.println(textDeporte);
             System.out.println(textEstado);
-            System.out.println(textModalidad);
+            System.out.println(textModalidad);*/
             
-            if("".equals(textDeporte)){System.out.println("1");textDeporte=null;}
-            if("".equals(textEstado)){System.out.println("1");textEstado=null;}
+            if("".equals(textDeporte)){/*System.out.println("1");*/textDeporte=null;}
+            if("".equals(textEstado)){/*System.out.println("1");*/textEstado=null;}
             if("".equals(textModalidad)){textModalidad=null;}
             
             if("".equals(jTextField1.getText())){
@@ -251,29 +271,26 @@ public class ListarCompetencias extends javax.swing.JPanel {
             
             ArrayList<CompetenciaAux> listaprueba = CompetenciaDaoJDBC.getCompetencias(nombre, textDeporte,textModalidad,textEstado);
         
-        DefaultTableModel modelo= new DefaultTableModel();   
-        int i;
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Deporte");
-        modelo.addColumn("Modalidad");
-        modelo.addColumn("Estado");
-        for( i=0;i < listaprueba.size();i++){ 
+            DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+            int filas=jTable1.getRowCount();
+            int i;
+            for (i=0;filas>i; i++) {
+                modelo.removeRow(0);
+            }
+            
+        for(i=0;i < listaprueba.size();i++){
         
-            String fila[]=new String[4]; 
+            String fila[]=new String[4];
             
             for(int j=0;j<4;j++){
               if( j== 0){
                 fila[j]= listaprueba.get(i).getNombre();
-                System.out.println(fila[j]);
               }if(j == 1){
                   fila[j]=listaprueba.get(i).deporte.getNombre();
-                  System.out.println(fila[j]);
               }if(j == 2){
                  fila[j]= listaprueba.get(i).modalidad.getNombre();
-                 System.out.println(fila[j]);
               } if(j == 3){
                  fila[j]= listaprueba.get(i).estado.getNombre();
-                 System.out.println(fila[j]);
               }
             }
         

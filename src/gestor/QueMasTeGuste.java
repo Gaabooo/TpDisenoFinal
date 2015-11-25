@@ -68,34 +68,25 @@ public class QueMasTeGuste {
                          int tantosPorAusenciaDeRival, int puntosPorPresentacion,
                          int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate){
         
-        Estado e = pruebaJDBC.getEstado("Finalizada");
-        Modalidad m = pruebaJDBC.getModalidad("Liga");
-        FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion("Sets");
-        Deporte d = pruebaJDBC.getDeporte("Voley");
-        /*String matrizLugares[][] = new String[2][4];*/
+        Estado e = pruebaJDBC.getEstado("Creada");
+        Modalidad m = pruebaJDBC.getModalidad(nombreModalidad);
+        FormaPuntuacion fp = pruebaJDBC.getFormaPuntuacion(nombreFormaPuntuacion);
+        Deporte d = pruebaJDBC.getDeporte(nombreDeporte);
         
-        matrizLugares[0][0] = "lugar1";
-        matrizLugares[0][1] = "lugar2";
-        matrizLugares[0][2] = "lugar3";
-        matrizLugares[0][3] = "lugar4";
-        
-        matrizLugares[1][0] = "12";
-        matrizLugares[1][1] = "44";
-        matrizLugares[1][2] = "5";
-        matrizLugares[1][3] = "3";
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
-        for (int i=0; i<matrizLugares[0].length; i++) {
-            String unNombreLR = (String)matrizLugares[0][i];
+        for (int i=0; i<matrizLugares.length; i++) {
+            String unNombreLR = matrizLugares[i][0];
+            //System.out.println(unNombreLR);
             LugarRealizacion unLR = CompetenciaDaoJDBC.buscarLRPorNombre(unNombreLR);
-            Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[1][i]), unLR);
+            Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[i][1]), unLR);
             listaDisponibilidades.add(unaDisponibilidad); }
-        
+        /*
         for (int i=0; i<listaDisponibilidades.size(); i++) {
             Disponibilidad unaDisponibilidad = listaDisponibilidades.get(i);
             System.out.println(unaDisponibilidad.getCantidad());
-            System.out.println((unaDisponibilidad.getLg()).getNombre()); }
+            System.out.println((unaDisponibilidad.getLg()).getNombre()); }*/
         
         Competencia nuevaCD = new Competencia(nombre, reglamento, d, m, e, listaDisponibilidades, fp, cantMaximaDeSets, 
                 tantosPorAusenciaDeRival, puntosPorPresentacion, puntosPorVictoria, empatePermitido, puntosPorEmpate);

@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import DAO.*;
 import gestor.*;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import sonidos.alertaSuave;
         
 
@@ -155,8 +158,23 @@ public class AltaCompetencia extends javax.swing.JPanel {
                 nombreCompFocusGained(evt);
             }
         });
+        nombreComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreCompActionPerformed(evt);
+            }
+        });
         add(nombreComp);
         nombreComp.setBounds(50, 100, 220, 20);
+        nombreComp.addKeyListener(new KeyAdapter() {
+
+            public void keyTyped(KeyEvent e) {
+                char keyChar = e.getKeyChar();
+                if (Character.isLowerCase(keyChar)) {
+                    e.setKeyChar(Character.toUpperCase(keyChar));
+                }
+            }
+
+        });
 
         jLabel3.setText("Lugar:");
         add(jLabel3);
@@ -309,6 +327,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabel12.setVisible(false);
         add(jLabel12);
         jLabel12.setBounds(280, 100, 140, 20);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -346,7 +366,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             String deporte = DeporteAsociado.getSelectedItem().toString();
             String modalidad = jComboBox2.getSelectedItem().toString();
             // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
-            String matriz[][] = new String[2][4];
+            String matriz[][] = tablaDisponibilidades();
             String puntuacion = jComboBox1.getSelectedItem().toString();
             int j2 = (int) jSpinner2.getValue();
             int j2b = (int) jSpinner2b.getValue();
@@ -357,6 +377,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
             
             gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte,
                     modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
+            JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
+            V.get().listarCD();
         }
     }//GEN-LAST:event_ACEPTARActionPerformed
 
@@ -401,12 +423,15 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         int value = (int)jSpinner3.getValue();
         
-        if(value<(int)jSpinner4.getValue()){
-            jSpinner4.setValue(value);
+        if(value-1<(int)jSpinner4.getValue()){
+            jSpinner4.setValue(value-1);
+            repaint();
         }
         if(value<(int)jSpinner5.getValue()){
             jSpinner5.setValue(value);
+            repaint();
         }
+        repaint();
     }//GEN-LAST:event_jSpinner3StateChanged
 
     private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
@@ -440,6 +465,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void nombreCompFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreCompFocusGained
         nombreComp.setBackground(Color.WHITE);
     }//GEN-LAST:event_nombreCompFocusGained
+
+    private void nombreCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCompActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreCompActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -572,5 +601,18 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         else return false;
     }
+    
+    private String[][] tablaDisponibilidades(){
+        //Sacar de la tabla las dipsonibilidades establecidas
+        String[][] nuevo;
+        nuevo=tablaDisp.getContenido();
         
+        /*--FUNCIONA--
+        System.out.println(nuevo.length);
+        System.out.println(nuevo[0].length);*/
+        
+        return nuevo;
+    }
+    
+    
 }

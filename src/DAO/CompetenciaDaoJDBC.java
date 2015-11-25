@@ -115,13 +115,13 @@ public class CompetenciaDaoJDBC {
     }
     
     public static ArrayList<String> getNombresCD () {
-        String _SQL_FIND_NOMBRES_LUGARES = "SELECT nombre FROM lugar";
+        String _SQL_FIND_NOMBRES_COMPETENCIAS = "SELECT nombre FROM competencia";
         Connection conn = null;
         ArrayList<String> listaNombresCD = new ArrayList();
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_LUGARES);
+            ResultSet rs = statement.executeQuery(_SQL_FIND_NOMBRES_COMPETENCIAS);
             while (rs.next()) {
                 listaNombresCD.add(rs.getString("nombre")); }
            
@@ -156,10 +156,10 @@ public class CompetenciaDaoJDBC {
             
             
             if (nombreCD != null) {
-                auxNombre = "nombre = '" + nombreCD + "'"; 
+                auxNombre = "nombre LIKE '%" + nombreCD + "%'"; 
                 
             }
-            if ("Futbol".equals(nombreDeporte) || "Basket".equals(nombreDeporte) || "Voley".equals(nombreDeporte)  ) {
+            if (nombreDeporte!=null/*"Futbol".equals(nombreDeporte) || "Tenis".equals(nombreDeporte) || "Voley".equals(nombreDeporte)*/  ) {
                 String _SQL_FIND_ID_DEPORTE = "SELECT id_deporte FROM deporte WHERE nombre = '" + nombreDeporte + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_DEPORTE);
                 while(rs.next()){
@@ -178,7 +178,7 @@ public class CompetenciaDaoJDBC {
                 }
             }
             if (nombreEstado != null) {
-                String _SQL_FIND_ID_ESTADO = "SELECT id_estado FROM estado WHERE nombre LIKE '%" + nombreEstado + "%'";
+                String _SQL_FIND_ID_ESTADO = "SELECT id_estado FROM estado WHERE nombre ='" + nombreEstado + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_ESTADO);
                 while(rs.next()){    
                     int IDEstado = rs.getInt("id_estado");
