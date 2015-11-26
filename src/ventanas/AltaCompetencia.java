@@ -98,8 +98,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(40, 80, 180, 14);
 
-        String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
-        //String[] cadena2 = gestor.QueMasTeGuste.getListaPuntuaciones();
+        // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
+        String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -117,8 +117,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         else if((String)jComboBox1.getSelectedItem()=="Sets"){formaPSets();}
         else formaPResultadoFinal();
 
-        String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
-        //String[] cadena = gestor.QueMasTeGuste.getListaModalidades();
+        // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
+        String[] cadena = gestor.gestorCD.getListaModalidades();
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(cadena));
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -130,7 +130,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         if((String)jComboBox2.getSelectedItem()=="Liga"){modalidadLiga();}
         else modalidadEliminatoria();
 
-        String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();
+        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
         DeporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         DeporteAsociado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +193,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(305, 508, 231, 23);
 
-        String[] cadena3l = gestor.QueMasTeGuste.getListaLugares();
+        String[] cadena3l = gestor.gestorCD.getListaLugares();
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +279,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(ATRAS1);
         ATRAS1.setBounds(69, 508, 90, 23);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 70, 20);
@@ -375,8 +375,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             boolean j5c = jCheckBox5.isSelected();
             int j5a = (int) jSpinner5.getValue();
             
-            gestor.QueMasTeGuste.darDeAltaCD(nombreCompetencia, reglamento, deporte,
-                    modalidad, matriz, puntuacion, j2, j2b, j4 , j3, j5c, j5a);
+            gestor.gestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             V.get().listarCD();
         }
@@ -420,17 +419,13 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
-
         int value = (int)jSpinner3.getValue();
-        
-        if(value-1<(int)jSpinner4.getValue()){
+        if(value <= (int)jSpinner4.getValue()) {
             jSpinner4.setValue(value-1);
-            repaint();
-        }
-        if(value<(int)jSpinner5.getValue()){
-            jSpinner5.setValue(value);
-            repaint();
-        }
+            repaint(); }
+        if(value <= (int)jSpinner5.getValue()) {
+            jSpinner5.setValue(value-1);
+            repaint(); }
         repaint();
     }//GEN-LAST:event_jSpinner3StateChanged
 
@@ -594,7 +589,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             jLabel12.setText("* Ingrese un nombre");
             return true;
         }
-        else if (gestor.QueMasTeGuste.nombreUsado(aux)){
+        else if (gestor.gestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
             jLabel12.setText("* Nombre ya existente");
             return true;

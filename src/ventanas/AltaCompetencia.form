@@ -79,7 +79,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena2= new String[] { &quot;Puntuacion&quot;, &quot;Sets&quot;, &quot;Resultado Final&quot; };&#xa;//String[] cadena2 = gestor.QueMasTeGuste.getListaPuntuaciones();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena2= new String[] { &quot;Puntuacion&quot;, &quot;Sets&quot;, &quot;Resultado Final&quot; };&#xa;String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();"/>
         <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="if((String)jComboBox1.getSelectedItem()==&quot;Puntuacion&quot;){formaPPuntuacion();}&#xa;        else if((String)jComboBox1.getSelectedItem()==&quot;Sets&quot;){formaPSets();}&#xa;        else formaPResultadoFinal();"/>
       </AuxValues>
       <Constraints>
@@ -98,7 +98,7 @@
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena= new String[] { &quot;Liga&quot;, &quot;Eliminacion Simple&quot;, &quot;Eliminacion Doble&quot; };&#xa;//String[] cadena = gestor.QueMasTeGuste.getListaModalidades();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena= new String[] { &quot;Liga&quot;, &quot;Eliminacion Simple&quot;, &quot;Eliminacion Doble&quot; };&#xa;String[] cadena = gestor.gestorCD.getListaModalidades();"/>
         <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="if((String)jComboBox2.getSelectedItem()==&quot;Liga&quot;){modalidadLiga();}&#xa;else modalidadEliminatoria();"/>
       </AuxValues>
       <Constraints>
@@ -117,7 +117,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeporteAsociadoActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();"/>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="AltaCompetencia_DeporteAsociado"/>
       </AuxValues>
       <Constraints>
@@ -197,7 +197,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena3l = gestor.QueMasTeGuste.getListaLugares();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena3l = gestor.gestorCD.getListaLugares();"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
