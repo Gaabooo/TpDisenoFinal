@@ -42,6 +42,13 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    public void mostrarFixture(){
+        limpiar();
+        aux = new MostrarFixture();
+        add(aux);
+        revalidate();
+        repaint();
+    }
     
         public void altaParticipante(){
         limpiar();
