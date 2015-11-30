@@ -49,6 +49,13 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+        public void mostrarTablaPosiciones(){
+        limpiar();
+        aux = new MostrarTablaPosiciones();
+        add(aux);
+        revalidate();
+        repaint();
+    }
     
         public void altaParticipante(){
         limpiar();

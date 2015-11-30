@@ -100,6 +100,11 @@ public class VerCompetencia extends javax.swing.JPanel {
         });
 
         jButton3.setText("Mostrar Tablas de Posiciones");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Listar Participantes");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -236,6 +241,10 @@ public class VerCompetencia extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     V.get().mostrarFixture();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    V.get().mostrarTablaPosiciones();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
