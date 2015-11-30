@@ -229,8 +229,6 @@ public class ListarCompetencias extends javax.swing.JPanel {
         jLabel3.setText(" *");
         add(jLabel3);
         jLabel3.setBounds(770, 510, 20, 20);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents

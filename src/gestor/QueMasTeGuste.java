@@ -17,15 +17,6 @@ import java.util.logging.Logger;
 
 public class QueMasTeGuste {
     
-    public static boolean nombreUsado (String nombreCD) {
-        ArrayList<String> listaNombres = CompetenciaDaoJDBC.getNombresCD();
-        for (int i=0; i<listaNombres.size(); i++) {
-           if (listaNombres.get(i).equals(nombreCD)){
-               return true;
-           } 
-        }
-        return false;
-    }    
     
     public static String[] getListaDeportes () {
         ArrayList<String> deportes = CompetenciaDaoJDBC.getListaDeportes();

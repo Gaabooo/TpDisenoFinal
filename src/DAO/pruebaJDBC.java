@@ -45,7 +45,7 @@ public class pruebaJDBC {
         id= rs.getInt("id_estado");
         
         
-        unEstado = new Estado(id, nomb);
+        //unEstado = new Estado(id, nomb);
                 
     }
     catch(Exception e){
