@@ -43,6 +43,14 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
+        public void AltaParticipante(){
+        limpiar();
+        aux = new AltaParticipante();
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    
     public void listarCD(){
         limpiar();
         aux=new ListarCompetencias();
