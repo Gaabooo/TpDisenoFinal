@@ -7,25 +7,25 @@ public class Competencia {
      String nombre;
      String reglamento;
    
-     int cantidadMaximaDeSets;
-     int tantosPorAusenciaDeRival;
-     int puntosPorPresentacion;
-     int puntosPorVictoria;
-     boolean empatePermitido;
-     int puntosPorEmpate;
+    private int cantidadMaximaDeSets;
+    private int tantosPorAusenciaDeRival;
+    private int puntosPorPresentacion;
+    private int puntosPorVictoria;
+    private boolean empatePermitido;
+    private int puntosPorEmpate;
     
-    public Estado estado;
-    public FormaPuntuacion formaPuntuacion;
-    public Modalidad modalidad;
-    public Fixture fixture;
-    public Deporte deporte;
+    private Estado estado;
+    private FormaPuntuacion formaPuntuacion;
+    private Modalidad modalidad;
+    private Fixture fixture;
+    private Deporte deporte;
     
     /*private ArrayList<Participante> listaParticipantes;*/
      ArrayList<Disponibilidad> disponibilidad;
      ArrayList<TablaPosicionesParticipante> tablaPosicionesParticipante;
-
-   
-
+     
+     
+     
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -140,11 +140,11 @@ public class Competencia {
     
     public ArrayList<Disponibilidad> getListaDisponibilidades() {
         return disponibilidad;
-    } 
+    }
     
     public ArrayList<TablaPosicionesParticipante> getTablaPosicionesParticipante() {
         return tablaPosicionesParticipante;
-    }     
+    }
     public Competencia(String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado,
                        ArrayList<Disponibilidad> listaDisponibilidades, FormaPuntuacion formaPuntuacion, int cantidadMaximaDeSets,
                        int tantosPorAusenciaDeRival, int puntosPorPresentacion, int puntosPorVictoria,
@@ -165,5 +165,10 @@ public class Competencia {
         this.puntosPorEmpate=puntosPorEmpate;
         this.tablaPosicionesParticipante = new ArrayList<>();
     }
-  
+    public Competencia(Estado estado, Deporte deporte, Modalidad modalidad, String nombre) {
+        this.nombre=nombre;
+        this.deporte=deporte;
+        this.modalidad=modalidad;
+        this.estado=estado;
+    }
 }
