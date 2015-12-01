@@ -4,25 +4,27 @@ package modelo;
 import java.util.*;
 
 public class Competencia {
-    private String nombre;
-    private String reglamento;
+     String nombre;
+     String reglamento;
    
-    private int cantidadMaximaDeSets;
-    private int tantosPorAusenciaDeRival;
-    private int puntosPorPresentacion;
-    private int puntosPorVictoria;
-    private boolean empatePermitido;
-    private int puntosPorEmpate;
+     int cantidadMaximaDeSets;
+     int tantosPorAusenciaDeRival;
+     int puntosPorPresentacion;
+     int puntosPorVictoria;
+     boolean empatePermitido;
+     int puntosPorEmpate;
     
-    private Estado estado;
-    private FormaPuntuacion formaPuntuacion;
-    private Modalidad modalidad;
-    private Fixture fixture;
-    private Deporte deporte;
+    public Estado estado;
+    public FormaPuntuacion formaPuntuacion;
+    public Modalidad modalidad;
+    public Fixture fixture;
+    public Deporte deporte;
     
     /*private ArrayList<Participante> listaParticipantes;*/
-    private ArrayList<Disponibilidad> disponibilidad;
-    private ArrayList<TablaPosicionesParticipante> tablaPosicionesParticipante;
+     ArrayList<Disponibilidad> disponibilidad;
+     ArrayList<TablaPosicionesParticipante> tablaPosicionesParticipante;
+
+   
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -161,16 +163,7 @@ public class Competencia {
         this.puntosPorVictoria=puntosPorVictoria;
         this.empatePermitido=empatePermitido;
         this.puntosPorEmpate=puntosPorEmpate;
- 
-        
-        
-        
-        
-        
-        
         this.tablaPosicionesParticipante = new ArrayList<>();
     }
-
-    
-    
+  
 }

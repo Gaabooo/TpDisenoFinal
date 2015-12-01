@@ -25,6 +25,117 @@ public class CompetenciaDaoJDBC {
     private static final String _SQL_FIND_ALL_DEPORTE = "SELECT * FROM " + "deporte";
     private static final String _SQL_FIND_ALL_FIXTURE="SELECT * FROM"+ "fixture";
     
+     public static Competencia getCompetenciasS(int id_competencia){
+    
+     Competencia c=null;
+    Connection conn = null;
+    
+    String Nombre;
+    int IdDeporte,IdModalidad,IdEstado;
+    
+    try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            
+            String SQL_FIND_COMPETENCIA_NOMBRE = "SELECT nombre FROM competencia WHERE id_competencia = '" + id_competencia + "'";
+            
+            ResultSet rs = statement.executeQuery(SQL_FIND_COMPETENCIA_NOMBRE);
+            rs.next();
+            Nombre=rs.getString("nombre");
+            
+            String SQL_FIND_COMPETENCIA_DEPORTE = "SELECT id_deporte FROM competencia WHERE id_competencia = '" + id_competencia + "'";
+            
+            ResultSet rs1 = statement.executeQuery(SQL_FIND_COMPETENCIA_DEPORTE);
+            rs1.next();
+            IdDeporte=rs1.getInt("id_deporte");
+            
+            Deporte unDeporte = setDeporteCD(IdDeporte);
+
+            String SQL_FIND_COMPETENCIA_MODALIDAD = "SELECT id_modalidad FROM competencia WHERE id_competencia = '" + id_competencia + "'";
+            
+            ResultSet rs2 = statement.executeQuery(SQL_FIND_COMPETENCIA_MODALIDAD);
+            rs2.next();
+            IdModalidad=rs2.getInt("id_modalidad");
+            
+            Modalidad unaModalidad = setModalidadCD(IdModalidad);
+            
+            String SQL_FIND_COMPETENCIA_ESTADO = "SELECT id_estado FROM competencia WHERE id_competencia = '" + id_competencia + "'";
+            
+            ResultSet rs3 = statement.executeQuery(SQL_FIND_COMPETENCIA_ESTADO);
+            rs3.next();
+            IdEstado=rs3.getInt("id_estado");
+            
+            Estado unEstado = setEstadoCD(IdEstado);
+            
+            c = new Competencia(Nombre,"",unDeporte,unaModalidad,unEstado,null,null,1,1,1,1,true,1);
+            /*(String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado,
+                       ArrayList<Disponibilidad> listaDisponibilidades, FormaPuntuacion formaPuntuacion, int cantidadMaximaDeSets,
+                       int tantosPorAusenciaDeRival, int puntosPorPresentacion, int puntosPorVictoria,
+                       boolean empatePermitido, int puntosPorEmpate)*/
+    }
+     catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+    
+    
+    return c;
+    }
+    
+    public static int getIdCompetencia(String nombre,String deporte, String modalidad,String estado ){
+        
+        int IdCompetencia = 0;
+        int IdDeporte,IdModalidad,IdEstado;
+        
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            
+            /*id_deporte*/
+            String SQL_FIND_DEPORTE  = "SELECT id_deporte FROM deporte WHERE nombre = '" + deporte + "'";
+            ResultSet rs1 = statement.executeQuery(SQL_FIND_DEPORTE);
+            rs1.next();
+            IdDeporte=rs1.getInt("id_deporte");
+            
+            /*id_modalidad*/
+            String SQL_FIND_MODALIDAD  = "SELECT id_modalidad FROM modalidad WHERE nombre = '" + modalidad + "'";
+            ResultSet rs2 = statement.executeQuery(SQL_FIND_MODALIDAD);
+            rs2.next();
+            IdModalidad=rs2.getInt("id_modalidad");
+            
+            /*id_estado*/
+            String SQL_FIND_ESTADO  = "SELECT id_estado FROM estado WHERE nombre = '" + estado + "'";
+            ResultSet rs3 = statement.executeQuery(SQL_FIND_ESTADO);
+            rs3.next();
+            IdEstado=rs3.getInt("id_estado");
+            
+            /*Puede haber varias competencias con el mismo nombre*/
+            
+            /*id_competencia*/
+             String SQL_FIND_ID_COMPETENCIA = "SELECT id_competencia FROM competencia WHERE nombre = '"+ nombre +"'"
+                    +"and id_deporte="+ "'"+ IdDeporte +"'"+"and id_modalidad="+ "'"+ IdModalidad +"'"+"and id_estado="+ "'"+ IdEstado +"'";
+             
+           ResultSet rs = statement.executeQuery(SQL_FIND_ID_COMPETENCIA);
+            
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                 
+                IdCompetencia = rs.getInt("id_competencia"); }
+
+            rs.close(); 
+        }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        
+        return IdCompetencia;
+    }
+    
+    
+    
+    
     public static Estado getEstado(String unNombre) {
         Estado unEstado = null;
         int IDEstado = 0;

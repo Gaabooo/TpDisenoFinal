@@ -221,7 +221,7 @@ public class zaraza extends javax.swing.JFrame {
         /*System.out.println(pruebaJDBC.buscarPais(nombre));*/
         /*System.out.println(id_estado);*/
         
-        ArrayList<CompetenciaAux> listaprueba = CompetenciaDaoJDBC.getCompetencias(null, null, null, "Eliminatoria Doble");
+        /*ArrayList<CompetenciaAux> listaprueba = CompetenciaDaoJDBC.getCompetencias(null, null, null, "Eliminatoria Doble");
         
         int i;
         for(i=0;i < listaprueba.size();i++) 
@@ -230,8 +230,8 @@ public class zaraza extends javax.swing.JFrame {
                 listaprueba.get(i).modalidad.getNombre() + "  " +
                 listaprueba.get(i).estado.getNombre());
 
-        
-        
+        */
+        System.out.println(CompetenciaDaoJDBC.getCompetenciasS(4).getEstado().getNombre());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

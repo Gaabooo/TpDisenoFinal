@@ -2,6 +2,7 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
+import gestor.gestorCD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -14,8 +15,13 @@ public class ListarCompetencias extends javax.swing.JPanel {
     /**
      * Creates new form Auxiliar
      */
+    public static int idComp=0;
+    
     public ListarCompetencias() {
         initComponents();
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        while(modelo.getRowCount()>0)modelo.removeRow(0);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -244,7 +250,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 nombre=null;
             }
             
-            ArrayList<CompetenciaAux> listaprueba = CompetenciaDaoJDBC.getCompetencias(nombre, textDeporte,textModalidad,textEstado);
+            ArrayList<CompetenciaAux> listaprueba = gestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
         
             DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
             int filas=jTable1.getRowCount();
@@ -283,7 +289,30 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    V.get().verCompetencia();
+    int row = jTable1.getSelectedRow();
+       
+        
+        System.out.print(row);
+        if(row == -1){
+            
+        JOptionPane.showMessageDialog(null, "Debes Seleccionar una Competencia", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        else{
+
+            String nombre=jTable1.getValueAt(row, 0).toString();
+            String deporte=jTable1.getValueAt(row, 1).toString();
+            String modalidad=jTable1.getValueAt(row, 2).toString();
+            String estado=jTable1.getValueAt(row, 3).toString(); 
+           
+
+         idComp=gestorCD.obtenerIdCD(nombre, deporte, modalidad, estado);
+         
+         
+            V.get().verCompetencia();
+        }
+    
+    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void errorFiltros(){

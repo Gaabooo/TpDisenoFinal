@@ -5,8 +5,23 @@ import java.util.ArrayList;
 import modelo.*;
 
 public class gestorCD {
-    public void listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
-        ArrayList<CompetenciaAux> listaCompetencias = CompetenciaDaoJDBC.getCompetencias(nombreCD, nombreDeporte, nombreModalidad, nombreEstado); }    
+    
+    
+
+    /**
+     *
+     * @param nombre
+     * @param deporte
+     * @param modalidad
+     * @param estado
+     * @return 
+     */
+
+    public static int obtenerIdCD(String nombre, String deporte, String modalidad, String estado){
+            return CompetenciaDaoJDBC.getIdCompetencia(nombre,deporte,modalidad,estado);
+    }
+    public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
+        return CompetenciaDaoJDBC.getCompetencias(nombreCD, nombreDeporte, nombreModalidad, nombreEstado); }    
 
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
