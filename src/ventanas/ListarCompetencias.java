@@ -15,7 +15,6 @@ public class ListarCompetencias extends javax.swing.JPanel {
     /**
      * Creates new form Auxiliar
      */
-    public static int idComp=0;
     
     public ListarCompetencias() {
         initComponents();
@@ -256,24 +255,24 @@ public class ListarCompetencias extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
         int row = jTable1.getSelectedRow();
-       
+        
         if(row == -1){
             JOptionPane.showMessageDialog(null,"Debe seleccionar una competencia",
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
         
         else{
-
+            
             String nombre=jTable1.getValueAt(row, 0).toString();
             String deporte=jTable1.getValueAt(row, 1).toString();
             String modalidad=jTable1.getValueAt(row, 2).toString();
             String estado=jTable1.getValueAt(row, 3).toString(); 
-           
-
-         idComp=gestorCD.obtenerIdCD(nombre, deporte, modalidad, estado);
-         
-         
-            V.get().verCompetencia();
+            
+            int idComp=gestorCD.obtenerIdCD(nombre);
+            
+            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
+            
+            V.get().verCompetencia(compAux);
         }
     
     

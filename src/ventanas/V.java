@@ -13,6 +13,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import modelo.CompetenciaAux;
 
 /**
  *
@@ -71,9 +72,9 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
-    public void verCompetencia(){
+    public void verCompetencia(CompetenciaAux compAux){
         limpiar();
-        aux = new VerCompetencia();
+        aux = new VerCompetencia(compAux);
         add(aux);
         revalidate();
         repaint();

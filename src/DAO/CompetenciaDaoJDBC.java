@@ -82,41 +82,19 @@ public class CompetenciaDaoJDBC {
     return c;
     }
     
-    public static int getIdCompetencia(String nombre,String deporte, String modalidad,String estado ){
+    public static int getIdCompetencia(String nombre){
         
         int IdCompetencia = 0;
-        int IdDeporte,IdModalidad,IdEstado;
         
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             
-            /*id_deporte*/
-            String SQL_FIND_DEPORTE  = "SELECT id_deporte FROM deporte WHERE nombre = '" + deporte + "'";
-            ResultSet rs1 = statement.executeQuery(SQL_FIND_DEPORTE);
-            rs1.next();
-            IdDeporte=rs1.getInt("id_deporte");
-            
-            /*id_modalidad*/
-            String SQL_FIND_MODALIDAD  = "SELECT id_modalidad FROM modalidad WHERE nombre = '" + modalidad + "'";
-            ResultSet rs2 = statement.executeQuery(SQL_FIND_MODALIDAD);
-            rs2.next();
-            IdModalidad=rs2.getInt("id_modalidad");
-            
-            /*id_estado*/
-            String SQL_FIND_ESTADO  = "SELECT id_estado FROM estado WHERE nombre = '" + estado + "'";
-            ResultSet rs3 = statement.executeQuery(SQL_FIND_ESTADO);
-            rs3.next();
-            IdEstado=rs3.getInt("id_estado");
-            
-            /*Puede haber varias competencias con el mismo nombre*/
-            
             /*id_competencia*/
-             String SQL_FIND_ID_COMPETENCIA = "SELECT id_competencia FROM competencia WHERE nombre = '"+ nombre +"'"
-                    +"and id_deporte="+ "'"+ IdDeporte +"'"+"and id_modalidad="+ "'"+ IdModalidad +"'"+"and id_estado="+ "'"+ IdEstado +"'";
+            String SQL_FIND_ID_COMPETENCIA = "SELECT id_competencia FROM competencia WHERE nombre = '"+ nombre +"'";
              
-           ResultSet rs = statement.executeQuery(SQL_FIND_ID_COMPETENCIA);
+            ResultSet rs = statement.executeQuery(SQL_FIND_ID_COMPETENCIA);
             
             // El ResultSet tiene un solo resultado
             while (rs.next()) {

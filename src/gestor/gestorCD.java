@@ -17,8 +17,8 @@ public class gestorCD {
      * @return 
      */
 
-    public static int obtenerIdCD(String nombre, String deporte, String modalidad, String estado){
-            return CompetenciaDaoJDBC.getIdCompetencia(nombre,deporte,modalidad,estado);
+    public static int obtenerIdCD(String nombre){
+            return CompetenciaDaoJDBC.getIdCompetencia(nombre);
     }
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
         

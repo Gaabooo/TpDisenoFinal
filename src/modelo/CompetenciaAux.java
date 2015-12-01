@@ -1,13 +1,21 @@
 package modelo;
 
 public class CompetenciaAux {
-   
-    public String estado;
-    public String deporte;
-    public String modalidad;
-    String nombre;
     
-
+    private int id_competencia;
+    private String estado;
+    private String deporte;
+    private String modalidad;
+    private String nombre;
+    
+    public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, int id){
+        this.estado=estado;
+        this.deporte=deporte;
+        this.modalidad=modalidad;
+        this.nombre=nombre;
+        this.id_competencia=id;
+    }
+    
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre) {
         this.estado=estado;
         this.deporte=deporte;
