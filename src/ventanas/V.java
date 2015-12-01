@@ -5,7 +5,13 @@
  */
 package ventanas;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -108,7 +114,24 @@ public class V extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
+        
+        
+        //ICONOS
+        final List<Image> icons = new ArrayList<>();
+        //URL icon16 = getClass().getResource("/some/package/favicon.png");
+        //URL icon32 = getClass().getResource("/some/package/favicon.png");
+        //URL icon64 = getClass().getResource("/some/package/favicon.png");
+        ImageIcon icon16 = new ImageIcon(getClass().getResource("/imagenes/img_icono16x16.png"));
+        ImageIcon icon32 = new ImageIcon(getClass().getResource("/imagenes/img_icono32x32.png"));
+        ImageIcon icon64 = new ImageIcon(getClass().getResource("/imagenes/img_icono64x64.png"));
+        
+        icons.add(icon16.getImage());
+        icons.add(icon32.getImage());
+        icons.add(icon64.getImage());
+        
+        setIconImages(icons);
+        
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 630));
         setPreferredSize(new java.awt.Dimension(800, 630));
@@ -118,21 +141,8 @@ public class V extends javax.swing.JFrame {
         aux=new Bienvenido();
         aux.setVisible(true);
         add(aux);
-        /*javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(aux)
-        ));
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(aux)
-        ));
         
-        /*getContentPane().add(aux);
-        aux.setVisible(true);*/
+        
         pack();
     }// </editor-fold>                        
 

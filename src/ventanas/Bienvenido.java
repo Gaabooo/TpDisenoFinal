@@ -42,6 +42,8 @@ public class Bienvenido extends javax.swing.JPanel {
         });
         add(jButton1);
         jButton1.setBounds(360, 460, 110, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_bienvenido.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents

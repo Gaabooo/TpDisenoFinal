@@ -70,25 +70,10 @@ public class ListarCompetencias extends javax.swing.JPanel {
             listaND[j+1]=listaNombresDeportes[j];
         }
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(listaND));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Modalidad");
 
@@ -225,7 +210,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         add(jButton4);
         jButton4.setBounds(630, 510, 140, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/img_general.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -250,14 +235,9 @@ public class ListarCompetencias extends javax.swing.JPanel {
             String textModalidad= String.valueOf(modalidad);
             
             String nombre=jTextField1.getText();
-            /*
-            System.out.println(jTextField1.getText());
-            System.out.println(textDeporte);
-            System.out.println(textEstado);
-            System.out.println(textModalidad);*/
             
-            if("".equals(textDeporte)){/*System.out.println("1");*/textDeporte=null;}
-            if("".equals(textEstado)){/*System.out.println("1");*/textEstado=null;}
+            if("".equals(textDeporte)){textDeporte=null;}
+            if("".equals(textEstado)){textEstado=null;}
             if("".equals(textModalidad)){textModalidad=null;}
             
             if("".equals(jTextField1.getText())){
@@ -298,10 +278,6 @@ public class ListarCompetencias extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         V.get().altaCompetencia();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -309,14 +285,6 @@ public class ListarCompetencias extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     V.get().verCompetencia();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void errorFiltros(){
         JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
