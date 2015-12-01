@@ -6,24 +6,23 @@ package modelo;
 public class Participante {
     
     private int id;
-    private String correo;
+    private String correo_electronico;
     private String nombre;
     private String imagen;
 
-    /*public Participante(int id, String correo, String nombre, String imagen, ArrayList<HistorialParticipante> HistP) {
-        this.id = id;
-        this.correo = correo;
+    public Participante(String nombre, String correo_electronico/*,String imagen, ArrayList<HistorialParticipante> HistP*/) {
+        this.correo_electronico = correo_electronico;
         this.nombre = nombre;
-        this.imagen = imagen;
-        this.HistP = HistP;
-    }*/
+        /*this.imagen = imagen;
+        this.HistP = HistP;*/
+    }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
     }
 
     public void setNombre(String nombre) {
@@ -45,7 +44,7 @@ public class Participante {
     }
 
     public String getCorreo() {
-        return correo;
+        return correo_electronico;
     }
 
     public String getNombre() {
