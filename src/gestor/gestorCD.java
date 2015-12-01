@@ -48,7 +48,8 @@ public class gestorCD {
     }    
 
     public static ArrayList<Participante> listarParticipantes (String nombreCD) {
-        return CompetenciaDaoJDBC.getParticipantes(nombreCD); }    
+        int idCD = obtenerIdCD(nombreCD);
+        return CompetenciaDaoJDBC.getParticipantes(idCD); }    
     
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
