@@ -19,8 +19,8 @@ public class ListarCompetencias extends javax.swing.JPanel {
     
     public ListarCompetencias() {
         initComponents();
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        while(modelo.getRowCount()>0)modelo.removeRow(0);
+        /*DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        while(modelo.getRowCount()>0)modelo.removeRow(0);*/
         
     }
 
@@ -148,35 +148,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nombre", "Deporte", "Modalidad", "Estado"
@@ -289,15 +261,14 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    int row = jTable1.getSelectedRow();
-       
         
-        System.out.print(row);
+        int row = jTable1.getSelectedRow();
+       
         if(row == -1){
-            
-        JOptionPane.showMessageDialog(null, "Debes Seleccionar una Competencia", "Error", JOptionPane.INFORMATION_MESSAGE);
-            
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una competencia",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
         }
+        
         else{
 
             String nombre=jTable1.getValueAt(row, 0).toString();
