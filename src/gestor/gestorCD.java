@@ -83,10 +83,10 @@ public class gestorCD {
         String matrizLugares[][], String nombreFormaPuntuacion, int tantosPorAusenciaDeRival, int cantMaximaDeSets,
         int puntosPorVictoria, int puntosPorPresentacion, boolean empatePermitido, int puntosPorEmpate) {
         
-        Estado unEstado = CompetenciaDaoJDBC.getEstado("Creada");
-        Modalidad unaModalidad = CompetenciaDaoJDBC.getModalidad(nombreModalidad);
-        FormaPuntuacion unaFormaPuntuacion = CompetenciaDaoJDBC.getFormaPuntuacion(nombreFormaPuntuacion);
-        Deporte unDeporte = CompetenciaDaoJDBC.getDeporte(nombreDeporte);
+        Estado unEstado = CompetenciaDaoJDBC.getEstadoPorNombre("Creada");
+        Modalidad unaModalidad = CompetenciaDaoJDBC.getModalidadPorNombre(nombreModalidad);
+        FormaPuntuacion unaFormaPuntuacion = CompetenciaDaoJDBC.getFormaPuntuacionPorNombre(nombreFormaPuntuacion);
+        Deporte unDeporte = CompetenciaDaoJDBC.getDeportePorNombre(nombreDeporte);
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();

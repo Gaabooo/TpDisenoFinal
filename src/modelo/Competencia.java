@@ -3,6 +3,7 @@ package modelo;
 import java.util.*;
 
 public class Competencia {
+    private int id;
     private int IDUsuario;
     private String nombre;
     private String reglamento;
@@ -139,7 +140,7 @@ public class Competencia {
     
     // Constructor auxiliar
     public Competencia(int IDUsuario, String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado, FormaPuntuacion formaPuntuacion,
-                       ArrayList<Disponibilidad> listaDisponibilidades, ArrayList<Participante> listaParticipantes, ArrayList<TablaPosicionesParticipante> listasTablasPosiciones,
+                       ArrayList<Disponibilidad> listaDisponibilidades, ArrayList<Participante> listaParticipantes, ArrayList<TablaPosicionesParticipante> listaTablasPosiciones,
                        int cantidadMaximaDeSets, int tantosPorAusenciaDeRival, int puntosPorPresentacion,
                        int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate) {
         this.IDUsuario = IDUsuario;
@@ -157,4 +158,17 @@ public class Competencia {
         this.puntosPorPresentacion = puntosPorPresentacion;
         this.puntosPorVictoria = puntosPorVictoria;
         this.empatePermitido = empatePermitido;
-        this.puntosPorEmpate = puntosPorEmpate; } }
+        this.puntosPorEmpate = puntosPorEmpate; }
+    
+    public Competencia(int id, String nombre, Deporte deporte, Modalidad modalidad,
+            Estado estado, FormaPuntuacion formaPuntuacion) {
+        
+        this.id=id;
+        this.nombre=nombre;
+        this.deporte=deporte;
+        this.modalidad=modalidad;
+        this.estado=estado;
+        this.formaPuntuacion=formaPuntuacion;
+    }
+    
+}

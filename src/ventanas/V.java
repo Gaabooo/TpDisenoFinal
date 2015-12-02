@@ -37,6 +37,7 @@ public class V extends javax.swing.JFrame {
     
     private JPanel aux;
     private JPanel aux2;
+    private JPanel aux3;
     
     public void limpiar(){
         //SELF.removeAll(); NOOOO, elimina nose que masss
@@ -58,25 +59,34 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    public void mostrarFixture(){
-        limpiar();
-        aux = new MostrarFixture();
+    public void menuVolver2(){
+        remove(aux3);
+        remove(aux2);
+        remove(aux);
+        aux = new Menu();
         add(aux);
         revalidate();
         repaint();
     }
+    public void mostrarFixture(){
+        aux2.setVisible(false);
+        aux3 = new MostrarFixture();
+        add(aux3);
+        revalidate();
+        repaint();
+    }
         public void mostrarTablaPosiciones(){
-        limpiar();
-        aux = new MostrarTablaPosiciones();
-        add(aux);
+        aux2.setVisible(false);
+        aux3 = new MostrarTablaPosiciones();
+        add(aux3);
         revalidate();
         repaint();
     }
     
         public void altaParticipante(){
-        limpiar();
-        aux = new AltaParticipante();
-        add(aux);
+        aux2.setVisible(false);
+        aux3 = new AltaParticipante();
+        add(aux3);
         revalidate();
         repaint();
     }
@@ -89,10 +99,18 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
+    public void verCompetenciaVolver(CompetenciaAux compAux){
+        remove(aux3);
+        aux3=null;
+        aux2.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    
     public void listarParticipantes(CompetenciaAux compAux){
-        limpiar();
-        aux = new ListarParticipantes(compAux);
-        add(aux);
+        aux2.setVisible(false);
+        aux3 = new ListarParticipantes(compAux);
+        add(aux3);
         revalidate();
         repaint();
     }

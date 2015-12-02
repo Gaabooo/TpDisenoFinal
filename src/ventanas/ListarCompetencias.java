@@ -65,7 +65,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jLabel2.setText("Nombre de la Competencia");
 
-        String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();
+        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
         String[] listaND= new String[listaNombresDeportes.length+1];
         listaND[0]="";
         for(int j=0; j<listaNombresDeportes.length; j++){
