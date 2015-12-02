@@ -1,30 +1,23 @@
-
 package modelo;
 
 import java.util.*;
 
 public class Disponibilidad {
    private int cantidad;
-   private LugarRealizacion lg;
+   private LugarRealizacion LR;
 
     public void setCantidad(int unaCantidad) {
-        this.cantidad = unaCantidad;
-    }
+        this.cantidad = unaCantidad; }
 
-    public void setLg(LugarRealizacion lg) {
-        this.lg = lg;
-    }
+    public void setLR(LugarRealizacion LR) {
+        this.LR = LR; }
 
     public int getCantidad() {
-        return cantidad;
-    }
+        return cantidad; }
 
-    public LugarRealizacion getLg() {
-        return lg;
-    }
+    public LugarRealizacion getLR() {
+        return LR; }
 
-    public Disponibilidad(int unaCantidad, LugarRealizacion lg) {
+    public Disponibilidad(int unaCantidad, LugarRealizacion LR) {
         this.cantidad = unaCantidad;
-        this.lg = lg;
-    }
-}
+        this.LR = LR; } }

@@ -4,58 +4,37 @@ package modelo;
 import java.util.*;
 
 public class Ronda {
-    private int id;
-    private int cantidad;
-    private int r_perdedores; 
+    private int numeroRonda;
+    private Boolean rondaPerdedores; 
     private String fecha;
+    ArrayList<Partido> listaPartidos;  
+
+    public void setNumeroRonda(int unNumeroRonda) {
+        this.numeroRonda = unNumeroRonda; }
     
-    ArrayList<Partido> partido;  
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public void setR_perdedores(int r_perdedores) {
-        this.r_perdedores = r_perdedores;
-    }
+    public void setRondaPerdedores(Boolean unBooleano) {
+        this.rondaPerdedores = unBooleano; }
 
     public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+        this.fecha = fecha; }
 
-    public void setPartido(ArrayList<Partido> partido) {
-        this.partido = partido;
-    }
+    public void setPartido(ArrayList<Partido> unaListaPartidos) {
+        this.listaPartidos = unaListaPartidos; }
 
-    public int getId() {
-        return id;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public int getR_perdedores() {
-        return r_perdedores;
-    }
+    public int getNumeroRonda() {
+        return numeroRonda; }    
+    
+    public Boolean getRondaPerdedores() {
+        return rondaPerdedores; }
 
     public String getFecha() {
-        return fecha;
-    }
+        return fecha; }
 
-    public ArrayList<Partido> getPartido() {
-        return partido;
-    }
+    public ArrayList<Partido> getListaPartidos() {
+        return listaPartidos; }
 
-    public Ronda(int id, int cantidad, int r_perdedores, String fecha, ArrayList<Partido> partido) {
-        this.id = id;
-        this.cantidad = cantidad;
-        this.r_perdedores = r_perdedores;
+    public Ronda(int unNumeroRonda, Boolean rondaPerdedores, String fecha, ArrayList<Partido> unaListaPartidos) {
+        this.numeroRonda = unNumeroRonda;
+        this.rondaPerdedores = rondaPerdedores;
         this.fecha = fecha;
-        this.partido = partido;
-    }
-}
+        this.listaPartidos = unaListaPartidos; } }

@@ -1,7 +1,4 @@
-
 package modelo;
-    
-import DAO.CompetenciaDaoJDBC;
 
 public class Estado {
         private String nombre;

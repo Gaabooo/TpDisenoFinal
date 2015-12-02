@@ -717,7 +717,7 @@ public class CompetenciaDaoJDBC {
     
     public static void persistirDisponibilidad(Disponibilidad unaDisponibilidad, int IDCD) {
         int cantidad = unaDisponibilidad.getCantidad();
-        LugarRealizacion lugar = unaDisponibilidad.getLg();
+        LugarRealizacion lugar = unaDisponibilidad.getLR();
         String insertarDisponibilidad = "INSERT INTO disponibilidad VALUES (default, " + IDCD + ", " + lugar.getId() + ", " + cantidad + ")";
         Connection conn = null; 
         try {

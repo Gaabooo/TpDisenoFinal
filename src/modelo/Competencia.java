@@ -1,150 +1,122 @@
-
 package modelo;
 
 import java.util.*;
 
 public class Competencia {
-     String nombre;
-     String reglamento;
+    private int IDUsuario;
+    private String nombre;
+    private String reglamento;
    
-     int cantidadMaximaDeSets;
-     int tantosPorAusenciaDeRival;
-     int puntosPorPresentacion;
-     int puntosPorVictoria;
-     boolean empatePermitido;
-     int puntosPorEmpate;
+    private int cantidadMaximaDeSets;
+    private int tantosPorAusenciaDeRival;
+    private int puntosPorPresentacion;
+    private int puntosPorVictoria;
+    private boolean empatePermitido;
+    private int puntosPorEmpate;
     
-    public Estado estado;
-    public FormaPuntuacion formaPuntuacion;
-    public Modalidad modalidad;
-    public Fixture fixture;
-    public Deporte deporte;
+    private Estado estado;
+    private FormaPuntuacion formaPuntuacion;
+    private Modalidad modalidad;
+    private Fixture fixture;
+    private Deporte deporte;
     
-    /*private ArrayList<Participante> listaParticipantes;*/
-     ArrayList<Disponibilidad> disponibilidad;
-     ArrayList<TablaPosicionesParticipante> tablaPosicionesParticipante;
-
-   
+    private ArrayList<Participante> listaParticipantes;
+    private ArrayList<Disponibilidad> listaDisponibilidades;
+    private ArrayList<TablaPosicionesParticipante> listaTablasPosiciones;
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        this.nombre = nombre; }
 
     public void setReglamento(String reglamento) {
-        this.reglamento = reglamento;
-    }
+        this.reglamento = reglamento; }
 
     public void setCantidadMaximaDeSets(int cantidadMaximaDeSets) {
-        this.cantidadMaximaDeSets = cantidadMaximaDeSets;
-    }
+        this.cantidadMaximaDeSets = cantidadMaximaDeSets; }
 
     public void setTantosPorAusenciaDeRival(int tantosPorAusenciaDeRival) {
-        this.tantosPorAusenciaDeRival = tantosPorAusenciaDeRival;
-    }
+        this.tantosPorAusenciaDeRival = tantosPorAusenciaDeRival; }
 
     public void setPuntosPorPresentacion(int puntosPorPresentacion) {
-        this.puntosPorPresentacion = puntosPorPresentacion;
-    }
+        this.puntosPorPresentacion = puntosPorPresentacion; }
 
     public void setPuntosPorVictoria(int puntosPorVictoria) {
-        this.puntosPorVictoria = puntosPorVictoria;
-    }
+        this.puntosPorVictoria = puntosPorVictoria; }
     
     public void setPuntosPorEmpate(int puntosPorEmpate) {
-        this.puntosPorEmpate = puntosPorEmpate;
-    }
+        this.puntosPorEmpate = puntosPorEmpate; }
     
     public void setEmpatePermitido(boolean empatePermitido) {
-        this.empatePermitido = empatePermitido;
-    }
+        this.empatePermitido = empatePermitido; }
 
     public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+        this.estado = estado; }
     
     public void setFormaPuntuacion(FormaPuntuacion formaPuntuacion) {
-        this.formaPuntuacion = formaPuntuacion;
-    }
+        this.formaPuntuacion = formaPuntuacion; }
 
     public void setModalidad(Modalidad modalidad) {
-        this.modalidad = modalidad;
-    }
+        this.modalidad = modalidad; }
 
     public void setFixture(Fixture fixture) {
-        this.fixture = fixture;
-    }
+        this.fixture = fixture; }
 
     public void setDeporte(Deporte deporte) {
-        this.deporte = deporte;
-    }
+        this.deporte = deporte; }
 
     public void setListaDisponibilidades(ArrayList<Disponibilidad> listaDisponibilidades) {
-        this.disponibilidad = listaDisponibilidades;
-    } 
+        this.listaDisponibilidades = listaDisponibilidades; } 
     
     public void addTablaPosicionesParticipante(TablaPosicionesParticipante unaTabla) {
-        tablaPosicionesParticipante.add(unaTabla);
-    }    
+        listaTablasPosiciones.add(unaTabla); }    
 
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
     public String getReglamento() {
-        return reglamento;
-    }
+        return reglamento; }
 
     public int getCantidadMaximaDeSets() {
-        return cantidadMaximaDeSets;
-    }
+        return cantidadMaximaDeSets; }
 
     public int getTantosPorAusenciaDeRival() {
-        return tantosPorAusenciaDeRival;
-    }
+        return tantosPorAusenciaDeRival; }
 
     public int getPuntosPorPresentacion() {
-        return puntosPorPresentacion;
-    }
+        return puntosPorPresentacion; }
 
     public int getPuntosPorVictoria() {
-        return puntosPorVictoria;
-    }
+        return puntosPorVictoria; }
 
     public boolean getEmpatePermitido() {
-        return empatePermitido;
-    }
+        return empatePermitido; }
     
     public int getPuntosPorEmpate() {
-        return puntosPorEmpate;
-    }
+        return puntosPorEmpate; }
 
     public Estado getEstado() {
-        return estado;
-    }
+        return estado; }
 
     public FormaPuntuacion getFormaPuntuacion() {
-        return formaPuntuacion;
-    }
+        return formaPuntuacion; }
 
     public Modalidad getModalidad() {
-        return modalidad;
-    }
+        return modalidad; }
 
     public Fixture getFixture() {
-        return fixture;
-    }
+        return fixture; }
 
     public Deporte getDeporte() {
-        return deporte;
-    }
+        return deporte; }
+    
+    public ArrayList<Participante> getListaParticipantes() {
+        return listaParticipantes; } 
     
     public ArrayList<Disponibilidad> getListaDisponibilidades() {
-        return disponibilidad;
-    } 
+        return listaDisponibilidades; } 
     
     public ArrayList<TablaPosicionesParticipante> getTablaPosicionesParticipante() {
-        return tablaPosicionesParticipante;
-    }     
+        return listaTablasPosiciones; }    
+    
     public Competencia(String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado,
                        ArrayList<Disponibilidad> listaDisponibilidades, FormaPuntuacion formaPuntuacion, int cantidadMaximaDeSets,
                        int tantosPorAusenciaDeRival, int puntosPorPresentacion, int puntosPorVictoria,
@@ -155,7 +127,7 @@ public class Competencia {
         this.deporte=deporte;
         this.modalidad=modalidad;
         this.estado=estado;
-        this.disponibilidad = listaDisponibilidades;
+        this.listaDisponibilidades = listaDisponibilidades;
         this.formaPuntuacion=formaPuntuacion;
         this.cantidadMaximaDeSets=cantidadMaximaDeSets;
         this.tantosPorAusenciaDeRival= tantosPorAusenciaDeRival;
@@ -163,7 +135,26 @@ public class Competencia {
         this.puntosPorVictoria=puntosPorVictoria;
         this.empatePermitido=empatePermitido;
         this.puntosPorEmpate=puntosPorEmpate;
-        this.tablaPosicionesParticipante = new ArrayList<>();
-    }
-  
-}
+        this.listaTablasPosiciones = new ArrayList<>(); }
+    
+    // Constructor auxiliar
+    public Competencia(int IDUsuario, String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado, FormaPuntuacion formaPuntuacion,
+                       ArrayList<Disponibilidad> listaDisponibilidades, ArrayList<Participante> listaParticipantes, ArrayList<TablaPosicionesParticipante> listasTablasPosiciones,
+                       int cantidadMaximaDeSets, int tantosPorAusenciaDeRival, int puntosPorPresentacion,
+                       int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate) {
+        this.IDUsuario = IDUsuario;
+        this.nombre = nombre;
+        this.reglamento = reglamento;
+        this.deporte = deporte;
+        this.modalidad = modalidad;
+        this.estado = estado;
+        this.listaDisponibilidades = listaDisponibilidades;
+        this.listaParticipantes = listaParticipantes;
+        this.listaTablasPosiciones = listaTablasPosiciones;
+        this.formaPuntuacion = formaPuntuacion;
+        this.cantidadMaximaDeSets = cantidadMaximaDeSets;
+        this.tantosPorAusenciaDeRival = tantosPorAusenciaDeRival;
+        this.puntosPorPresentacion = puntosPorPresentacion;
+        this.puntosPorVictoria = puntosPorVictoria;
+        this.empatePermitido = empatePermitido;
+        this.puntosPorEmpate = puntosPorEmpate; } }

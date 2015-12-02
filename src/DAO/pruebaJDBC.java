@@ -197,7 +197,7 @@ public class pruebaJDBC {
     public static Disponibilidad crearDisponibilidad(int cantidad,LugarRealizacion lg){
        
     Disponibilidad unaDisponibilidad =null;
-    unaDisponibilidad.setLg(lg);
+    unaDisponibilidad.setLR(lg);
     unaDisponibilidad.setCantidad(cantidad);
     
       return unaDisponibilidad;
