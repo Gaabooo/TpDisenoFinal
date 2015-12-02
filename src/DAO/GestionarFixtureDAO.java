@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelo.*;
 
-public class newDAOCD {
+public class GestionarFixtureDAO {
     public static int getIDEstado(Estado unEstado) {
         int unIDEstado = 0;
         String getIDEstado = "SELECT id_estado FROM estado WHERE nombre = '" + unEstado.getNombre() + "'";

@@ -5,7 +5,7 @@ import modelo.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class newGestorCD {
+public class GestionarFixtureGestor {
     public static int randomInt(int min, int max) {
         int rand = ThreadLocalRandom.current().nextInt(min, max+1);
         return rand; }
@@ -25,7 +25,7 @@ public class newGestorCD {
     // Solo modalidad LIGA
     public static void generarFixture(String nombreCD) {
         // Objetos existentes
-        Competencia unaCompetencia = newDAOCD.getCompetencia(nombreCD);
+        Competencia unaCompetencia = GestionarFixtureDAO.getCompetencia(nombreCD);
         ArrayList<Participante> listaParticipantes = unaCompetencia.getListaParticipantes();
         ArrayList<Disponibilidad> listaDisponibilidades = unaCompetencia.getListaDisponibilidades();
         // Nuevos objetos
@@ -61,14 +61,14 @@ public class newGestorCD {
             unaCompetencia.setFixture(unFixture);
             // Persistencia
             if ("Creada".equals(unEstado.getNombre())) {
-                Estado nuevoEstado = newDAOCD.getEstado("Planificada");
+                Estado nuevoEstado = GestionarFixtureDAO.getEstado("Planificada");
                 unaCompetencia.setEstado(nuevoEstado);
-                newDAOCD.setEstado(unaCompetencia, nuevoEstado); }
+                GestionarFixtureDAO.setEstado(unaCompetencia, nuevoEstado); }
             else {
                 System.out.println("Entro al else");
-                newDAOCD.deleteFixture(unaCompetencia); }
+                GestionarFixtureDAO.deleteFixture(unaCompetencia); }
             unaCompetencia.setFixture(unFixture);
-            newDAOCD.persistirFixture(unFixture, nombreCD); } }
+            GestionarFixtureDAO.persistirFixture(unFixture, nombreCD); } }
     
     public static void main(String[] args) {
         generarFixture("B"); } }
