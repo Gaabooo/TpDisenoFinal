@@ -89,9 +89,9 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
-    public void listarParticipantes(){
+    public void listarParticipantes(CompetenciaAux compAux){
         limpiar();
-        aux = new ListarParticipantes();
+        aux = new ListarParticipantes(compAux);
         add(aux);
         revalidate();
         repaint();
