@@ -15,13 +15,9 @@ public class ListarCompetencias extends javax.swing.JPanel {
     /**
      * Creates new form Auxiliar
      */
-    public static int idComp=0;
     
     public ListarCompetencias() {
         initComponents();
-        /*DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        while(modelo.getRowCount()>0)modelo.removeRow(0);*/
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -222,8 +218,11 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 nombre=null;
             }
             
+            // Se recuperan las competenciasAux de la base de datos
             ArrayList<CompetenciaAux> listaprueba = gestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
-        
+            
+            
+            // Eliminacion de la tabla actual
             DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
             int filas=jTable1.getRowCount();
             int i;
@@ -231,28 +230,21 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 modelo.removeRow(0);
             }
             
-        for(i=0;i < listaprueba.size();i++){
-        
-            String fila[]=new String[4];
-            
-            for(int j=0;j<4;j++){
-              if( j== 0){
-                fila[j]= listaprueba.get(i).getNombre();
-              }if(j == 1){
-                  fila[j]=listaprueba.get(i).deporte.getNombre();
-              }if(j == 2){
-                 fila[j]= listaprueba.get(i).modalidad.getNombre();
-              } if(j == 3){
-                 fila[j]= listaprueba.get(i).estado.getNombre();
-              }
+            // Se le asignan las competencias recuperadas
+            for(i=0;i < listaprueba.size();i++){
+                
+                CompetenciaAux elem=listaprueba.get(i);
+                
+                String fila[]=new String[4];
+                
+                fila[0]= elem.getNombre();
+                fila[1]= elem.getDeporte();
+                fila[2]= elem.getModalidad();
+                fila[3]= elem.getEstado();
+                
+                modelo.addRow(fila);
             }
-        
-            modelo.addRow(fila);
-        }    
-         jTable1.setModel(modelo); 
-            
-        
-            // Asigna los valores de la matriz a la tabla
+            jTable1.setModel(modelo);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -263,24 +255,24 @@ public class ListarCompetencias extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
         int row = jTable1.getSelectedRow();
-       
+        
         if(row == -1){
             JOptionPane.showMessageDialog(null,"Debe seleccionar una competencia",
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
         
         else{
-
+            
             String nombre=jTable1.getValueAt(row, 0).toString();
             String deporte=jTable1.getValueAt(row, 1).toString();
             String modalidad=jTable1.getValueAt(row, 2).toString();
             String estado=jTable1.getValueAt(row, 3).toString(); 
-           
-
-         idComp=gestorCD.obtenerIdCD(nombre, deporte, modalidad, estado);
-         
-         
-            V.get().verCompetencia();
+            
+            int idComp=gestorCD.obtenerIdCD(nombre);
+            
+            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
+            
+            V.get().verCompetencia(compAux);
         }
     
     

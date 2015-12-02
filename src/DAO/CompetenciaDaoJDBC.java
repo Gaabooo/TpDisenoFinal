@@ -82,41 +82,19 @@ public class CompetenciaDaoJDBC {
     return c;
     }
     
-    public static int getIdCompetencia(String nombre,String deporte, String modalidad,String estado ){
+    public static int getIdCompetencia(String nombre){
         
         int IdCompetencia = 0;
-        int IdDeporte,IdModalidad,IdEstado;
         
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             
-            /*id_deporte*/
-            String SQL_FIND_DEPORTE  = "SELECT id_deporte FROM deporte WHERE nombre = '" + deporte + "'";
-            ResultSet rs1 = statement.executeQuery(SQL_FIND_DEPORTE);
-            rs1.next();
-            IdDeporte=rs1.getInt("id_deporte");
-            
-            /*id_modalidad*/
-            String SQL_FIND_MODALIDAD  = "SELECT id_modalidad FROM modalidad WHERE nombre = '" + modalidad + "'";
-            ResultSet rs2 = statement.executeQuery(SQL_FIND_MODALIDAD);
-            rs2.next();
-            IdModalidad=rs2.getInt("id_modalidad");
-            
-            /*id_estado*/
-            String SQL_FIND_ESTADO  = "SELECT id_estado FROM estado WHERE nombre = '" + estado + "'";
-            ResultSet rs3 = statement.executeQuery(SQL_FIND_ESTADO);
-            rs3.next();
-            IdEstado=rs3.getInt("id_estado");
-            
-            /*Puede haber varias competencias con el mismo nombre*/
-            
             /*id_competencia*/
-             String SQL_FIND_ID_COMPETENCIA = "SELECT id_competencia FROM competencia WHERE nombre = '"+ nombre +"'"
-                    +"and id_deporte="+ "'"+ IdDeporte +"'"+"and id_modalidad="+ "'"+ IdModalidad +"'"+"and id_estado="+ "'"+ IdEstado +"'";
+            String SQL_FIND_ID_COMPETENCIA = "SELECT id_competencia FROM competencia WHERE nombre = '"+ nombre +"'";
              
-           ResultSet rs = statement.executeQuery(SQL_FIND_ID_COMPETENCIA);
+            ResultSet rs = statement.executeQuery(SQL_FIND_ID_COMPETENCIA);
             
             // El ResultSet tiene un solo resultado
             while (rs.next()) {
@@ -346,15 +324,14 @@ public class CompetenciaDaoJDBC {
         return retorno; }
     
     // Completar
-    public static ArrayList<CompetenciaAux> getCompetencias (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
+    public static ArrayList<Competencia> getCompetencias (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
         
         Connection conn = null; 
         
         
-       String _SQL_FIND_COMPETENCIAS = "SELECT * FROM competencia WHERE ";
-       String auxNombre="nombre >= '☺'",auxEstado="nombre >= '☺'", auxModalidad="nombre >= '☺'",auxDeporte="nombre >= '☺'";
-       String SQL_LISTA_COMPETENCIAS=null; 
-        ArrayList<CompetenciaAux> ls= new ArrayList <CompetenciaAux> ();
+        String _SQL_FIND_COMPETENCIAS = "SELECT * FROM competencia WHERE ";
+        String SQL_LISTA_COMPETENCIAS=null; 
+        ArrayList<Competencia> ls= new ArrayList <> ();
   
         try {
             
@@ -367,7 +344,7 @@ public class CompetenciaDaoJDBC {
             SQL_LISTA_COMPETENCIAS = _SQL_FIND_COMPETENCIAS;
             
             if (nombreCD != null) {
-                auxNombre = "nombre LIKE '%" + nombreCD + "%' and "; 
+                String auxNombre = "nombre LIKE '%" + nombreCD + "%' and "; 
                 SQL_LISTA_COMPETENCIAS= SQL_LISTA_COMPETENCIAS + auxNombre;
             }
             if (nombreDeporte != null) {
@@ -375,19 +352,17 @@ public class CompetenciaDaoJDBC {
                 rs = statement.executeQuery(_SQL_FIND_ID_DEPORTE);
                 while(rs.next()){
                     int IDDeporte = rs.getInt("id_deporte");
-                    auxDeporte = "id_deporte = " + IDDeporte +" and " ; 
+                    String auxDeporte = "id_deporte = " + IDDeporte +" and " ; 
                     SQL_LISTA_COMPETENCIAS= SQL_LISTA_COMPETENCIAS + auxDeporte;
                 }
             }
-            
             if (nombreModalidad != null) {
                 String _SQL_FIND_ID_MODALIDAD = "SELECT id_modalidad FROM modalidad WHERE nombre ='" + nombreModalidad + "'";
                 rs = statement.executeQuery(_SQL_FIND_ID_MODALIDAD);
                 while(rs.next()){
                     int IDModalidad = rs.getInt("id_modalidad");
-                    auxModalidad= "id_modalidad = " + IDModalidad +" and " ;
+                    String auxModalidad= "id_modalidad = " + IDModalidad +" and " ;
                     SQL_LISTA_COMPETENCIAS= SQL_LISTA_COMPETENCIAS + auxModalidad;
-                    
                 }
             }
             if (nombreEstado != null) {
@@ -395,33 +370,22 @@ public class CompetenciaDaoJDBC {
                 rs = statement.executeQuery(_SQL_FIND_ID_ESTADO);
                 while(rs.next()){    
                     int IDEstado = rs.getInt("id_estado");
-                    auxEstado ="id_estado = " + IDEstado +" and " ;
+                    String auxEstado ="id_estado = " + IDEstado +" and " ;
                     SQL_LISTA_COMPETENCIAS= SQL_LISTA_COMPETENCIAS + auxEstado;
-                    
                 }
             }
             
             SQL_LISTA_COMPETENCIAS= SQL_LISTA_COMPETENCIAS.substring(0, SQL_LISTA_COMPETENCIAS.length()-4);
-            /*
-            SQL_LISTA_COMPETENCIAS = _SQL_FIND_COMPETENCIAS + "and " + auxNombre + "and " + auxDeporte
-                    + "and " + auxModalidad + "and " + auxEstado; */
-               
             
-              rs = statement.executeQuery(SQL_LISTA_COMPETENCIAS);
+            rs = statement.executeQuery(SQL_LISTA_COMPETENCIAS);
               
             while(rs.next()){
                  
-                CompetenciaAux comp= new CompetenciaAux(setEstadoCD(rs.getInt("id_estado")),setDeporteCD(rs.getInt("id_deporte")),setModalidadCD(rs.getInt("id_modalidad")),setNombreCD(rs.getInt("id_competencia")));
- 
-                /*comp.nombre=setNombreCD(rs.getInt("id_competencia"));
-                comp.estado=setEstadoCD(rs.getInt("id_estado"));
-                comp.deporte=setDeporteCD(rs.getInt("id_deporte"));
-                comp.modalidad=setModalidadCD(rs.getInt("id_modalidad"));
+                Competencia compAux= new Competencia(setEstadoCD(rs.getInt("id_estado")),
+                        setDeporteCD(rs.getInt("id_deporte")),setModalidadCD(rs.getInt("id_modalidad")),
+                        setNombreCD(rs.getInt("id_competencia")));
                 
-          */
-                
-                
-                ls.add(comp);     
+                ls.add(compAux);     
             }
             
             
@@ -437,7 +401,7 @@ public class CompetenciaDaoJDBC {
         } 
         
             return ls;
-        }
+    }
          
     public static String setNombreCD(int id_comp){
         

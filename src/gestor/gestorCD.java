@@ -17,12 +17,40 @@ public class gestorCD {
      * @return 
      */
 
-    public static int obtenerIdCD(String nombre, String deporte, String modalidad, String estado){
-            return CompetenciaDaoJDBC.getIdCompetencia(nombre,deporte,modalidad,estado);
+    public static int obtenerIdCD(String nombre){
+            return CompetenciaDaoJDBC.getIdCompetencia(nombre);
     }
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
-        return CompetenciaDaoJDBC.getCompetencias(nombreCD, nombreDeporte, nombreModalidad, nombreEstado); }    
+        
+        // Se recuperan las competencias que coincidan con los filtros
+        ArrayList<Competencia> competencias = CompetenciaDaoJDBC.getCompetencias(nombreCD,
+                nombreDeporte, nombreModalidad, nombreEstado);
+        
+        
+        // Se pasan los datos de las competencias a la estructura auxiliar para la interfaz
+        
+        // Nueva lista para devolver
+        ArrayList<CompetenciaAux> listaAux= new ArrayList<> ();
+        
+        // Iteracion de la lista de competencias
+        for(int i=0; i<competencias.size(); i++){
+            
+            Competencia compI= competencias.get(i);
+            
+            // Se crea una nueva Competencia auxiliar y se la agega a la lista
+            CompetenciaAux compAux= new CompetenciaAux(compI.getEstado().getNombre(), 
+                compI.getDeporte().getNombre(), compI.getModalidad().getNombre(), compI.getNombre());
+            listaAux.add(compAux);
+            
+            }
+        
+        return listaAux;
+    }    
 
+    public static ArrayList<Participante> listarParticipantes (String nombreCD) {
+        int idCD = obtenerIdCD(nombreCD);
+        return CompetenciaDaoJDBC.getParticipantes(idCD); }    
+    
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
         return nombreUsado; }    

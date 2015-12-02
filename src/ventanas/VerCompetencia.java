@@ -6,6 +6,7 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
+import modelo.CompetenciaAux;
 
 /**
  *
@@ -13,12 +14,15 @@ import DAO.CompetenciaDaoJDBC;
  */
 public class VerCompetencia extends javax.swing.JPanel {
 
-    
+    CompetenciaAux compAux;
     
     /**
      * Creates new form VerCompetencia
+     * @param param
      */
-    public VerCompetencia() {
+    public VerCompetencia(CompetenciaAux param) {
+        
+        compAux=param;
         
         initComponents();
         
@@ -249,7 +253,7 @@ public class VerCompetencia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().menu();     
+        V.get().menuVolver();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -265,7 +269,7 @@ public class VerCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        V.get().listarCD();
+        V.get().listarCDVolver();
     }//GEN-LAST:event_jButton8ActionPerformed
 
 
@@ -294,19 +298,19 @@ public class VerCompetencia extends javax.swing.JPanel {
     private void verNombre(){
     
      jLabel5.setVisible(true);
-     jLabel5.setText(CompetenciaDaoJDBC.getCompetenciasS(ListarCompetencias.idComp).getNombre());
+     jLabel5.setText(compAux.getNombre());
      jLabel5.setFont(new java.awt.Font("Tahoma", 0, 30)); 
      
      jLabel6.setVisible(true);
-     jLabel6.setText(CompetenciaDaoJDBC.getCompetenciasS(ListarCompetencias.idComp).getDeporte().getNombre());
+     jLabel6.setText(compAux.getDeporte());
      jLabel6.setFont(new java.awt.Font("Tahoma", 0, 30)); 
      
      jLabel7.setVisible(true);
-     jLabel7.setText(CompetenciaDaoJDBC.getCompetenciasS(ListarCompetencias.idComp).getModalidad().getNombre());
+     jLabel7.setText(compAux.getModalidad());
      jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30));
      
      jLabel8.setVisible(true);
-     jLabel8.setText(CompetenciaDaoJDBC.getCompetenciasS(ListarCompetencias.idComp).getEstado().getNombre());
+     jLabel8.setText(compAux.getEstado());
      jLabel8.setFont(new java.awt.Font("Tahoma", 0, 30));
     
     }

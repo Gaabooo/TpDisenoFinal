@@ -13,6 +13,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import modelo.CompetenciaAux;
 
 /**
  *
@@ -35,6 +36,7 @@ public class V extends javax.swing.JFrame {
     }
     
     private JPanel aux;
+    private JPanel aux2;
     
     public void limpiar(){
         //SELF.removeAll(); NOOOO, elimina nose que masss
@@ -43,6 +45,14 @@ public class V extends javax.swing.JFrame {
     
     public void menu(){
         limpiar();
+        aux = new Menu();
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    public void menuVolver(){
+        remove(aux2);
+        remove(aux);
         aux = new Menu();
         add(aux);
         revalidate();
@@ -71,10 +81,10 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
-    public void verCompetencia(){
-        limpiar();
-        aux = new VerCompetencia();
-        add(aux);
+    public void verCompetencia(CompetenciaAux compAux){
+        aux.setVisible(false);
+        aux2 = new VerCompetencia(compAux);
+        add(aux2);
         revalidate();
         repaint();
     }
@@ -93,11 +103,17 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    
+    public void listarCDVolver(){
+        remove(aux2);
+        aux2=null;
+        aux.setVisible(true);
+        revalidate();
+        repaint();
+    }
     public void altaCompetencia(){
-        limpiar();
-        aux = new AltaCompetencia();
-        add(aux);
+        aux.setVisible(false);
+        aux2 = new AltaCompetencia();
+        add(aux2);
         revalidate();
         repaint();
     }

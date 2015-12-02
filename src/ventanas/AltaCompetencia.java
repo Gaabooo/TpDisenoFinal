@@ -26,6 +26,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
     
     TablaDisponibilidad tablaDisp = new TablaDisponibilidad();
     alertaSuave alerta= new alertaSuave();
+    // Analizar opcion de abajo, o alguna forma de que el primer sonido sea instantaneo
+    //Thread thread = new Thread(new AlertaSuave());
     
     /**
      * Creates new form AltaCompetencia
@@ -347,12 +349,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
             
             gestor.gestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
-            V.get().listarCD();
+            V.get().listarCDVolver();
         }
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
-        V.get().listarCD();
+        V.get().listarCDVolver();
     }//GEN-LAST:event_ATRASActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -415,7 +417,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jSpinner5StateChanged
 
     private void ATRAS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRAS1ActionPerformed
-        V.get().menu();
+        V.get().menuVolver();
     }//GEN-LAST:event_ATRAS1ActionPerformed
 
     private void nombreCompFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreCompFocusGained
@@ -517,6 +519,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private void verEmpate(){
         verCheckBoxEmpate();
     }
+    // Habilitacion/deshabilitacion de los campos de empate
     private void verCheckBoxEmpate(){
         if(jCheckBox1.isSelected()){
             jLabel8.setVisible(true);

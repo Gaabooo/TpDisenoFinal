@@ -9,13 +9,12 @@ public class Participante {
     // private String imagen;
     private ArrayList<HistorialParticipante> historial;
 
-    /*public Participante(int id, String correo, String nombre, String imagen, ArrayList<HistorialParticipante> HistP) {
-        this.id = id;
-        this.correo = correo;
+    public Participante(String nombre, String correo_electronico/*,String imagen, ArrayList<HistorialParticipante> HistP*/) {
+        this.correo_electronico = correo_electronico;
         this.nombre = nombre;
-        this.imagen = imagen;
-        this.HistP = HistP;
-    }*/
+        /*this.imagen = imagen;
+        this.HistP = HistP;*/
+    }
 
     // Constructor auxiliar, NO ES FINAL
     public Participante(String nombre, String correo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> historial) {
