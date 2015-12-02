@@ -402,7 +402,133 @@ public class CompetenciaDaoJDBC {
         
             return ls;
     }
-         
+    
+    public static ArrayList<Participante> getParticipantes (int idCD) {
+        
+        Connection conn = null; 
+        
+       String _SQL_FIND_PARTICIPANTES = "SELECT * FROM participante WHERE ";
+       String auxNombre="nombre >= '☺'",auxCorreo="nombre >= '☺'";
+       String SQL_LISTA_PARTICIPANTES=null; 
+       ArrayList<Participante> ls= new ArrayList <Participante> ();
+  
+        try {
+            
+            conn = DBConnection.get();
+     
+            Statement statement = conn.createStatement();
+ 
+            ResultSet rs;
+            
+            SQL_LISTA_PARTICIPANTES = _SQL_FIND_PARTICIPANTES;
+            
+            if (nombreParticipante != null) {
+                auxNombre = "nombre LIKE '%" + nombreParticipante + "%' and "; 
+                SQL_LISTA_PARTICIPANTES= SQL_LISTA_PARTICIPANTES + auxNombre;
+            }
+            if (correo_electronico != null) {
+                String _SQL_FIND_CORREOS = "SELECT correo_electronico FROM participante WHERE nombre = '" + correo_electronico + "'";
+                rs = statement.executeQuery(_SQL_FIND_CORREOS);
+                while(rs.next()){
+                    int Correo = rs.getInt("correo_electronico");
+                    auxCorreo = "correo_electronico = " + Correo +" and " ; 
+                    SQL_LISTA_PARTICIPANTES= SQL_LISTA_PARTICIPANTES + auxCorreo;
+                }
+            }
+            
+
+            SQL_LISTA_PARTICIPANTES= SQL_LISTA_PARTICIPANTES.substring(0, SQL_LISTA_PARTICIPANTES.length()-4);
+               
+            
+              rs = statement.executeQuery(SQL_LISTA_PARTICIPANTES);
+              
+            while(rs.next()){
+                 
+                Participante comp= new Participante(setNombreParticipante(rs.getInt("id_participante")),setCorreo(rs.getInt("correo_electronico")));
+ 
+                ls.add(comp);     
+            }
+            
+            
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } 
+        } 
+        
+            return ls;
+        }    
+   
+    public static String setNombreParticipante(int id_participante){
+        
+            Connection conn = null;
+            String SQL_NOMBRE_PARTICIPANTE ="SELECT nombre FROM participante WHERE id_participante = '" + id_participante + "' ";
+            String nomb=null;
+            
+            try{
+        
+                conn = DBConnection.get();
+                ResultSet  rs;
+                Statement stmt = conn.createStatement(); 
+                rs=stmt.executeQuery(SQL_NOMBRE_PARTICIPANTE);
+        
+                rs.next();
+ 
+                nomb=rs.getString("nombre");
+ 
+
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+     
+        return nomb;
+        }
+    
+    public static String setCorreo(int id_participante){
+        
+            Connection conn = null;
+            String SQL_CORREO_ELECTRONICO_PARTICIPANTE ="SELECT correo_electronico FROM participante WHERE id_participante = '" + id_participante + "' ";
+            String nomb=null;
+            
+            try{
+        
+                conn = DBConnection.get();
+                ResultSet  rs;
+                Statement stmt = conn.createStatement(); 
+                rs=stmt.executeQuery(SQL_CORREO_ELECTRONICO_PARTICIPANTE);
+        
+                rs.next();
+ 
+                nomb=rs.getString("correo_electronico");
+ 
+
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+     
+        return nomb;
+        }
+    
+    
     public static String setNombreCD(int id_comp){
         
             Connection conn = null;
