@@ -12,18 +12,20 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Participante;
+import modelo.*;
 
 /**
  *
  * @author Martin
  */
 public class ListarParticipantes extends javax.swing.JPanel {
-
+    CompetenciaAux compAux;
     /**
      * Creates new form ListarParticipantes
      */
-    public ListarParticipantes() {
+    public ListarParticipantes(CompetenciaAux param) {
+        compAux=param;
+        
         initComponents();
         
         verNombre();
@@ -203,7 +205,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
 private void verNombre(){
     
      jLabel2.setVisible(true);
-     jLabel2.setText(CompetenciaDaoJDBC.getCompetenciasS(ListarCompetencias.idComp).getNombre());
+     jLabel2.setText(compAux.getNombre());
      jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); 
     }
 private void llenarTabla(){

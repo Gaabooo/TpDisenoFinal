@@ -5,7 +5,7 @@ package modelo;
 
 public class Participante {
     private String nombre;
-    private String correo;
+    private String correo_electronico;
     // private String imagen;
     private ArrayList<HistorialParticipante> historial;
 
@@ -19,11 +19,11 @@ public class Participante {
     // Constructor auxiliar, NO ES FINAL
     public Participante(String nombre, String correo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> historial) {
         this.nombre = nombre;
-        this.correo = correo;
+        this.correo_electronico = correo;
         this.historial = historial; }
 
     public void setCorreo(String correo) {
-        this.correo = correo; }
+        this.correo_electronico = correo; }
 
     public void setNombre(String nombre) {
         this.nombre = nombre; }
@@ -37,7 +37,7 @@ public class Participante {
     ArrayList<HistorialParticipante> HistP;
 
     public String getCorreo() {
-        return correo; }
+        return correo_electronico; }
 
     public String getNombre() {
         return nombre; }
