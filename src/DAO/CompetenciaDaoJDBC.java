@@ -411,7 +411,7 @@ public class CompetenciaDaoJDBC {
        String auxNombre="nombre >= '☺'",auxCorreo="nombre >= '☺'";
        String SQL_LISTA_PARTICIPANTES=null; 
        ArrayList<Participante> ls= new ArrayList <Participante> ();
-  
+  /*
         try {
             
             conn = DBConnection.get();
@@ -460,7 +460,7 @@ public class CompetenciaDaoJDBC {
             catch (SQLException ex) {
                 Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); } 
         } 
-        
+        */
             return ls;
         }    
    
