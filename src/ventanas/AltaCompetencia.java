@@ -69,7 +69,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
-        ATRAS1 = new javax.swing.JButton();
+        MENU = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
         jSpinner2b = new javax.swing.JSpinner();
@@ -249,14 +249,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton3);
         jButton3.setBounds(280, 180, 70, 23);
 
-        ATRAS1.setText("MENU P.");
-        ATRAS1.addActionListener(new java.awt.event.ActionListener() {
+        MENU.setText("MENU P.");
+        MENU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ATRAS1ActionPerformed(evt);
+                MENUActionPerformed(evt);
             }
         });
-        add(ATRAS1);
-        ATRAS1.setBounds(69, 508, 90, 23);
+        add(MENU);
+        MENU.setBounds(69, 508, 90, 23);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
@@ -349,12 +349,15 @@ public class AltaCompetencia extends javax.swing.JPanel {
             
             gestor.gestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
-            V.get().listarCDVolver();
+            
+            V.get().remove(this);
+            V.get().listarCompetenciasVolver();
         }
     }//GEN-LAST:event_ACEPTARActionPerformed
 
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
-        V.get().listarCDVolver();
+        V.get().remove(this);
+        V.get().listarCompetenciasVolver();
     }//GEN-LAST:event_ATRASActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -416,9 +419,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jSpinner5StateChanged
 
-    private void ATRAS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRAS1ActionPerformed
-        V.get().menuVolver();
-    }//GEN-LAST:event_ATRAS1ActionPerformed
+    private void MENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MENUActionPerformed
+        V.get().remove(this);
+        V.get().listarCompetenciasSalir();
+    }//GEN-LAST:event_MENUActionPerformed
 
     private void nombreCompFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreCompFocusGained
         nombreComp.setBackground(Color.WHITE);
@@ -433,8 +437,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACEPTAR;
     private javax.swing.JButton ATRAS;
-    private javax.swing.JButton ATRAS1;
     private javax.swing.JComboBox DeporteAsociado;
+    private javax.swing.JButton MENU;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;

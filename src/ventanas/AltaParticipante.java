@@ -5,16 +5,21 @@
  */
 package ventanas;
 
+import modelo.CompetenciaAux;
+
 /**
  *
  * @author GabrielV
  */
 public class AltaParticipante extends javax.swing.JPanel {
-
+    
+    CompetenciaAux compAux;
+    
     /**
      * Creates new form AltaParticipante
      */
-    public AltaParticipante() {
+    public AltaParticipante(CompetenciaAux param) {
+        compAux=param;
         initComponents();
     }
 
@@ -33,11 +38,6 @@ public class AltaParticipante extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
 
         jTextField1.setText("Inserte su Correo.");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setText("Inserte su Nombre y Apellido.");
 
@@ -142,17 +142,14 @@ public class AltaParticipante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         V.get().remove(this);
-        V.get().menuVolver2();
+        V.get().listarParticipantesSalir();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        V.get().remove(this);
+        V.get().listarParticipantes(compAux);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -174,7 +174,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         V.get().altaParticipante();
+        V.get().altaParticipante(compAux);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -182,11 +182,13 @@ public class ListarParticipantes extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().menuVolver2();
+        V.get().remove(this);
+        V.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        V.get().remove(this);
+        V.get().verCompetenciaVolver();
     }//GEN-LAST:event_jButton5ActionPerformed
 
 
@@ -224,13 +226,8 @@ private void llenarTabla(){
         
             String fila[]=new String[2];
             
-            for(int j=0;j<2;j++){
-              if( j== 0){
-                fila[j]= listap.get(i).getNombre();
-              }if(j == 1){
-                fila[j]=listap.get(i).getCorreo();
-              }
-            }
+            fila[0]= listap.get(i).getNombre();
+            fila[1]= listap.get(i).getCorreo();
         
             modelo.addRow(fila);
         }    
