@@ -35,12 +35,12 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         System.out.print(compAux.getId());
        
             // Se recuperan las TablaPosicionesParticipante de la base de datos
-            ArrayList<TablaPosicionesParticipante> listaTpp = gestorCD.listarTpp(compAux.getId());
+            ArrayList<TablaPosicionesAux> listaTpp = gestorCD.listarTpp(compAux.getId());
         
             // Eliminacion de la tabla actual
             DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
-            int filas=jTable1.getRowCount();
-            int i;
+            int filas=jTable1.getRowCount(),i,diferencia;
+           
             for (i=0;filas>i; i++) {
                 modelo.removeRow(0);
             }
@@ -48,23 +48,30 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             // Se le asignan las tablas recuperadas
             for(i=0;i < listaTpp.size();i++){
                 
-                TablaPosicionesParticipante elem=listaTpp.get(i);
+                TablaPosicionesAux elem=listaTpp.get(i);
                 
                 String fila[]=new String[8];
                 
-                fila[0]="Nombre";
+                fila[0]=elem.getNombre();
                 fila[1]= String.valueOf(elem.getPuntos());
                 fila[2]= String.valueOf(elem.getPartidosGanados());
                 fila[3]= String.valueOf(elem.getPartidosPerdidos());
                 fila[4]= String.valueOf(elem.getPartidosEmpatados());
                 fila[5]= String.valueOf(elem.getTantoEnContra());
                 fila[6]= String.valueOf(elem.getTantoAFavor());
-                fila[7]= "-----";
+                
+                diferencia=  elem.getPuntos()+ elem.getPartidosGanados()+elem.getPartidosPerdidos()-elem.getPartidosEmpatados();
+                fila[7]= String.valueOf(diferencia);
                 
                 modelo.addRow(fila);
             }
-            
-            
+
+            /*si la modalidad de la competencia es sets o resultado final no muestra la columna Tantos en contra y a favor*/
+            if("Sets".equals(c.getFormaPuntuacion().getNombre())|| "Resultado Final".equals(c.getFormaPuntuacion().getNombre())){
+                  jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+                jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+                
+            }
     }
 
     /**
@@ -85,6 +92,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -157,6 +165,13 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jLabel4.setText("*");
 
+        jButton4.setText("Atras");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,6 +187,8 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,7 +218,8 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -216,11 +234,17 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+       V.get().verCompetencia(compAux);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

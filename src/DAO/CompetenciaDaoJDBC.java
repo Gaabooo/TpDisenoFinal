@@ -402,14 +402,14 @@ public class CompetenciaDaoJDBC {
             return ls;
     }
     
-    public static ArrayList<TablaPosicionesParticipante> getTablaPosiciones (int id_competencia){
+    public static ArrayList<TablaPosicionesAux> getTablaPosiciones (int id_competencia){
     
-    ArrayList<TablaPosicionesParticipante> tps= new ArrayList <> ();
+    ArrayList<TablaPosicionesAux> tps= new ArrayList <> ();
     
     Connection conn = null; 
         
     int puntos,partidosGanados,partidosPerdidos,partidosEmpatados,tantoEnContra,tantoAFavor;
-    
+    String NombreParticipante;
        try{   
         
             conn = DBConnection.get();
@@ -418,10 +418,11 @@ public class CompetenciaDaoJDBC {
  
             
          
-            String SQL_FIND_TABLAPOSICIONES = "SELECT puntos, partidos_ganados, partidos_perdidos, partidos_empatados, tantos_contra, tantos_a_favor FROM tabla_posiciones WHERE id_competencia ='"+ id_competencia+"'";
+            String SQL_FIND_TABLAPOSICIONES = "SELECT * FROM tabla_posiciones WHERE id_competencia ='"+ id_competencia+"'";
             ResultSet rs = statement.executeQuery(SQL_FIND_TABLAPOSICIONES);
             while(rs.next()){
             
+                NombreParticipante=nombreParticipante(rs.getInt("id_participante"));
                 puntos=rs.getInt("puntos");
                 partidosGanados=rs.getInt("partidos_ganados");
                 partidosPerdidos=rs.getInt("partidos_perdidos");
@@ -429,9 +430,9 @@ public class CompetenciaDaoJDBC {
                 tantoEnContra=rs.getInt("tantos_contra");
                 tantoAFavor=rs.getInt("tantos_a_favor");
                 
-                TablaPosicionesParticipante pp= new TablaPosicionesParticipante(puntos,partidosGanados,partidosPerdidos,partidosEmpatados,tantoEnContra,tantoAFavor);
-                /*TablaPosicionesParticipante( int puntos, int partidosGanados, int partidosPerdidos,
-                                       int partidosEmpatados, int tantoEnContra, int tantoAFavor)*/
+                TablaPosicionesAux pp= new TablaPosicionesAux(NombreParticipante,puntos,partidosGanados,partidosPerdidos,partidosEmpatados,tantoEnContra,tantoAFavor);
+                /*TablaPosicionesAux(String NombreParticipante, int puntos, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int tantoEnContra, int tantoAFavor  )*/
+                   
                 tps.add(pp);
             }
             
@@ -452,6 +453,37 @@ public class CompetenciaDaoJDBC {
     return tps;
     }
     
+    public static String nombreParticipante(int id_participante){
+    
+        Connection conn = null;
+        String SQL_NOMBRE ="SELECT nombre FROM participante WHERE id_participante = '" + id_participante + "' ";
+        String nombre=null; 
+    
+            try{
+        
+                conn = DBConnection.get();
+                ResultSet  rs;
+                Statement stmt = conn.createStatement(); 
+                rs=stmt.executeQuery(SQL_NOMBRE);
+        
+                rs.next();
+ 
+                nombre=rs.getString("nombre");
+ 
+
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+         
+        return nombre;
+    }
     
          
     public static String setNombreCD(int id_comp){

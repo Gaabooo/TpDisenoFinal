@@ -237,6 +237,8 @@ public class zaraza extends javax.swing.JFrame {
          System.out.println(CompetenciaDaoJDBC.getTablaPosiciones(2).get(2).getPuntos());
          System.out.println(gestorCD.listarTpp(2).get(2).getPuntos());
          
+         System.out.println(CompetenciaDaoJDBC.nombreParticipante(1));
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

@@ -19,7 +19,7 @@ public class gestorCD {
      * @return 
      */
 
-    public static ArrayList<TablaPosicionesParticipante> listarTpp(int id_competencia){
+    public static ArrayList<TablaPosicionesAux> listarTpp(int id_competencia){
         return CompetenciaDaoJDBC.getTablaPosiciones(id_competencia);
     }
     

@@ -5,7 +5,7 @@ import modelo.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GestionarFixtureGestor {
+public class GestionarFixtureGestor {/*
     public static int randomInt(int min, int max) {
         int rand = ThreadLocalRandom.current().nextInt(min, max+1);
         return rand; }
@@ -71,4 +71,4 @@ public class GestionarFixtureGestor {
             GestionarFixtureDAO.persistirFixture(unFixture, nombreCD); } }
     
     public static void main(String[] args) {
-        generarFixture("B"); } }
+        generarFixture("B"); } */}

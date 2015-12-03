@@ -1,7 +1,6 @@
 
 package modelo;
 
-import java.util.ArrayList;
 
 public class TablaPosicionesParticipante {
     
@@ -38,7 +37,7 @@ private int tantoAFavor;
         this.tantoAFavor = tantoAFavor;
     }
 
- 
+    
 
     public int getPuntos() {
         return puntos;
