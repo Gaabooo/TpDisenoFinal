@@ -5,17 +5,73 @@
  */
 package ventanas;
 
+import gestor.gestorCD;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.*;
+
 /**
  *
  * @author Martin
  */
 public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
+    
+    CompetenciaAux compAux;
+    
+    Competencia c;
     /**
      * Creates new form MostrarTablaPosiciones
+     * @param param
      */
-    public MostrarTablaPosiciones() {
+    public MostrarTablaPosiciones(CompetenciaAux param) {
+       
+        compAux=param;
+        c=gestorCD.obtenerCD(compAux.getId());
+        
         initComponents();
+        
+        System.out.print(c.getEstado().getNombre());
+        System.out.print(compAux.getId());
+       
+            // Se recuperan las TablaPosicionesParticipante de la base de datos
+            ArrayList<TablaPosicionesAux> listaTpp = gestorCD.listarTpp(compAux.getId());
+        
+            // Eliminacion de la tabla actual
+            DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+            int filas=jTable1.getRowCount(),i,diferencia;
+           
+            for (i=0;filas>i; i++) {
+                modelo.removeRow(0);
+            }
+            
+            // Se le asignan las tablas recuperadas
+            for(i=0;i < listaTpp.size();i++){
+                
+                TablaPosicionesAux elem=listaTpp.get(i);
+                
+                String fila[]=new String[8];
+                
+                fila[0]=elem.getNombre();
+                fila[1]= String.valueOf(elem.getPuntos());
+                fila[2]= String.valueOf(elem.getPartidosGanados());
+                fila[3]= String.valueOf(elem.getPartidosPerdidos());
+                fila[4]= String.valueOf(elem.getPartidosEmpatados());
+                fila[5]= String.valueOf(elem.getTantoEnContra());
+                fila[6]= String.valueOf(elem.getTantoAFavor());
+                
+                diferencia=  elem.getPuntos()+ elem.getPartidosGanados()+elem.getPartidosPerdidos()-elem.getPartidosEmpatados();
+                fila[7]= String.valueOf(diferencia);
+                
+                modelo.addRow(fila);
+            }
+
+            /*si la modalidad de la competencia es sets o resultado final no muestra la columna Tantos en contra y a favor*/
+            if("Sets".equals(c.getFormaPuntuacion().getNombre())|| "Resultado Final".equals(c.getFormaPuntuacion().getNombre())){
+                  jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+                jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+                
+            }
     }
 
     /**
@@ -32,11 +88,11 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -94,11 +150,9 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton2.setText("EXPORTAR");
 
         jButton3.setText("IMPRIMIR");
-
-        jButton4.setText("ATRAS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -110,6 +164,13 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jLabel2.setText("*");
 
         jLabel4.setText("*");
+
+        jButton4.setText("Atras");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,8 +187,8 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(78, 78, 78)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,13 +227,16 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaSalir();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaVolver();
+
+       V.get().verCompetencia(compAux);
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

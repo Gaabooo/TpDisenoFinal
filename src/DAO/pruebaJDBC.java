@@ -116,7 +116,7 @@ public class pruebaJDBC {
         int id_forma_puntuacion= rs.getInt("id_forma_puntuacion");
         nomb=name;
         
-        unaFormaPuntuacion = new FormaPuntuacion(id_forma_puntuacion, nomb);
+        /*unaFormaPuntuacion = new FormaPuntuacion(id_forma_puntuacion, nomb);*/
                     
     }
     catch(Exception e){
@@ -197,7 +197,7 @@ public class pruebaJDBC {
     public static Disponibilidad crearDisponibilidad(int cantidad,LugarRealizacion lg){
        
     Disponibilidad unaDisponibilidad =null;
-    unaDisponibilidad.setLR(lg);
+    unaDisponibilidad.setLg(lg);
     unaDisponibilidad.setCantidad(cantidad);
     
       return unaDisponibilidad;

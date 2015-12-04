@@ -1,6 +1,7 @@
 
 package DAO;
 
+import gestor.gestorCD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -231,8 +232,13 @@ public class zaraza extends javax.swing.JFrame {
                 listaprueba.get(i).estado.getNombre());
 
         */
-        System.out.println(CompetenciaDaoJDBC.getCompetenciasS(4).getEstado().getNombre());
+        System.out.println(CompetenciaDaoJDBC.getCompetenciasS(4).getFormaPuntuacion().getNombre());
         
+         System.out.println(CompetenciaDaoJDBC.getTablaPosiciones(2).get(2).getPuntos());
+         System.out.println(gestorCD.listarTpp(2).get(2).getPuntos());
+         
+         System.out.println(CompetenciaDaoJDBC.nombreParticipante(1));
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

@@ -1,15 +1,32 @@
+
 package modelo;
 
 import java.util.*;
 
 public class Fixture {
-    ArrayList<Ronda> listaRondas;
+    private int id;
+    ArrayList<Ronda> ronda;
 
-    public Fixture(ArrayList<Ronda> unaListaRondas) {
-        this.listaRondas = unaListaRondas; }
+    public Fixture(int id, ArrayList<Ronda> ronda) {
+        this.id = id;
+        this.ronda = ronda;
+    }
 
-    public ArrayList<Ronda> getListaRondas() {
-        return listaRondas; }
+    public int getId() {
+        return id;
+    }
 
-    public void setRonda(ArrayList<Ronda> unaListaRondas) {
-        this.listaRondas = unaListaRondas; } }
+    public ArrayList<Ronda> getRonda() {
+        return ronda;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRonda(ArrayList<Ronda> ronda) {
+        this.ronda = ronda;
+    }
+    
+    
+}

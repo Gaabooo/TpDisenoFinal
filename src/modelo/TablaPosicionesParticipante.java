@@ -1,11 +1,9 @@
 
 package modelo;
 
-import java.util.ArrayList;
 
 public class TablaPosicionesParticipante {
     
-private int id;
 private int puntos;
 private int partidosGanados;
 private int partidosPerdidos;
@@ -13,9 +11,7 @@ private int partidosEmpatados;
 private int tantoEnContra;
 private int tantoAFavor;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+   
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
@@ -41,9 +37,7 @@ private int tantoAFavor;
         this.tantoAFavor = tantoAFavor;
     }
 
-    public int getId() {
-        return id;
-    }
+    
 
     public int getPuntos() {
         return puntos;
@@ -69,9 +63,9 @@ private int tantoAFavor;
         return tantoAFavor;
     }
 
-    public TablaPosicionesParticipante(int id, int puntos, int partidosGanados, int partidosPerdidos,
+    public TablaPosicionesParticipante( int puntos, int partidosGanados, int partidosPerdidos,
                                        int partidosEmpatados, int tantoEnContra, int tantoAFavor) {
-        this.id = id;
+        
         this.puntos = puntos;
         this.partidosGanados = partidosGanados;
         this.partidosPerdidos = partidosPerdidos;
