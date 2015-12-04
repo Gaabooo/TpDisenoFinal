@@ -5,14 +5,15 @@ import java.sql.Time;
 import java.util.Date;
 
 public class HistorialParticipante {
+    private int id;
     private String nombre;
-    private String correo;
+    private String correo_electronico;
     // private String imagen;
     private Date fecha;
     private Time hora;
 
     public void setCorreo(String correo) {
-        this.correo = correo; }
+        this.correo_electronico = correo; }
 
     public void setNombre(String nombre) {
         this.nombre = nombre; }
@@ -27,7 +28,7 @@ public class HistorialParticipante {
         this.hora = hora; }
 
     public String getCorreo() {
-        return correo; }
+        return correo_electronico; }
 
     public String getNombre() {
         return nombre; }
@@ -51,6 +52,6 @@ public class HistorialParticipante {
 
     public HistorialParticipante(String nombre, String correo, Date fecha, Time hora) {
         this.nombre = nombre;
-        this.correo = correo;
+        this.correo_electronico = correo;
         this.fecha = fecha;
         this.hora = hora; } }

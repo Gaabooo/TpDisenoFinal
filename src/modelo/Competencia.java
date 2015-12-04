@@ -24,7 +24,40 @@ public class Competencia {
     private ArrayList<Participante> listaParticipantes;
     private ArrayList<Disponibilidad> listaDisponibilidades;
     private ArrayList<TablaPosicionesParticipante> listaTablasPosiciones;
+    
+    
+    public int getId() {
+        return id;
+    }
 
+    public int getIDUsuario() {
+        return IDUsuario;
+    }
+
+    public boolean isEmpatePermitido() {
+        return empatePermitido;
+    }
+
+    public ArrayList<TablaPosicionesParticipante> getListaTablasPosiciones() {
+        return listaTablasPosiciones;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setIDUsuario(int IDUsuario) {
+        this.IDUsuario = IDUsuario;
+    }
+
+    public void setListaParticipantes(ArrayList<Participante> listaParticipantes) {
+        this.listaParticipantes = listaParticipantes;
+    }
+
+    public void setListaTablasPosiciones(ArrayList<TablaPosicionesParticipante> listaTablasPosiciones) {
+        this.listaTablasPosiciones = listaTablasPosiciones;
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre; }
 

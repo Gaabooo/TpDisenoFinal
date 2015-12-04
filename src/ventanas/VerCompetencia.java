@@ -6,6 +6,7 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
+import javax.swing.JOptionPane;
 import modelo.CompetenciaAux;
 
 /**
@@ -15,7 +16,7 @@ import modelo.CompetenciaAux;
 public class VerCompetencia extends javax.swing.JPanel {
 
     CompetenciaAux compAux;
-    
+    String cadenaError;
     /**
      * Creates new form VerCompetencia
      * @param param
@@ -271,7 +272,19 @@ public class VerCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        V.get().mostrarTablaPosiciones();
+        
+        cadenaError="";
+        // modalidad liga
+        // disputa o finalizada
+        boolean ml= modalidadLiga();
+        boolean dop= disputaOFinalizada();
+        if(ml || dop){
+            JOptionPane.showMessageDialog(null,cadenaError,
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            V.get().mostrarTablaPosiciones(compAux);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -324,6 +337,21 @@ public class VerCompetencia extends javax.swing.JPanel {
      jLabel8.setText(compAux.getEstado());
      jLabel8.setFont(new java.awt.Font("Tahoma", 0, 30));
     
+    }
+    
+    private boolean modalidadLiga(){
+        if("Liga".equals(compAux.getModalidad())){
+            cadenaError=cadenaError+"La competencia debe ser de modalidad liga.\n";
+            return true;
+        }
+        else return false;
+    }
+    private boolean disputaOFinalizada(){
+        if("EnDisputa".equals(compAux.getEstado()) || "Finalizada".equals(compAux.getEstado())){
+            cadenaError=cadenaError+"La competencia debe estar en disputa o finalizada.";
+            return true;
+        }
+        else return false;
     }
 }
 

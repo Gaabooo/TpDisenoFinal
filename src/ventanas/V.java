@@ -103,9 +103,9 @@ public class V extends javax.swing.JFrame {
         listarCompetenciasSalir();
     }
     
-    public void mostrarTablaPosiciones(){
+    public void mostrarTablaPosiciones(CompetenciaAux compAux){
         verComp.setVisible(false);
-        aux = new MostrarTablaPosiciones();
+        aux = new MostrarTablaPosiciones(compAux);
         aux.setVisible(true);
         add(aux);
         revalidate();

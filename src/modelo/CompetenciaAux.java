@@ -7,14 +7,7 @@ public class CompetenciaAux {
     private String deporte;
     private String modalidad;
     private String nombre;
-    
-    public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, int id){
-        this.estado=estado;
-        this.deporte=deporte;
-        this.modalidad=modalidad;
-        this.nombre=nombre;
-        this.id_competencia=id;
-    }
+    private String formaPuntuacion;
     
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre) {
         this.estado=estado;
@@ -23,6 +16,41 @@ public class CompetenciaAux {
         this.nombre=nombre;
     }
     
+    public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, String formaP, int id) {
+        this(estado,deporte,modalidad,nombre);
+        this.id_competencia=id;
+        this.formaPuntuacion=formaP;
+    }
+    
+    public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, int id){
+        this(estado,deporte,modalidad,nombre);
+        this.id_competencia=id;
+    }
+    
+    public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, String formaP) {
+        this(estado,deporte,modalidad,nombre);
+        this.formaPuntuacion=formaP;
+    }
+    
+    public int getId_competencia() {
+        return id_competencia;
+    }
+
+    public String getFormaPuntuacion() {
+        return formaPuntuacion;
+    }
+
+    public void setId_competencia(int id_competencia) {
+        this.id_competencia = id_competencia;
+    }
+
+    public void setFormaPuntuacion(String formaPuntuacion) {
+        this.formaPuntuacion = formaPuntuacion;
+    }
+    
+    public int getId(){
+        return id_competencia;
+    }
     public String getNombre() {
         return nombre;
     }

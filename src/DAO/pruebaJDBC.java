@@ -194,18 +194,6 @@ public class pruebaJDBC {
     }
     
     
-    public static Disponibilidad crearDisponibilidad(int cantidad,LugarRealizacion lg){
-       
-    Disponibilidad unaDisponibilidad =null;
-    unaDisponibilidad.setLg(lg);
-    unaDisponibilidad.setCantidad(cantidad);
-    
-      return unaDisponibilidad;
-    }
-    
-    
-    
-    
     public static int buscarUsuario(String name){
      
     String _SQL_FK_USUARIO ="SELECT id_usuario FROM usuario WHERE nombre ="+ name ;

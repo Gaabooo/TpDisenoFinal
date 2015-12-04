@@ -9,7 +9,7 @@ public class LugarRealizacion {
     private String nombre;
     private String descripción;
     
-    ArrayList<Deporte> deporte;
+    ArrayList<Deporte> deportes;
 
     public void setId(int id) {
         this.id = id;
@@ -24,7 +24,7 @@ public class LugarRealizacion {
     }
 
     public void addDeporte(Deporte unDeporte) {
-        deporte.add(unDeporte);
+        deportes.add(unDeporte);
     }
 
     public int getId() {
@@ -39,14 +39,17 @@ public class LugarRealizacion {
         return descripción;
     }
 
-    public ArrayList<Deporte> getDeporte() {
-        return deporte;
+    public ArrayList<Deporte> getDeportes() {
+        return deportes;
     }
 
-    public LugarRealizacion(int id, String nombre, String descripción, ArrayList<Deporte> deporte) {
+    public LugarRealizacion(int id, String nombre, String descripcion, ArrayList<Deporte> deportes) {
+        this(id, nombre, descripcion);
+        this.deportes = deportes;
+    }
+    public LugarRealizacion(int id, String nombre, String descripción) {
         this.id = id;
         this.nombre = nombre;
         this.descripción = descripción;
-        this.deporte = deporte;
     }
 }

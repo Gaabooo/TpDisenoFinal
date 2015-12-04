@@ -1,6 +1,7 @@
 package gestor;
 
 import DAO.CompetenciaDaoJDBC;
+import static DAO.CompetenciaDaoJDBC.getTablaPosiciones;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -18,7 +19,15 @@ public class gestorCD {
      */
 
     public static int obtenerIdCD(String nombre){
-            return CompetenciaDaoJDBC.getIdCompetencia(nombre);
+        return CompetenciaDaoJDBC.getIdCompetencia(nombre);
+    }
+    public static ArrayList<TablaPosicionesAux> listarTpp(int id_competencia){
+        return CompetenciaDaoJDBC.getTablaPosiciones(id_competencia);
+    }
+    
+    //ELIMINAR
+    public static Competencia getCompetenciaPorId(int id_CompetenciaDeportiva){
+        return CompetenciaDaoJDBC.getCompetenciaPorId(id_CompetenciaDeportiva);
     }
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
         
@@ -39,7 +48,8 @@ public class gestorCD {
             
             // Se crea una nueva Competencia auxiliar y se la agega a la lista
             CompetenciaAux compAux= new CompetenciaAux(compI.getEstado().getNombre(), 
-                compI.getDeporte().getNombre(), compI.getModalidad().getNombre(), compI.getNombre());
+                compI.getDeporte().getNombre(), compI.getModalidad().getNombre(), compI.getNombre(),
+                compI.getFormaPuntuacion().getNombre(), compI.getId());
             listaAux.add(compAux);
             
             }
@@ -90,10 +100,10 @@ public class gestorCD {
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
-        for (int i=0; i<matrizLugares[0].length; i++) {
-            String unNombreLR = (String)matrizLugares[0][i];
+        for (int i=0; i<matrizLugares.length; i++) {
+            String unNombreLR = (String)matrizLugares[i][0];
             LugarRealizacion unLR = CompetenciaDaoJDBC.buscarLRPorNombre(unNombreLR);
-            Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[1][i]), unLR);
+            Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[i][1]), unLR);
             listaDisponibilidades.add(unaDisponibilidad); }
         
         // CD

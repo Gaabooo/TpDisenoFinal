@@ -19,59 +19,15 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     
     CompetenciaAux compAux;
     
-    Competencia c;
     /**
      * Creates new form MostrarTablaPosiciones
      * @param param
      */
     public MostrarTablaPosiciones(CompetenciaAux param) {
-       
-        compAux=param;
-        c=gestorCD.obtenerCD(compAux.getId());
         
+        compAux=param;
         initComponents();
         
-        System.out.print(c.getEstado().getNombre());
-        System.out.print(compAux.getId());
-       
-            // Se recuperan las TablaPosicionesParticipante de la base de datos
-            ArrayList<TablaPosicionesAux> listaTpp = gestorCD.listarTpp(compAux.getId());
-        
-            // Eliminacion de la tabla actual
-            DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
-            int filas=jTable1.getRowCount(),i,diferencia;
-           
-            for (i=0;filas>i; i++) {
-                modelo.removeRow(0);
-            }
-            
-            // Se le asignan las tablas recuperadas
-            for(i=0;i < listaTpp.size();i++){
-                
-                TablaPosicionesAux elem=listaTpp.get(i);
-                
-                String fila[]=new String[8];
-                
-                fila[0]=elem.getNombre();
-                fila[1]= String.valueOf(elem.getPuntos());
-                fila[2]= String.valueOf(elem.getPartidosGanados());
-                fila[3]= String.valueOf(elem.getPartidosPerdidos());
-                fila[4]= String.valueOf(elem.getPartidosEmpatados());
-                fila[5]= String.valueOf(elem.getTantoEnContra());
-                fila[6]= String.valueOf(elem.getTantoAFavor());
-                
-                diferencia=  elem.getPuntos()+ elem.getPartidosGanados()+elem.getPartidosPerdidos()-elem.getPartidosEmpatados();
-                fila[7]= String.valueOf(diferencia);
-                
-                modelo.addRow(fila);
-            }
-
-            /*si la modalidad de la competencia es sets o resultado final no muestra la columna Tantos en contra y a favor*/
-            if("Sets".equals(c.getFormaPuntuacion().getNombre())|| "Resultado Final".equals(c.getFormaPuntuacion().getNombre())){
-                  jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
-                jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
-                
-            }
     }
 
     /**
@@ -98,31 +54,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nombre", "Puntos", "Partidos Ganados", "Partidos Empatados", "Partidos Perdidos", "Tantos a Favor", "Tantos en Contra", "Diferencia"
@@ -136,6 +68,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        inicializarTabla();
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
@@ -235,11 +168,54 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-       V.get().verCompetencia(compAux);
+        V.get().remove(this);
+        V.get().verCompetenciaVolver();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-
+    
+    
+    private void inicializarTabla(){
+        
+        //System.out.print(compAux.getId());
+        
+        // Se recuperan las TablaPosicionesParticipante de la base de datos
+        ArrayList<TablaPosicionesAux> listaTpp = gestorCD.listarTpp(compAux.getId());
+        
+        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        int diferencia;
+        
+        
+        // Se le asignan las tablas recuperadas
+        for(int i=0; i<listaTpp.size(); i++){
+            
+            TablaPosicionesAux elem=listaTpp.get(i);
+            
+            String fila[]=new String[8];
+            
+            fila[0]=elem.getNombre();
+            fila[1]= String.valueOf(elem.getPuntos());
+            fila[2]= String.valueOf(elem.getPartidosGanados());
+            fila[3]= String.valueOf(elem.getPartidosPerdidos());
+            fila[4]= String.valueOf(elem.getPartidosEmpatados());
+            fila[5]= String.valueOf(elem.getTantoAFavor());
+            fila[6]= String.valueOf(elem.getTantoEnContra());
+            
+            
+            diferencia=  elem.getTantoAFavor()- elem.getTantoEnContra();
+            fila[7]= String.valueOf(diferencia);
+            
+            modelo.addRow(fila);
+        }
+        
+        /* Si la modalidad de la competencia es sets o resultado final
+            no muestra la columna Tantos en contra y a favor */
+        if("Sets".equals(compAux.getFormaPuntuacion())|| "Resultado Final".equals(compAux.getFormaPuntuacion())){
+            jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+            jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+            jTable1.removeColumn(jTable1.getColumnModel().getColumn(5));
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -24,7 +24,7 @@ public class TMparticipante implements TableModel {
     /*CANTIDAD DE COLUMNAS*/
     @Override
     public int getColumnCount() {
-         return 2; /*nombre correo */
+        return 2; /*nombre correo */
     }
 
     /*NOMBRE DE LAS COLUMNA SEGUN EL INDICE*/
