@@ -61,8 +61,8 @@ public class gestorCD {
         vectorNombreDeportes = deportes.toArray(vectorNombreDeportes);
         return vectorNombreDeportes; }
     
-    public static String[] getListaLugares () {
-        ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares();
+    public static String[] getListaLugares (String deporte) {
+        ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares(deporte);
         String[] vectorNombreLugares = new String[lugares.size()];
         vectorNombreLugares = lugares.toArray(vectorNombreLugares);
         return vectorNombreLugares; }

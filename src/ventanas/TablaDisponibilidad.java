@@ -174,25 +174,47 @@ public class TablaDisponibilidad extends JPanel{
     }
 
     public void addFila(String lugar, int cantidad){
-        Vector<String> fila = new Vector<>(2);
-        fila.add(lugar);
-        fila.add(String.valueOf(cantidad));
-        model.addRow(fila);
-        table.revalidate();
+        if(lugarYaIngresado(lugar, cantidad)){
+            
+        }
+        else{
+            Vector<String> fila = new Vector<>(2);
+            fila.add(lugar);
+            fila.add(String.valueOf(cantidad));
+            model.addRow(fila);
+            table.revalidate();
+        }
+    }
+    public boolean lugarYaIngresado(String lugar, int cant){
+        // Recorrer tabla
+        // Si encuentra un lugar igual, lo suma
+        int filas= model.getRowCount();
+        for(int i=0; i<filas; i++) {
+            if(lugar.equals((String)model.getValueAt(i, 0))){
+                int aux=Integer.valueOf((String)model.getValueAt(i, 1))+cant;
+                
+                model.setValueAt(Integer.toString(aux), i, 1);
+                return true;
+            }
+        }
+        return false;
     }
     
     public String[][] getContenido(){
-        String[][] nuevo=new String[0][0];
+        String[][] nuevo;
         
         //model;
-        int cols = model.getColumnCount(); 
+        int cols = model.getColumnCount();
         int fils = model.getRowCount();
         nuevo= new String[fils][cols];
-        for(int i=0; i<fils; i++) { 
+        for(int i=0; i<fils; i++) {
             for(int j=0; j<cols; j++) 
                 nuevo[i][j]=(String)model.getValueAt(i,j); 
         }
         
         return nuevo;
+    }
+    public boolean tieneDisponibilidades(){
+        return(0<model.getRowCount());
     }
 }

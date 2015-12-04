@@ -149,7 +149,7 @@ public class AltaParticipante extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         V.get().remove(this);
-        V.get().listarParticipantes(compAux);
+        V.get().listarParticipantesVolver();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -51,7 +51,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
-        DeporteAsociado = new javax.swing.JComboBox();
+        deporteAsociado = new javax.swing.JComboBox();
         jCheckBox1 = new javax.swing.JCheckBox();
         nombreComp = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -77,6 +77,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner4 = new javax.swing.JSpinner();
         jSpinner5 = new javax.swing.JSpinner();
         jLabel12 = new javax.swing.JLabel();
+        jTextArea2 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -125,9 +126,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jComboBox2.setBounds(500, 170, 190, 20);
 
         String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
-        DeporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
-        add(DeporteAsociado);
-        DeporteAsociado.setBounds(50, 130, 138, 20);
+        deporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
+        deporteAsociado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                deporteAsociadoItemStateChanged(evt);
+            }
+        });
+        add(deporteAsociado);
+        deporteAsociado.setBounds(50, 130, 138, 20);
 
         jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -173,7 +179,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(305, 508, 231, 23);
 
-        String[] cadena3l = gestor.gestorCD.getListaLugares();
+        String[] cadena3l = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
         add(jComboBox3);
@@ -215,7 +221,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabel8.setVisible(false);
 
         jLabel9.setText("Puntos por partidos ganados:");
-        jLabel9.setOpaque(true);
         add(jLabel9);
         jLabel9.setBounds(500, 240, 160, 14);
         jLabel9.setVisible(true);
@@ -312,6 +317,21 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabel12);
         jLabel12.setBounds(280, 100, 140, 20);
 
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new Color(255,0,0,100));
+        jTextArea2.setColumns(10);
+        jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(225, 0, 0));
+        jTextArea2.setText("* Debe asignar una\n   disponibilidad");
+        jTextArea2.setToolTipText("");
+        jTextArea2.setAutoscrolls(false);
+        jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextArea2.setFocusable(false);
+        jTextArea2.setOpaque(false);
+        jTextArea2.setVisible(false);
+        add(jTextArea2);
+        jTextArea2.setBounds(358, 240, 110, 50);
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
@@ -325,19 +345,19 @@ public class AltaCompetencia extends javax.swing.JPanel {
         // Verificar todos los campos
         
         // Verificar Nombre de la competencia
-        if(verificarNombreCompetencia()){
-            jLabel12.setVisible(true);
-            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
+        boolean nomb, disp;
+        nomb = verificarNombreCompetencia();
+        disp = verificarDisponibilidades();
+        if(nomb || disp){
             Thread thread = new Thread(alerta);
             thread.start();
         }
         else{
-            //Llamada al Gestor
+            // Se extraen todos los datos para pasar al gestor
             String nombreCompetencia = nombreComp.getText().toString();
             String reglamento = jTextArea1.getText().toString();
-            String deporte = DeporteAsociado.getSelectedItem().toString();
+            String deporte = deporteAsociado.getSelectedItem().toString();
             String modalidad = jComboBox2.getSelectedItem().toString();
-            // TODO: falta ver lo de levantar los datos de la tabla y ponerlos en matrizlugares
             String matriz[][] = tablaDisponibilidades();
             String puntuacion = jComboBox1.getSelectedItem().toString();
             int j2 = (int) jSpinner2.getValue();
@@ -390,6 +410,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         int a= (int)jSpinner1.getValue();
         if (a>0 ){
             agregarATabla((String)jComboBox3.getSelectedItem(),a);
+            jTextArea2.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -433,12 +454,17 @@ public class AltaCompetencia extends javax.swing.JPanel {
         else modalidadEliminatoria();
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
+    private void deporteAsociadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_deporteAsociadoItemStateChanged
+        String[] cadena = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena));
+    }//GEN-LAST:event_deporteAsociadoItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACEPTAR;
     private javax.swing.JButton ATRAS;
-    private javax.swing.JComboBox DeporteAsociado;
     private javax.swing.JButton MENU;
+    private javax.swing.JComboBox deporteAsociado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
@@ -466,6 +492,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField nombreComp;
     // End of variables declaration//GEN-END:variables
     
@@ -553,24 +580,38 @@ public class AltaCompetencia extends javax.swing.JPanel {
         if(aux.length() == 0 ){
             // El usuario no ingreso nombre de Competencia.
             jLabel12.setText("* Ingrese un nombre");
+            jLabel12.setVisible(true);
+            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
         else if (gestor.gestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
             jLabel12.setText("* Nombre ya existente");
+            jLabel12.setVisible(true);
+            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
-        else return false;
+        else {
+            jLabel12.setVisible(false);
+            return false;
+        }
+    }
+    
+    private boolean verificarDisponibilidades(){
+        if(tablaDisp.tieneDisponibilidades()){
+            jTextArea2.setVisible(false);
+            return false;
+        }
+        else{
+            jTextArea2.setVisible(true);
+            return true;
+        }
     }
     
     private String[][] tablaDisponibilidades(){
         //Sacar de la tabla las dipsonibilidades establecidas
         String[][] nuevo;
         nuevo=tablaDisp.getContenido();
-        
-        /*--FUNCIONA--
-        System.out.println(nuevo.length);
-        System.out.println(nuevo[0].length);*/
         
         return nuevo;
     }

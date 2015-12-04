@@ -28,7 +28,7 @@ public class QueMasTeGuste {
     }
     
         public static String[] getListaLugares () {
-        ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares();
+        ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares("");
         
         String[] vectorNombreLugares = new String[lugares.size()];
         vectorNombreLugares = lugares.toArray(vectorNombreLugares);

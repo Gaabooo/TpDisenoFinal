@@ -400,8 +400,11 @@ public class CompetenciaDaoJDBC {
         return deportes; 
     }
     
-    public static ArrayList<String> getListaLugares() {
-        String _SQL_FIND_NOMBRES_LUGARES = "SELECT nombre FROM lugar";   
+    public static ArrayList<String> getListaLugares(String deporte) {
+        String _SQL_FIND_NOMBRES_LUGARES = "SELECT l.nombre FROM lugar l "+
+                                           "JOIN lugar_realiza_deporte ld ON ld.id_lugar = l.id_lugar "+
+                                           "JOIN deporte d ON ld.id_deporte = d.id_deporte "+
+                                           "WHERE d.nombre= '"+deporte+"'";
         Connection conn = null;
         ArrayList<String> lugares = new ArrayList();
         try {
