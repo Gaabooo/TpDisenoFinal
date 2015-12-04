@@ -65,7 +65,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jLabel2.setText("Nombre de la Competencia");
 
-        String[] listaNombresDeportes = gestor.QueMasTeGuste.getListaDeportes();
+        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
         String[] listaND= new String[listaNombresDeportes.length+1];
         listaND[0]="";
         for(int j=0; j<listaNombresDeportes.length; j++){
@@ -190,7 +190,8 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
-        V.get().menu();
+        V.get().remove(this);
+        V.get().menuVolver();
     }//GEN-LAST:event_SALIRActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -249,6 +250,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.setVisible(false);
         V.get().altaCompetencia();
     }//GEN-LAST:event_jButton3ActionPerformed
 

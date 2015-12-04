@@ -36,10 +36,6 @@ public class CompetenciaAux {
         return deporte;
     }
 
-    public int getId(){ 
-       return id_competencia; 
-    }
-   
     public void setEstado(String estado) {
         this.estado = estado;
     }
@@ -54,9 +50,6 @@ public class CompetenciaAux {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    public void setId(int id_competencia) {
-        this.id_competencia =id_competencia;
     }
     
 }

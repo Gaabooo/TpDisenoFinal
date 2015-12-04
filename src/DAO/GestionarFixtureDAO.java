@@ -138,9 +138,9 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unIDLR; }
     
-    /*public static void persistirPartido(Partido unPartido, int IDRonda) {*/
-        /*Connection conn = null;*/
-       /* try {
+    public static void persistirPartido(Partido unPartido, int IDRonda) {
+        Connection conn = null;
+        try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             // Busqueda de IDs necesarias
@@ -480,7 +480,7 @@ public class GestionarFixtureDAO {
                 IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
                 IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
                 unNombre = rs.getString("nombre"); unReglamento = rs.getString("reglamento");
-                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); 
+                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); /**/
                 ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
                 permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); }
             /* while(rs.next()) {
@@ -492,7 +492,7 @@ public class GestionarFixtureDAO {
                 ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
                 permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); } */
             // Busqueda de: Deporte, Modalidad, Estado, FormaPuntuacion
-           /* unDeporte = getDeporte(IDDeporte);
+            unDeporte = getDeporte(IDDeporte);
             unaModalidad = getModalidad(IDModalidad);
             unEstado = getEstado(IDEstado);
             unaFormaPuntuacion = getFormaPuntuacion(IDFormaPuntuacion);
@@ -509,4 +509,4 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return retorno; }*/ }
+        return retorno; } }

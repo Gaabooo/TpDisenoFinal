@@ -10,8 +10,6 @@ public class gestorCD {
 
     /**
      *
-     * @param id_competencia
-     * @param id_CompetenciaDeportiva
      * @param nombre
      * @param deporte
      * @param modalidad
@@ -19,14 +17,6 @@ public class gestorCD {
      * @return 
      */
 
-    public static ArrayList<TablaPosicionesAux> listarTpp(int id_competencia){
-        return CompetenciaDaoJDBC.getTablaPosiciones(id_competencia);
-    }
-    
-    public static Competencia obtenerCD(int id_CompetenciaDeportiva){
-        return CompetenciaDaoJDBC.getCompetenciasS(id_CompetenciaDeportiva);
-    }
-    
     public static int obtenerIdCD(String nombre){
             return CompetenciaDaoJDBC.getIdCompetencia(nombre);
     }
@@ -57,6 +47,10 @@ public class gestorCD {
         return listaAux;
     }    
 
+    public static ArrayList<Participante> listarParticipantes (String nombreCD) {
+        int idCD = obtenerIdCD(nombreCD);
+        return CompetenciaDaoJDBC.getParticipantes(idCD); }    
+    
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
         return nombreUsado; }    
@@ -89,10 +83,10 @@ public class gestorCD {
         String matrizLugares[][], String nombreFormaPuntuacion, int tantosPorAusenciaDeRival, int cantMaximaDeSets,
         int puntosPorVictoria, int puntosPorPresentacion, boolean empatePermitido, int puntosPorEmpate) {
         
-        Estado unEstado = CompetenciaDaoJDBC.getEstado("Creada");
-        Modalidad unaModalidad = CompetenciaDaoJDBC.getModalidad(nombreModalidad);
-        FormaPuntuacion unaFormaPuntuacion = CompetenciaDaoJDBC.getFormaPuntuacion(nombreFormaPuntuacion);
-        Deporte unDeporte = CompetenciaDaoJDBC.getDeporte(nombreDeporte);
+        Estado unEstado = CompetenciaDaoJDBC.getEstadoPorNombre("Creada");
+        Modalidad unaModalidad = CompetenciaDaoJDBC.getModalidadPorNombre(nombreModalidad);
+        FormaPuntuacion unaFormaPuntuacion = CompetenciaDaoJDBC.getFormaPuntuacionPorNombre(nombreFormaPuntuacion);
+        Deporte unDeporte = CompetenciaDaoJDBC.getDeportePorNombre(nombreDeporte);
         
         // Disponibilidades
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();

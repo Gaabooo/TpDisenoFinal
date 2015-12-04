@@ -22,7 +22,7 @@ import modelo.CompetenciaAux;
 public class V extends javax.swing.JFrame {
    
     // Forma de SINGLETON
-    private static V SELF = new V();
+    private static final V SELF = new V();
     //private V() {}
     public static V get(){
         return SELF;
@@ -35,7 +35,12 @@ public class V extends javax.swing.JFrame {
         initComponents();
     }
     
+    private JPanel menu;
+    private JPanel listarCD;
+    private JPanel verComp;
     private JPanel aux;
+    private JPanel aux2;
+    private JPanel aux3;
     
     public void limpiar(){
         //SELF.removeAll(); NOOOO, elimina nose que masss
@@ -43,64 +48,100 @@ public class V extends javax.swing.JFrame {
     }
     
     public void menu(){
-        limpiar();
-        aux = new Menu();
-        add(aux);
+        menu = new Menu();
+        add(menu);
         revalidate();
         repaint();
     }
-    public void mostrarFixture(){
-        limpiar();
-        aux = new MostrarFixture();
-        add(aux);
-        revalidate();
-        repaint();
-    }
-        public void mostrarTablaPosiciones(CompetenciaAux compAux){
-        limpiar();
-        aux = new MostrarTablaPosiciones(compAux);
-        add(aux);
+    public void menuVolver(){
+        menu.setVisible(true);
         revalidate();
         repaint();
     }
     
-        public void altaParticipante(){
-        limpiar();
-        aux = new AltaParticipante();
-        add(aux);
+    public void listarCompetencias(){
+        menu.setVisible(false);
+        listarCD=new ListarCompetencias();
+        add(listarCD);
+        listarCD.setVisible(true);
         revalidate();
         repaint();
     }
-    
-    public void verCompetencia(CompetenciaAux compAux){
-        limpiar();
-        aux = new VerCompetencia(compAux);
-        add(aux);
-        revalidate();
-        repaint();
+    public void listarCompetenciasSalir(){
+        remove(listarCD);
+        menuVolver();
     }
-    
-    public void listarParticipantes(){
-        limpiar();
-        aux = new ListarParticipantes();
-        add(aux);
-        revalidate();
-        repaint();
-    }
-    public void listarCD(){
-        limpiar();
-        aux=new ListarCompetencias();
-        add(aux);
+    public void listarCompetenciasVolver(){
+        listarCD.setVisible(true);
         revalidate();
         repaint();
     }
     
     public void altaCompetencia(){
-        limpiar();
-        aux = new AltaCompetencia();
+        aux=new AltaCompetencia();
+        aux.setVisible(true);
         add(aux);
         revalidate();
         repaint();
+    }
+    
+    
+    public void verCompetencia(CompetenciaAux compAux){
+        listarCD.setVisible(false);
+        verComp = new VerCompetencia(compAux);
+        add(verComp);
+        revalidate();
+        repaint();
+    }
+    public void verCompetenciaVolver(){
+        verComp.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    public void verCompetenciaSalir(){
+        remove(verComp);
+        listarCompetenciasSalir();
+    }
+    
+    public void mostrarTablaPosiciones(){
+        verComp.setVisible(false);
+        aux = new MostrarTablaPosiciones();
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    public void mostrarFixture(){
+        verComp.setVisible(false);
+        aux = new MostrarFixture();
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    public void generarFixture(){
+        
+    }
+            
+    public void altaParticipante(CompetenciaAux var){
+        aux.setVisible(false);
+        aux2 = new AltaParticipante(var);
+        add(aux2);
+        revalidate();
+        repaint();
+    }
+    
+    public void listarParticipantes(CompetenciaAux compAux){
+        verComp.setVisible(false);
+        aux = new ListarParticipantes(compAux);
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    public void listarParticipantesSalir(){
+        remove(aux);
+        verCompetenciaSalir();
     }
     
     public void salir(){
@@ -138,6 +179,11 @@ public class V extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 630));
         setResizable(false);
         setLocationRelativeTo(null);
+        
+        
+        menu=new Menu();
+        menu.setVisible(false);
+        add(menu);
         
         aux=new Bienvenido();
         aux.setVisible(true);

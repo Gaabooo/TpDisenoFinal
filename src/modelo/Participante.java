@@ -4,62 +4,48 @@ package modelo;
  import java.util.*;
 
 public class Participante {
-    
-    private int id;
-    private String correo;
     private String nombre;
-    private String imagen;
+    private String correo_electronico;
+    // private String imagen;
+    private ArrayList<HistorialParticipante> historial;
 
-    /*public Participante(int id, String correo, String nombre, String imagen, ArrayList<HistorialParticipante> HistP) {
-        this.id = id;
-        this.correo = correo;
+    public Participante(String nombre, String correo_electronico/*,String imagen, ArrayList<HistorialParticipante> HistP*/) {
+        this.correo_electronico = correo_electronico;
         this.nombre = nombre;
-        this.imagen = imagen;
-        this.HistP = HistP;
-    }*/
-
-    public void setId(int id) {
-        this.id = id;
+        /*this.imagen = imagen;
+        this.HistP = HistP;*/
     }
+
+    // Constructor auxiliar, NO ES FINAL
+    public Participante(String nombre, String correo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> historial) {
+        this.nombre = nombre;
+        this.correo_electronico = correo;
+        this.historial = historial; }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+        this.correo_electronico = correo; }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        this.nombre = nombre; }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
+    /* public void setImagen(String imagen) {
+        this.imagen = imagen; } */
 
     public void setHistP(ArrayList<HistorialParticipante> HistP) {
-        this.HistP = HistP;
-    }
+        this.HistP = HistP; }
  
     ArrayList<HistorialParticipante> HistP;
 
-    public int getId() {
-        return id;
-    }
-
     public String getCorreo() {
-        return correo;
-    }
+        return correo_electronico; }
 
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
-    public String getImagen() {
+    /* public String getImagen() {
         return imagen;
-    }
+    } */
 
     public ArrayList<HistorialParticipante> getHistP() {
         return HistP;
-    }
-
-   
-   
-}
+    } }
