@@ -263,7 +263,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(MENU);
         MENU.setBounds(69, 508, 90, 23);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 70, 20);
@@ -330,7 +330,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextArea2.setOpaque(false);
         jTextArea2.setVisible(false);
         add(jTextArea2);
-        jTextArea2.setBounds(358, 240, 110, 50);
+        jTextArea2.setBounds(358, 240, 110, 34);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel6);
