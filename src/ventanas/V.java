@@ -85,6 +85,13 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
+    /*    public void integrantes(){
+        aux=new Integrantes();
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }*/
     
     public void verCompetencia(CompetenciaAux compAux){
         listarCD.setVisible(false);
