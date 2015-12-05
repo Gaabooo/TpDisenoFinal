@@ -159,7 +159,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
 
         jLabel2.setText("CompetenciaDSeleccionada");
         add(jLabel2);
-        jLabel2.setBounds(240, 110, 131, 30);
+        jLabel2.setBounds(240, 100, 131, 30);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
