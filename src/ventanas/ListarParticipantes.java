@@ -45,6 +45,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -153,6 +154,12 @@ public class ListarParticipantes extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(236, 104, 131, 30);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Listar Participantes");
+        add(jLabel4);
+        jLabel4.setBounds(0, 0, 800, 60);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(0, 0, 800, 600);
@@ -190,6 +197,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

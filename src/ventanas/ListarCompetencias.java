@@ -40,6 +40,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -190,6 +191,12 @@ public class ListarCompetencias extends javax.swing.JPanel {
         add(jButton4);
         jButton4.setBounds(630, 510, 140, 23);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Listar Competencias Deportivas");
+        add(jLabel7);
+        jLabel7.setBounds(0, 0, 800, 60);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
@@ -310,6 +317,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

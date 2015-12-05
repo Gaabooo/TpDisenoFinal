@@ -207,9 +207,11 @@ public class AltaCompetencia extends javax.swing.JPanel {
         ATRAS.setBounds(170, 508, 90, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Dar de Alta Competencia Deportiva");
+        jLabel1.setToolTipText("");
         add(jLabel1);
-        jLabel1.setBounds(220, 10, 350, 50);
+        jLabel1.setBounds(0, 0, 800, 60);
 
         jLabel5.setText("Reglamento (opcional):");
         add(jLabel5);
