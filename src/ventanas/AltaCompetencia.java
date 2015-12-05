@@ -80,6 +80,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
@@ -94,14 +95,16 @@ public class AltaCompetencia extends javax.swing.JPanel {
         revalidate();
         repaint();
 
+        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel7.setText("Puntos por presentarse:");
         add(jLabel7);
-        jLabel7.setBounds(500, 270, 160, 14);
+        jLabel7.setBounds(500, 270, 160, 20);
         jLabel7.setVisible(true);
 
-        jLabel2.setText("NOMBRE DE COMPETENCIA");
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel2.setText("NOMBRE DE COMPETENCIA:");
         add(jLabel2);
-        jLabel2.setBounds(40, 80, 180, 14);
+        jLabel2.setBounds(40, 70, 180, 22);
 
         // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
         String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();
@@ -162,39 +165,44 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         });
 
+        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("Lugar:");
         add(jLabel3);
-        jLabel3.setBounds(50, 160, 50, 14);
+        jLabel3.setBounds(50, 150, 50, 30);
 
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("Cant:");
         add(jLabel4);
-        jLabel4.setBounds(200, 160, 30, 14);
+        jLabel4.setBounds(200, 160, 30, 22);
 
-        jButton1.setText("LISTAR PARTICPANTE DE COMPETENCIA");
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton1.setText("Listar Participante de Competencia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         add(jButton1);
-        jButton1.setBounds(305, 508, 231, 23);
+        jButton1.setBounds(274, 508, 209, 31);
 
         String[] cadena3l = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
         add(jComboBox3);
-        jComboBox3.setBounds(52, 180, 140, 20);
+        jComboBox3.setBounds(52, 180, 140, 30);
 
-        ACEPTAR.setText("DAR DE ALTA");
+        ACEPTAR.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ACEPTAR.setText("Dar de Alta Competencia Deportiva");
         ACEPTAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ACEPTARActionPerformed(evt);
             }
         });
         add(ACEPTAR);
-        ACEPTAR.setBounds(554, 508, 114, 23);
+        ACEPTAR.setBounds(505, 508, 220, 31);
 
-        ATRAS.setText("ATRAS");
+        ATRAS.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ATRAS.setText("Atras");
         ATRAS.setMaximumSize(new java.awt.Dimension(73, 23));
         ATRAS.setMinimumSize(new java.awt.Dimension(73, 23));
         ATRAS.setPreferredSize(new java.awt.Dimension(73, 23));
@@ -204,37 +212,43 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(ATRAS);
-        ATRAS.setBounds(170, 508, 90, 23);
+        ATRAS.setBounds(170, 508, 90, 30);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Dar de Alta Competencia Deportiva");
         jLabel1.setToolTipText("");
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 60);
 
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel5.setText("Reglamento (opcional):");
         add(jLabel5);
-        jLabel5.setBounds(370, 350, 150, 14);
+        jLabel5.setBounds(370, 350, 150, 22);
 
+        jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel8.setText("Puntos por empate:");
         add(jLabel8);
-        jLabel8.setBounds(500, 330, 150, 14);
+        jLabel8.setBounds(500, 330, 150, 22);
         jLabel8.setVisible(false);
 
+        jLabel9.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel9.setText("Puntos por partidos ganados:");
         add(jLabel9);
-        jLabel9.setBounds(500, 240, 160, 14);
+        jLabel9.setBounds(500, 238, 160, 22);
         jLabel9.setVisible(true);
 
+        jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel10.setText("Permite empate?");
         add(jLabel10);
-        jLabel10.setBounds(500, 300, 130, 14);
+        jLabel10.setBounds(500, 300, 130, 22);
         jLabel10.setVisible(true);
 
+        jLabel11.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel11.setText("Cantidad de sets:");
         add(jLabel11);
-        jLabel11.setBounds(500, 210, 160, 14);
+        jLabel11.setBounds(500, 210, 160, 22);
         jLabel11.setVisible(true);
 
         jTextArea1.setColumns(20);
@@ -244,6 +258,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jScrollPane2);
         jScrollPane2.setBounds(370, 370, 340, 114);
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Agregar");
         jButton3.setToolTipText("Agregar disponibilidad");
         jButton3.setMaximumSize(new java.awt.Dimension(64, 20));
@@ -254,21 +269,22 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(280, 180, 70, 23);
+        jButton3.setBounds(260, 180, 80, 31);
 
-        MENU.setText("MENU P.");
+        MENU.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        MENU.setText("Menu P.");
         MENU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MENUActionPerformed(evt);
             }
         });
         add(MENU);
-        MENU.setBounds(69, 508, 90, 23);
+        MENU.setBounds(69, 508, 90, 31);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
-        jSpinner1.setBounds(200, 180, 70, 20);
+        jSpinner1.setBounds(200, 180, 50, 30);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
         jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));

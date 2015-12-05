@@ -52,6 +52,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Agregar Participante");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,8 +60,9 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(568, 510, 157, 23);
+        jButton1.setBounds(568, 510, 157, 31);
 
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Modificar Participante");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,8 +70,9 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(333, 510, 157, 23);
+        jButton2.setBounds(333, 510, 157, 31);
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Eliminar Participante");
         jButton3.setMaximumSize(new java.awt.Dimension(150, 23));
         jButton3.setMinimumSize(new java.awt.Dimension(150, 23));
@@ -128,6 +131,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(100, 140, 623, 355);
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Atras");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,26 +139,29 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(185, 536, 80, 23);
+        jButton4.setBounds(185, 536, 80, 31);
 
-        jButton5.setText("MENU P.");
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton5.setText("Menu P.");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         add(jButton5);
-        jButton5.setBounds(99, 536, 80, 23);
+        jButton5.setBounds(99, 536, 80, 31);
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Competencia Seleccionada:");
         add(jLabel1);
-        jLabel1.setBounds(99, 110, 131, 14);
+        jLabel1.setBounds(99, 110, 137, 22);
 
         jLabel2.setText("CompetenciaDSeleccionada");
         add(jLabel2);
-        jLabel2.setBounds(236, 104, 131, 30);
+        jLabel2.setBounds(240, 110, 131, 30);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Listar Participantes");
         add(jLabel4);
@@ -206,7 +213,7 @@ private void verNombre(){
     
      jLabel2.setVisible(true);
      jLabel2.setText(compAux.getNombre());
-     jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); 
+     jLabel2.setFont(new java.awt.Font("Agency FB", 0, 30)); 
     }
 private void llenarTabla(){
     // Llamar a la funcion para rellenar la tabla (devuelve matriz)

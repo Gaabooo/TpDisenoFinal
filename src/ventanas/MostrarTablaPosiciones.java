@@ -73,23 +73,26 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("MENU P.");
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton1.setText("Menu P.");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("EXPORTAR");
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton2.setText("Exportar");
 
-        jButton3.setText("IMPRIMIR");
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton3.setText("Imprimir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tabla de Posiciones:");
 
@@ -99,6 +102,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jLabel4.setText("*");
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Atras");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +156,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

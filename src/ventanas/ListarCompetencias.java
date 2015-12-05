@@ -47,6 +47,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
+        SALIR.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         SALIR.setText("Atras");
         SALIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,17 +55,19 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(SALIR);
-        SALIR.setBounds(260, 510, 90, 23);
+        SALIR.setBounds(260, 510, 90, 31);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros de búsqueda"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtros de búsqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 0, 18))); // NOI18N
 
-        jButton1.setText("BUSCAR");
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Nombre de la Competencia");
 
         String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
@@ -79,12 +82,16 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
 
+        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel6.setText("Modalidad");
 
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("Estado");
 
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel5.setText("Deporte");
 
+        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("(contiene)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -129,7 +136,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(41, 41, 41))
         );
@@ -146,7 +153,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         });
 
         add(jPanel2);
-        jPanel2.setBounds(28, 77, 197, 418);
+        jPanel2.setBounds(28, 77, 197, 434);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -173,6 +180,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(261, 85, 504, 410);
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Crear Competencia");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +188,9 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(460, 510, 150, 23);
+        jButton3.setBounds(460, 510, 150, 31);
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Ver Competencia");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,9 +198,10 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(630, 510, 140, 23);
+        jButton4.setBounds(630, 510, 140, 31);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Listar Competencias Deportivas");
         add(jLabel7);

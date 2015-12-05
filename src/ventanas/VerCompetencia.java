@@ -96,13 +96,15 @@ public class VerCompetencia extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("MENU PRINCIPAL");
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton1.setText("Menu Principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Mostrar Fixture");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +112,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Mostrar Tablas de Posiciones");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +120,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Listar Participantes");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,10 +128,13 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Modificar Competencia");
 
+        jButton6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton6.setText("Dar De Baja Competencia");
 
+        jButton7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton7.setText("Generar Fixture");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,15 +142,19 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Deporte:");
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Modalidad:");
 
+        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("Estado:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel4.setText("COMPETENCIA DEPORTIVA:");
 
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jLabel5.setText("Nombre Competencia");
 
         jLabel6.setText("jLabel6");
@@ -152,6 +163,7 @@ public class VerCompetencia extends javax.swing.JPanel {
 
         jLabel8.setText("jLabel8");
 
+        jButton8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton8.setText("Atras");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +176,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel9.setMaximumSize(new java.awt.Dimension(636, 250));
         jLabel9.setMinimumSize(new java.awt.Dimension(636, 250));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Ver Competencia Deportiva");
         jLabel10.setToolTipText("");
@@ -173,19 +185,9 @@ public class VerCompetencia extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(282, 282, 282))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(73, 73, 73)
@@ -214,17 +216,27 @@ public class VerCompetencia extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel8))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,13 +270,13 @@ public class VerCompetencia extends javax.swing.JPanel {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -334,19 +346,19 @@ public class VerCompetencia extends javax.swing.JPanel {
     
      jLabel5.setVisible(true);
      jLabel5.setText(compAux.getNombre());
-     jLabel5.setFont(new java.awt.Font("Tahoma", 0, 30)); 
+     jLabel5.setFont(new java.awt.Font("Agency FB", 0, 30)); 
      
      jLabel6.setVisible(true);
      jLabel6.setText(compAux.getDeporte());
-     jLabel6.setFont(new java.awt.Font("Tahoma", 0, 30)); 
+     jLabel6.setFont(new java.awt.Font("Agency FB", 0, 30)); 
      
      jLabel7.setVisible(true);
      jLabel7.setText(compAux.getModalidad());
-     jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30));
+     jLabel7.setFont(new java.awt.Font("Agency FB", 0, 30));
      
      jLabel8.setVisible(true);
      jLabel8.setText(compAux.getEstado());
-     jLabel8.setFont(new java.awt.Font("Tahoma", 0, 30));
+     jLabel8.setFont(new java.awt.Font("Agency FB", 0, 30));
     
     }
     

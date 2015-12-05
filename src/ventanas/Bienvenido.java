@@ -34,7 +34,8 @@ public class Bienvenido extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
-        jButton1.setText("ACEPTAR");
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jButton1.setText("Comenzar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

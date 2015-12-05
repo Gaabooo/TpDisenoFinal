@@ -50,15 +50,17 @@ public class Menu extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(368, 249, 76, 17);
 
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Dar de Baja Usuario");
         add(jButton2);
-        jButton2.setBounds(300, 318, 200, 23);
+        jButton2.setBounds(300, 318, 200, 31);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Sistema");
         add(jLabel4);
         jLabel4.setBounds(368, 367, 70, 17);
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Listar Lugares de Realizacion");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,8 +68,9 @@ public class Menu extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(300, 395, 200, 23);
+        jButton3.setBounds(300, 395, 200, 31);
 
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Listar Competencia Deportivas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,8 +78,9 @@ public class Menu extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(300, 436, 200, 23);
+        jButton4.setBounds(300, 436, 200, 31);
 
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Modificar Datos de Usuario");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +88,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
         add(jButton5);
-        jButton5.setBounds(300, 277, 200, 23);
+        jButton5.setBounds(300, 277, 200, 31);
 
         jLabel1.setText("*");
         add(jLabel1);
@@ -102,6 +106,7 @@ public class Menu extends javax.swing.JPanel {
         add(jLabel7);
         jLabel7.setBounds(500, 570, 130, 14);
 
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

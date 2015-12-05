@@ -39,6 +39,8 @@ public class AltaParticipante extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
         jTextField1.setText("Inserte su Correo.");
@@ -49,14 +51,17 @@ public class AltaParticipante extends javax.swing.JPanel {
         add(jTextField2);
         jTextField2.setBounds(475, 236, 200, 20);
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Correo Electrónico:");
         add(jLabel1);
-        jLabel1.setBounds(373, 201, 92, 14);
+        jLabel1.setBounds(355, 201, 110, 22);
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Nombre y Apellido:");
         add(jLabel2);
-        jLabel2.setBounds(375, 239, 90, 14);
+        jLabel2.setBounds(355, 231, 110, 30);
 
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,8 +69,9 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(604, 274, 71, 23);
+        jButton1.setBounds(585, 274, 90, 31);
 
+        jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,8 +79,9 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(137, 530, 59, 23);
+        jButton2.setBounds(136, 530, 70, 31);
 
+        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Adjuntar Imagen");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,22 +89,24 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(41, 427, 171, 23);
+        jButton3.setBounds(41, 427, 171, 31);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(41, 119, 290, 290);
 
-        jButton4.setText("MENU P.");
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton4.setText("Menu P.");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         add(jButton4);
-        jButton4.setBounds(41, 530, 86, 23);
+        jButton4.setBounds(41, 530, 86, 31);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Alta de Participante");
         add(jLabel5);

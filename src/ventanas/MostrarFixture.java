@@ -79,20 +79,22 @@ public class MostrarFixture extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("COMPETENCIA DEPORTIVA:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Fixture:");
 
-        jButton4.setText("MENU P.");
+        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton4.setText("Menu P.");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Gestionar Resultado");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +102,7 @@ public class MostrarFixture extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Atras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +151,7 @@ public class MostrarFixture extends javax.swing.JPanel {
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton1))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
