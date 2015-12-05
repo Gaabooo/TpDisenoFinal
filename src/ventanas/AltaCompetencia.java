@@ -78,6 +78,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner5 = new javax.swing.JSpinner();
         jLabel12 = new javax.swing.JLabel();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -358,6 +359,25 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jTextArea2);
         jTextArea2.setBounds(358, 240, 110, 34);
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton6MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton6MouseReleased(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        add(jButton6);
+        jButton6.setBounds(663, 543, 130, 50);
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 800, 600);
@@ -485,6 +505,18 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena));
     }//GEN-LAST:event_deporteAsociadoItemStateChanged
 
+    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
+    }//GEN-LAST:event_jButton6MousePressed
+
+    private void jButton6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseReleased
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png")));
+    }//GEN-LAST:event_jButton6MouseReleased
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACEPTAR;
@@ -493,6 +525,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private javax.swing.JComboBox deporteAsociado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
