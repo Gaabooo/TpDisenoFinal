@@ -137,7 +137,7 @@ public class Menu extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(663, 543, 130, 50);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_desearealizar.jpg"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_menu.jpg"))); // NOI18N
         add(jLabel9);
         jLabel9.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
