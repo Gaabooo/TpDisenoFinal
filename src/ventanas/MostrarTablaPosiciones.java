@@ -52,6 +52,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

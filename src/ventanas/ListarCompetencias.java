@@ -76,10 +76,13 @@ public class ListarCompetencias extends javax.swing.JPanel {
         for(int j=0; j<listaNombresDeportes.length; j++){
             listaND[j+1]=listaNombresDeportes[j];
         }
+        jComboBox2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(listaND));
 
+        jComboBox1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
 
+        jComboBox3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
@@ -90,6 +93,8 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel5.setText("Deporte");
+
+        jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("(contiene)");
@@ -136,7 +141,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(41, 41, 41))
         );
@@ -153,9 +158,10 @@ public class ListarCompetencias extends javax.swing.JPanel {
         });
 
         add(jPanel2);
-        jPanel2.setBounds(28, 77, 197, 434);
+        jPanel2.setBounds(28, 77, 197, 471);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

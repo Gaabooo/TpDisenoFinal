@@ -118,6 +118,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="deporteAsociado">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="18" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new javax.swing.DefaultComboBoxModel(listaNombresDeportes)" type="code"/>
         </Property>
@@ -149,6 +152,11 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="nombreComp">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="18" style="0"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nombreCompFocusGained"/>
       </Events>
@@ -205,6 +213,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="18" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new javax.swing.DefaultComboBoxModel(cadena3l)" type="code"/>
         </Property>
@@ -418,6 +429,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="18" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
@@ -433,6 +447,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="1" maximum="9" minimum="1" numberType="java.lang.Integer" stepSize="2" type="number"/>
         </Property>
@@ -472,6 +489,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="3" maximum="999" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
@@ -490,6 +510,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" maximum="998" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
@@ -508,6 +531,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner5">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="1" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>

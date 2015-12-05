@@ -43,13 +43,15 @@ public class AltaParticipante extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
+        jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jTextField1.setText("Inserte su Correo.");
         add(jTextField1);
-        jTextField1.setBounds(475, 198, 200, 20);
+        jTextField1.setBounds(475, 198, 200, 28);
 
+        jTextField2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jTextField2.setText("Inserte su Nombre y Apellido.");
         add(jTextField2);
-        jTextField2.setBounds(475, 236, 200, 20);
+        jTextField2.setBounds(475, 236, 200, 28);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Correo Electrónico:");

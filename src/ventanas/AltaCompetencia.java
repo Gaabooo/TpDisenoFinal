@@ -129,6 +129,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jComboBox2.setBounds(500, 170, 190, 20);
 
         String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
+        deporteAsociado.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         deporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         deporteAsociado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -136,7 +137,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(deporteAsociado);
-        deporteAsociado.setBounds(50, 130, 138, 20);
+        deporteAsociado.setBounds(50, 130, 138, 28);
 
         jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -147,13 +148,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jCheckBox1.setBounds(680, 300, 20, 20);
         jCheckBox1.setVisible(true);
 
+        nombreComp.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         nombreComp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nombreCompFocusGained(evt);
             }
         });
         add(nombreComp);
-        nombreComp.setBounds(50, 100, 220, 20);
+        nombreComp.setBounds(50, 100, 220, 28);
         nombreComp.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
@@ -186,6 +188,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jButton1.setBounds(274, 508, 209, 31);
 
         String[] cadena3l = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
+        jComboBox3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
         add(jComboBox3);
@@ -281,11 +284,13 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(MENU);
         MENU.setBounds(69, 508, 90, 31);
 
+        jSpinner1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 50, 30);
 
+        jSpinner2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
         jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));
         ((NumberEditor)jSpinner2.getEditor()).getTextField().setEditable(false);
@@ -300,6 +305,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner2b.setBounds(670, 210, 47, 20);
         jSpinner2b.setVisible(false);
 
+        jSpinner3.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(3, 1, 999, 1));
         jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -307,9 +313,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner3);
-        jSpinner3.setBounds(670, 240, 47, 20);
+        jSpinner3.setBounds(670, 240, 47, 24);
         jSpinner3.setVisible(true);
 
+        jSpinner4.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 998, 1));
         jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -317,9 +324,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner4);
-        jSpinner4.setBounds(670, 270, 47, 20);
+        jSpinner4.setBounds(670, 270, 47, 24);
         jSpinner4.setVisible(true);
 
+        jSpinner5.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
         jSpinner5.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -327,7 +335,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner5);
-        jSpinner5.setBounds(670, 330, 47, 20);
+        jSpinner5.setBounds(670, 330, 47, 24);
         jSpinner5.setVisible(false);
 
         jLabel12.setText("* Nombre ya existente");
