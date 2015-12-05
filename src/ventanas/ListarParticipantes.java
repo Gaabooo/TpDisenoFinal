@@ -127,7 +127,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(100, 140, 623, 355);
 
-        jButton4.setText("Menu P.");
+        jButton4.setText("Atras");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -136,7 +136,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         add(jButton4);
         jButton4.setBounds(185, 536, 80, 23);
 
-        jButton5.setText("ATRAS");
+        jButton5.setText("MENU P.");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -168,12 +168,12 @@ public class ListarParticipantes extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         V.get().remove(this);
-        V.get().verCompetenciaSalir();
+        V.get().verCompetenciaVolver();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         V.get().remove(this);
-        V.get().verCompetenciaVolver();
+        V.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -65,14 +65,14 @@ public class AltaParticipante extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(604, 274, 71, 23);
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Atras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         add(jButton2);
-        jButton2.setBounds(137, 530, 75, 23);
+        jButton2.setBounds(137, 530, 59, 23);
 
         jButton3.setText("Adjuntar Imagen");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
