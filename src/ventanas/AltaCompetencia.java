@@ -316,7 +316,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner3);
-        jSpinner3.setBounds(670, 240, 47, 24);
+        jSpinner3.setBounds(670, 240, 50, 24);
         jSpinner3.setVisible(true);
 
         jSpinner4.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -327,7 +327,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner4);
-        jSpinner4.setBounds(670, 270, 47, 24);
+        jSpinner4.setBounds(670, 270, 50, 24);
         jSpinner4.setVisible(true);
 
         jSpinner5.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -338,7 +338,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jSpinner5);
-        jSpinner5.setBounds(670, 330, 47, 24);
+        jSpinner5.setBounds(670, 330, 50, 24);
         jSpinner5.setVisible(false);
 
         jLabel12.setText("* Nombre ya existente");
