@@ -496,8 +496,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void deporteAsociadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_deporteAsociadoItemStateChanged
-        String[] cadena = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena));
+        // Cambiar los lugares de realizacion
+        String[] lugares = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(lugares));
+        
+        // Modificar la tabla si un lugar de realizacion deja de estar disponible
+        tablaDisp.verificarLugares(lugares);
     }//GEN-LAST:event_deporteAsociadoItemStateChanged
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

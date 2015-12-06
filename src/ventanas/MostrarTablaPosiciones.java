@@ -88,11 +88,6 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Imprimir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,12 +176,9 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        V.get().remove(this);
+        V.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         V.get().remove(this);
@@ -219,8 +211,8 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             fila[0]=elem.getNombre();
             fila[1]= String.valueOf(elem.getPuntos());
             fila[2]= String.valueOf(elem.getPartidosGanados());
-            fila[3]= String.valueOf(elem.getPartidosPerdidos());
-            fila[4]= String.valueOf(elem.getPartidosEmpatados());
+            fila[3]= String.valueOf(elem.getPartidosEmpatados());
+            fila[4]= String.valueOf(elem.getPartidosPerdidos());
             fila[5]= String.valueOf(elem.getTantoAFavor());
             fila[6]= String.valueOf(elem.getTantoEnContra());
             

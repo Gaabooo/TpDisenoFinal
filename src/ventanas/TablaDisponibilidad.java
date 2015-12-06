@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.AbstractAction;
@@ -185,6 +186,7 @@ public class TablaDisponibilidad extends JPanel{
             table.revalidate();
         }
     }
+    
     public boolean lugarYaIngresado(String lugar, int cant){
         // Recorrer tabla
         // Si encuentra un lugar igual, lo suma
@@ -198,6 +200,18 @@ public class TablaDisponibilidad extends JPanel{
             }
         }
         return false;
+    }
+    
+    public void verificarLugares(String[] lugares){
+        
+        // recorrer la tabla, si algun elemento no esta en la lista de lugares, eliminarlo
+        for(int i=0; i<model.getRowCount(); i++) {
+            // Si el lugar de la tabla NO esta en la lista actual
+            if(!Arrays.asList(lugares).contains((String)model.getValueAt(i, 0))){
+                model.removeRow(i);
+            }
+        }
+        
     }
     
     public String[][] getContenido(){
@@ -214,6 +228,7 @@ public class TablaDisponibilidad extends JPanel{
         
         return nuevo;
     }
+    
     public boolean tieneDisponibilidades(){
         return(0<model.getRowCount());
     }

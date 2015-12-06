@@ -387,20 +387,20 @@ public class VerCompetencia extends javax.swing.JPanel {
     
     private boolean modalidadLiga(){
         if("Liga".equals(compAux.getModalidad())){
-            return true;
+            return false;
         }
         else{
             cadenaError=cadenaError+"La competencia debe ser de modalidad liga.\n";
-            return false;
+            return true;
         }
     }
     private boolean disputaOFinalizada(){
         if("EnDisputa".equals(compAux.getEstado()) || "Finalizada".equals(compAux.getEstado())){
-            return true;
+            return false;
         }
         else{
             cadenaError=cadenaError+"La competencia debe estar en disputa o finalizada.";
-            return false;
+            return true;
         }
     }
 }

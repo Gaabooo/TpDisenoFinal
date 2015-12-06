@@ -108,28 +108,29 @@ public class gestorCD {
         
         // CD
         Competencia nuevaCD = null;
-        if ("Puntuacion".equals(nombreModalidad)) {
-            if ("Liga".equals(nombreFormaPuntuacion)) {
+        
+        if ("Puntuacion".equals(nombreFormaPuntuacion)) {
+            if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, tantosPorAusenciaDeRival, puntosPorPresentacion,
                     puntosPorVictoria, empatePermitido, puntosPorEmpate); }
-            else if ("Eliminacion simple".equals(nombreFormaPuntuacion) || "Eliminacion doble".equals(nombreFormaPuntuacion)) {
+            else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, tantosPorAusenciaDeRival, 0, 0, false, 0); } }
-        if ("Sets".equals(nombreModalidad)) {
-            if ("Liga".equals(nombreFormaPuntuacion)) {
+        else if ("Sets".equals(nombreFormaPuntuacion)) {
+            if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, cantMaximaDeSets, 0, puntosPorPresentacion,
                     puntosPorVictoria, empatePermitido, puntosPorEmpate); }
-            else if ("Eliminacion simple".equals(nombreFormaPuntuacion) || "Eliminacion doble".equals(nombreFormaPuntuacion)) {
+            else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, cantMaximaDeSets, 0, 0, 0, false, 0); } }
-        if ("Resultado final".equals(nombreModalidad)) {
-            if ("Liga".equals(nombreFormaPuntuacion)) {
+        else if ("Resultado Final".equals(nombreFormaPuntuacion)) {
+            if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, 0, puntosPorPresentacion,
                     puntosPorVictoria, empatePermitido, puntosPorEmpate); }
-            else if ("Eliminacion simple".equals(nombreFormaPuntuacion) || "Eliminacion doble".equals(nombreFormaPuntuacion)) {
+            else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
         

@@ -763,6 +763,7 @@ public class CompetenciaDaoJDBC {
         int IDCD = 0;
         
         String reglamento="";
+        
         if(unaCompetencia.getReglamento()!=null){
             reglamento="'"+unaCompetencia.getReglamento()+"'";
         }
