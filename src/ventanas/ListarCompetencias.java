@@ -77,13 +77,13 @@ public class ListarCompetencias extends javax.swing.JPanel {
         for(int j=0; j<listaNombresDeportes.length; j++){
             listaND[j+1]=listaNombresDeportes[j];
         }
-        jComboBox2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(listaND));
 
-        jComboBox1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
 
-        jComboBox3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
