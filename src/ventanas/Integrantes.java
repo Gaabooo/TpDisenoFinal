@@ -65,7 +65,7 @@ public class Integrantes extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"))); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(40, 70, 290, 290);
+        jLabel3.setBounds(40, 80, 290, 290);
 
         jLabel5.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
