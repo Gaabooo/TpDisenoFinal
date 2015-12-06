@@ -94,14 +94,14 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel9.setBounds(350, 310, 110, 30);
 
         jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel10.setText("Nombre y Apellido:");
+        jLabel10.setText("Nombre y Apellido: Gabriel Vargas.");
         add(jLabel10);
-        jLabel10.setBounds(350, 350, 110, 22);
+        jLabel10.setBounds(350, 350, 210, 22);
 
         jLabel11.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel11.setText("Correo Electrónico:");
+        jLabel11.setText("Correo Electrónico: gabrielvargas94@outlook.com");
         add(jLabel11);
-        jLabel11.setBounds(350, 380, 110, 30);
+        jLabel11.setBounds(350, 380, 270, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
