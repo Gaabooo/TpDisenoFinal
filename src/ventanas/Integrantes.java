@@ -70,7 +70,7 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Integrantes");
+        jLabel5.setText("Integrantes Trabajo Practico");
         add(jLabel5);
         jLabel5.setBounds(1, 2, 800, 60);
 
