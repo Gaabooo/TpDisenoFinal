@@ -184,14 +184,13 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel10.setToolTipText("");
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButton9.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton9MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton9MouseReleased(evt);
+        jButton9.setFocusPainted(false);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
             }
         });
 
@@ -337,13 +336,9 @@ public class VerCompetencia extends javax.swing.JPanel {
         V.get().generarFixture();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MousePressed
-    jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
-    }//GEN-LAST:event_jButton9MousePressed
-
-    private void jButton9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseReleased
-    jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png")));
-    }//GEN-LAST:event_jButton9MouseReleased
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        V.get().integrantes(this);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -392,17 +387,21 @@ public class VerCompetencia extends javax.swing.JPanel {
     
     private boolean modalidadLiga(){
         if("Liga".equals(compAux.getModalidad())){
-            cadenaError=cadenaError+"La competencia debe ser de modalidad liga.\n";
             return true;
         }
-        else return false;
+        else{
+            cadenaError=cadenaError+"La competencia debe ser de modalidad liga.\n";
+            return false;
+        }
     }
     private boolean disputaOFinalizada(){
         if("EnDisputa".equals(compAux.getEstado()) || "Finalizada".equals(compAux.getEstado())){
-            cadenaError=cadenaError+"La competencia debe estar en disputa o finalizada.";
             return true;
         }
-        else return false;
+        else{
+            cadenaError=cadenaError+"La competencia debe estar en disputa o finalizada.";
+            return false;
+        }
     }
 }
 

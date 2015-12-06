@@ -286,7 +286,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         MENU.setBounds(69, 508, 90, 31);
 
         jSpinner1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinner1);
         jSpinner1.setBounds(200, 180, 50, 30);
@@ -360,16 +360,11 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextArea2.setBounds(358, 240, 110, 34);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
+        jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton6MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton6MouseReleased(evt);
-            }
-        });
+        jButton6.setFocusPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -505,16 +500,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena));
     }//GEN-LAST:event_deporteAsociadoItemStateChanged
 
-    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
-    }//GEN-LAST:event_jButton6MousePressed
-
-    private void jButton6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseReleased
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png")));
-    }//GEN-LAST:event_jButton6MouseReleased
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        V.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

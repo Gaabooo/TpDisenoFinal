@@ -115,16 +115,11 @@ public class MostrarFixture extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
+        jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton6MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton6MouseReleased(evt);
-            }
-        });
+        jButton6.setFocusPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -196,18 +191,8 @@ public class MostrarFixture extends javax.swing.JPanel {
         V.get().verCompetenciaVolver();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
-        jButton6.setBorderPainted(false);
-    }//GEN-LAST:event_jButton6MousePressed
-
-    private void jButton6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseReleased
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png")));
-        jButton6.setBorderPainted(false);
-    }//GEN-LAST:event_jButton6MouseReleased
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        V.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

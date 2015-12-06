@@ -41,6 +41,8 @@ public class V extends javax.swing.JFrame {
     private JPanel aux;
     private JPanel aux2;
     private JPanel aux3;
+    private final JPanel integrantes= new Integrantes();
+    private JPanel integrantesAux;
     
     public void limpiar(){
         //SELF.removeAll(); NOOOO, elimina nose que masss
@@ -156,6 +158,20 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
+    
+    public void integrantes(JPanel panel){
+        integrantesAux=panel;
+        integrantesAux.setVisible(false);
+        add(integrantes);
+        revalidate();
+        repaint();
+    }
+    public void integrantesVolver(){
+        remove(integrantes);
+        integrantesAux.setVisible(true);
+        revalidate();
+        repaint();
+    }
     
     public void salir(){
         System.exit(0);

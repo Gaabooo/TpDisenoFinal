@@ -31,7 +31,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
+        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -44,7 +44,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
+        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -64,7 +64,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="136" y="530" width="70" height="-1"/>
+          <AbsoluteConstraints x="46" y="530" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -80,22 +80,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Menu P."/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="41" y="530" width="86" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -105,7 +89,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Alta de Participante"/>
+        <Property name="text" type="java.lang.String" value="Integrantes"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -118,7 +102,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico: eldeale@outlook.com"/>
+        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -131,7 +115,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
+        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -144,7 +128,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
+        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -157,7 +141,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
+        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -170,7 +154,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
+        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -183,7 +167,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Agency FB" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre y Apellido:"/>
+        <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
