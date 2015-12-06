@@ -36,6 +36,7 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -43,14 +44,14 @@ public class Integrantes extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel1.setText("Nombre y Apellido:");
+        jLabel1.setText("Nombre y Apellido: Jorge Ramirez");
         add(jLabel1);
-        jLabel1.setBounds(350, 200, 110, 22);
+        jLabel1.setBounds(350, 162, 270, 20);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel2.setText("Correo Electrónico:");
+        jLabel2.setText("Correo Electrónico: jrjjorge@hotmail.com");
         add(jLabel2);
-        jLabel2.setBounds(350, 230, 110, 30);
+        jLabel2.setBounds(350, 190, 240, 20);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
@@ -64,7 +65,7 @@ public class Integrantes extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"))); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(41, 119, 290, 290);
+        jLabel3.setBounds(40, 70, 290, 290);
 
         jLabel5.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,34 +75,38 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel5.setBounds(1, 2, 800, 60);
 
         jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel6.setText("Nombre y Apellido:");
+        jLabel6.setText("Nombre y Apellido: Martin Figueroa");
         add(jLabel6);
-        jLabel6.setBounds(350, 130, 110, 22);
+        jLabel6.setBounds(350, 92, 200, 20);
 
         jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel7.setText("Correo Electrónico:");
+        jLabel7.setText("Correo Electrónico: martin2217@gmail.com");
         add(jLabel7);
-        jLabel7.setBounds(350, 160, 110, 30);
+        jLabel7.setBounds(350, 120, 230, 20);
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel8.setText("Nombre y Apellido:");
+        jLabel8.setText("Nombre y Apellido: Alejandro Schneider.");
         add(jLabel8);
-        jLabel8.setBounds(350, 280, 110, 22);
+        jLabel8.setBounds(350, 232, 270, 20);
 
         jLabel9.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel9.setText("Correo Electrónico:");
+        jLabel9.setText("Correo Electrónico: schneideralejandro@outlook.com");
         add(jLabel9);
-        jLabel9.setBounds(350, 310, 110, 30);
+        jLabel9.setBounds(350, 260, 300, 20);
 
         jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel10.setText("Nombre y Apellido: Gabriel Vargas.");
         add(jLabel10);
-        jLabel10.setBounds(350, 350, 210, 22);
+        jLabel10.setBounds(350, 300, 210, 22);
 
         jLabel11.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel11.setText("Correo Electrónico: gabrielvargas94@outlook.com");
         add(jLabel11);
-        jLabel11.setBounds(350, 380, 270, 30);
+        jLabel11.setBounds(350, 330, 270, 20);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo2.png"))); // NOI18N
+        add(jLabel12);
+        jLabel12.setBounds(240, 364, 560, 240);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
@@ -118,6 +123,7 @@ public class Integrantes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
