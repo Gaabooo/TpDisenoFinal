@@ -297,16 +297,16 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
         jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));
         ((NumberEditor)jSpinner2.getEditor()).getTextField().setEditable(false);
-        jSpinner2.setMinimumSize(new java.awt.Dimension(47, 20));
-        jSpinner2.setPreferredSize(new java.awt.Dimension(47, 20));
+        jSpinner2.setMinimumSize(new java.awt.Dimension(50, 24));
+        jSpinner2.setPreferredSize(new java.awt.Dimension(50, 24));
         add(jSpinner2);
-        jSpinner2.setBounds(670, 210, 47, 20);
+        jSpinner2.setBounds(670, 210, 50, 24);
         jSpinner2.setVisible(true);
 
         jSpinner2b.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
         jSpinner2b.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner2b);
-        jSpinner2b.setBounds(670, 210, 56, 28);
+        jSpinner2b.setBounds(670, 210, 50, 24);
         jSpinner2b.setVisible(false);
 
         jSpinner3.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
