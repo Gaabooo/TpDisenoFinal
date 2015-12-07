@@ -67,18 +67,21 @@ public class GestionarResultados extends javax.swing.JPanel {
             new String [] {
                 "Competidores", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistencia"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("2do Set");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("3er Set");
             jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("4to Set");
             jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("5to Set");
-            jTable1.getColumnModel().getColumn(6).setHeaderValue("Asistencia");
         }
 
         add(jScrollPane1);
@@ -130,13 +133,18 @@ public class GestionarResultados extends javax.swing.JPanel {
             new String [] {
                 "Competidores", "Puntuacion", "Asistencia"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTable2.getTableHeader().setResizingAllowed(false);
         jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(2).setHeaderValue("Asistencia");
-        }
 
         add(jScrollPane2);
         jScrollPane2.setBounds(34, 108, 733, 92);
@@ -147,7 +155,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Competidores", "1er Set"
+                "Competidores", "Resultado Final"
             }
         ));
         jTable3.getTableHeader().setResizingAllowed(false);

@@ -65,7 +65,7 @@
                 <Column editable="true" title="3er Set" type="java.lang.Object"/>
                 <Column editable="true" title="4to Set" type="java.lang.Object"/>
                 <Column editable="true" title="5to Set" type="java.lang.Object"/>
-                <Column editable="true" title="Asistencia" type="java.lang.Object"/>
+                <Column editable="true" title="Asistencia" type="java.lang.Boolean"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -81,27 +81,27 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title value="2do Set"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title value="3er Set"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title value="4to Set"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title value="5to Set"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title value="Asistencia"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
@@ -198,7 +198,7 @@
               <Table columnCount="3" rowCount="2">
                 <Column editable="true" title="Competidores" type="java.lang.Object"/>
                 <Column editable="true" title="Puntuacion" type="java.lang.Object"/>
-                <Column editable="true" title="Asistencia" type="java.lang.Object"/>
+                <Column editable="true" title="Asistencia" type="java.lang.Boolean"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -214,7 +214,7 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title value="Asistencia"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
@@ -244,7 +244,7 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="2">
                 <Column editable="true" title="Competidores" type="java.lang.Object"/>
-                <Column editable="true" title="1er Set" type="java.lang.Object"/>
+                <Column editable="true" title="Resultado Final" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
