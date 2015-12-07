@@ -61,15 +61,15 @@ public class GestionarResultados extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Competidores", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistencia"
+                "Competidores", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7to Set", "8vo Set", "9no Set", "Asistencia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,10 +79,6 @@ public class GestionarResultados extends javax.swing.JPanel {
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         add(jScrollPane1);
         jScrollPane1.setBounds(34, 108, 733, 92);

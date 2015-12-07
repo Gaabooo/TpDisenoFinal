@@ -303,9 +303,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinner2.setBounds(670, 210, 47, 20);
         jSpinner2.setVisible(true);
 
+        jSpinner2b.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
         jSpinner2b.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner2b);
-        jSpinner2b.setBounds(670, 210, 47, 20);
+        jSpinner2b.setBounds(670, 210, 56, 28);
         jSpinner2b.setVisible(false);
 
         jSpinner3.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N

@@ -480,6 +480,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner2b">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Agency FB" size="14" style="1"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
