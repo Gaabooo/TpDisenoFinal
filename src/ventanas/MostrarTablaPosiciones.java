@@ -6,6 +6,7 @@
 package ventanas;
 
 import gestor.gestorCD;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
@@ -53,27 +54,47 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Puntos", "Partidos Ganados", "Partidos Empatados", "Partidos Perdidos", "Tantos a Favor", "Tantos en Contra", "Diferencia"
+                "Nombre", "Puntos", "<html>Partidos<br>Ganados", "<html>Partidos<br>Empatados", "<html>Partidos<br>Perdidos", "<html>Tantos<br>a Favor", "<html>Tantos<br>en Contra", "Diferencia"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         inicializarTabla();
+        jTable1.setRowHeight(20);
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.getTableHeader().setPreferredSize(
+            new Dimension(jTable1.getColumnModel().getTotalColumnWidth(), 30));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(75);
+        }
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Menu P.");
@@ -206,19 +227,19 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             
             TablaPosicionesAux elem=listaTpp.get(i);
             
-            String fila[]=new String[8];
+            Object fila[]=new Object[8];
             
             fila[0]=elem.getNombre();
-            fila[1]= String.valueOf(elem.getPuntos());
-            fila[2]= String.valueOf(elem.getPartidosGanados());
-            fila[3]= String.valueOf(elem.getPartidosEmpatados());
-            fila[4]= String.valueOf(elem.getPartidosPerdidos());
-            fila[5]= String.valueOf(elem.getTantoAFavor());
-            fila[6]= String.valueOf(elem.getTantoEnContra());
+            fila[1]= /*String.valueOf*/(elem.getPuntos());
+            fila[2]= /*String.valueOf*/(elem.getPartidosGanados());
+            fila[3]= /*String.valueOf*/(elem.getPartidosEmpatados());
+            fila[4]= /*String.valueOf*/(elem.getPartidosPerdidos());
+            fila[5]= /*String.valueOf*/(elem.getTantoAFavor());
+            fila[6]= /*String.valueOf*/(elem.getTantoEnContra());
             
             
             diferencia=  elem.getTantoAFavor()- elem.getTantoEnContra();
-            fila[7]= String.valueOf(diferencia);
+            fila[7]= /*String.valueOf*/(diferencia);
             
             modelo.addRow(fila);
         }
