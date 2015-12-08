@@ -337,7 +337,17 @@ public class VerCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        //V.get().generarFixture(compAux);
+        if("Planificada".equals(compAux.getEstado()) || "Creada".equals(compAux.getEstado())){
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea generar el fixture?",
+                    "Generar Fixture", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                // Generar el fixture
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "La competencia debe estar en estado Creada o Planificada",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
