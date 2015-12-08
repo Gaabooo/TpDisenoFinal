@@ -86,15 +86,6 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    
-    /*    public void integrantes(){
-        aux=new Integrantes();
-        aux.setVisible(true);
-        add(aux);
-        revalidate();
-        repaint();
-    }*/
-    
     public void verCompetencia(CompetenciaAux compAux){
         listarCD.setVisible(false);
         verComp = new VerCompetencia(compAux);
@@ -127,9 +118,6 @@ public class V extends javax.swing.JFrame {
         add(aux);
         revalidate();
         repaint();
-    }
-    public void generarFixture(){
-        
     }
     
     public void listarParticipantes(CompetenciaAux compAux){

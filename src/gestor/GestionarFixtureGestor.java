@@ -23,7 +23,8 @@ public class GestionarFixtureGestor {
         return LLPA; }
     
     // Solo modalidad LIGA
-    public static void generarFixture(String nombreCD) {
+    public static void generarFixture(CompetenciaAux compAux) {
+        String nombreCD = compAux.getNombre();
         // Objetos existentes
         Competencia unaCompetencia = GestionarFixtureDAO.getCompetencia(nombreCD);
         ArrayList<Participante> listaParticipantes = unaCompetencia.getListaParticipantes();
@@ -69,6 +70,4 @@ public class GestionarFixtureGestor {
                 GestionarFixtureDAO.deleteFixture(unaCompetencia); }
             unaCompetencia.setFixture(unFixture);
             GestionarFixtureDAO.persistirFixture(unFixture, nombreCD); } }
-    
-    public static void main(String[] args) {
-        generarFixture("B"); } }
+}
