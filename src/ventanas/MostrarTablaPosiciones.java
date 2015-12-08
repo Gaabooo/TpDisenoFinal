@@ -46,11 +46,11 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -129,10 +129,6 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 60);
 
-        jLabel7.setText("*: No implementado");
-        add(jLabel7);
-        jLabel7.setBounds(680, 514, 95, 14);
-
         jLabel2.setText("*");
         add(jLabel2);
         jLabel2.setBounds(680, 488, 6, 14);
@@ -164,6 +160,10 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         });
         add(jButton6);
         jButton6.setBounds(670, 538, 120, 51);
+
+        jLabel5.setText("* no implementado");
+        add(jLabel5);
+        jLabel5.setBounds(564, 550, 90, 14);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel3);
@@ -238,7 +238,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

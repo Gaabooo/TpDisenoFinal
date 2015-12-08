@@ -43,6 +43,8 @@ public class MostrarFixture extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -156,6 +158,14 @@ public class MostrarFixture extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(660, 539, 130, 50);
 
+        jLabel5.setText("* no implementado");
+        add(jLabel5);
+        jLabel5.setBounds(564, 550, 90, 14);
+
+        jLabel6.setText("*");
+        add(jLabel6);
+        jLabel6.setBounds(750, 130, 34, 14);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(0, 0, 800, 600);
@@ -189,6 +199,8 @@ public class MostrarFixture extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
