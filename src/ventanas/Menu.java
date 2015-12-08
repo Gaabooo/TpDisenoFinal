@@ -47,20 +47,22 @@ public class Menu extends javax.swing.JPanel {
         setRequestFocusEnabled(false);
         setLayout(null);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mi Usuario");
         add(jLabel3);
-        jLabel3.setBounds(368, 249, 76, 17);
+        jLabel3.setBounds(-6, 249, 810, 22);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Dar de Baja Usuario");
         add(jButton2);
         jButton2.setBounds(300, 318, 200, 31);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Sistema");
         add(jLabel4);
-        jLabel4.setBounds(368, 367, 70, 17);
+        jLabel4.setBounds(-2, 367, 800, 22);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Listar Lugares de Realizacion");
