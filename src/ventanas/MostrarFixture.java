@@ -5,17 +5,24 @@
  */
 package ventanas;
 
+import modelo.CompetenciaAux;
+
 /**
  *
  * @author GabrielV
  */
 public class MostrarFixture extends javax.swing.JPanel {
+    CompetenciaAux compAux;
 
     /**
      * Creates new form MostrarFixture
      */
-    public MostrarFixture() {
+    public MostrarFixture(CompetenciaAux param) {
+        compAux=param;
+        
         initComponents();
+        
+        verNombre();
     }
 
     /**
@@ -207,4 +214,11 @@ public class MostrarFixture extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void verNombre(){
+        jLabel1.setVisible(true);
+        jLabel1.setText(compAux.getNombre());
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 30));    
+    }
+    
 }

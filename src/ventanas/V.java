@@ -120,9 +120,9 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    public void mostrarFixture(){
+    public void mostrarFixture(CompetenciaAux compAux){
         verComp.setVisible(false);
-        aux = new MostrarFixture();
+        aux = new MostrarFixture(compAux);
         aux.setVisible(true);
         add(aux);
         revalidate();
