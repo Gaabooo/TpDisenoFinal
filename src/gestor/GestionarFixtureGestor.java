@@ -62,12 +62,13 @@ public class GestionarFixtureGestor {
             unaCompetencia.setFixture(unFixture);
             // Persistencia
             if ("Creada".equals(unEstado.getNombre())) {
+                System.out.println("Se pasa Creada a Planificada");
                 Estado nuevoEstado = GestionarFixtureDAO.getEstado("Planificada");
                 unaCompetencia.setEstado(nuevoEstado);
                 GestionarFixtureDAO.setEstado(unaCompetencia, nuevoEstado); }
             else {
-                System.out.println("Entro al else");
                 GestionarFixtureDAO.deleteFixture(unaCompetencia); }
+            System.out.println("Se crea el Fixture");
             unaCompetencia.setFixture(unFixture);
             GestionarFixtureDAO.persistirFixture(unFixture, nombreCD); } }
 }
