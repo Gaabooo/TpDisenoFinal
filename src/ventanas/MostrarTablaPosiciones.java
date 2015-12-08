@@ -53,6 +53,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 

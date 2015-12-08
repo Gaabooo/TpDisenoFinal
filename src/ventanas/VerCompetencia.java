@@ -62,6 +62,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         jButton9 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
