@@ -72,7 +72,8 @@ public class QueMasTeGuste {
             //System.out.println(unNombreLR);
             LugarRealizacion unLR = CompetenciaDaoJDBC.buscarLRPorNombre(unNombreLR);
             Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[i][1]), unLR);
-            listaDisponibilidades.add(unaDisponibilidad); }
+            listaDisponibilidades.add(unaDisponibilidad); 
+        }
         /*
         for (int i=0; i<listaDisponibilidades.size(); i++) {
             Disponibilidad unaDisponibilidad = listaDisponibilidades.get(i);

@@ -59,35 +59,41 @@ public class gestorCD {
 
     public static ArrayList<Participante> listarParticipantes (String nombreCD) {
         int idCD = obtenerIdCD(nombreCD);
-        return CompetenciaDaoJDBC.getParticipantes(idCD); }    
+        return CompetenciaDaoJDBC.getParticipantes(idCD); 
+    }    
     
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
-        return nombreUsado; }    
+        return nombreUsado; 
+    }    
     
     public static String[] getListaDeportes () {
         ArrayList<String> deportes = CompetenciaDaoJDBC.getListaDeportes();
         String[] vectorNombreDeportes = new String[deportes.size()];
         vectorNombreDeportes = deportes.toArray(vectorNombreDeportes);
-        return vectorNombreDeportes; }
+        return vectorNombreDeportes; 
+    }
     
     public static String[] getListaLugares (String deporte) {
         ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares(deporte);
         String[] vectorNombreLugares = new String[lugares.size()];
         vectorNombreLugares = lugares.toArray(vectorNombreLugares);
-        return vectorNombreLugares; }
+        return vectorNombreLugares; 
+    }
     
     public static String[] getListaModalidades () {
         ArrayList<String> modalidades = CompetenciaDaoJDBC.getListaModalidades();
         String[] vectorNombreModalidades = new String[modalidades.size()];
         vectorNombreModalidades = modalidades.toArray(vectorNombreModalidades);
-        return vectorNombreModalidades; }
+        return vectorNombreModalidades; 
+    }
         
     public static String[] getListaPuntuaciones () {
         ArrayList<String> puntuaciones = CompetenciaDaoJDBC.getListaPuntuaciones();
         String[] vectorNombrePuntuaciones = new String[puntuaciones.size()];
         vectorNombrePuntuaciones = puntuaciones.toArray(vectorNombrePuntuaciones);
-        return vectorNombrePuntuaciones; }
+        return vectorNombrePuntuaciones; 
+    }
     
     public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
         String matrizLugares[][], String nombreFormaPuntuacion, int tantosPorAusenciaDeRival, int cantMaximaDeSets,
@@ -104,7 +110,8 @@ public class gestorCD {
             String unNombreLR = (String)matrizLugares[i][0];
             LugarRealizacion unLR = CompetenciaDaoJDBC.buscarLRPorNombre(unNombreLR);
             Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[i][1]), unLR);
-            listaDisponibilidades.add(unaDisponibilidad); }
+            listaDisponibilidades.add(unaDisponibilidad); 
+        }
         
         // CD
         Competencia nuevaCD = null;
@@ -113,26 +120,37 @@ public class gestorCD {
             if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, tantosPorAusenciaDeRival, puntosPorPresentacion,
-                    puntosPorVictoria, empatePermitido, puntosPorEmpate); }
+                    puntosPorVictoria, empatePermitido, puntosPorEmpate); 
+            }
             else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
-                    unaFormaPuntuacion, 0, tantosPorAusenciaDeRival, 0, 0, false, 0); } }
+                    unaFormaPuntuacion, 0, tantosPorAusenciaDeRival, 0, 0, false, 0); 
+            } 
+        }
         else if ("Sets".equals(nombreFormaPuntuacion)) {
             if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, cantMaximaDeSets, 0, puntosPorPresentacion,
-                    puntosPorVictoria, empatePermitido, puntosPorEmpate); }
+                    puntosPorVictoria, empatePermitido, puntosPorEmpate); 
+            }
             else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
-                    unaFormaPuntuacion, cantMaximaDeSets, 0, 0, 0, false, 0); } }
+                    unaFormaPuntuacion, cantMaximaDeSets, 0, 0, 0, false, 0); 
+            } 
+        }
         else if ("Resultado Final".equals(nombreFormaPuntuacion)) {
             if ("Liga".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
                     unaFormaPuntuacion, 0, 0, puntosPorPresentacion,
-                    puntosPorVictoria, empatePermitido, puntosPorEmpate); }
+                    puntosPorVictoria, empatePermitido, puntosPorEmpate); 
+            }
             else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
-                    unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
+                    unaFormaPuntuacion, 0, 0, 0, 0, false, 0); 
+            } 
+        }
         
         // Persistencia
-        CompetenciaDaoJDBC.persistirCD(nuevaCD); } }
+        CompetenciaDaoJDBC.persistirCD(nuevaCD); 
+    } 
+}
