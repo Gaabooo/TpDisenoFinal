@@ -66,11 +66,6 @@ public class ListarParticipantes extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Modificar Participante");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
         add(jButton2);
         jButton2.setBounds(333, 510, 157, 31);
 
@@ -79,11 +74,6 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jButton3.setMaximumSize(new java.awt.Dimension(150, 23));
         jButton3.setMinimumSize(new java.awt.Dimension(150, 23));
         jButton3.setPreferredSize(new java.awt.Dimension(150, 23));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
         add(jButton3);
         jButton3.setBounds(99, 510, 166, 23);
 
@@ -169,12 +159,15 @@ public class ListarParticipantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().altaParticipante(compAux);
+        if(compAux.getEstado()=="Creada" || compAux.getEstado()=="Planificada"){
+            V.get().altaParticipante(compAux);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"<html>La competencia debe estar en<br>"+
+                                                "estado 'Creada' o 'Planificada'",
+                    "Error al agregar participante", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         V.get().remove(this);
@@ -185,10 +178,6 @@ public class ListarParticipantes extends javax.swing.JPanel {
         V.get().remove(this);
         V.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         V.get().integrantes(this);
