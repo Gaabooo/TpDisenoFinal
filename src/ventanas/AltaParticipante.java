@@ -265,10 +265,23 @@ public class AltaParticipante extends javax.swing.JPanel {
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
+        else if (!correoValido()){
+            // El correo no es valido
+            jLabel6.setText("<html>* Correo<br>no válido");
+            jLabel6.setVisible(true);
+            jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+        }
         else {
             jLabel6.setVisible(false);
             return false;
         }
+    }
+    private boolean correoValido() {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(jTextField1.getText());
+        return m.matches();
     }
     
     private boolean verificarNombre(){
