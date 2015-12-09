@@ -133,6 +133,10 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    public void listarParticipantesVolver2(CompetenciaAux compAux){
+        remove(aux);
+        listarParticipantes(compAux);
+    }
     public void listarParticipantesSalir(){
         remove(aux);
         verCompetenciaSalir();

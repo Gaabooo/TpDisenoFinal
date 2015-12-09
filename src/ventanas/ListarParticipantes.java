@@ -6,6 +6,7 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
+import gestor.GestorParticipante;
 import gestor.gestorCD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -89,28 +90,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nombre", "Correo"
@@ -229,17 +209,18 @@ public class ListarParticipantes extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
-private void verNombre(){
     
-     jLabel2.setVisible(true);
-     jLabel2.setText(compAux.getNombre());
-     jLabel2.setFont(new java.awt.Font("Agency FB", 0, 30)); 
+    private void verNombre(){
+        
+        jLabel2.setVisible(true);
+        jLabel2.setText(compAux.getNombre());
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 30));
     }
-private void llenarTabla(){
-    // Llamar a la funcion para rellenar la tabla (devuelve matriz)
-            
-        ArrayList<Participante> listap = gestorCD.listarParticipantes(jLabel2.getText());
+    private void llenarTabla(){
+        
+        // Llamar a la funcion para rellenar la tabla (devuelve matriz)
+        
+        ArrayList<ParticipanteAux> listap = GestorParticipante.listarParticipantes(compAux.getId());
         
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
         int filas=jTable1.getRowCount();
@@ -247,19 +228,17 @@ private void llenarTabla(){
         for (i=0;filas>i; i++) {
             modelo.removeRow(0);
         }
-            
-        for(i=0;i < listap.size();i++){
         
+        for(i=0;i < listap.size();i++){
+            
             String fila[]=new String[2];
             
             fila[0]= listap.get(i).getNombre();
             fila[1]= listap.get(i).getCorreo();
-        
-            modelo.addRow(fila);
-        }    
-         jTable1.setModel(modelo); 
             
-        
-            // Asigna los valores de la matriz a la tabla
+            modelo.addRow(fila);
         }
+        jTable1.setModel(modelo);
+        
+    }
 }

@@ -5,7 +5,20 @@
  */
 package ventanas;
 
+import gestor.GestorParticipante;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.CompetenciaAux;
+import sonidos.alertaSuave;
 
 /**
  *
@@ -14,8 +27,10 @@ import modelo.CompetenciaAux;
 public class AltaParticipante extends javax.swing.JPanel {
     
     CompetenciaAux compAux;
+    ImageIcon avatar= new ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"));
+    alertaSuave alerta= new alertaSuave();
     
-    /**
+    /*
      * Creates new form AltaParticipante
      */
     public AltaParticipante(CompetenciaAux param) {
@@ -33,11 +48,14 @@ public class AltaParticipante extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -45,14 +63,32 @@ public class AltaParticipante extends javax.swing.JPanel {
         setLayout(null);
 
         jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jTextField1.setText("Inserte su Correo.");
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         add(jTextField1);
         jTextField1.setBounds(475, 198, 200, 28);
 
         jTextField2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jTextField2.setText("Inserte su Nombre y Apellido.");
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
         add(jTextField2);
-        jTextField2.setBounds(475, 236, 200, 28);
+        jTextField2.setBounds(475, 240, 200, 28);
+        jTextField2.addKeyListener(new KeyAdapter() {
+
+            public void keyTyped(KeyEvent e) {
+                char keyChar = e.getKeyChar();
+                if (Character.isLowerCase(keyChar)) {
+                    e.setKeyChar(Character.toUpperCase(keyChar));
+                }
+            }
+
+        });
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Correo Electrónico:");
@@ -62,7 +98,7 @@ public class AltaParticipante extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Nombre y Apellido:");
         add(jLabel2);
-        jLabel2.setBounds(355, 231, 110, 30);
+        jLabel2.setBounds(355, 235, 110, 30);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Aceptar");
@@ -72,7 +108,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(585, 274, 90, 31);
+        jButton1.setBounds(590, 360, 90, 50);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
@@ -84,6 +120,16 @@ public class AltaParticipante extends javax.swing.JPanel {
         add(jButton2);
         jButton2.setBounds(136, 530, 70, 31);
 
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButton5.setText("Borrar Imagen");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        add(jButton5);
+        jButton5.setBounds(190, 420, 140, 31);
+
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Adjuntar Imagen");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -92,11 +138,11 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(41, 427, 171, 31);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"))); // NOI18N
+        jButton3.setBounds(40, 420, 140, 31);
         add(jLabel3);
         jLabel3.setBounds(41, 119, 290, 290);
+        avatar=new ImageIcon(avatar.getImage().getScaledInstance(jLabel3.getWidth(), jLabel3.getHeight(), Image.SCALE_DEFAULT));
+        jLabel3.setIcon(avatar);
 
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Menu P.");
@@ -129,17 +175,45 @@ public class AltaParticipante extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(663, 543, 130, 50);
 
+        jLabel6.setText("<html>* Ingrese<br>      un correo");
+        jLabel6.setVisible(false);
+        add(jLabel6);
+        jLabel6.setBounds(690, 200, 90, 30);
+
+        jLabel7.setText("<html>* Ingrese<br> un nombre");
+        jLabel7.setVisible(false);
+        add(jLabel7);
+        jLabel7.setBounds(690, 238, 90, 30);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        // Alta de participante
+        
+        boolean nomb=verificarNombre();
+        boolean corr=verificarCorreo();
+        if(nomb || corr){
+            Thread thread = new Thread(alerta);
+            thread.start();
+        }
+        else{
+            // Se extraen todos los datos para pasar al gestor de alta de participante
+            GestorParticipante.altaParticipante(compAux.getId(),
+                    jTextField2.getText(), jTextField1.getText(), null/*FileInputStream*/);
+            
+            JOptionPane.showMessageDialog(null, "Participante dado de alta exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
+            
+            V.get().remove(this);
+            V.get().listarParticipantesVolver2(compAux);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        elegirImagen();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -156,18 +230,123 @@ public class AltaParticipante extends javax.swing.JPanel {
         V.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jLabel3.setIcon(avatar);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextField2FocusGained
+    
+    
+    private boolean verificarCorreo(){
+        
+        String aux = jTextField1.getText();
+        
+        // ELimina espacios al inicio y final
+        aux = aux.trim();
+        jTextField1.setText(aux);
+        
+        if(aux.length() == 0 ){
+            // El usuario no ingreso correo de participante .
+            jLabel6.setText("<html>* Ingrese<br>un correo");
+            jLabel6.setVisible(true);
+            jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+        }
+        else if (gestor.GestorParticipante.verificarCorreo(compAux.getId(), aux)){
+            // El correo para esa competencia ya existe.
+            jLabel6.setText("<html>* Correo<br>ya existe");
+            jLabel6.setVisible(true);
+            jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+            }
+        else {
+            jLabel6.setVisible(false);
+            return false;
+        }
+    }
+    
+    private boolean verificarNombre(){
+        
+        String aux = jTextField2.getText();
+        
+        // ELimina espacios al inicio y final
+        aux = aux.trim();
+        jTextField2.setText(aux);
+        
+        if(aux.length() == 0 ){
+            // El usuario no ingreso nombre de participante.
+            jLabel7.setText("<html>* Ingrese<br>un nombre");
+            jLabel7.setVisible(true);
+            jTextField2.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+        }
+        else if (gestor.GestorParticipante.verificarNombre(compAux.getId(), aux)){
+            // Nombre de participante ya existe, para esa competencia.
+            jLabel7.setText("<html>* Nombre<br>ya existe");
+            jLabel7.setVisible(true);
+            jTextField2.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+            }
+        else {
+            jLabel7.setVisible(false);
+            return false;
+        }
+    }
+    
+    private void elegirImagen(){
+        // Adjuntar foto
+        int resultado;
+        
+        JFileChooser jFileChooser1= new JFileChooser();
+        
+        //Filtro del FileChooser
+        FileFilter filtro = new FileNameExtensionFilter(
+                "Imagenes JPG", "jpg"); /* ImageIO.getReaderFileSuffixes()  para todas*/
+        jFileChooser1.setFileFilter(filtro);
+        jFileChooser1.setAcceptAllFileFilterUsed(false);
+        
+        resultado= jFileChooser1.showOpenDialog(this);
+        
+        if (JFileChooser.APPROVE_OPTION == resultado){
+            
+            File fichero = jFileChooser1.getSelectedFile();
+            
+            try{
+                
+                ImageIcon icon = new ImageIcon(fichero.toString());
+                
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabel3.getWidth(),
+                        jLabel3.getHeight(), Image.SCALE_DEFAULT));
+                
+                jLabel3.setIcon(icono);
+                
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
+            }
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

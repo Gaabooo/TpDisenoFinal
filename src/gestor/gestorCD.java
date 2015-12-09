@@ -25,10 +25,10 @@ public class gestorCD {
         return CompetenciaDaoJDBC.getTablaPosiciones(id_competencia);
     }
     
-    //ELIMINAR
-    public static Competencia getCompetenciaPorId(int id_CompetenciaDeportiva){
+    private static Competencia getCompetenciaPorId(int id_CompetenciaDeportiva){
         return CompetenciaDaoJDBC.getCompetenciaPorId(id_CompetenciaDeportiva);
     }
+    
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
         
         // Se recuperan las competencias que coincidan con los filtros
@@ -57,9 +57,6 @@ public class gestorCD {
         return listaAux;
     }    
 
-    public static ArrayList<Participante> listarParticipantes (String nombreCD) {
-        int idCD = obtenerIdCD(nombreCD);
-        return CompetenciaDaoJDBC.getParticipantes(idCD); }    
     
     public static boolean verificarNombre (String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
@@ -135,4 +132,6 @@ public class gestorCD {
                     unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
         
         // Persistencia
-        CompetenciaDaoJDBC.persistirCD(nuevaCD); } }
+        CompetenciaDaoJDBC.persistirCD(nuevaCD);
+    }
+}
