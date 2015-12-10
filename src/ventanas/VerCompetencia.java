@@ -244,7 +244,7 @@ public class VerCompetencia extends javax.swing.JPanel {
 
         jLabel12.setText("* no implementado");
         add(jLabel12);
-        jLabel12.setBounds(564, 550, 90, 14);
+        jLabel12.setBounds(534, 550, 120, 14);
 
         jLabel13.setText("*");
         add(jLabel13);
@@ -300,6 +300,8 @@ public class VerCompetencia extends javax.swing.JPanel {
             if (respuesta == JOptionPane.YES_OPTION) {
                 // Generar el fixture
                 gestor.GestionarFixtureGestor.generarFixture(compAux);
+                compAux.setEstado("Planificada");
+                verNombre();
             }
         }
         else {

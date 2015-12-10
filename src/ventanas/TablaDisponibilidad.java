@@ -52,69 +52,39 @@ public class TablaDisponibilidad extends JPanel{
     
     
     public TablaDisponibilidad() {
-        /*EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {*/
-                
-                //setMinimumSize(new java.awt.Dimension(285,260));
-                //setPreferredSize(new java.awt.Dimension(285,260));
-                
-                
-                
-                model.addColumn("Lugar");
-                model.addColumn("Cant. ocupada");
-                
-                
-                // ADDD ROOOWWWWWWW*/
-                /*for (int row = 0; row < 10; row++) {
-                    Vector<String> rowData = new Vector<>(2);
-                    for (int col = 0; col < 2; col++) {
-                        rowData.add(row + " " + col);
-                    }
-                    model.addRow(rowData);
-                }*/
-                
-                table = new JTable(model);
-                DeleteRowFromTableAction deleteAction = new DeleteRowFromTableAction(table, model);
-                
-                //table.setMaximumSize(new java.awt.Dimension(200,200));
-                //table.setPreferredSize(new java.awt.Dimension(280,260));
-                table.getColumnModel().getColumn(0).setPreferredWidth(170);
-                //table.getColumnModel().getColumn(0).setMaxWidth(180);
-                table.getColumnModel().getColumn(1).setPreferredWidth(100);
-                //table.getColumnModel().getColumn(1).setMaxWidth(100);
-                table.getTableHeader().setResizingAllowed(false);
-                table.getTableHeader().setReorderingAllowed(false);
-                table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-                JToolBar tb = new JToolBar();
-                tb.add(deleteAction);
-                tb.setFloatable(false);
-                //tb.setMaximumSize(new java.awt.Dimension(200,200));
-
-                InputMap im = table.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-                ActionMap am = table.getActionMap();
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "deleteRow");
-                am.put("deleteRow", deleteAction);
-                
-                
-                setLayout(new BorderLayout());
-                add(tb, BorderLayout.NORTH);
-                add(new JScrollPane(table));
-                setPreferredSize(new java.awt.Dimension(290,250));
-                setMinimumSize(new java.awt.Dimension(290,250));
-                setVisible(true);
-                
-                
-                
-                /*
-                add(tb, BorderLayout.NORTH);
-                add(new JScrollPane(table));
-                setMinimumSize(new java.awt.Dimension(290,260));
-                setPreferredSize(new java.awt.Dimension(290,260));
-                setVisible(true);*/
-            /*}
-        });*/
+        
+        model.addColumn("Lugar");
+        model.addColumn("Cant. ocupada");
+        
+        
+        table = new JTable(model);
+        DeleteRowFromTableAction deleteAction = new DeleteRowFromTableAction(table, model);
+        
+        table.getColumnModel().getColumn(0).setPreferredWidth(170);
+        table.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table.getTableHeader().setResizingAllowed(false);
+        table.getTableHeader().setReorderingAllowed(false);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        JToolBar tb = new JToolBar();
+        tb.add(deleteAction);
+        tb.setFloatable(false);
+        
+        InputMap im = table.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        ActionMap am = table.getActionMap();
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "deleteRow");
+        am.put("deleteRow", deleteAction);
+        
+        
+        setLayout(new BorderLayout());
+        add(tb, BorderLayout.NORTH);
+        add(new JScrollPane(table));
+        setPreferredSize(new java.awt.Dimension(290,250));
+        setMinimumSize(new java.awt.Dimension(290,250));
+        setVisible(true);
+        
+        
+        
     }
 
     public abstract class AbstractTableAction<T extends JTable, M extends TableModel> extends AbstractAction {
@@ -206,7 +176,7 @@ public class TablaDisponibilidad extends JPanel{
         
         // recorrer la tabla, si algun elemento no esta en la lista de lugares, eliminarlo
         for(int i=0; i<model.getRowCount(); i++) {
-            // Si el lugar de la tabla NO esta en la lista actual
+            // Se elimina si el lugar de la tabla NO esta en la lista actual
             if(!Arrays.asList(lugares).contains((String)model.getValueAt(i, 0))){
                 model.removeRow(i);
             }

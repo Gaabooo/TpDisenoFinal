@@ -258,13 +258,6 @@ public class AltaParticipante extends javax.swing.JPanel {
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
-        else if (gestor.GestorParticipante.verificarCorreo(compAux.getId(), aux)){
-            // El correo para esa competencia ya existe.
-            jLabel6.setText("<html>* Correo<br>ya existe");
-            jLabel6.setVisible(true);
-            jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
-            return true;
-            }
         else if (!correoValido()){
             // El correo no es valido
             jLabel6.setText("<html>* Correo<br>no válido");
@@ -272,6 +265,13 @@ public class AltaParticipante extends javax.swing.JPanel {
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
+        else if (gestor.GestorParticipante.verificarCorreo(compAux.getId(), aux)){
+            // El correo para esa competencia ya existe.
+            jLabel6.setText("<html>* Correo<br>ya existe");
+            jLabel6.setVisible(true);
+            jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
+            return true;
+            }
         else {
             jLabel6.setVisible(false);
             return false;

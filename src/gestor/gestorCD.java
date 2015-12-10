@@ -22,11 +22,10 @@ public class gestorCD {
         return CompetenciaDaoJDBC.getIdCompetencia(nombre);
     }
     public static ArrayList<TablaPosicionesAux> listarTpp(int id_competencia){
+        //Buscar TablaPosiciones
+        
+        // Asignarle a TablaPosicionesAUXXX
         return CompetenciaDaoJDBC.getTablaPosiciones(id_competencia);
-    }
-    
-    private static Competencia getCompetenciaPorId(int id_CompetenciaDeportiva){
-        return CompetenciaDaoJDBC.getCompetenciaPorId(id_CompetenciaDeportiva);
     }
     
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
