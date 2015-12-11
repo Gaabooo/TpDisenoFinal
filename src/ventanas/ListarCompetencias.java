@@ -18,58 +18,46 @@ public class ListarCompetencias extends javax.swing.JPanel {
     
     public ListarCompetencias() {
         initComponents();
+        textFieldCompetencia.requestFocusInWindow();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SALIR = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        buscar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelCompetencia = new javax.swing.JLabel();
+        labelCompetencia2 = new javax.swing.JLabel();
+        textFieldCompetencia = new javax.swing.JTextField();
+        comboBoxDeporte = new javax.swing.JComboBox();
+        comboBoxEstado = new javax.swing.JComboBox();
+        comboBoxModalidad = new javax.swing.JComboBox();
+        labelModalidad = new javax.swing.JLabel();
+        labelEstado = new javax.swing.JLabel();
+        labelDeporte = new javax.swing.JLabel();
+        jButtonBuscar = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
+        jButtonCrearCompetencia = new javax.swing.JButton();
+        jButtonVerCompetencia = new javax.swing.JButton();
+        jButtonTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonIntegrantes = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
-        SALIR.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        SALIR.setText("Atras");
-        SALIR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SALIRActionPerformed(evt);
-            }
-        });
-        add(SALIR);
-        SALIR.setBounds(260, 510, 90, 31);
-
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtros de búsqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 0, 18))); // NOI18N
 
-        buscar.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
-            }
-        });
+        labelCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        labelCompetencia.setText("Nombre de la Competencia");
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel2.setText("Nombre de la Competencia");
+        labelCompetencia2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        labelCompetencia2.setText("(contiene)");
+
+        textFieldCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
         String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
         String[] listaND= new String[listaNombresDeportes.length+1];
@@ -77,28 +65,31 @@ public class ListarCompetencias extends javax.swing.JPanel {
         for(int j=0; j<listaNombresDeportes.length; j++){
             listaND[j+1]=listaNombresDeportes[j];
         }
-        jComboBox2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(listaND));
+        comboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        comboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaND));
 
-        jComboBox1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
+        comboBoxEstado.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
 
-        jComboBox3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
+        comboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        comboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
 
-        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel6.setText("Modalidad");
+        labelModalidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        labelModalidad.setText("Modalidad");
 
-        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel4.setText("Estado");
+        labelEstado.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        labelEstado.setText("Estado");
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel5.setText("Deporte");
+        labelDeporte.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        labelDeporte.setText("Deporte");
 
-        jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel3.setText("(contiene)");
+        jButtonBuscar.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,46 +99,46 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelCompetencia, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textFieldCompetencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelModalidad, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelDeporte, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelEstado, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboBoxDeporte, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelCompetencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(labelCompetencia)
                 .addGap(3, 3, 3)
-                .addComponent(jLabel3)
+                .addComponent(labelCompetencia2)
                 .addGap(4, 4, 4)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textFieldCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
-                .addComponent(jLabel5)
+                .addComponent(labelDeporte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jLabel4)
+                .addComponent(labelEstado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jLabel6)
+                .addComponent(labelModalidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buscar)
+                .addComponent(jButtonBuscar)
                 .addGap(41, 41, 41))
         );
 
-        jTextField1.addKeyListener(new KeyAdapter() {
+        textFieldCompetencia.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
                 char keyChar = e.getKeyChar();
@@ -161,6 +152,43 @@ public class ListarCompetencias extends javax.swing.JPanel {
         add(jPanel2);
         jPanel2.setBounds(28, 77, 197, 471);
         jPanel2.getAccessibleContext().setAccessibleName("");
+
+        jButtonAtras.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonAtras.setText("Atras");
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+        add(jButtonAtras);
+        jButtonAtras.setBounds(260, 510, 90, 31);
+
+        jButtonCrearCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonCrearCompetencia.setText("Crear Competencia");
+        jButtonCrearCompetencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearCompetenciaActionPerformed(evt);
+            }
+        });
+        add(jButtonCrearCompetencia);
+        jButtonCrearCompetencia.setBounds(460, 510, 150, 31);
+
+        jButtonVerCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonVerCompetencia.setText("Ver Competencia");
+        jButtonVerCompetencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerCompetenciaActionPerformed(evt);
+            }
+        });
+        add(jButtonVerCompetencia);
+        jButtonVerCompetencia.setBounds(630, 510, 140, 31);
+
+        jButtonTitulo.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jButtonTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jButtonTitulo.setText("Listar Competencias Deportivas");
+        add(jButtonTitulo);
+        jButtonTitulo.setBounds(0, 0, 800, 60);
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -187,79 +215,52 @@ public class ListarCompetencias extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(261, 85, 504, 410);
 
-        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jButton3.setText("Crear Competencia");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonIntegrantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButtonIntegrantes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
+        jButtonIntegrantes.setBorder(null);
+        jButtonIntegrantes.setBorderPainted(false);
+        jButtonIntegrantes.setContentAreaFilled(false);
+        jButtonIntegrantes.setFocusPainted(false);
+        jButtonIntegrantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonIntegrantesActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(460, 510, 150, 31);
+        add(jButtonIntegrantes);
+        jButtonIntegrantes.setBounds(663, 543, 130, 50);
 
-        jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jButton4.setText("Ver Competencia");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        add(jButton4);
-        jButton4.setBounds(630, 510, 140, 31);
-
-        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Listar Competencias Deportivas");
-        add(jLabel7);
-        jLabel7.setBounds(0, 0, 800, 60);
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
-        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        add(jButton6);
-        jButton6.setBounds(663, 543, 130, 50);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
+        add(jLabelFondo);
+        jLabelFondo.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SALIRActionPerformed
+    private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
         V.get().remove(this);
         V.get().menuVolver();
-    }//GEN-LAST:event_SALIRActionPerformed
+    }//GEN-LAST:event_jButtonAtrasActionPerformed
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        if(jComboBox2.getSelectedIndex()==0 && jComboBox3.getSelectedIndex()==0 &&
-                jComboBox1.getSelectedIndex()==0 && jTextField1.getText().isEmpty()){
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        if(comboBoxDeporte.getSelectedIndex()==0 && comboBoxModalidad.getSelectedIndex()==0 &&
+                comboBoxEstado.getSelectedIndex()==0 && textFieldCompetencia.getText().isEmpty()){
             errorFiltros();
         }
         else{
             
             // Llamar a la funcion para rellenar la tabla (devuelve matriz)
-            Object estado = jComboBox1.getSelectedItem(); 
+            Object estado = comboBoxEstado.getSelectedItem(); 
             String textEstado = String.valueOf(estado);
-            Object deporte = jComboBox2.getSelectedItem(); 
+            Object deporte = comboBoxDeporte.getSelectedItem(); 
             String textDeporte= String.valueOf(deporte);
-            Object modalidad = jComboBox3.getSelectedItem(); 
+            Object modalidad = comboBoxModalidad.getSelectedItem(); 
             String textModalidad= String.valueOf(modalidad);
             
-            String nombre=jTextField1.getText();
+            String nombre=textFieldCompetencia.getText();
             
             if("".equals(textDeporte)){textDeporte=null;}
             if("".equals(textEstado)){textEstado=null;}
             if("".equals(textModalidad)){textModalidad=null;}
             
-            if("".equals(jTextField1.getText())){
+            if("".equals(textFieldCompetencia.getText())){
                 nombre=null;
             }
             
@@ -296,14 +297,14 @@ public class ListarCompetencias extends javax.swing.JPanel {
                     "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }//GEN-LAST:event_buscarActionPerformed
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonCrearCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearCompetenciaActionPerformed
         this.setVisible(false);
         V.get().altaCompetencia();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonCrearCompetenciaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonVerCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCompetenciaActionPerformed
         
         int row = jTable1.getSelectedRow();
         
@@ -327,11 +328,11 @@ public class ListarCompetencias extends javax.swing.JPanel {
         }
     
     
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonVerCompetenciaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed
         V.get().integrantes(this);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonIntegrantesActionPerformed
 
     private void errorFiltros(){
         JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
@@ -339,24 +340,24 @@ public class ListarCompetencias extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton SALIR;
-    private javax.swing.JButton buscar;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JComboBox comboBoxDeporte;
+    private javax.swing.JComboBox comboBoxEstado;
+    private javax.swing.JComboBox comboBoxModalidad;
+    private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCrearCompetencia;
+    private javax.swing.JButton jButtonIntegrantes;
+    private javax.swing.JLabel jButtonTitulo;
+    private javax.swing.JButton jButtonVerCompetencia;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelCompetencia;
+    private javax.swing.JLabel labelCompetencia2;
+    private javax.swing.JLabel labelDeporte;
+    private javax.swing.JLabel labelEstado;
+    private javax.swing.JLabel labelModalidad;
+    private javax.swing.JTextField textFieldCompetencia;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,120 +46,60 @@ public class AltaCompetencia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNombreCompetencia = new javax.swing.JLabel();
+        jTextFieldNombreCompetencia = new javax.swing.JTextField();
+        jLabelErrorNombre = new javax.swing.JLabel();
+        jComboBoxDeporte = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        deporteAsociado = new javax.swing.JComboBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        nombreComp = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox();
-        ACEPTAR = new javax.swing.JButton();
-        ATRAS = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jTextAreaErrorDisponib = new javax.swing.JTextArea();
+        jLabelLugar = new javax.swing.JLabel();
+        jComboBoxLugares = new javax.swing.JComboBox();
+        jLabelCantidad = new javax.swing.JLabel();
+        jSpinnerCantidad = new javax.swing.JSpinner();
+        jButtonAgregarDisponibilidad = new javax.swing.JButton();
+        jComboBoxPuntuacion = new javax.swing.JComboBox();
+        jComboBoxModalidad = new javax.swing.JComboBox();
+        jLabelFormaPuntuacion = new javax.swing.JLabel();
+        jSpinnerSets = new javax.swing.JSpinner();
+        jSpinnerPuntuacion = new javax.swing.JSpinner();
+        jLabelPtosGanado = new javax.swing.JLabel();
+        jSpinnerPtosGanado = new javax.swing.JSpinner();
+        jLabelPtosPresentarse = new javax.swing.JLabel();
+        jSpinnerPtosPresentarse = new javax.swing.JSpinner();
+        jLabelEmpate = new javax.swing.JLabel();
+        jCheckBoxEmpate = new javax.swing.JCheckBox();
+        jLabelPtosEmpate = new javax.swing.JLabel();
+        jSpinnerPtosEmpate = new javax.swing.JSpinner();
+        jLabelReglamento = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
-        MENU = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner2b = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton6 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jButtonAlta = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
+        jButtonListarParticipantes = new javax.swing.JButton();
+        jButtonIntegrantes = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
-        tablaDisp=new TablaDisponibilidad();
-        jPanel1.add(tablaDisp);
-        jPanel1.setToolTipText("");
-        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel1.setPreferredSize(new java.awt.Dimension(300, 260));
-        add(jPanel1);
-        jPanel1.setBounds(50, 230, 300, 270);
-        revalidate();
-        repaint();
+        jLabelNombreCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelNombreCompetencia.setText("NOMBRE DE COMPETENCIA:");
+        add(jLabelNombreCompetencia);
+        jLabelNombreCompetencia.setBounds(40, 70, 180, 22);
 
-        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel7.setText("Puntos por presentarse:");
-        add(jLabel7);
-        jLabel7.setBounds(500, 270, 160, 20);
-        jLabel7.setVisible(true);
-
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel2.setText("NOMBRE DE COMPETENCIA:");
-        add(jLabel2);
-        jLabel2.setBounds(40, 70, 180, 22);
-
-        // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
-        String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();
-        jComboBox1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        add(jComboBox1);
-        jComboBox1.setBounds(500, 130, 190, 28);
-
-        // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
-        String[] cadena = gestor.gestorCD.getListaModalidades();
-        jComboBox2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(cadena));
-        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox2ItemStateChanged(evt);
-            }
-        });
-        add(jComboBox2);
-        jComboBox2.setBounds(500, 170, 190, 28);
-
-        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
-        deporteAsociado.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        deporteAsociado.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
-        deporteAsociado.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                deporteAsociadoItemStateChanged(evt);
-            }
-        });
-        add(deporteAsociado);
-        deporteAsociado.setBounds(50, 130, 138, 28);
-
-        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCheckBox1StateChanged(evt);
-            }
-        });
-        add(jCheckBox1);
-        jCheckBox1.setBounds(680, 300, 20, 20);
-        jCheckBox1.setVisible(true);
-
-        nombreComp.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        nombreComp.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextFieldNombreCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jTextFieldNombreCompetencia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreCompFocusGained(evt);
+                jTextFieldNombreCompetenciaFocusGained(evt);
             }
         });
-        add(nombreComp);
-        nombreComp.setBounds(50, 100, 220, 28);
-        nombreComp.addKeyListener(new KeyAdapter() {
+        add(jTextFieldNombreCompetencia);
+        jTextFieldNombreCompetencia.setBounds(50, 100, 220, 28);
+        jTextFieldNombreCompetencia.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
                 char keyChar = e.getKeyChar();
@@ -170,92 +110,200 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         });
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel3.setText("Lugar:");
-        add(jLabel3);
-        jLabel3.setBounds(50, 160, 50, 30);
+        jLabelErrorNombre.setText("* Nombre ya existente");
+        jLabelErrorNombre.setVisible(false);
+        add(jLabelErrorNombre);
+        jLabelErrorNombre.setBounds(280, 100, 140, 20);
 
-        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel4.setText("Cant:");
-        add(jLabel4);
-        jLabel4.setBounds(200, 170, 30, 22);
-
-        jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jButton1.setText("Listar Participante de Competencia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
+        jComboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jComboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
+        jComboBoxDeporte.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxDeporteItemStateChanged(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(274, 508, 209, 31);
+        add(jComboBoxDeporte);
+        jComboBoxDeporte.setBounds(50, 130, 138, 28);
 
-        String[] cadena3l = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
-        jComboBox3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
-        jComboBox3.setMinimumSize(new java.awt.Dimension(64, 20));
-        add(jComboBox3);
-        jComboBox3.setBounds(50, 190, 140, 30);
+        tablaDisp=new TablaDisponibilidad();
+        jPanel1.add(tablaDisp);
+        jPanel1.setToolTipText("");
+        jPanel1.setFocusable(false);
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 260));
+        add(jPanel1);
+        jPanel1.setBounds(50, 230, 300, 270);
+        revalidate();
+        repaint();
 
-        ACEPTAR.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        ACEPTAR.setText("Dar de Alta Competencia Deportiva");
-        ACEPTAR.addActionListener(new java.awt.event.ActionListener() {
+        jTextAreaErrorDisponib.setEditable(false);
+        jTextAreaErrorDisponib.setBackground(new Color(255,0,0,100));
+        jTextAreaErrorDisponib.setColumns(10);
+        jTextAreaErrorDisponib.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextAreaErrorDisponib.setForeground(new java.awt.Color(225, 0, 0));
+        jTextAreaErrorDisponib.setText("* Debe asignar una\n   disponibilidad");
+        jTextAreaErrorDisponib.setToolTipText("");
+        jTextAreaErrorDisponib.setAutoscrolls(false);
+        jTextAreaErrorDisponib.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextAreaErrorDisponib.setFocusable(false);
+        jTextAreaErrorDisponib.setOpaque(false);
+        jTextAreaErrorDisponib.setVisible(false);
+        add(jTextAreaErrorDisponib);
+        jTextAreaErrorDisponib.setBounds(358, 240, 110, 34);
+
+        jLabelLugar.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelLugar.setText("Lugar:");
+        add(jLabelLugar);
+        jLabelLugar.setBounds(50, 160, 50, 30);
+
+        String[] cadena3l = gestor.gestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        jComboBoxLugares.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
+        jComboBoxLugares.setMinimumSize(new java.awt.Dimension(64, 20));
+        add(jComboBoxLugares);
+        jComboBoxLugares.setBounds(50, 190, 140, 30);
+
+        jLabelCantidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelCantidad.setText("Cant:");
+        add(jLabelCantidad);
+        jLabelCantidad.setBounds(200, 170, 30, 22);
+
+        jSpinnerCantidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinnerCantidad.setMaximumSize(new java.awt.Dimension(29, 20));
+        add(jSpinnerCantidad);
+        jSpinnerCantidad.setBounds(200, 190, 50, 30);
+
+        jButtonAgregarDisponibilidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonAgregarDisponibilidad.setText("Agregar");
+        jButtonAgregarDisponibilidad.setToolTipText("Agregar disponibilidad");
+        jButtonAgregarDisponibilidad.setMaximumSize(new java.awt.Dimension(64, 20));
+        jButtonAgregarDisponibilidad.setMinimumSize(new java.awt.Dimension(64, 20));
+        jButtonAgregarDisponibilidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ACEPTARActionPerformed(evt);
+                jButtonAgregarDisponibilidadActionPerformed(evt);
             }
         });
-        add(ACEPTAR);
-        ACEPTAR.setBounds(505, 508, 220, 31);
+        add(jButtonAgregarDisponibilidad);
+        jButtonAgregarDisponibilidad.setBounds(260, 190, 80, 31);
 
-        ATRAS.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        ATRAS.setText("Atras");
-        ATRAS.setMaximumSize(new java.awt.Dimension(73, 23));
-        ATRAS.setMinimumSize(new java.awt.Dimension(73, 23));
-        ATRAS.setPreferredSize(new java.awt.Dimension(73, 23));
-        ATRAS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ATRASActionPerformed(evt);
+        // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
+        String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();
+        jComboBoxPuntuacion.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jComboBoxPuntuacion.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
+        jComboBoxPuntuacion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxPuntuacionItemStateChanged(evt);
             }
         });
-        add(ATRAS);
-        ATRAS.setBounds(170, 508, 90, 30);
+        add(jComboBoxPuntuacion);
+        jComboBoxPuntuacion.setBounds(500, 130, 190, 28);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Dar de Alta Competencia Deportiva");
-        jLabel1.setToolTipText("");
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 60);
+        // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
+        String[] cadena = gestor.gestorCD.getListaModalidades();
+        jComboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jComboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(cadena));
+        jComboBoxModalidad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxModalidadItemStateChanged(evt);
+            }
+        });
+        add(jComboBoxModalidad);
+        jComboBoxModalidad.setBounds(500, 170, 190, 28);
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel5.setText("Reglamento (opcional):");
-        add(jLabel5);
-        jLabel5.setBounds(370, 350, 150, 22);
+        jLabelFormaPuntuacion.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelFormaPuntuacion.setText("Cantidad de sets:");
+        add(jLabelFormaPuntuacion);
+        jLabelFormaPuntuacion.setBounds(500, 210, 160, 22);
+        jLabelFormaPuntuacion.setVisible(true);
 
-        jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel8.setText("Puntos por empate:");
-        add(jLabel8);
-        jLabel8.setBounds(500, 330, 150, 22);
-        jLabel8.setVisible(false);
+        jSpinnerSets.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jSpinnerSets.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
+        jSpinnerSets.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinnerSets, ""));
+        ((NumberEditor)jSpinnerSets.getEditor()).getTextField().setEditable(false);
+        jSpinnerSets.setMinimumSize(new java.awt.Dimension(50, 24));
+        jSpinnerSets.setPreferredSize(new java.awt.Dimension(50, 24));
+        add(jSpinnerSets);
+        jSpinnerSets.setBounds(670, 210, 50, 24);
+        jSpinnerSets.setVisible(true);
 
-        jLabel9.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel9.setText("Puntos por partidos ganados:");
-        add(jLabel9);
-        jLabel9.setBounds(500, 238, 160, 22);
-        jLabel9.setVisible(true);
+        jSpinnerPuntuacion.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jSpinnerPuntuacion.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
+        add(jSpinnerPuntuacion);
+        jSpinnerPuntuacion.setBounds(670, 210, 50, 24);
+        jSpinnerPuntuacion.setVisible(false);
 
-        jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel10.setText("Permite empate?");
-        add(jLabel10);
-        jLabel10.setBounds(500, 300, 130, 22);
-        jLabel10.setVisible(true);
+        jLabelPtosGanado.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelPtosGanado.setText("Puntos por partidos ganados:");
+        add(jLabelPtosGanado);
+        jLabelPtosGanado.setBounds(500, 238, 160, 22);
+        jLabelPtosGanado.setVisible(true);
 
-        jLabel11.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel11.setText("Cantidad de sets:");
-        add(jLabel11);
-        jLabel11.setBounds(500, 210, 160, 22);
-        jLabel11.setVisible(true);
+        jSpinnerPtosGanado.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jSpinnerPtosGanado.setModel(new javax.swing.SpinnerNumberModel(3, 1, 999, 1));
+        jSpinnerPtosGanado.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPtosGanadoStateChanged(evt);
+            }
+        });
+        add(jSpinnerPtosGanado);
+        jSpinnerPtosGanado.setBounds(670, 240, 50, 24);
+        jSpinnerPtosGanado.setVisible(true);
+
+        jLabelPtosPresentarse.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelPtosPresentarse.setText("Puntos por presentarse:");
+        add(jLabelPtosPresentarse);
+        jLabelPtosPresentarse.setBounds(500, 270, 160, 20);
+        jLabelPtosPresentarse.setVisible(true);
+
+        jSpinnerPtosPresentarse.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jSpinnerPtosPresentarse.setModel(new javax.swing.SpinnerNumberModel(0, 0, 998, 1));
+        jSpinnerPtosPresentarse.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPtosPresentarseStateChanged(evt);
+            }
+        });
+        add(jSpinnerPtosPresentarse);
+        jSpinnerPtosPresentarse.setBounds(670, 270, 50, 24);
+        jSpinnerPtosPresentarse.setVisible(true);
+
+        jLabelEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelEmpate.setText("Permite empate?");
+        add(jLabelEmpate);
+        jLabelEmpate.setBounds(500, 300, 130, 22);
+        jLabelEmpate.setVisible(true);
+
+        jCheckBoxEmpate.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxEmpateStateChanged(evt);
+            }
+        });
+        add(jCheckBoxEmpate);
+        jCheckBoxEmpate.setBounds(680, 300, 20, 20);
+        jCheckBoxEmpate.setVisible(true);
+
+        jLabelPtosEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelPtosEmpate.setText("Puntos por empate:");
+        add(jLabelPtosEmpate);
+        jLabelPtosEmpate.setBounds(500, 330, 150, 22);
+        jLabelPtosEmpate.setVisible(false);
+
+        jSpinnerPtosEmpate.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jSpinnerPtosEmpate.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
+        jSpinnerPtosEmpate.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPtosEmpateStateChanged(evt);
+            }
+        });
+        add(jSpinnerPtosEmpate);
+        jSpinnerPtosEmpate.setBounds(670, 330, 50, 24);
+        jSpinnerPtosEmpate.setVisible(false);
+
+        jLabelReglamento.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelReglamento.setText("Reglamento (opcional):");
+        add(jLabelReglamento);
+        jLabelReglamento.setBounds(370, 350, 150, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(6);
@@ -264,128 +312,81 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jScrollPane2);
         jScrollPane2.setBounds(370, 370, 340, 114);
 
-        jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jButton3.setText("Agregar");
-        jButton3.setToolTipText("Agregar disponibilidad");
-        jButton3.setMaximumSize(new java.awt.Dimension(64, 20));
-        jButton3.setMinimumSize(new java.awt.Dimension(64, 20));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAlta.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonAlta.setText("Dar de Alta Competencia Deportiva");
+        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonAltaActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(260, 190, 80, 31);
+        add(jButtonAlta);
+        jButtonAlta.setBounds(505, 508, 220, 31);
 
-        MENU.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        MENU.setText("Menu P.");
-        MENU.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMenu.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonMenu.setText("Menu P.");
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MENUActionPerformed(evt);
+                jButtonMenuActionPerformed(evt);
             }
         });
-        add(MENU);
-        MENU.setBounds(69, 508, 90, 31);
+        add(jButtonMenu);
+        jButtonMenu.setBounds(69, 508, 90, 31);
 
-        jSpinner1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
-        jSpinner1.setMaximumSize(new java.awt.Dimension(29, 20));
-        add(jSpinner1);
-        jSpinner1.setBounds(200, 190, 50, 30);
-
-        jSpinner2.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 2));
-        jSpinner2.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner2, ""));
-        ((NumberEditor)jSpinner2.getEditor()).getTextField().setEditable(false);
-        jSpinner2.setMinimumSize(new java.awt.Dimension(50, 24));
-        jSpinner2.setPreferredSize(new java.awt.Dimension(50, 24));
-        add(jSpinner2);
-        jSpinner2.setBounds(670, 210, 50, 24);
-        jSpinner2.setVisible(true);
-
-        jSpinner2b.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jSpinner2b.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
-        add(jSpinner2b);
-        jSpinner2b.setBounds(670, 210, 50, 24);
-        jSpinner2b.setVisible(false);
-
-        jSpinner3.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(3, 1, 999, 1));
-        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner3StateChanged(evt);
-            }
-        });
-        add(jSpinner3);
-        jSpinner3.setBounds(670, 240, 50, 24);
-        jSpinner3.setVisible(true);
-
-        jSpinner4.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 998, 1));
-        jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner4StateChanged(evt);
-            }
-        });
-        add(jSpinner4);
-        jSpinner4.setBounds(670, 270, 50, 24);
-        jSpinner4.setVisible(true);
-
-        jSpinner5.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
-        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 0, 999, 1));
-        jSpinner5.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinner5StateChanged(evt);
-            }
-        });
-        add(jSpinner5);
-        jSpinner5.setBounds(670, 330, 50, 24);
-        jSpinner5.setVisible(false);
-
-        jLabel12.setText("* Nombre ya existente");
-        jLabel12.setVisible(false);
-        add(jLabel12);
-        jLabel12.setBounds(280, 100, 140, 20);
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setBackground(new Color(255,0,0,100));
-        jTextArea2.setColumns(10);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(225, 0, 0));
-        jTextArea2.setText("* Debe asignar una\n   disponibilidad");
-        jTextArea2.setToolTipText("");
-        jTextArea2.setAutoscrolls(false);
-        jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTextArea2.setFocusable(false);
-        jTextArea2.setOpaque(false);
-        jTextArea2.setVisible(false);
-        add(jTextArea2);
-        jTextArea2.setBounds(358, 240, 110, 34);
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
-        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAtras.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonAtras.setText("Atras");
+        jButtonAtras.setMaximumSize(new java.awt.Dimension(73, 23));
+        jButtonAtras.setMinimumSize(new java.awt.Dimension(73, 23));
+        jButtonAtras.setPreferredSize(new java.awt.Dimension(73, 23));
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonAtrasActionPerformed(evt);
             }
         });
-        add(jButton6);
-        jButton6.setBounds(663, 543, 130, 50);
+        add(jButtonAtras);
+        jButtonAtras.setBounds(170, 508, 90, 30);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
-        add(jLabel6);
-        jLabel6.setBounds(0, 0, 800, 600);
+        jButtonListarParticipantes.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jButtonListarParticipantes.setText("Listar Participante de Competencia");
+        jButtonListarParticipantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarParticipantesActionPerformed(evt);
+            }
+        });
+        add(jButtonListarParticipantes);
+        jButtonListarParticipantes.setBounds(274, 508, 209, 31);
+
+        jButtonIntegrantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
+        jButtonIntegrantes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
+        jButtonIntegrantes.setBorder(null);
+        jButtonIntegrantes.setBorderPainted(false);
+        jButtonIntegrantes.setContentAreaFilled(false);
+        jButtonIntegrantes.setFocusPainted(false);
+        jButtonIntegrantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIntegrantesActionPerformed(evt);
+            }
+        });
+        add(jButtonIntegrantes);
+        jButtonIntegrantes.setBounds(663, 543, 130, 50);
+
+        jLabelTitulo.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("Dar de Alta Competencia Deportiva");
+        jLabelTitulo.setToolTipText("");
+        add(jLabelTitulo);
+        jLabelTitulo.setBounds(0, 0, 800, 60);
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
+        add(jLabelFondo);
+        jLabelFondo.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonListarParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarParticipantesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonListarParticipantesActionPerformed
 
-    private void ACEPTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACEPTARActionPerformed
+    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         // Verificar todos los campos
         
         // Verificar Nombre de la competencia
@@ -398,18 +399,18 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }
         else{
             // Se extraen todos los datos para pasar al gestor
-            String nombreCompetencia = nombreComp.getText().toString();
+            String nombreCompetencia = jTextFieldNombreCompetencia.getText().toString();
             String reglamento = jTextArea1.getText().toString();
-            String deporte = deporteAsociado.getSelectedItem().toString();
-            String modalidad = jComboBox2.getSelectedItem().toString();
+            String deporte = jComboBoxDeporte.getSelectedItem().toString();
+            String modalidad = jComboBoxModalidad.getSelectedItem().toString();
             String matriz[][] = tablaDisponibilidades();
-            String puntuacion = jComboBox1.getSelectedItem().toString();
-            int j2 = (int) jSpinner2.getValue();
-            int j2b = (int) jSpinner2b.getValue();
-            int j4 = (int) jSpinner4.getValue();
-            int j3 = (int) jSpinner3.getValue();
-            boolean j5c = jCheckBox1.isSelected();
-            int j5a = (int) jSpinner5.getValue();
+            String puntuacion = jComboBoxPuntuacion.getSelectedItem().toString();
+            int j2 = (int) jSpinnerSets.getValue();
+            int j2b = (int) jSpinnerPuntuacion.getValue();
+            int j4 = (int) jSpinnerPtosPresentarse.getValue();
+            int j3 = (int) jSpinnerPtosGanado.getValue();
+            boolean j5c = jCheckBoxEmpate.isSelected();
+            int j5a = (int) jSpinnerPtosEmpate.getValue();
             
             gestor.gestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
@@ -417,16 +418,16 @@ public class AltaCompetencia extends javax.swing.JPanel {
             V.get().remove(this);
             V.get().listarCompetenciasVolver();
         }
-    }//GEN-LAST:event_ACEPTARActionPerformed
+    }//GEN-LAST:event_jButtonAltaActionPerformed
 
-    private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
+    private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
         V.get().remove(this);
         V.get().listarCompetenciasVolver();
-    }//GEN-LAST:event_ATRASActionPerformed
+    }//GEN-LAST:event_jButtonAtrasActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        if(null != (String)jComboBox1.getSelectedItem())
-            switch ((String)jComboBox1.getSelectedItem()) {
+    private void jComboBoxPuntuacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPuntuacionItemStateChanged
+        if(null != (String)jComboBoxPuntuacion.getSelectedItem())
+            switch ((String)jComboBoxPuntuacion.getSelectedItem()) {
             case "Puntuacion":
                 formaPPuntuacion();
                 break;
@@ -437,116 +438,116 @@ public class AltaCompetencia extends javax.swing.JPanel {
                 formaPResultadoFinal();
                 break;
         }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_jComboBoxPuntuacionItemStateChanged
 
-    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
-        if(jCheckBox1.isSelected()){
-            jLabel8.setVisible(true);
-            jSpinner5.setVisible(true);
+    private void jCheckBoxEmpateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxEmpateStateChanged
+        if(jCheckBoxEmpate.isSelected()){
+            jLabelPtosEmpate.setVisible(true);
+            jSpinnerPtosEmpate.setVisible(true);
         }
         else {
-            jLabel8.setVisible(false);
-            jSpinner5.setVisible(false);
+            jLabelPtosEmpate.setVisible(false);
+            jSpinnerPtosEmpate.setVisible(false);
         }
-    }//GEN-LAST:event_jCheckBox1StateChanged
+    }//GEN-LAST:event_jCheckBoxEmpateStateChanged
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int a= (int)jSpinner1.getValue();
+    private void jButtonAgregarDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarDisponibilidadActionPerformed
+        int a= (int)jSpinnerCantidad.getValue();
         if (a>0 ){
-            agregarATabla((String)jComboBox3.getSelectedItem(),a);
-            jTextArea2.setVisible(false);
+            agregarATabla((String)jComboBoxLugares.getSelectedItem(),a);
+            jTextAreaErrorDisponib.setVisible(false);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonAgregarDisponibilidadActionPerformed
 
-    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
-        int value = (int)jSpinner3.getValue();
+    private void jSpinnerPtosGanadoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPtosGanadoStateChanged
+        int value = (int)jSpinnerPtosGanado.getValue();
         
-        if(value <= (int)jSpinner4.getValue())
-            jSpinner4.setValue(value-1);
-        if(value < (int)jSpinner5.getValue())
-            jSpinner5.setValue(value);
+        if(value <= (int)jSpinnerPtosPresentarse.getValue())
+            jSpinnerPtosPresentarse.setValue(value-1);
+        if(value < (int)jSpinnerPtosEmpate.getValue())
+            jSpinnerPtosEmpate.setValue(value);
         
-    }//GEN-LAST:event_jSpinner3StateChanged
+    }//GEN-LAST:event_jSpinnerPtosGanadoStateChanged
 
-    private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
-        int value = (int)jSpinner4.getValue();
+    private void jSpinnerPtosPresentarseStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPtosPresentarseStateChanged
+        int value = (int)jSpinnerPtosPresentarse.getValue();
         
-        if(value>=(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value+1);
+        if(value>=(int)jSpinnerPtosGanado.getValue()){
+            jSpinnerPtosGanado.setValue(value+1);
         }
-    }//GEN-LAST:event_jSpinner4StateChanged
+    }//GEN-LAST:event_jSpinnerPtosPresentarseStateChanged
 
-    private void jSpinner5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner5StateChanged
-        int value = (int)jSpinner5.getValue();
+    private void jSpinnerPtosEmpateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPtosEmpateStateChanged
+        int value = (int)jSpinnerPtosEmpate.getValue();
         
-        if(value>(int)jSpinner3.getValue()){
-            jSpinner3.setValue(value);
+        if(value>(int)jSpinnerPtosGanado.getValue()){
+            jSpinnerPtosGanado.setValue(value);
         }
-    }//GEN-LAST:event_jSpinner5StateChanged
+    }//GEN-LAST:event_jSpinnerPtosEmpateStateChanged
 
-    private void MENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MENUActionPerformed
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
         V.get().remove(this);
         V.get().listarCompetenciasSalir();
-    }//GEN-LAST:event_MENUActionPerformed
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
-    private void nombreCompFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreCompFocusGained
-        nombreComp.setBackground(Color.WHITE);
-    }//GEN-LAST:event_nombreCompFocusGained
+    private void jTextFieldNombreCompetenciaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreCompetenciaFocusGained
+        jTextFieldNombreCompetencia.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextFieldNombreCompetenciaFocusGained
 
-    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        if("Liga".equals((String)jComboBox2.getSelectedItem())){modalidadLiga();}
+    private void jComboBoxModalidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModalidadItemStateChanged
+        if("Liga".equals((String)jComboBoxModalidad.getSelectedItem())){modalidadLiga();}
         else modalidadEliminatoria();
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
+    }//GEN-LAST:event_jComboBoxModalidadItemStateChanged
 
-    private void deporteAsociadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_deporteAsociadoItemStateChanged
+    private void jComboBoxDeporteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDeporteItemStateChanged
         // Cambiar los lugares de realizacion
-        String[] lugares = gestor.gestorCD.getListaLugares(deporteAsociado.getSelectedItem().toString());
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(lugares));
+        String[] lugares = gestor.gestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(lugares));
         
         // Modificar la tabla si un lugar de realizacion deja de estar disponible
         tablaDisp.verificarLugares(lugares);
-    }//GEN-LAST:event_deporteAsociadoItemStateChanged
+    }//GEN-LAST:event_jComboBoxDeporteItemStateChanged
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed
         V.get().integrantes(this);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonIntegrantesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ACEPTAR;
-    private javax.swing.JButton ATRAS;
-    private javax.swing.JButton MENU;
-    private javax.swing.JComboBox deporteAsociado;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jButtonAgregarDisponibilidad;
+    private javax.swing.JButton jButtonAlta;
+    private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonIntegrantes;
+    private javax.swing.JButton jButtonListarParticipantes;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JCheckBox jCheckBoxEmpate;
+    private javax.swing.JComboBox jComboBoxDeporte;
+    private javax.swing.JComboBox jComboBoxLugares;
+    private javax.swing.JComboBox jComboBoxModalidad;
+    private javax.swing.JComboBox jComboBoxPuntuacion;
+    private javax.swing.JLabel jLabelCantidad;
+    private javax.swing.JLabel jLabelEmpate;
+    private javax.swing.JLabel jLabelErrorNombre;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelFormaPuntuacion;
+    private javax.swing.JLabel jLabelLugar;
+    private javax.swing.JLabel jLabelNombreCompetencia;
+    private javax.swing.JLabel jLabelPtosEmpate;
+    private javax.swing.JLabel jLabelPtosGanado;
+    private javax.swing.JLabel jLabelPtosPresentarse;
+    private javax.swing.JLabel jLabelReglamento;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner2b;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
+    private javax.swing.JSpinner jSpinnerCantidad;
+    private javax.swing.JSpinner jSpinnerPtosEmpate;
+    private javax.swing.JSpinner jSpinnerPtosGanado;
+    private javax.swing.JSpinner jSpinnerPtosPresentarse;
+    private javax.swing.JSpinner jSpinnerPuntuacion;
+    private javax.swing.JSpinner jSpinnerSets;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField nombreComp;
+    private javax.swing.JTextArea jTextAreaErrorDisponib;
+    private javax.swing.JTextField jTextFieldNombreCompetencia;
     // End of variables declaration//GEN-END:variables
     
     
@@ -554,48 +555,48 @@ public class AltaCompetencia extends javax.swing.JPanel {
     
     //Habilitacion de campos para la modalidad de liga
     private void modalidadLiga(){
-        jSpinner3.setVisible(true);
-        jSpinner4.setVisible(true);
-        jCheckBox1.setVisible(true);
-        jLabel7.setVisible(true);
-        jLabel9.setVisible(true);
-        jLabel10.setVisible(true);
+        jSpinnerPtosGanado.setVisible(true);
+        jSpinnerPtosPresentarse.setVisible(true);
+        jCheckBoxEmpate.setVisible(true);
+        jLabelPtosPresentarse.setVisible(true);
+        jLabelPtosGanado.setVisible(true);
+        jLabelEmpate.setVisible(true);
         verEmpate();
     }
     
     //Habilitacion de campos para modalidad de eliminatorias
     private void modalidadEliminatoria(){
-        jSpinner3.setVisible(false);
-        jSpinner4.setVisible(false);
-        jSpinner5.setVisible(false);
-        jCheckBox1.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
+        jSpinnerPtosGanado.setVisible(false);
+        jSpinnerPtosPresentarse.setVisible(false);
+        jSpinnerPtosEmpate.setVisible(false);
+        jCheckBoxEmpate.setVisible(false);
+        jLabelPtosPresentarse.setVisible(false);
+        jLabelPtosEmpate.setVisible(false);
+        jLabelPtosGanado.setVisible(false);
+        jLabelEmpate.setVisible(false);
     }
     
     //Habilitacion de campos para forma de puntuacion, puntuacion
     private void formaPPuntuacion(){
-        jLabel11.setVisible(true);
-        jSpinner2b.setVisible(true);
-        jSpinner2.setVisible(false);
-        jLabel11.setText("Tantos por no presentarse");
+        jLabelFormaPuntuacion.setVisible(true);
+        jSpinnerPuntuacion.setVisible(true);
+        jSpinnerSets.setVisible(false);
+        jLabelFormaPuntuacion.setText("Tantos por no presentarse");
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, sets
     private void formaPSets(){
-        jLabel11.setVisible(true);
-        jSpinner2.setVisible(true);
-        jSpinner2b.setVisible(false);
-        jLabel11.setText("Cant. max. de sets");
+        jLabelFormaPuntuacion.setVisible(true);
+        jSpinnerSets.setVisible(true);
+        jSpinnerPuntuacion.setVisible(false);
+        jLabelFormaPuntuacion.setText("Cant. max. de sets");
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, Resultado final
     private void formaPResultadoFinal(){
-        jLabel11.setVisible(false);
-        jSpinner2b.setVisible(false);
-        jSpinner2.setVisible(false);
+        jLabelFormaPuntuacion.setVisible(false);
+        jSpinnerPuntuacion.setVisible(false);
+        jSpinnerSets.setVisible(false);
         repaint();
     }
     
@@ -605,13 +606,13 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }
     // Habilitacion/deshabilitacion de los campos de empate
     private void verCheckBoxEmpate(){
-        if(jCheckBox1.isSelected()){
-            jLabel8.setVisible(true);
-            jSpinner5.setVisible(true);
+        if(jCheckBoxEmpate.isSelected()){
+            jLabelPtosEmpate.setVisible(true);
+            jSpinnerPtosEmpate.setVisible(true);
         }
         else {
-            jLabel8.setVisible(false);
-            jSpinner5.setVisible(false);
+            jLabelPtosEmpate.setVisible(false);
+            jSpinnerPtosEmpate.setVisible(false);
         }
     }
     
@@ -624,39 +625,39 @@ public class AltaCompetencia extends javax.swing.JPanel {
     // Nombre de la competencia
     private boolean verificarNombreCompetencia(){
         
-        String aux = nombreComp.getText();
+        String aux = jTextFieldNombreCompetencia.getText();
         
         // ELimina espacios al inicio y final
         aux = aux.trim();
-        nombreComp.setText(aux);
+        jTextFieldNombreCompetencia.setText(aux);
         
         if(aux.length() == 0 ){
             // El usuario no ingreso nombre de Competencia.
-            jLabel12.setText("* Ingrese un nombre");
-            jLabel12.setVisible(true);
-            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
+            jLabelErrorNombre.setText("* Ingrese un nombre");
+            jLabelErrorNombre.setVisible(true);
+            jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
         else if (gestor.gestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
-            jLabel12.setText("* Nombre ya existente");
-            jLabel12.setVisible(true);
-            nombreComp.setBackground(new Color(0xFF, 0x80, 0x80));
+            jLabelErrorNombre.setText("* Nombre ya existente");
+            jLabelErrorNombre.setVisible(true);
+            jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
         else {
-            jLabel12.setVisible(false);
+            jLabelErrorNombre.setVisible(false);
             return false;
         }
     }
     
     private boolean verificarDisponibilidades(){
         if(tablaDisp.tieneDisponibilidades()){
-            jTextArea2.setVisible(false);
+            jTextAreaErrorDisponib.setVisible(false);
             return false;
         }
         else{
-            jTextArea2.setVisible(true);
+            jTextAreaErrorDisponib.setVisible(true);
             return true;
         }
     }
