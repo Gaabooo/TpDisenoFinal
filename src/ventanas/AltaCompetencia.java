@@ -115,7 +115,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelErrorNombre);
         jLabelErrorNombre.setBounds(280, 100, 140, 20);
 
-        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
+        String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();
         jComboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         jComboBoxDeporte.addItemListener(new java.awt.event.ItemListener() {
@@ -157,7 +157,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelLugar);
         jLabelLugar.setBounds(50, 160, 50, 30);
 
-        String[] cadena3l = gestor.gestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        String[] cadena3l = gestor.gGestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
         jComboBoxLugares.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBoxLugares.setMinimumSize(new java.awt.Dimension(64, 20));
@@ -189,7 +189,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jButtonAgregarDisponibilidad.setBounds(260, 190, 80, 31);
 
         // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
-        String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();
+        String[] cadena2 = gestor.gGestorCD.getListaPuntuaciones();
         jComboBoxPuntuacion.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxPuntuacion.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
         jComboBoxPuntuacion.addItemListener(new java.awt.event.ItemListener() {
@@ -201,7 +201,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jComboBoxPuntuacion.setBounds(500, 130, 190, 28);
 
         // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
-        String[] cadena = gestor.gestorCD.getListaModalidades();
+        String[] cadena = gestor.gGestorCD.getListaModalidades();
         jComboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(cadena));
         jComboBoxModalidad.addItemListener(new java.awt.event.ItemListener() {
@@ -412,7 +412,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             boolean j5c = jCheckBoxEmpate.isSelected();
             int j5a = (int) jSpinnerPtosEmpate.getValue();
             
-            gestor.gestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
+            gestor.gGestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             
             V.get().remove(this);
@@ -501,7 +501,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
     private void jComboBoxDeporteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDeporteItemStateChanged
         // Cambiar los lugares de realizacion
-        String[] lugares = gestor.gestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        String[] lugares = gestor.gGestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
         jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(lugares));
         
         // Modificar la tabla si un lugar de realizacion deja de estar disponible
@@ -638,7 +638,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
-        else if (gestor.gestorCD.verificarNombre(aux)){
+        else if (gestor.gGestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
             jLabelErrorNombre.setText("* Nombre ya existente");
             jLabelErrorNombre.setVisible(true);

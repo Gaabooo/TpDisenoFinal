@@ -5,7 +5,7 @@
  */
 package ventanas;
 
-import gestor.gestorCD;
+import gestor.gGestorCD;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -190,7 +190,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         //System.out.print(compAux.getId());
         
         // Se recuperan las TablaPosicionesParticipante de la base de datos
-        ArrayList<TablaPosicionesAux> listaTpp = gestorCD.listarTpp(compAux.getId());
+        ArrayList<TablaPosicionesAux> listaTpp = gGestorCD.listarTpp(compAux.getId());
         
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
         int diferencia;

@@ -135,7 +135,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();&#xa;String[] listaND= new String[listaNombresDeportes.length+1];&#xa;listaND[0]=&quot;&quot;;&#xa;for(int j=0; j&lt;listaNombresDeportes.length; j++){&#xa;    listaND[j+1]=listaNombresDeportes[j];&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();&#xa;String[] listaND= new String[listaNombresDeportes.length+1];&#xa;listaND[0]=&quot;&quot;;&#xa;for(int j=0; j&lt;listaNombresDeportes.length; j++){&#xa;    listaND[j+1]=listaNombresDeportes[j];&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxEstado">

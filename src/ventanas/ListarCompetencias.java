@@ -2,7 +2,7 @@
 package ventanas;
 
 import DAO.CompetenciaDaoJDBC;
-import gestor.gestorCD;
+import gestor.gGestorCD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
         textFieldCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
-        String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();
+        String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();
         String[] listaND= new String[listaNombresDeportes.length+1];
         listaND[0]="";
         for(int j=0; j<listaNombresDeportes.length; j++){
@@ -265,7 +265,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
             
             // Se recuperan las competenciasAux de la base de datos
-            ArrayList<CompetenciaAux> listaprueba = gestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
+            ArrayList<CompetenciaAux> listaprueba = gGestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
             
             
             // Eliminacion de la tabla actual
@@ -320,7 +320,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             String modalidad=jTable1.getValueAt(row, 2).toString();
             String estado=jTable1.getValueAt(row, 3).toString(); 
             
-            int idComp=gestorCD.obtenerIdCD(nombre);
+            int idComp=gGestorCD.obtenerIdCD(nombre);
             
             CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
             

@@ -86,7 +86,7 @@
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxDeporteItemStateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.gestorCD.getListaDeportes();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();"/>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="AltaCompetencia_DeporteAsociado"/>
       </AuxValues>
       <Constraints>
@@ -175,7 +175,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena3l = gestor.gestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] cadena3l = gestor.gGestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -250,7 +250,7 @@
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxPuntuacionItemStateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena2= new String[] { &quot;Puntuacion&quot;, &quot;Sets&quot;, &quot;Resultado Final&quot; };&#xa;String[] cadena2 = gestor.gestorCD.getListaPuntuaciones();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena2= new String[] { &quot;Puntuacion&quot;, &quot;Sets&quot;, &quot;Resultado Final&quot; };&#xa;String[] cadena2 = gestor.gGestorCD.getListaPuntuaciones();"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -271,7 +271,7 @@
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxModalidadItemStateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena= new String[] { &quot;Liga&quot;, &quot;Eliminacion Simple&quot;, &quot;Eliminacion Doble&quot; };&#xa;String[] cadena = gestor.gestorCD.getListaModalidades();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="// String[] cadena= new String[] { &quot;Liga&quot;, &quot;Eliminacion Simple&quot;, &quot;Eliminacion Doble&quot; };&#xa;String[] cadena = gestor.gGestorCD.getListaModalidades();"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

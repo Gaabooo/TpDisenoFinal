@@ -5,7 +5,7 @@ import static DAO.CompetenciaDaoJDBC.getTablaPosiciones;
 import java.util.ArrayList;
 import modelo.*;
 
-public class gestorCD {
+public class gGestorCD {
     
     
 
