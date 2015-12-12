@@ -162,7 +162,7 @@ public class MostrarFixture extends javax.swing.JPanel {
 
         jLabel5.setText("* no implementado");
         add(jLabel5);
-        jLabel5.setBounds(564, 550, 90, 14);
+        jLabel5.setBounds(544, 550, 110, 14);
 
         jLabel6.setText("*");
         add(jLabel6);

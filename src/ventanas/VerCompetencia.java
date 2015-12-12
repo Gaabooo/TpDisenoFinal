@@ -59,9 +59,6 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
@@ -242,18 +239,6 @@ public class VerCompetencia extends javax.swing.JPanel {
         add(jButton9);
         jButton9.setBounds(638, 530, 152, 59);
 
-        jLabel12.setText("* no implementado");
-        add(jLabel12);
-        jLabel12.setBounds(534, 550, 120, 14);
-
-        jLabel13.setText("*");
-        add(jLabel13);
-        jLabel13.setBounds(750, 150, 6, 14);
-
-        jLabel15.setText("*");
-        add(jLabel15);
-        jLabel15.setBounds(750, 200, 6, 14);
-
         jLabel14.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel14.setText("Proximos Encuentros:");
         add(jLabel14);
@@ -333,10 +318,7 @@ public class VerCompetencia extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

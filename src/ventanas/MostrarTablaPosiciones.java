@@ -46,11 +46,8 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -122,7 +119,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jButton3.setText("Imprimir");
         jButton3.setEnabled(false);
         add(jButton3);
-        jButton3.setBounds(556, 477, 90, 31);
+        jButton3.setBounds(570, 477, 90, 31);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,14 +127,6 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         jLabel1.setText("Tabla de Posiciones:");
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 60);
-
-        jLabel2.setText("*");
-        add(jLabel2);
-        jLabel2.setBounds(650, 488, 10, 14);
-
-        jLabel4.setText("*");
-        add(jLabel4);
-        jLabel4.setBounds(771, 488, 6, 14);
 
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Atras");
@@ -162,10 +151,6 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         });
         add(jButton6);
         jButton6.setBounds(670, 538, 120, 51);
-
-        jLabel5.setText("* no implementado");
-        add(jLabel5);
-        jLabel5.setBounds(564, 550, 90, 14);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel3);
@@ -237,10 +222,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
