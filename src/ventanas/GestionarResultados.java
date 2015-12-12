@@ -117,15 +117,15 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(660, 539, 130, 50);
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 23)); // NOI18N
         jLabel3.setText("Nombre Competencia");
         add(jLabel3);
-        jLabel3.setBounds(200, 90, 480, 40);
+        jLabel3.setBounds(240, 90, 480, 40);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 23)); // NOI18N
         jLabel1.setText("Competencia Seleccionada:");
         add(jLabel1);
-        jLabel1.setBounds(55, 90, 137, 40);
+        jLabel1.setBounds(55, 90, 190, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);

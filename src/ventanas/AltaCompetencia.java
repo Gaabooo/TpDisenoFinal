@@ -82,6 +82,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jButtonListarParticipantes = new javax.swing.JButton();
         jButtonIntegrantes = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
+        jLabelIconNombre = new javax.swing.JLabel();
+        jLabelIconDisponibilidades = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -114,10 +116,11 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         });
 
-        jLabelErrorNombre.setText("* Nombre ya existente");
+        jLabelErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelErrorNombre.setText("Nombre ya existente");
         jLabelErrorNombre.setVisible(false);
         add(jLabelErrorNombre);
-        jLabelErrorNombre.setBounds(430, 80, 140, 20);
+        jLabelErrorNombre.setBounds(461, 80, 110, 30);
 
         jLabelDeporte.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelDeporte.setText("Deporte:");
@@ -152,7 +155,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextAreaErrorDisponib.setColumns(10);
         jTextAreaErrorDisponib.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextAreaErrorDisponib.setForeground(new java.awt.Color(225, 0, 0));
-        jTextAreaErrorDisponib.setText("* Debe asignar una\n   disponibilidad");
+        jTextAreaErrorDisponib.setText("Debe asignar una\ndisponibilidad");
         jTextAreaErrorDisponib.setToolTipText("");
         jTextAreaErrorDisponib.setAutoscrolls(false);
         jTextAreaErrorDisponib.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -400,6 +403,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelTitulo);
         jLabelTitulo.setBounds(0, 0, 800, 60);
 
+        jLabelIconNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        add(jLabelIconNombre);
+        jLabelIconNombre.setBounds(430, 80, 40, 30);
+
+        jLabelIconDisponibilidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        add(jLabelIconDisponibilidades);
+        jLabelIconDisponibilidades.setBounds(380, 210, 40, 30);
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabelFondo);
         jLabelFondo.setBounds(0, 0, 800, 600);
@@ -554,6 +565,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelErrorNombre;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelFormaPuntuacion;
+    private javax.swing.JLabel jLabelIconDisponibilidades;
+    private javax.swing.JLabel jLabelIconNombre;
     private javax.swing.JLabel jLabelLugar;
     private javax.swing.JLabel jLabelModalidad;
     private javax.swing.JLabel jLabelNombreCompetencia;
@@ -661,6 +674,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             // El usuario no ingreso nombre de Competencia.
             jLabelErrorNombre.setText("* Ingrese un nombre");
             jLabelErrorNombre.setVisible(true);
+            jLabelIconNombre.setVisible(true);
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
@@ -668,11 +682,13 @@ public class AltaCompetencia extends javax.swing.JPanel {
             // Nombre de competencia ya existe.
             jLabelErrorNombre.setText("* Nombre ya existente");
             jLabelErrorNombre.setVisible(true);
+            jLabelIconNombre.setVisible(true);
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
         else {
             jLabelErrorNombre.setVisible(false);
+            jLabelIconNombre.setVisible(false);
             return false;
         }
     }
@@ -680,10 +696,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private boolean verificarDisponibilidades(){
         if(tablaDisp.tieneDisponibilidades()){
             jTextAreaErrorDisponib.setVisible(false);
+            jLabelIconDisponibilidades.setVisible(false);
             return false;
         }
         else{
             jTextAreaErrorDisponib.setVisible(true);
+            jLabelIconDisponibilidades.setVisible(false);
             return true;
         }
     }
