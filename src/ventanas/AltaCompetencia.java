@@ -120,7 +120,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelErrorNombre.setText("Nombre ya existente");
         jLabelErrorNombre.setVisible(false);
         add(jLabelErrorNombre);
-        jLabelErrorNombre.setBounds(461, 80, 110, 30);
+        jLabelErrorNombre.setBounds(461, 80, 260, 30);
 
         jLabelDeporte.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelDeporte.setText("Deporte:");
