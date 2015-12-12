@@ -62,6 +62,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -71,25 +72,20 @@ public class VerCompetencia extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Proximos Encuentros", "Club", "Fecha"
+                "Participante 1", "Participante 2", "Club", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -104,7 +100,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(67, 342, 682, 167);
+        jScrollPane1.setBounds(49, 369, 700, 140);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Menu Principal");
@@ -114,7 +110,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(285, 300, 246, 36);
+        jButton1.setBounds(285, 292, 246, 45);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Mostrar Fixture");
@@ -124,7 +120,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(549, 250, 200, 44);
+        jButton2.setBounds(549, 250, 200, 45);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Mostrar Tablas de Posiciones");
@@ -134,7 +130,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(67, 194, 200, 45);
+        jButton3.setBounds(67, 198, 200, 45);
 
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Listar Participantes");
@@ -144,17 +140,17 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(67, 147, 200, 36);
+        jButton4.setBounds(67, 147, 200, 45);
 
         jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Modificar Competencia");
         add(jButton5);
-        jButton5.setBounds(549, 147, 200, 37);
+        jButton5.setBounds(549, 147, 200, 45);
 
         jButton6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton6.setText("Dar De Baja Competencia");
         add(jButton6);
-        jButton6.setBounds(549, 195, 200, 45);
+        jButton6.setBounds(549, 198, 200, 45);
 
         jButton7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton7.setText("Generar Fixture");
@@ -164,7 +160,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton7);
-        jButton7.setBounds(67, 250, 200, 44);
+        jButton7.setBounds(67, 250, 200, 45);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Deporte:");
@@ -181,15 +177,15 @@ public class VerCompetencia extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(516, 114, 37, 22);
 
-        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("COMPETENCIA DEPORTIVA:");
         add(jLabel4);
-        jLabel4.setBounds(73, 66, 188, 30);
+        jLabel4.setBounds(55, 70, 180, 40);
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel5.setText("Nombre Competencia");
         add(jLabel5);
-        jLabel5.setBounds(267, 64, 430, 30);
+        jLabel5.setBounds(200, 70, 480, 40);
 
         jLabel6.setText("jLabel6");
         add(jLabel6);
@@ -197,7 +193,7 @@ public class VerCompetencia extends javax.swing.JPanel {
 
         jLabel7.setText("jLabel7");
         add(jLabel7);
-        jLabel7.setBounds(343, 105, 150, 30);
+        jLabel7.setBounds(343, 100, 150, 40);
 
         jLabel8.setText("jLabel8");
         add(jLabel8);
@@ -211,7 +207,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         });
         add(jButton8);
-        jButton8.setBounds(21, 515, 122, 36);
+        jButton8.setBounds(48, 515, 90, 36);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo mas chico1.png"))); // NOI18N
         jLabel9.setText("jLabel9");
@@ -252,6 +248,11 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel15.setText("*");
         add(jLabel15);
         jLabel15.setBounds(750, 200, 6, 14);
+
+        jLabel14.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel14.setText("Proximos Encuentros:");
+        add(jLabel14);
+        jLabel14.setBounds(50, 340, 140, 30);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel11);
@@ -329,6 +330,7 @@ public class VerCompetencia extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,19 +348,19 @@ public class VerCompetencia extends javax.swing.JPanel {
     
      jLabel5.setVisible(true);
      jLabel5.setText(compAux.getNombre());
-     jLabel5.setFont(new java.awt.Font("Agency FB", 0, 30)); 
+     jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); 
      
      jLabel6.setVisible(true);
      jLabel6.setText(compAux.getDeporte());
-     jLabel6.setFont(new java.awt.Font("Agency FB", 0, 30)); 
+     jLabel6.setFont(new java.awt.Font("Agency FB", 0, 24)); 
      
      jLabel7.setVisible(true);
      jLabel7.setText(compAux.getModalidad());
-     jLabel7.setFont(new java.awt.Font("Agency FB", 0, 30));
+     jLabel7.setFont(new java.awt.Font("Agency FB", 0, 24));
      
      jLabel8.setVisible(true);
      jLabel8.setText(compAux.getEstado());
-     jLabel8.setFont(new java.awt.Font("Agency FB", 0, 30));
+     jLabel8.setFont(new java.awt.Font("Agency FB", 0, 24));
     
     }
     

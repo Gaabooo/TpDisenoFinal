@@ -111,7 +111,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(585, 300, 90, 40);
+        jButton1.setBounds(585, 280, 90, 30);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");

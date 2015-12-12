@@ -110,17 +110,17 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(37, 477, 73, 31);
+        jButton1.setBounds(48, 477, 90, 31);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Exportar");
         add(jButton2);
-        jButton2.setBounds(690, 477, 77, 31);
+        jButton2.setBounds(667, 477, 100, 31);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Imprimir");
         add(jButton3);
-        jButton3.setBounds(601, 477, 75, 31);
+        jButton3.setBounds(556, 477, 90, 31);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,7 +131,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jLabel2.setText("*");
         add(jLabel2);
-        jLabel2.setBounds(680, 488, 6, 14);
+        jLabel2.setBounds(650, 488, 10, 14);
 
         jLabel4.setText("*");
         add(jLabel4);
@@ -145,7 +145,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(128, 477, 61, 31);
+        jButton4.setBounds(150, 477, 90, 31);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
         jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));

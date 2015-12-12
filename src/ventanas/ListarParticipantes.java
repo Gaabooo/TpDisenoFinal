@@ -59,12 +59,12 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(568, 495, 157, 31);
+        jButton1.setBounds(532, 495, 192, 31);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Modificar Participante");
         add(jButton2);
-        jButton2.setBounds(333, 495, 157, 31);
+        jButton2.setBounds(290, 495, 192, 31);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Eliminar Participante");
@@ -72,7 +72,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jButton3.setMinimumSize(new java.awt.Dimension(150, 31));
         jButton3.setPreferredSize(new java.awt.Dimension(150, 31));
         add(jButton3);
-        jButton3.setBounds(99, 495, 166, 30);
+        jButton3.setBounds(48, 495, 192, 30);
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,7 +98,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(100, 140, 623, 340);
+        jScrollPane1.setBounds(53, 140, 670, 340);
 
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Atras");
@@ -108,7 +108,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(185, 536, 80, 31);
+        jButton4.setBounds(150, 536, 90, 31);
 
         jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Menu P.");
@@ -118,16 +118,16 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton5);
-        jButton5.setBounds(99, 536, 80, 31);
+        jButton5.setBounds(48, 536, 90, 31);
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Competencia Seleccionada:");
         add(jLabel1);
-        jLabel1.setBounds(99, 110, 137, 22);
+        jLabel1.setBounds(55, 90, 180, 40);
 
         jLabel2.setText("CompetenciaDSeleccionada");
         add(jLabel2);
-        jLabel2.setBounds(240, 100, 131, 30);
+        jLabel2.setBounds(200, 90, 480, 40);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

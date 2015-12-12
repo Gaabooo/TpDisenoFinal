@@ -40,12 +40,8 @@ public class GestionarResultados extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -81,7 +77,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(34, 108, 733, 92);
+        jScrollPane1.setBounds(47, 148, 720, 100);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Aceptar");
@@ -91,7 +87,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(694, 218, 73, 31);
+        jButton1.setBounds(675, 258, 90, 30);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
@@ -101,12 +97,12 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(113, 218, 61, 31);
+        jButton2.setBounds(150, 258, 90, 30);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Menu P.");
         add(jButton3);
-        jButton3.setBounds(34, 218, 73, 31);
+        jButton3.setBounds(48, 258, 90, 30);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
         jButton6.setBorder(null);
@@ -121,55 +117,15 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(660, 539, 130, 50);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Competidores", "Puntuacion", "Asistencia"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable2.getTableHeader().setResizingAllowed(false);
-        jTable2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable2);
-
-        add(jScrollPane2);
-        jScrollPane2.setBounds(34, 108, 733, 92);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Competidores", "Resultado Final"
-            }
-        ));
-        jTable3.getTableHeader().setResizingAllowed(false);
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTable3);
-
-        add(jScrollPane3);
-        jScrollPane3.setBounds(34, 108, 733, 92);
-
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jLabel1.setText("Competencia Deportiva:");
-        add(jLabel1);
-        jLabel1.setBounds(40, 70, 190, 30);
-
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel3.setText("Nombre Competencia");
         add(jLabel3);
-        jLabel3.setBounds(230, 70, 270, 30);
+        jLabel3.setBounds(200, 90, 480, 40);
+
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel1.setText("Competencia Seleccionada:");
+        add(jLabel1);
+        jLabel1.setBounds(55, 90, 137, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
@@ -205,23 +161,17 @@ public class GestionarResultados extends javax.swing.JPanel {
     }
     
     private void formaPPuntuacion(){
-        jTable1.setVisible(true);
-        jTable2.setVisible(false);
-        jTable3.setVisible(false);
+        // metodo que modifica y llena tabla
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, sets
     private void formaPSets(){
-        jTable1.setVisible(false);
-        jTable2.setVisible(true);
-        jTable3.setVisible(false);
+        // metodo que modifica y llena tabla
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, Resultado final
     private void formaPResultadoFinal(){
-        jTable1.setVisible(false);
-        jTable2.setVisible(false);
-        jTable3.setVisible(true);
+        // metodo que modifica y llena tabla
         repaint();
     }
     
@@ -242,10 +192,6 @@ public class GestionarResultados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

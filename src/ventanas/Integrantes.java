@@ -59,7 +59,7 @@ public class Integrantes extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(46, 530, 130, 31);
+        jButton2.setBounds(48, 530, 90, 31);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_avatar.jpg"))); // NOI18N
         add(jLabel3);

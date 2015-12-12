@@ -97,12 +97,12 @@ public class MostrarFixture extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(48, 122, 695, 350);
+        jScrollPane1.setBounds(48, 132, 695, 340);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("COMPETENCIA DEPORTIVA:");
         add(jLabel4);
-        jLabel4.setBounds(48, 61, 140, 60);
+        jLabel4.setBounds(55, 90, 180, 40);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +119,7 @@ public class MostrarFixture extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(48, 490, 73, 31);
+        jButton4.setBounds(48, 490, 90, 31);
 
         jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Gestionar Resultado");
@@ -129,7 +129,7 @@ public class MostrarFixture extends javax.swing.JPanel {
             }
         });
         add(jButton5);
-        jButton5.setBounds(610, 490, 133, 31);
+        jButton5.setBounds(563, 490, 180, 31);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Atras");
@@ -139,11 +139,11 @@ public class MostrarFixture extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(139, 490, 76, 31);
+        jButton1.setBounds(150, 490, 90, 31);
 
         jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(198, 68, 540, 50);
+        jLabel1.setBounds(200, 90, 480, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
         jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
