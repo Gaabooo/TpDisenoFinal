@@ -33,10 +33,6 @@ public class Menu extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -55,6 +51,7 @@ public class Menu extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Dar de Baja Usuario");
+        jButton2.setEnabled(false);
         add(jButton2);
         jButton2.setBounds(300, 318, 200, 31);
 
@@ -66,6 +63,7 @@ public class Menu extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Listar Lugares de Realizacion");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -86,6 +84,7 @@ public class Menu extends javax.swing.JPanel {
 
         jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Modificar Datos de Usuario");
+        jButton5.setEnabled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -93,22 +92,6 @@ public class Menu extends javax.swing.JPanel {
         });
         add(jButton5);
         jButton5.setBounds(300, 277, 200, 31);
-
-        jLabel1.setText("*");
-        add(jLabel1);
-        jLabel1.setBounds(510, 284, 15, 10);
-
-        jLabel5.setText("*");
-        add(jLabel5);
-        jLabel5.setBounds(510, 324, 15, 10);
-
-        jLabel6.setText("*");
-        add(jLabel6);
-        jLabel6.setBounds(510, 404, 15, 10);
-
-        jLabel7.setText("*: No implementado");
-        add(jLabel7);
-        jLabel7.setBounds(500, 570, 130, 14);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Salir");
@@ -168,12 +151,8 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
