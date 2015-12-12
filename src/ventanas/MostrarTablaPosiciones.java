@@ -5,7 +5,7 @@
  */
 package ventanas;
 
-import gestor.gGestorCD;
+import gestor.GestorCD;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -100,7 +100,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(37, 96, 740, 370);
+        jScrollPane1.setBounds(37, 96, 730, 370);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Menu P.");
@@ -190,7 +190,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         //System.out.print(compAux.getId());
         
         // Se recuperan las TablaPosicionesParticipante de la base de datos
-        ArrayList<TablaPosicionesAux> listaTpp = gGestorCD.listarTpp(compAux.getId());
+        ArrayList<TablaPosicionesAux> listaTpp = GestorCD.listarTpp(compAux.getId());
         
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
         int diferencia;

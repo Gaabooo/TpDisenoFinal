@@ -5,8 +5,6 @@
  */
 package ventanas;
 
-import modelo.CompetenciaAux;
-
 /**
  *
  * @author GabrielV

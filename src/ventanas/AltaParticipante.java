@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.AbstractDocument;
 import modelo.CompetenciaAux;
 import sonidos.alertaSuave;
 
@@ -63,6 +64,7 @@ public class AltaParticipante extends javax.swing.JPanel {
         setLayout(null);
 
         jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ((AbstractDocument)jTextField1.getDocument()).setDocumentFilter(new LimitadorTextField(50));
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField1FocusGained(evt);
@@ -72,6 +74,7 @@ public class AltaParticipante extends javax.swing.JPanel {
         jTextField1.setBounds(475, 198, 200, 28);
 
         jTextField2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ((AbstractDocument)jTextField2.getDocument()).setDocumentFilter(new LimitadorTextField(50));
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
@@ -96,7 +99,7 @@ public class AltaParticipante extends javax.swing.JPanel {
         jLabel1.setBounds(355, 201, 110, 22);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel2.setText("Nombre y Apellido:");
+        jLabel2.setText("Nombre:");
         add(jLabel2);
         jLabel2.setBounds(355, 235, 110, 30);
 
@@ -108,7 +111,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(590, 360, 90, 50);
+        jButton1.setBounds(585, 300, 90, 40);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");

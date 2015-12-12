@@ -5,7 +5,6 @@
  */
 package ventanas;
 
-import DAO.CompetenciaDaoJDBC;
 import javax.swing.JOptionPane;
 import modelo.CompetenciaAux;
 
@@ -299,7 +298,7 @@ public class VerCompetencia extends javax.swing.JPanel {
                     "Generar Fixture", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
                 // Generar el fixture
-                gestor.GestionarFixtureGestor.generarFixture(compAux);
+                gestor.GestorGestionarFixture.generarFixture(compAux);
                 compAux.setEstado("Planificada");
                 verNombre();
             }

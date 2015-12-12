@@ -16,6 +16,7 @@ public class MostrarFixture extends javax.swing.JPanel {
 
     /**
      * Creates new form MostrarFixture
+     * @param param
      */
     public MostrarFixture(CompetenciaAux param) {
         compAux=param;

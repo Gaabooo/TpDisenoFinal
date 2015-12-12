@@ -5,11 +5,7 @@
  */
 package ventanas;
 
-import DAO.CompetenciaDaoJDBC;
 import gestor.GestorParticipante;
-import gestor.gGestorCD;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +19,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
     CompetenciaAux compAux;
     /**
      * Creates new form ListarParticipantes
+     * @param param
      */
     public ListarParticipantes(CompetenciaAux param) {
         compAux=param;
@@ -62,20 +59,20 @@ public class ListarParticipantes extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(568, 510, 157, 31);
+        jButton1.setBounds(568, 495, 157, 31);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Modificar Participante");
         add(jButton2);
-        jButton2.setBounds(333, 510, 157, 31);
+        jButton2.setBounds(333, 495, 157, 31);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Eliminar Participante");
-        jButton3.setMaximumSize(new java.awt.Dimension(150, 23));
-        jButton3.setMinimumSize(new java.awt.Dimension(150, 23));
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 23));
+        jButton3.setMaximumSize(new java.awt.Dimension(150, 31));
+        jButton3.setMinimumSize(new java.awt.Dimension(150, 31));
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 31));
         add(jButton3);
-        jButton3.setBounds(99, 510, 166, 23);
+        jButton3.setBounds(99, 495, 166, 30);
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,7 +98,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(100, 140, 623, 355);
+        jScrollPane1.setBounds(100, 140, 623, 340);
 
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton4.setText("Atras");

@@ -1,13 +1,13 @@
 
 package ventanas;
 
-import DAO.CompetenciaDaoJDBC;
-import gestor.gGestorCD;
+import gestor.GestorCD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
 import modelo.CompetenciaAux;
 
 public class ListarCompetencias extends javax.swing.JPanel {
@@ -58,8 +58,9 @@ public class ListarCompetencias extends javax.swing.JPanel {
         labelCompetencia2.setText("(contiene)");
 
         textFieldCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ((AbstractDocument)textFieldCompetencia.getDocument()).setDocumentFilter(new LimitadorTextField(50));
 
-        String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();
+        String[] listaNombresDeportes = gestor.GestorCD.getListaDeportes();
         String[] listaND= new String[listaNombresDeportes.length+1];
         listaND[0]="";
         for(int j=0; j<listaNombresDeportes.length; j++){
@@ -125,17 +126,17 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addComponent(labelDeporte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addComponent(labelEstado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addComponent(labelModalidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonBuscar)
-                .addGap(41, 41, 41))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         textFieldCompetencia.addKeyListener(new KeyAdapter() {
@@ -150,7 +151,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         });
 
         add(jPanel2);
-        jPanel2.setBounds(28, 77, 197, 471);
+        jPanel2.setBounds(28, 82, 197, 450);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         jButtonAtras.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
@@ -161,7 +162,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonAtras);
-        jButtonAtras.setBounds(260, 510, 90, 31);
+        jButtonAtras.setBounds(260, 500, 90, 31);
 
         jButtonCrearCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonCrearCompetencia.setText("Crear Competencia");
@@ -171,7 +172,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonCrearCompetencia);
-        jButtonCrearCompetencia.setBounds(460, 510, 150, 31);
+        jButtonCrearCompetencia.setBounds(455, 500, 150, 31);
 
         jButtonVerCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonVerCompetencia.setText("Ver Competencia");
@@ -181,7 +182,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonVerCompetencia);
-        jButtonVerCompetencia.setBounds(630, 510, 140, 31);
+        jButtonVerCompetencia.setBounds(625, 500, 140, 31);
 
         jButtonTitulo.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jButtonTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,7 +214,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(261, 85, 504, 410);
+        jScrollPane1.setBounds(261, 85, 504, 400);
 
         jButtonIntegrantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo released.png"))); // NOI18N
         jButtonIntegrantes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sports logo pressed.png")));
@@ -265,7 +266,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
             
             // Se recuperan las competenciasAux de la base de datos
-            ArrayList<CompetenciaAux> listaprueba = gGestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
+            ArrayList<CompetenciaAux> listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
             
             
             // Eliminacion de la tabla actual
@@ -320,7 +321,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             String modalidad=jTable1.getValueAt(row, 2).toString();
             String estado=jTable1.getValueAt(row, 3).toString(); 
             
-            int idComp=gGestorCD.obtenerIdCD(nombre);
+            int idComp=GestorCD.obtenerIdCD(nombre);
             
             CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
             

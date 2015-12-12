@@ -7,7 +7,7 @@ package gestor;
 
 import DAO.CompetenciaDaoJDBC;
 import DAO.ParticipanteDao;
-import static gestor.gGestorCD.obtenerIdCD;
+import static gestor.GestorCD.obtenerIdCD;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import modelo.CompetenciaAux;

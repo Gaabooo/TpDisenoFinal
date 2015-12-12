@@ -9,12 +9,12 @@ import java.util.Vector;
 import javax.swing.JSpinner.NumberEditor;
 import modelo.*;
 import java.util.ArrayList;
-import DAO.*;
 import gestor.*;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
 import sonidos.alertaSuave;
         
 
@@ -49,6 +49,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelNombreCompetencia = new javax.swing.JLabel();
         jTextFieldNombreCompetencia = new javax.swing.JTextField();
         jLabelErrorNombre = new javax.swing.JLabel();
+        jLabelDeporte = new javax.swing.JLabel();
         jComboBoxDeporte = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jTextAreaErrorDisponib = new javax.swing.JTextArea();
@@ -57,7 +58,9 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelCantidad = new javax.swing.JLabel();
         jSpinnerCantidad = new javax.swing.JSpinner();
         jButtonAgregarDisponibilidad = new javax.swing.JButton();
+        jLabelPuntuacion = new javax.swing.JLabel();
         jComboBoxPuntuacion = new javax.swing.JComboBox();
+        jLabelModalidad = new javax.swing.JLabel();
         jComboBoxModalidad = new javax.swing.JComboBox();
         jLabelFormaPuntuacion = new javax.swing.JLabel();
         jSpinnerSets = new javax.swing.JSpinner();
@@ -92,6 +95,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelNombreCompetencia.setBounds(40, 70, 180, 22);
 
         jTextFieldNombreCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        ((AbstractDocument)jTextFieldNombreCompetencia.getDocument()).setDocumentFilter(new LimitadorTextField(50));
         jTextFieldNombreCompetencia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldNombreCompetenciaFocusGained(evt);
@@ -115,7 +119,13 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelErrorNombre);
         jLabelErrorNombre.setBounds(280, 100, 140, 20);
 
-        String[] listaNombresDeportes = gestor.gGestorCD.getListaDeportes();
+        jLabelDeporte.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelDeporte.setText("Deporte:");
+        add(jLabelDeporte);
+        jLabelDeporte.setBounds(50, 135, 110, 28);
+        jLabelFormaPuntuacion.setVisible(true);
+
+        String[] listaNombresDeportes = gestor.GestorCD.getListaDeportes();
         jComboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         jComboBoxDeporte.addItemListener(new java.awt.event.ItemListener() {
@@ -124,7 +134,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jComboBoxDeporte);
-        jComboBoxDeporte.setBounds(50, 130, 138, 28);
+        jComboBoxDeporte.setBounds(118, 135, 150, 28);
 
         tablaDisp=new TablaDisponibilidad();
         jPanel1.add(tablaDisp);
@@ -150,14 +160,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextAreaErrorDisponib.setOpaque(false);
         jTextAreaErrorDisponib.setVisible(false);
         add(jTextAreaErrorDisponib);
-        jTextAreaErrorDisponib.setBounds(358, 240, 110, 34);
+        jTextAreaErrorDisponib.setBounds(355, 240, 110, 34);
 
         jLabelLugar.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelLugar.setText("Lugar:");
         add(jLabelLugar);
-        jLabelLugar.setBounds(50, 160, 50, 30);
+        jLabelLugar.setBounds(50, 168, 50, 22);
 
-        String[] cadena3l = gestor.gGestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        String[] cadena3l = gestor.GestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
         jComboBoxLugares.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
         jComboBoxLugares.setMinimumSize(new java.awt.Dimension(64, 20));
@@ -167,7 +177,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelCantidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelCantidad.setText("Cant:");
         add(jLabelCantidad);
-        jLabelCantidad.setBounds(200, 170, 30, 22);
+        jLabelCantidad.setBounds(200, 168, 30, 22);
 
         jSpinnerCantidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
@@ -188,8 +198,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jButtonAgregarDisponibilidad);
         jButtonAgregarDisponibilidad.setBounds(260, 190, 80, 31);
 
+        jLabelPuntuacion.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelPuntuacion.setText("Forma de Puntuacion:");
+        add(jLabelPuntuacion);
+        jLabelPuntuacion.setBounds(475, 130, 140, 28);
+        jLabelFormaPuntuacion.setVisible(true);
+
         // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
-        String[] cadena2 = gestor.gGestorCD.getListaPuntuaciones();
+        String[] cadena2 = gestor.GestorCD.getListaPuntuaciones();
         jComboBoxPuntuacion.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxPuntuacion.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
         jComboBoxPuntuacion.addItemListener(new java.awt.event.ItemListener() {
@@ -198,10 +214,16 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jComboBoxPuntuacion);
-        jComboBoxPuntuacion.setBounds(500, 130, 190, 28);
+        jComboBoxPuntuacion.setBounds(600, 130, 120, 28);
+
+        jLabelModalidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabelModalidad.setText("Modalidad:");
+        add(jLabelModalidad);
+        jLabelModalidad.setBounds(475, 170, 140, 28);
+        jLabelFormaPuntuacion.setVisible(true);
 
         // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
-        String[] cadena = gestor.gGestorCD.getListaModalidades();
+        String[] cadena = gestor.GestorCD.getListaModalidades();
         jComboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(cadena));
         jComboBoxModalidad.addItemListener(new java.awt.event.ItemListener() {
@@ -210,12 +232,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jComboBoxModalidad);
-        jComboBoxModalidad.setBounds(500, 170, 190, 28);
+        jComboBoxModalidad.setBounds(570, 170, 150, 28);
 
         jLabelFormaPuntuacion.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelFormaPuntuacion.setText("Cantidad de sets:");
         add(jLabelFormaPuntuacion);
-        jLabelFormaPuntuacion.setBounds(500, 210, 160, 22);
+        jLabelFormaPuntuacion.setBounds(475, 210, 160, 22);
         jLabelFormaPuntuacion.setVisible(true);
 
         jSpinnerSets.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -237,7 +259,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosGanado.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosGanado.setText("Puntos por partidos ganados:");
         add(jLabelPtosGanado);
-        jLabelPtosGanado.setBounds(500, 238, 160, 22);
+        jLabelPtosGanado.setBounds(475, 240, 160, 22);
         jLabelPtosGanado.setVisible(true);
 
         jSpinnerPtosGanado.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -254,7 +276,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosPresentarse.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosPresentarse.setText("Puntos por presentarse:");
         add(jLabelPtosPresentarse);
-        jLabelPtosPresentarse.setBounds(500, 270, 160, 20);
+        jLabelPtosPresentarse.setBounds(475, 270, 160, 20);
         jLabelPtosPresentarse.setVisible(true);
 
         jSpinnerPtosPresentarse.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -271,7 +293,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelEmpate.setText("Permite empate?");
         add(jLabelEmpate);
-        jLabelEmpate.setBounds(500, 300, 130, 22);
+        jLabelEmpate.setBounds(475, 300, 130, 22);
         jLabelEmpate.setVisible(true);
 
         jCheckBoxEmpate.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -286,7 +308,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosEmpate.setText("Puntos por empate:");
         add(jLabelPtosEmpate);
-        jLabelPtosEmpate.setBounds(500, 330, 150, 22);
+        jLabelPtosEmpate.setBounds(475, 330, 150, 22);
         jLabelPtosEmpate.setVisible(false);
 
         jSpinnerPtosEmpate.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -303,14 +325,15 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelReglamento.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelReglamento.setText("Reglamento (opcional):");
         add(jLabelReglamento);
-        jLabelReglamento.setBounds(370, 350, 150, 22);
+        jLabelReglamento.setBounds(370, 360, 150, 22);
 
         jTextArea1.setColumns(20);
-        jTextArea1.setRows(6);
+        ((AbstractDocument)jTextArea1.getDocument()).setDocumentFilter(new LimitadorTextField(190));
+        jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(370, 370, 340, 114);
+        jScrollPane2.setBounds(370, 384, 350, 100);
 
         jButtonAlta.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonAlta.setText("Dar de Alta Competencia Deportiva");
@@ -412,7 +435,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             boolean j5c = jCheckBoxEmpate.isSelected();
             int j5a = (int) jSpinnerPtosEmpate.getValue();
             
-            gestor.gGestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
+            gestor.GestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             
             V.get().remove(this);
@@ -501,7 +524,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
     private void jComboBoxDeporteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDeporteItemStateChanged
         // Cambiar los lugares de realizacion
-        String[] lugares = gestor.gGestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        String[] lugares = gestor.GestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
         jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(lugares));
         
         // Modificar la tabla si un lugar de realizacion deja de estar disponible
@@ -526,15 +549,18 @@ public class AltaCompetencia extends javax.swing.JPanel {
     private javax.swing.JComboBox jComboBoxModalidad;
     private javax.swing.JComboBox jComboBoxPuntuacion;
     private javax.swing.JLabel jLabelCantidad;
+    private javax.swing.JLabel jLabelDeporte;
     private javax.swing.JLabel jLabelEmpate;
     private javax.swing.JLabel jLabelErrorNombre;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelFormaPuntuacion;
     private javax.swing.JLabel jLabelLugar;
+    private javax.swing.JLabel jLabelModalidad;
     private javax.swing.JLabel jLabelNombreCompetencia;
     private javax.swing.JLabel jLabelPtosEmpate;
     private javax.swing.JLabel jLabelPtosGanado;
     private javax.swing.JLabel jLabelPtosPresentarse;
+    private javax.swing.JLabel jLabelPuntuacion;
     private javax.swing.JLabel jLabelReglamento;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
@@ -638,7 +664,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
-        else if (gestor.gGestorCD.verificarNombre(aux)){
+        else if (gestor.GestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
             jLabelErrorNombre.setText("* Nombre ya existente");
             jLabelErrorNombre.setVisible(true);
