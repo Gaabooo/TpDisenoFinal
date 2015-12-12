@@ -668,7 +668,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         
         if(aux.length() == 0 ){
             // El usuario no ingreso nombre de Competencia.
-            jLabelErrorNombre.setText("* Ingrese un nombre");
+            jLabelErrorNombre.setText("Ingrese un nombre");
             jLabelErrorNombre.setVisible(true);
             jLabelIconNombre.setVisible(true);
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
@@ -676,7 +676,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }
         else if (gestor.GestorCD.verificarNombre(aux)){
             // Nombre de competencia ya existe.
-            jLabelErrorNombre.setText("* Nombre ya existente");
+            jLabelErrorNombre.setText("Nombre ya existente");
             jLabelErrorNombre.setVisible(true);
             jLabelIconNombre.setVisible(true);
             jTextFieldNombreCompetencia.setBackground(new Color(0xFF, 0x80, 0x80));
