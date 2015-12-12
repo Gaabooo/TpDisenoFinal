@@ -114,11 +114,13 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Exportar");
+        jButton2.setEnabled(false);
         add(jButton2);
         jButton2.setBounds(667, 477, 100, 31);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Imprimir");
+        jButton3.setEnabled(false);
         add(jButton3);
         jButton3.setBounds(556, 477, 90, 31);
 

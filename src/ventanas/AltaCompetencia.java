@@ -116,6 +116,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         });
 
+        jLabelErrorNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         jLabelErrorNombre.setText("Nombre ya existente");
         jLabelErrorNombre.setVisible(false);
@@ -163,7 +164,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jTextAreaErrorDisponib.setOpaque(false);
         jTextAreaErrorDisponib.setVisible(false);
         add(jTextAreaErrorDisponib);
-        jTextAreaErrorDisponib.setBounds(355, 240, 110, 34);
+        jTextAreaErrorDisponib.setBounds(355, 240, 104, 34);
 
         jLabelLugar.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelLugar.setText("Lugar:");
@@ -183,7 +184,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelCantidad.setBounds(200, 160, 50, 30);
 
         jSpinnerCantidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jSpinnerCantidad.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinnerCantidad);
         jSpinnerCantidad.setBounds(200, 190, 50, 30);
@@ -204,7 +205,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPuntuacion.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPuntuacion.setText("Forma de Puntuacion:");
         add(jLabelPuntuacion);
-        jLabelPuntuacion.setBounds(475, 130, 120, 28);
+        jLabelPuntuacion.setBounds(465, 130, 120, 28);
         jLabelFormaPuntuacion.setVisible(true);
 
         // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
@@ -217,12 +218,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jComboBoxPuntuacion);
-        jComboBoxPuntuacion.setBounds(600, 130, 120, 28);
+        jComboBoxPuntuacion.setBounds(585, 130, 135, 28);
 
         jLabelModalidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelModalidad.setText("Modalidad:");
         add(jLabelModalidad);
-        jLabelModalidad.setBounds(475, 170, 60, 28);
+        jLabelModalidad.setBounds(465, 170, 60, 28);
         jLabelFormaPuntuacion.setVisible(true);
 
         // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
@@ -235,12 +236,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
             }
         });
         add(jComboBoxModalidad);
-        jComboBoxModalidad.setBounds(600, 170, 120, 28);
+        jComboBoxModalidad.setBounds(585, 170, 135, 28);
 
         jLabelFormaPuntuacion.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelFormaPuntuacion.setText("Cantidad de sets:");
         add(jLabelFormaPuntuacion);
-        jLabelFormaPuntuacion.setBounds(475, 210, 160, 22);
+        jLabelFormaPuntuacion.setBounds(465, 210, 160, 22);
         jLabelFormaPuntuacion.setVisible(true);
 
         jSpinnerSets.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -262,7 +263,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosGanado.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosGanado.setText("Puntos por partidos ganados:");
         add(jLabelPtosGanado);
-        jLabelPtosGanado.setBounds(475, 240, 160, 22);
+        jLabelPtosGanado.setBounds(465, 240, 160, 22);
         jLabelPtosGanado.setVisible(true);
 
         jSpinnerPtosGanado.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -279,7 +280,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosPresentarse.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosPresentarse.setText("Puntos por presentarse:");
         add(jLabelPtosPresentarse);
-        jLabelPtosPresentarse.setBounds(475, 270, 160, 20);
+        jLabelPtosPresentarse.setBounds(465, 270, 160, 20);
         jLabelPtosPresentarse.setVisible(true);
 
         jSpinnerPtosPresentarse.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -296,7 +297,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelEmpate.setText("Permite empate?");
         add(jLabelEmpate);
-        jLabelEmpate.setBounds(475, 300, 130, 22);
+        jLabelEmpate.setBounds(465, 300, 130, 22);
         jLabelEmpate.setVisible(true);
 
         jCheckBoxEmpate.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -311,7 +312,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPtosEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosEmpate.setText("Puntos por empate:");
         add(jLabelPtosEmpate);
-        jLabelPtosEmpate.setBounds(475, 330, 150, 22);
+        jLabelPtosEmpate.setBounds(465, 330, 150, 22);
         jLabelPtosEmpate.setVisible(false);
 
         jSpinnerPtosEmpate.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
@@ -372,12 +373,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jButtonAtras.setBounds(150, 508, 90, 30);
 
         jButtonListarParticipantes.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jButtonListarParticipantes.setText("Listar Participante de Competencia");
-        jButtonListarParticipantes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarParticipantesActionPerformed(evt);
-            }
-        });
+        jButtonListarParticipantes.setText("Listar Participantes de Competencia");
+        jButtonListarParticipantes.setEnabled(false);
         add(jButtonListarParticipantes);
         jButtonListarParticipantes.setBounds(260, 508, 225, 31);
 
@@ -404,10 +401,12 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelTitulo.setBounds(0, 0, 800, 60);
 
         jLabelIconNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        jLabelIconNombre.setVisible(false);
         add(jLabelIconNombre);
         jLabelIconNombre.setBounds(430, 80, 40, 30);
 
         jLabelIconDisponibilidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        jLabelIconDisponibilidades.setVisible(false);
         add(jLabelIconDisponibilidades);
         jLabelIconDisponibilidades.setBounds(380, 210, 40, 30);
 
@@ -415,10 +414,6 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelFondo);
         jLabelFondo.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonListarParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarParticipantesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListarParticipantesActionPerformed
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         // Verificar todos los campos
@@ -490,6 +485,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         if (a>0 ){
             agregarATabla((String)jComboBoxLugares.getSelectedItem(),a);
             jTextAreaErrorDisponib.setVisible(false);
+            jLabelIconDisponibilidades.setVisible(false);
         }
     }//GEN-LAST:event_jButtonAgregarDisponibilidadActionPerformed
 
@@ -701,7 +697,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         }
         else{
             jTextAreaErrorDisponib.setVisible(true);
-            jLabelIconDisponibilidades.setVisible(false);
+            jLabelIconDisponibilidades.setVisible(true);
             return true;
         }
     }

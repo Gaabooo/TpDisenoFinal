@@ -63,11 +63,13 @@ public class ListarParticipantes extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Modificar Participante");
+        jButton2.setEnabled(false);
         add(jButton2);
         jButton2.setBounds(290, 495, 192, 31);
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Eliminar Participante");
+        jButton3.setEnabled(false);
         jButton3.setMaximumSize(new java.awt.Dimension(150, 31));
         jButton3.setMinimumSize(new java.awt.Dimension(150, 31));
         jButton3.setPreferredSize(new java.awt.Dimension(150, 31));

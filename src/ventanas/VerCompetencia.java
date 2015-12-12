@@ -144,11 +144,13 @@ public class VerCompetencia extends javax.swing.JPanel {
 
         jButton5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton5.setText("Modificar Competencia");
+        jButton5.setEnabled(false);
         add(jButton5);
         jButton5.setBounds(549, 147, 200, 45);
 
         jButton6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton6.setText("Dar De Baja Competencia");
+        jButton6.setEnabled(false);
         add(jButton6);
         jButton6.setBounds(549, 198, 200, 45);
 
@@ -357,6 +359,11 @@ public class VerCompetencia extends javax.swing.JPanel {
      
      jLabel7.setVisible(true);
      jLabel7.setText(compAux.getModalidad());
+     if(!"Liga".equals(compAux.getModalidad())){
+         jButton3.setEnabled(false);
+         jButton2.setEnabled(false);
+         jButton7.setEnabled(false);
+     }
      
      jLabel8.setVisible(true);
      jLabel8.setText(compAux.getEstado());
