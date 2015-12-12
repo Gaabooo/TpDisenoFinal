@@ -57,6 +57,8 @@ public class AltaParticipante extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jIcon1 = new javax.swing.JLabel();
+        jIcon2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -71,7 +73,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jTextField1);
-        jTextField1.setBounds(475, 198, 200, 28);
+        jTextField1.setBounds(475, 198, 200, 30);
 
         jTextField2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         ((AbstractDocument)jTextField2.getDocument()).setDocumentFilter(new LimitadorTextField(50));
@@ -81,7 +83,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jTextField2);
-        jTextField2.setBounds(475, 240, 200, 28);
+        jTextField2.setBounds(475, 245, 200, 30);
         jTextField2.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
@@ -96,12 +98,12 @@ public class AltaParticipante extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Correo Electrónico:");
         add(jLabel1);
-        jLabel1.setBounds(355, 201, 110, 22);
+        jLabel1.setBounds(355, 201, 110, 30);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Nombre:");
         add(jLabel2);
-        jLabel2.setBounds(355, 235, 110, 30);
+        jLabel2.setBounds(355, 245, 110, 30);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Aceptar");
@@ -111,7 +113,7 @@ public class AltaParticipante extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(585, 280, 90, 30);
+        jButton1.setBounds(585, 285, 90, 30);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
@@ -178,15 +180,27 @@ public class AltaParticipante extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(663, 543, 130, 50);
 
-        jLabel6.setText("<html>* Ingrese<br>      un correo");
+        jLabel6.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel6.setText("<html>Ingrese<br>      un correo");
         jLabel6.setVisible(false);
         add(jLabel6);
-        jLabel6.setBounds(690, 200, 90, 30);
+        jLabel6.setBounds(720, 198, 80, 30);
 
-        jLabel7.setText("<html>* Ingrese<br> un nombre");
+        jLabel7.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel7.setText("<html>Ingrese<br> un nombre");
         jLabel7.setVisible(false);
         add(jLabel7);
-        jLabel7.setBounds(690, 238, 90, 30);
+        jLabel7.setBounds(720, 245, 80, 30);
+
+        jIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        jIcon1.setVisible(false);
+        add(jIcon1);
+        jIcon1.setBounds(680, 198, 32, 30);
+
+        jIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/warning64x64.png"))); // NOI18N
+        jIcon2.setVisible(false);
+        add(jIcon2);
+        jIcon2.setBounds(680, 245, 32, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
@@ -256,27 +270,31 @@ public class AltaParticipante extends javax.swing.JPanel {
         
         if(aux.length() == 0 ){
             // El usuario no ingreso correo de participante .
-            jLabel6.setText("<html>* Ingrese<br>un correo");
+            jLabel6.setText("<html>Ingrese<br>un correo");
             jLabel6.setVisible(true);
+            jIcon1.setVisible(true);
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
         else if (!correoValido()){
             // El correo no es valido
-            jLabel6.setText("<html>* Correo<br>no válido");
+            jLabel6.setText("<html>Correo<br>no válido");
             jLabel6.setVisible(true);
+            jIcon1.setVisible(true);
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
         else if (gestor.GestorParticipante.verificarCorreo(compAux.getId(), aux)){
             // El correo para esa competencia ya existe.
-            jLabel6.setText("<html>* Correo<br>ya existe");
+            jLabel6.setText("<html>Correo<br>ya existe");
             jLabel6.setVisible(true);
+            jIcon1.setVisible(true);
             jTextField1.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
         else {
             jLabel6.setVisible(false);
+            jIcon1.setVisible(false);
             return false;
         }
     }
@@ -297,20 +315,23 @@ public class AltaParticipante extends javax.swing.JPanel {
         
         if(aux.length() == 0 ){
             // El usuario no ingreso nombre de participante.
-            jLabel7.setText("<html>* Ingrese<br>un nombre");
+            jLabel7.setText("<html>Ingrese<br>un nombre");
             jLabel7.setVisible(true);
+            jIcon2.setVisible(true);
             jTextField2.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
         }
         else if (gestor.GestorParticipante.verificarNombre(compAux.getId(), aux)){
             // Nombre de participante ya existe, para esa competencia.
-            jLabel7.setText("<html>* Nombre<br>ya existe");
+            jLabel7.setText("<html>Nombre<br>ya existe");
             jLabel7.setVisible(true);
+            jIcon2.setVisible(true);
             jTextField2.setBackground(new Color(0xFF, 0x80, 0x80));
             return true;
             }
         else {
             jLabel7.setVisible(false);
+            jIcon2.setVisible(false);
             return false;
         }
     }
@@ -356,6 +377,8 @@ public class AltaParticipante extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jIcon1;
+    private javax.swing.JLabel jIcon2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
