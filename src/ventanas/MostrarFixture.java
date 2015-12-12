@@ -141,6 +141,7 @@ public class MostrarFixture extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(150, 490, 90, 31);
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
         jLabel1.setBounds(200, 90, 480, 40);
@@ -209,7 +210,6 @@ public class MostrarFixture extends javax.swing.JPanel {
     private void verNombre(){
         jLabel1.setVisible(true);
         jLabel1.setText(compAux.getNombre());
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 30));    
     }
     
 }

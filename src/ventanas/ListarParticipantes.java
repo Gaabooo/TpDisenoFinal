@@ -125,6 +125,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(55, 90, 180, 40);
 
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("CompetenciaDSeleccionada");
         add(jLabel2);
         jLabel2.setBounds(200, 90, 480, 40);
@@ -200,7 +201,6 @@ public class ListarParticipantes extends javax.swing.JPanel {
         
         jLabel2.setVisible(true);
         jLabel2.setText(compAux.getNombre());
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 30));
     }
     private void llenarTabla(){
         

@@ -117,7 +117,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jButton6);
         jButton6.setBounds(660, 539, 130, 50);
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("Nombre Competencia");
         add(jLabel3);
         jLabel3.setBounds(200, 90, 480, 40);
@@ -179,7 +179,6 @@ public class GestionarResultados extends javax.swing.JPanel {
     
      jLabel3.setVisible(true);
      jLabel3.setText(compAux.getNombre());
-     jLabel3.setFont(new java.awt.Font("Agency FB", 0, 30)); 
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

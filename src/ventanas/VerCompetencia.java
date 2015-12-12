@@ -165,39 +165,42 @@ public class VerCompetencia extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel1.setText("Deporte:");
         add(jLabel1);
-        jLabel1.setBounds(73, 114, 43, 22);
+        jLabel1.setBounds(73, 100, 45, 40);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel2.setText("Modalidad:");
         add(jLabel2);
-        jLabel2.setBounds(285, 114, 52, 22);
+        jLabel2.setBounds(285, 100, 55, 40);
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel3.setText("Estado:");
         add(jLabel3);
-        jLabel3.setBounds(516, 114, 37, 22);
+        jLabel3.setBounds(516, 100, 55, 40);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel4.setText("COMPETENCIA DEPORTIVA:");
         add(jLabel4);
         jLabel4.setBounds(55, 70, 180, 40);
 
-        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel5.setText("Nombre Competencia");
         add(jLabel5);
         jLabel5.setBounds(200, 70, 480, 40);
 
+        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel6.setText("jLabel6");
         add(jLabel6);
-        jLabel6.setBounds(122, 105, 140, 30);
+        jLabel6.setBounds(120, 100, 140, 40);
 
+        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel7.setText("jLabel7");
         add(jLabel7);
-        jLabel7.setBounds(343, 100, 150, 40);
+        jLabel7.setBounds(343, 100, 140, 40);
 
+        jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel8.setText("jLabel8");
         add(jLabel8);
-        jLabel8.setBounds(559, 105, 170, 30);
+        jLabel8.setBounds(559, 100, 140, 40);
 
         jButton8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton8.setText("Atras");
@@ -348,19 +351,15 @@ public class VerCompetencia extends javax.swing.JPanel {
     
      jLabel5.setVisible(true);
      jLabel5.setText(compAux.getNombre());
-     jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); 
      
      jLabel6.setVisible(true);
      jLabel6.setText(compAux.getDeporte());
-     jLabel6.setFont(new java.awt.Font("Agency FB", 0, 24)); 
      
      jLabel7.setVisible(true);
      jLabel7.setText(compAux.getModalidad());
-     jLabel7.setFont(new java.awt.Font("Agency FB", 0, 24));
      
      jLabel8.setVisible(true);
      jLabel8.setText(compAux.getEstado());
-     jLabel8.setFont(new java.awt.Font("Agency FB", 0, 24));
     
     }
     
