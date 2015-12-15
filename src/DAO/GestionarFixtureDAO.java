@@ -8,6 +8,44 @@ import java.util.ArrayList;
 import modelo.*;
 
 public class GestionarFixtureDAO {
+    public static int getCantSets(CompetenciaAux unaCDAUX) {
+        int cantSets = 0;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int unIDCDAUX = unaCDAUX.getId();
+            String getCantSets = "SELECT * FROM competencia WHERE id_competencia = " + unIDCDAUX;
+            ResultSet rs = statement.executeQuery(getCantSets);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                cantSets = rs.getInt("cantidad_maxima_de_sets"); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return cantSets; }
+    
+    public static Boolean getEmpatePermitido(CompetenciaAux unaCDAUX) {
+        Boolean empatePermitido = false;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int unIDCDAUX = unaCDAUX.getId();
+            String getCantSets = "SELECT * FROM competencia WHERE id_competencia = " + unIDCDAUX;
+            ResultSet rs = statement.executeQuery(getCantSets);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                empatePermitido = rs.getBoolean("empate_permitido"); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return empatePermitido; }
+    
    /* public static void deleteResultado(Resultado unResultado) {
         Connection conn = null;
         try {
@@ -44,13 +82,13 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
     // REWORK! Ahora recibe un PartidoAux
-    /* public static Partido getPartido(int unID) {
+    public static Partido getPartido(PartidoAux unPartidoAux) {
         Partido unPartido = null;
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getPartido = "SELECT * FROM partido WHERE id_partido = " + unID;
+            String getPartido = "SELECT * FROM partido WHERE id_partido = " + unPartidoAux.getId();
             ResultSet rs = statement.executeQuery(getPartido);
             // NOTA: El ResultSet tiene un solo resultado
             while (rs.next()) {
@@ -75,16 +113,16 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unPartido; } */
+        return unPartido; }
     
     // REWORK! Ahora recibe una RondaAux
-    /* public static Ronda getRonda(int unIDRonda) {
+    public static Ronda getRonda(RondaAux unaRondaAux) {
         Ronda unaRonda = null;
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getRonda = "SELECT * FROM ronda WHERE id_ronda = " + unIDRonda;
+            String getRonda = "SELECT * FROM ronda WHERE id_ronda = " + unaRondaAux.getId();
             ResultSet rs = statement.executeQuery(getRonda);
             // NOTA: El ResultSet tiene un solo resultado
             while (rs.next()) {
@@ -99,7 +137,7 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaRonda; } */
+        return unaRonda; }
     
     // DONE!
     public static void persistirHistorialResultado(Partido unPartido, HistorialResultado unHR) {
