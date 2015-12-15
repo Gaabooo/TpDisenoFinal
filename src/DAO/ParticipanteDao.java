@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.HistorialParticipante;
 import modelo.Participante;
+import modelo.Competencia;
 
 /**
  *
@@ -92,11 +93,11 @@ public class ParticipanteDao {
         }
     }
     
-    public static ArrayList<Participante> getParticipantes (int idCD) {
+    public static ArrayList<Participante> getParticipantes (Competencia ca) {
         
         Connection conn = null;
         
-        String _SQL_FIND_PARTICIPANTES = "SELECT * FROM participante WHERE id_competencia =" + idCD;
+        String _SQL_FIND_PARTICIPANTES = "SELECT * FROM participante WHERE id_competencia =" + ca.getID();
         ArrayList<Participante> ls= new ArrayList <Participante> ();
         
         try{
