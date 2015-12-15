@@ -234,6 +234,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         }
    
     GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+    JOptionPane.showMessageDialog(null, "Participante dado de alta exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
