@@ -406,7 +406,7 @@ public class GestionarFixtureGestor {
             int numRonda = unaRonda.getNumero();
             int cantParticipantes = unaCompetencia.getListaParticipantes().size();
             int cantResultadosCargados = getCantResultadosCargados(unaRonda);
-            if (numRonda == cantParticipantes-1 && cantResultadosCargados == (cantParticipantes/2)-1) {
+            if (numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2) {
                 Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
                 unaCompetencia.setEstado(nuevoEstado);
                 GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado); } }

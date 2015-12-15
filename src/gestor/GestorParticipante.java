@@ -10,7 +10,10 @@ import DAO.ParticipanteDao;
 import static gestor.GestorCD.obtenerIDCD;
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import modelo.*;
+import modelo.CompetenciaAux;
+import modelo.HistorialParticipante;
+import modelo.Participante;
+import modelo.ParticipanteAux;
 
 /**
  *
@@ -41,13 +44,8 @@ public class GestorParticipante {
     public static ArrayList<ParticipanteAux> listarParticipantes (int idCD) {
         
         // Se obtienen los participantes de la BD
-        Competencia ca;
-        
-        ca = CompetenciaDaoJDBC.getCompetenciaPorId(idCD);
-        
-        
         ArrayList<Participante> participantes;
-        participantes = ParticipanteDao.getParticipantes(ca);
+        participantes = ParticipanteDao.getParticipantes(idCD);
         
         
         ArrayList<ParticipanteAux> participantesAux= new ArrayList <ParticipanteAux> ();

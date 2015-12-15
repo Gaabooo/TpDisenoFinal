@@ -93,11 +93,11 @@ public class ParticipanteDao {
         }
     }
     
-    public static ArrayList<Participante> getParticipantes (Competencia ca) {
+    public static ArrayList<Participante> getParticipantes (int id) {
         
         Connection conn = null;
         
-        String _SQL_FIND_PARTICIPANTES = "SELECT * FROM participante WHERE id_competencia =" + ca.getID();
+        String _SQL_FIND_PARTICIPANTES = "SELECT * FROM participante WHERE id_competencia =" + id;
         ArrayList<Participante> ls= new ArrayList <Participante> ();
         
         try{
