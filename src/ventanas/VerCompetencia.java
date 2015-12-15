@@ -327,6 +327,7 @@ public class VerCompetencia extends javax.swing.JPanel {
                 gestor.GenerarFixtureGestor.generarFixture(compAux);
                 JOptionPane.showMessageDialog(null, "Fixture creado exitosamente",
                     "Generar Fixture", JOptionPane.INFORMATION_MESSAGE);
+                llenarProximosEncuentros();
             }
         }
         else {
@@ -410,11 +411,18 @@ public class VerCompetencia extends javax.swing.JPanel {
     
     private void llenarProximosEncuentros(){
         
+        // Eliminacion de la tabla actual
+        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        int filas=jTable1.getRowCount();
+        for (int i=0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
+        
         // Buscar los proximos encuentros
         ArrayList<PartidoAuxProxEncuentro> proximosEncuentros= GestorCD.proximosEncuentros(compAux);
         
         // Llenar la tabla
-        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        modelo=(DefaultTableModel) jTable1.getModel();
         
         for(int i=0;i < proximosEncuentros.size();i++){
             
