@@ -402,8 +402,15 @@ public class GestionarFixtureGestor {
             Boolean AP0 = unResultadoAux.getAsistenciaP0();
             Boolean AP1 = unResultadoAux.getAsistenciaP1();
             int indiceGanador = unResultadoAux.getIndiceParticipante();
-            Participante ganador = unaCompetencia.getListaParticipantes().get(indiceGanador);
-            Resultado unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
+            Resultado unResultado;
+            if(indiceGanador == 2){
+                unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, null); 
+            }
+            else{
+                Participante ganador = unaCompetencia.getListaParticipantes().get(indiceGanador);
+                unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
+            }
+            
             listaNuevosResultados.add(unResultado); }
         // Si ya tengo resultados cargados
         if (!listaResultadosAnteriores.isEmpty()) {

@@ -215,7 +215,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 indiceGanador = 1;
             }
             else{
-                indiceGanador = 3;
+                indiceGanador = 2;
             }
             ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
             listaResultadosAux.add(unResultado); 
@@ -234,7 +234,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 indiceGanador = 1;
             }
             else{
-                indiceGanador = 3;
+                indiceGanador = 2;
             }
             ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
             listaResultadosAux.add(unResultado); 
