@@ -164,15 +164,18 @@ public class GestionarFixtureGestor {
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P0, posicionP0);
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P1, posicionP1); }
     
+    
     public static String obtenerFechaActual() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         return dateFormat.format(date); }
     
+    
     public static String obtenerHoraActual() {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date); }
+    
     
     public static void addResultadoToHistorial(Partido unPartido, ArrayList<Resultado> listaResultadosAnteriores) {
         ArrayList<HistorialResultado> listaHRs = unPartido.getHistorialResultado();
@@ -187,12 +190,14 @@ public class GestionarFixtureGestor {
         // DAO: Persisto unHR;
         GestionarFixtureDAO.persistirHistorialResultado(unPartido, unHR); }
     
+    
     public static int getCantResultadosCargados(Ronda unaRonda) {
         int cant = 0;
         ArrayList<Partido> listaPartidos = unaRonda.getListaPartidos();
         for (Partido unPartido:listaPartidos) {
             if (!unPartido.getListaResultados().isEmpty()) { cant++; } }
         return cant; }
+    
     
     public static void crearPosiciones(Competencia unaCompetencia) {
         ArrayList<Posicion> tablaPosiciones = new ArrayList<>();
@@ -201,7 +206,8 @@ public class GestionarFixtureGestor {
             Posicion unaPosicion = new Posicion(unParticipante, 0, 0, 0, 0, 0, 0);
             tablaPosiciones.add(unaPosicion);
             GestionarFixtureDAO.persistirPosicion(unaCompetencia, unaPosicion); } 
-        unaCompetencia.setTablaPosiciones(tablaPosiciones); }
+        unaCompetencia.setTablaPosiciones(tablaPosiciones);}
+    
     
     public static void aplicarCambiosATablaPosiciones(Competencia unaCompetencia, Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
         ArrayList<Posicion> tablaPosiciones = unaCompetencia.getTablaPosiciones();
@@ -300,9 +306,12 @@ public class GestionarFixtureGestor {
         // NO existe un caso donde no asista ningun participante
         // DAO: Update de posiciones en DB
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P0, posicionP0);
-        GestionarFixtureDAO.updatePosicion(unaCompetencia, P1, posicionP1); }
+        GestionarFixtureDAO.updatePosicion(unaCompetencia, P1, posicionP1);
+    }
     
-    public static void addResultadoToPartido(Competencia unaCompetencia, Ronda unaRonda, Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
+    
+    public static void addResultadoToPartido(Competencia unaCompetencia, Ronda unaRonda,
+            Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
         Participante P0 = unPartido.getP0(); Participante P1 = unPartido.getP1();
         Boolean AP0 = listaNuevosResultados.get(0).getAsistenciaP0(); Boolean AP1 = listaNuevosResultados.get(0).getAsistenciaP1();
         
@@ -369,7 +378,9 @@ public class GestionarFixtureGestor {
         GestionarFixtureDAO.setGanadorAndEmpate(unPartido); }
     
     // Modalidad: LIGA
-    public static void gestionarFixture(CompetenciaAux unaCompetenciaAux, Ronda unaRonda /* RondaAux unaRondaAux */, Partido unPartido /* PartidoAux unPartidoAux */, ArrayList<Resultado> listaNuevosResultados) {
+    public static void gestionarFixture(CompetenciaAux unaCompetenciaAux,
+            Ronda unaRonda /* RondaAux unaRondaAux */, Partido unPartido /* PartidoAux unPartidoAux */,
+            ArrayList<Resultado> listaNuevosResultados) {
         Competencia unaCompetencia = GenerarFixtureDAO.getCompetencia(unaCompetenciaAux);
         // Ronda unaRonda = GenerarFixtureDAO.getRonda(unaRondaAux);
         // Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);

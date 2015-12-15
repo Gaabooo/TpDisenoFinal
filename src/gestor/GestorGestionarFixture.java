@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GestorGestionarFixture {
-    public static int randomInt(int min, int max) {
+    /*public static int randomInt(int min, int max) {
         int rand = ThreadLocalRandom.current().nextInt(min, max+1);
         return rand; 
     }
@@ -84,5 +84,5 @@ public class GestorGestionarFixture {
             unaCompetencia.setFixture(unFixture);
             GestionarFixtureDAO.persistirFixture(unFixture, nombreCD); 
         } 
-    }
+    }*/
 }

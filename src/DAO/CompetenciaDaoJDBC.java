@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.*;
@@ -636,6 +637,7 @@ public class CompetenciaDaoJDBC {
         // Persistencia
         Connection conn = null; 
         try {
+            System.out.println("acaaaa11111");
             // Persistencia CD
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
@@ -646,8 +648,12 @@ public class CompetenciaDaoJDBC {
             while (rs.next()) {
                 IDCD = rs.getInt("id_competencia"); }
             // Persistencia disponibilidades
-            for (Disponibilidad disponibilidad:(unaCompetencia.getListaDisponibilidades())) {
-                persistirDisponibilidad(disponibilidad, IDCD); }
+            for (Iterator<Disponibilidad> it =
+                    (unaCompetencia.getListaDisponibilidades()).iterator(); it.hasNext();) {
+                Disponibilidad disponibilidad = it.next();
+                System.out.println("acaaaa222222");
+                persistirDisponibilidad(disponibilidad, IDCD);
+            }
             rs.close(); }
         catch (SQLException ex) {
             System.out.println(ex.getMessage()); }

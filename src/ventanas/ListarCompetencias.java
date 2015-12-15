@@ -111,7 +111,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
                         .addComponent(comboBoxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelCompetencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +151,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         });
 
         add(jPanel2);
-        jPanel2.setBounds(28, 82, 249, 450);
+        jPanel2.setBounds(28, 82, 197, 450);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         jButtonAtras.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
@@ -162,7 +162,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonAtras);
-        jButtonAtras.setBounds(260, 500, 90, 33);
+        jButtonAtras.setBounds(260, 500, 90, 31);
 
         jButtonCrearCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonCrearCompetencia.setText("Crear Competencia");
@@ -172,7 +172,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonCrearCompetencia);
-        jButtonCrearCompetencia.setBounds(455, 500, 150, 33);
+        jButtonCrearCompetencia.setBounds(455, 500, 150, 31);
 
         jButtonVerCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonVerCompetencia.setText("Ver Competencia");
@@ -182,7 +182,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonVerCompetencia);
-        jButtonVerCompetencia.setBounds(625, 500, 140, 33);
+        jButtonVerCompetencia.setBounds(625, 500, 140, 31);
 
         jButtonTitulo.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jButtonTitulo.setForeground(new java.awt.Color(255, 255, 255));
