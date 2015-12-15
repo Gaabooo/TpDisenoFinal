@@ -20,7 +20,7 @@ public class GestorCD {
     public static ArrayList<PosicionAux> getPosicionesAux(int IDCompetencia) {
         return CompetenciaDaoJDBC.getPosicionesAux(IDCompetencia); }
     
-    // HE AQUI EL LISTARCD
+    // LISTAR COMPETENCIAS DEPORTIVAS
     public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
         
         // Se recuperan las competencias que coincidan con los filtros
@@ -49,9 +49,13 @@ public class GestorCD {
         return listaAux;
     }    
     
+    // VERIFICAR QUE EL NOMBRE DE LA COMPETENCIA ES UNICO
     public static boolean verificarNombre(String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
         return nombreUsado; }    
+    
+    
+    // LISTAS DE STRINGS PARA LLENAR LOS COMBOBOX EN LISTAR COMPETENCIAS
     
     public static String[] getListaDeportes() {
         ArrayList<String> deportes = CompetenciaDaoJDBC.getListaDeportes();
@@ -77,7 +81,7 @@ public class GestorCD {
         vectorNombrePuntuaciones = puntuaciones.toArray(vectorNombrePuntuaciones);
         return vectorNombrePuntuaciones; }
     
-    // UPON THEE MAKES HIS GRAND APPEARANCE THE DARDEALTACD() METHOD
+    // DAR DE ALTA COMPETENCIA DEPORTIVA
     public static void darDeAltaCD(String nombre, String reglamento, String nombreDeporte, String nombreModalidad,
         String matrizLugares[][], String nombreFormaPuntuacion, int tantosPorAusenciaDeRival, int cantMaximaDeSets,
         int puntosPorVictoria, int puntosPorPresentacion, boolean empatePermitido, int puntosPorEmpate) {

@@ -290,7 +290,7 @@ public class VerCompetencia extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La competencia debe tener dos o mas participantes",
                     "Error al generar Fixture", JOptionPane.INFORMATION_MESSAGE);
         }
-        else if("Planificada".equals(compAux.getEstado()) || "Creada".equals(compAux.getEstado())){
+        else if("Creada".equals(compAux.getEstado())){
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea generar el fixture?",
                     "Generar Fixture", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
@@ -298,6 +298,18 @@ public class VerCompetencia extends javax.swing.JPanel {
                 gestor.GenerarFixtureGestor.generarFixture(compAux);
                 compAux.setEstado("Planificada");
                 verNombre();
+                JOptionPane.showMessageDialog(null, "Fixture creado exitosamente",
+                    "Generar Fixture", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else if("Planificada".equals(compAux.getEstado()) ){
+            int respuesta = JOptionPane.showConfirmDialog(null, "Se reemplazara el fixture, ¿desea continuar?",
+                    "Generar Fixture", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                // Generar el fixture
+                gestor.GenerarFixtureGestor.generarFixture(compAux);
+                JOptionPane.showMessageDialog(null, "Fixture creado exitosamente",
+                    "Generar Fixture", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else {

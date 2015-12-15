@@ -422,7 +422,7 @@ public class GenerarFixtureDAO {
             listaDisponibilidades = getDisponibilidades(IDCompetencia);
             listaParticipantes = getParticipantes(IDCompetencia);
             // Creacion del retorno
-            unaCompetencia = new Competencia(IDUsuario, unNombre, unReglamento, unDeporte, unaModalidad, unEstado, unaFormaPuntuacion,
+            unaCompetencia = new Competencia(IDCompetencia, unNombre, unReglamento, unDeporte, unaModalidad, unEstado, unaFormaPuntuacion,
                 listaDisponibilidades, listaParticipantes, tablaPosiciones,
                 cantMaxSets, tantosAusenciaRival, ptosPresentacion, ptosVictoria, permisoEmpate, ptosEmpate);
             rs.close(); }
