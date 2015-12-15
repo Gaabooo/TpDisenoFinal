@@ -27,7 +27,8 @@ public class CompetenciaDaoJDBC {
         
         //2   Comparar cantidad de partidos cargados, con la posibilidad de la ronda actual
         int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;
-        
+        if(numeroRondaActual>cantRondas(compAux.getId()))
+            numeroRondaActual--;
         //3 Buscar en la bd todos los partidos de la ronda con numero ACTUAL 'numeroRondaActual'
         int idRonda=getIdRondaPorNumero(numeroRondaActual, compAux.getId());
         
@@ -127,6 +128,35 @@ public class CompetenciaDaoJDBC {
         }
         
         return idRonda;
+    }
+    public static int cantRondas(int id){
+        int cantidad=1;
+        Connection conn = null;
+        String SQL_CANT_PART_POR_RONDA ="SELECT count (r.id_ronda) AS total " +
+                                        "FROM ronda AS r " +
+                                        "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
+                                        "JOIN competencia AS c ON c.id_competencia=f.id_competencia " +
+                                        "WHERE c.id_competencia="+id; 
+        
+        try{
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_CANT_PART_POR_RONDA);
+            rs.next();
+            cantidad=rs.getInt("total");
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return cantidad;
     }
     
     public static ArrayList<PosicionAux> getPosicionesAux(int unIDCD) {
