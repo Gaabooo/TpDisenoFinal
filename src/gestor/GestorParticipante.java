@@ -62,4 +62,8 @@ public class GestorParticipante {
         return participantesAux;
     }
     
+    public static int cantidadParticipantes(int idCD){
+        return DAO.ParticipanteDao.cantidadParticipantes(idCD);
+    }
+    
 }

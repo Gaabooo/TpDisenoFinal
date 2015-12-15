@@ -129,5 +129,37 @@ public class ParticipanteDao {
         return ls;
     }
     
+    public static int cantidadParticipantes(int idCD){
+        
+        Connection conn = null;
+        int retorno=0;
+        String _SQL_CANT_PARTICIPANTES = "SELECT COUNT (*) FROM participante p "
+                                        +"WHERE p.id_competencia=" + idCD;
+        
+        try{
+            
+            conn = DBConnection.get();
+            
+            Statement statement = conn.createStatement();
+            
+            ResultSet rs;
+            
+            rs = statement.executeQuery(_SQL_CANT_PARTICIPANTES);
+            
+            rs.next();
+            rs.getInt(1);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            if (conn!=null) try {
+                conn.close(); }
+            catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex); }
+        }
+        
+        return retorno;
+    }
     
 }

@@ -284,7 +284,13 @@ public class VerCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if("Planificada".equals(compAux.getEstado()) || "Creada".equals(compAux.getEstado())){
+        // Contar cantidad de participantes, mayor o igual a 2
+        int cant=gestor.GestorParticipante.cantidadParticipantes(compAux.getId());
+        if(cant<2){
+            JOptionPane.showMessageDialog(null, "La competencia debe tener dos o mas participantes",
+                    "Error al generar Fixture", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if("Planificada".equals(compAux.getEstado()) || "Creada".equals(compAux.getEstado())){
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea generar el fixture?",
                     "Generar Fixture", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
@@ -296,7 +302,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         }
         else {
             JOptionPane.showMessageDialog(null, "La competencia debe estar en estado Creada o Planificada",
-                    "Error", JOptionPane.INFORMATION_MESSAGE);
+                    "Error al generar Fixture", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
