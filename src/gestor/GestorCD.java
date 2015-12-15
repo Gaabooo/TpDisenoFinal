@@ -1,7 +1,10 @@
 package gestor;
 
 import DAO.*;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosCargados;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosPorRonda;
 import static DAO.CompetenciaDaoJDBC.getCompetenciaMostrarFixt;
+import static DAO.CompetenciaDaoJDBC.getProximosEncuentros;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -172,6 +175,32 @@ public class GestorCD {
         }
         
         return rondasAux;
+    }
+    
+    public static int getRondaActual(CompetenciaAux compAux){
+        //1  Cantidad de partidos con resultado cargado
+        int cantidadPartidosCargados = cantidadPartidosCargados(compAux.getId());
+        int cantidadPartidosPorRonda = cantidadPartidosPorRonda(compAux.getId());
+        
+        //2   Comparar cantidad de partidos cargados, con la posibilidad de la ronda actual
+        int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;
+        
+        return numeroRondaActual;
+    }
+    public static ArrayList<PartidoAuxProxEncuentro> proximosEncuentros (CompetenciaAux compAux){
+        ArrayList<PartidoAuxProxEncuentro> proximosEncuentros= new ArrayList<>();
+        
+        //Buscar los proximos encuentros
+        ArrayList<Partido> partidos= getProximosEncuentros(compAux);
+        
+        // Recorrer los partidos y asignarlos al DTO
+        for (int i=0; i<partidos.size(); i++){
+            PartidoAuxProxEncuentro aux = new PartidoAuxProxEncuentro(partidos.get(i).getLR().getNombre(),
+                    partidos.get(i).getP0().getNombre(), partidos.get(i).getP1().getNombre());
+            proximosEncuentros.add(aux);
+        }
+        
+        return proximosEncuentros;
     }
     
 }

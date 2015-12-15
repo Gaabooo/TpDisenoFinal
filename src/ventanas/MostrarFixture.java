@@ -6,6 +6,7 @@
 package ventanas;
 
 import gestor.GestorCD;
+import static gestor.GestorCD.getRondaActual;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
@@ -31,10 +32,8 @@ public class MostrarFixture extends javax.swing.JPanel {
     public MostrarFixture(CompetenciaAux param) {
         compAux=param;
         
-        //rondas=mostrarFixture();
-        
         buscarRondas();
-        modeloRondas= (new javax.swing.SpinnerNumberModel(1, 1, rondas.size(), 1));
+        modeloRondas= (new javax.swing.SpinnerNumberModel(getRondaActual(compAux), 1, rondas.size(), 1));
         
         initComponents();
         

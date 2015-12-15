@@ -5,8 +5,12 @@
  */
 package ventanas;
 
+import gestor.GestorCD;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.CompetenciaAux;
+import modelo.PartidoAuxProxEncuentro;
 
 /**
  *
@@ -69,32 +73,32 @@ public class VerCompetencia extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Participante 1", "Participante 2", "Club", "Fecha"
+                "Lugar", "Participante 1", "Participante 2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        llenarProximosEncuentros();
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setFocusable(false);
 
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         add(jScrollPane1);
         jScrollPane1.setBounds(49, 369, 700, 140);
@@ -392,5 +396,32 @@ public class VerCompetencia extends javax.swing.JPanel {
             return true;
         }
     }
+    
+    
+    private void llenarProximosEncuentros(){
+        
+        // Buscar los proximos encuentros
+        ArrayList<PartidoAuxProxEncuentro> proximosEncuentros= GestorCD.proximosEncuentros(compAux);
+        
+        // Llenar la tabla
+        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        
+        for(int i=0;i < proximosEncuentros.size();i++){
+            
+            PartidoAuxProxEncuentro partAux = proximosEncuentros.get(i);
+            
+            Object fila[]=new Object[3];
+            
+            fila[0]= partAux.getLugar();
+            fila[1]= partAux.getParticipante1();
+            fila[2]= partAux.getParticipante2();
+            
+            modelo.addRow(fila);
+        }
+        
+        jTable1.setModel(modelo);
+        
+    }
+    
 }
 
