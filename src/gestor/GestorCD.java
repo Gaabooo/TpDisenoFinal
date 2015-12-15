@@ -21,6 +21,15 @@ public class GestorCD {
     public static int obtenerIDCD (String nombre){
         return CompetenciaDaoJDBC.getIdCompetencia(nombre); }
     
+    public static boolean sePuedeCargarRonda(int id, int ronda){
+        int partidosCargados = cantidadPartidosCargados(id);
+        int partidosPorRonda = cantidadPartidosPorRonda(id);
+        if(partidosCargados<=((ronda)*partidosPorRonda) &&
+                partidosCargados>= (ronda-1)*partidosPorRonda )
+            return true;
+        else return false;
+    }
+    
     public static ArrayList<PosicionAux> getPosicionesAux(int IDCompetencia) {
         return CompetenciaDaoJDBC.getPosicionesAux(IDCompetencia); }
     

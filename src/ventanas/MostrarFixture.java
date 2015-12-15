@@ -197,7 +197,7 @@ public class MostrarFixture extends javax.swing.JPanel {
                     "Error al gestionar resultado", JOptionPane.INFORMATION_MESSAGE);
         }
         
-        else{
+        else if(sePuedeCargarRonda()){
             rondas.get(((int)jSpinner1.getValue())-1);
             ArrayList<PartidoAux> listaPartidos= rondas.get(((int)jSpinner1.getValue())-1).getPartidos();
             int id = listaPartidos.get(row).getId();
@@ -207,6 +207,11 @@ public class MostrarFixture extends javax.swing.JPanel {
             PartidoAux partidoActual= new PartidoAux(id, part1, part2, "");
             RondaAux rondaActual=rondas.get((int)jSpinner1.getValue()-1);
             V.get().gestionarResultados(compAux, rondaActual, partidoActual);
+        }
+        else{
+            V.get().alerta();
+            JOptionPane.showMessageDialog(null,"No se puede modificar la ronda",
+                    "Error al gestionar resultado", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -286,6 +291,11 @@ public class MostrarFixture extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"No se han encontrado resultados.",
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    
+    
+    private boolean sePuedeCargarRonda(){
+        return GestorCD.sePuedeCargarRonda(compAux.getId(), (int)jSpinner1.getValue());
     }
     
 }
