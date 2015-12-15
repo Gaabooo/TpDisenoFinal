@@ -266,7 +266,14 @@ public class VerCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        V.get().mostrarFixture(compAux);
+        if(!"Creada".equals(compAux.getEstado())){
+            V.get().mostrarFixture(compAux);
+        }
+        else{
+            V.get().alerta();
+            JOptionPane.showMessageDialog(null, "La competencia debe estar Planificada, en disputa o finalizada",
+                    "Error al mostrar Fixture", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
