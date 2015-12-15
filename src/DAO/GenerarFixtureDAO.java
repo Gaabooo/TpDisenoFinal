@@ -228,7 +228,7 @@ public class GenerarFixtureDAO {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             int IDLR = 0; String nombreLR = ""; String descripcionLR = "";
-            String getLR = "SELECT * FROM lugar WHERE nombre = " + unNombre;
+            String getLR = "SELECT * FROM lugar WHERE nombre = '" + unNombre +"'";
             ResultSet rs = statement.executeQuery(getLR);
             // El ResultSet tiene un solo resultado
             while (rs.next()) {

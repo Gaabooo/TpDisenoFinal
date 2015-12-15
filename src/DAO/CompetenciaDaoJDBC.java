@@ -637,7 +637,6 @@ public class CompetenciaDaoJDBC {
         // Persistencia
         Connection conn = null; 
         try {
-            System.out.println("acaaaa11111");
             // Persistencia CD
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
@@ -648,10 +647,7 @@ public class CompetenciaDaoJDBC {
             while (rs.next()) {
                 IDCD = rs.getInt("id_competencia"); }
             // Persistencia disponibilidades
-            for (Iterator<Disponibilidad> it =
-                    (unaCompetencia.getListaDisponibilidades()).iterator(); it.hasNext();) {
-                Disponibilidad disponibilidad = it.next();
-                System.out.println("acaaaa222222");
+            for (Disponibilidad disponibilidad : (unaCompetencia.getListaDisponibilidades())) {
                 persistirDisponibilidad(disponibilidad, IDCD);
             }
             rs.close(); }
