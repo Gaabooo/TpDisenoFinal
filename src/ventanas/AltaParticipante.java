@@ -218,14 +218,27 @@ public class AltaParticipante extends javax.swing.JPanel {
             thread.start();
         }
         else{
-            // Se extraen todos los datos para pasar al gestor de alta de participante
-            GestorParticipante.altaParticipante(compAux.getId(),
-                    jTextField2.getText(), jTextField1.getText(), null/*FileInputStream*/);
-            
-            JOptionPane.showMessageDialog(null, "Participante dado de alta exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
-            
-            V.get().remove(this);
-            V.get().listarParticipantesVolver2(compAux);
+            boolean continuar=true;
+            if("Planificada".equals(compAux.getEstado())){
+                int respuesta = JOptionPane.showConfirmDialog(null, "Se eliminará el fixture, ¿desea continuar?",
+                        "Agregar participante", JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    continuar=true;
+                }
+                else continuar=false;
+            }
+            if (continuar){
+                // Se extraen todos los datos para pasar al gestor de alta de participante
+                GestorParticipante.altaParticipante(compAux.getId(),
+                        jTextField2.getText(), jTextField1.getText(), null/*FileInputStream*/);
+                
+                JOptionPane.showMessageDialog(null, "Participante dado de alta exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
+                
+                //Pasar a CREADA .. Eliminar el fixture si es necesario
+                
+                V.get().remove(this);
+                V.get().listarParticipantesVolver2(compAux);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

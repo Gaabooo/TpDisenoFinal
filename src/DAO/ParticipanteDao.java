@@ -147,7 +147,7 @@ public class ParticipanteDao {
             rs = statement.executeQuery(_SQL_CANT_PARTICIPANTES);
             
             rs.next();
-            rs.getInt(1);
+            retorno=rs.getInt(1);
         }
         catch (SQLException ex) {
             Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);

@@ -159,7 +159,15 @@ public class ListarParticipantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if("Creada".equals(compAux.getEstado()) || "Planificada".equals(compAux.getEstado())){
+        // Si esta planificada se debe preguntar si desea eliminar el fixture
+        if("Planificada".equals(compAux.getEstado())){
+            int respuesta = JOptionPane.showConfirmDialog(null, "Si agrega un participante se eliminara el fixture",
+                    "Agregar participante", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                V.get().altaParticipante(compAux);
+            }
+        }
+        else if("Creada".equals(compAux.getEstado()) || "Planificada".equals(compAux.getEstado())){
             V.get().altaParticipante(compAux);
         }
         else{
