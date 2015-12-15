@@ -33,8 +33,13 @@ public class MostrarFixture extends javax.swing.JPanel {
         compAux=param;
         
         buscarRondas();
-        modeloRondas= (new javax.swing.SpinnerNumberModel(getRondaActual(compAux), 1, rondas.size(), 1));
-        
+        int rondaAct=getRondaActual(compAux);
+        if(rondaAct>rondas.size()){
+        modeloRondas= (new javax.swing.SpinnerNumberModel(rondas.size(), 1, rondas.size(), 1));
+        }
+        else{
+             modeloRondas= (new javax.swing.SpinnerNumberModel(rondaAct, 1, rondas.size(), 1));
+        }
         initComponents();
         
         verNombre();

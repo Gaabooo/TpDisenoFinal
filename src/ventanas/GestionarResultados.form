@@ -61,14 +61,14 @@
               <Table columnCount="11" rowCount="2">
                 <Column editable="true" title="Competidores" type="java.lang.Object"/>
                 <Column editable="true" title="1er Set" type="java.lang.Integer"/>
-                <Column editable="true" title="2do Set" type="java.lang.Integer"/>
-                <Column editable="true" title="3er Set" type="java.lang.Integer"/>
-                <Column editable="true" title="4to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="5to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="6to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="7to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="8vo Set" type="java.lang.Integer"/>
-                <Column editable="true" title="9no Set" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
                 <Column editable="true" title="Asistencia" type="java.lang.Boolean"/>
               </Table>
             </Property>
@@ -136,7 +136,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="crearYLlenarTabla();"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="crearYLlenarTabla();"/>
           </AuxValues>
         </Component>
       </SubComponents>
