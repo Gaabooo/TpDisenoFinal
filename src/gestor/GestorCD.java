@@ -134,16 +134,41 @@ public class GestorCD {
     
     public static ArrayList<RondaAux> mostrarFixture(CompetenciaAux compAux){
         
+        // Lista que se devuelve
         ArrayList<RondaAux> rondasAux= new ArrayList<>();
         
+        // Se busca la competencia con datos de fixture
         Competencia comp = getCompetenciaMostrarFixt(compAux);
         
+        // Se obtiene el fixture
         Fixture fixt=comp.getFixture();
         
+        // Se obtiene la lista de rondas
         ArrayList<Ronda> rondas= fixt.getListaRondas();
         
+        // Recorrer las rondas
         for(int i=0; i<rondas.size(); i++){
             
+            //Partidos de la ronda actual
+            ArrayList<Partido> partidos = rondas.get(i).getListaPartidos();
+            //Partidos auxiliares
+            ArrayList<PartidoAux> partidosAux = new ArrayList<>();
+            
+            // Recorrer los partidos
+            for(int j=0; j<partidos.size(); j++){
+                // Sacar los datos y asignarlos a un partido auxiliar
+                Partido partidoActual=partidos.get(j); // Solo para evitar el partidos.get(j)
+                int id=partidoActual.getID();
+                String p1 = partidoActual.getP0().getNombre();
+                String p2 = partidoActual.getP1().getNombre();
+                String res= partidoActual.getResultadoString();
+                PartidoAux partAux= new PartidoAux(id, p1, p2, res);
+                partidosAux.add(partAux);
+            }
+            
+            // Crear la ronda auxiliar y agregarla a la lista 
+            RondaAux rondaAux= new RondaAux(rondas.get(i).getID(), rondas.get(i).getNumero(), "", partidosAux);
+            rondasAux.add(rondaAux);
         }
         
         return rondasAux;
