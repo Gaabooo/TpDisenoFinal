@@ -1,6 +1,10 @@
 package gestor;
 
 import DAO.*;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosCargados;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosPorRonda;
+import static DAO.CompetenciaDaoJDBC.getCompetenciaMostrarFixt;
+import static DAO.CompetenciaDaoJDBC.getProximosEncuentros;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -127,4 +131,76 @@ public class GestorCD {
                     unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
         
         // Persistencia
-        CompetenciaDaoJDBC.persistirCD(nuevaCD); } }
+        CompetenciaDaoJDBC.persistirCD(nuevaCD); }
+    
+    
+    
+    public static ArrayList<RondaAux> mostrarFixture(CompetenciaAux compAux){
+        
+        // Lista que se devuelve
+        ArrayList<RondaAux> rondasAux= new ArrayList<>();
+        
+        // Se busca la competencia con datos de fixture
+        Competencia comp = getCompetenciaMostrarFixt(compAux);
+        
+        // Se obtiene el fixture
+        Fixture fixt=comp.getFixture();
+        
+        // Se obtiene la lista de rondas
+        ArrayList<Ronda> rondas= fixt.getListaRondas();
+        
+        // Recorrer las rondas
+        for(int i=0; i<rondas.size(); i++){
+            
+            //Partidos de la ronda actual
+            ArrayList<Partido> partidos = rondas.get(i).getListaPartidos();
+            //Partidos auxiliares
+            ArrayList<PartidoAux> partidosAux = new ArrayList<>();
+            
+            // Recorrer los partidos
+            for(int j=0; j<partidos.size(); j++){
+                // Sacar los datos y asignarlos a un partido auxiliar
+                Partido partidoActual=partidos.get(j); // Solo para evitar el partidos.get(j)
+                int id=partidoActual.getID();
+                String p1 = partidoActual.getP0().getNombre();
+                String p2 = partidoActual.getP1().getNombre();
+                String res= partidoActual.getResultadoString();
+                PartidoAux partAux= new PartidoAux(id, p1, p2, res);
+                partidosAux.add(partAux);
+            }
+            
+            // Crear la ronda auxiliar y agregarla a la lista 
+            RondaAux rondaAux= new RondaAux(rondas.get(i).getID(), rondas.get(i).getNumero(), "", partidosAux);
+            rondasAux.add(rondaAux);
+        }
+        
+        return rondasAux;
+    }
+    
+    public static int getRondaActual(CompetenciaAux compAux){
+        //1  Cantidad de partidos con resultado cargado
+        int cantidadPartidosCargados = cantidadPartidosCargados(compAux.getId());
+        int cantidadPartidosPorRonda = cantidadPartidosPorRonda(compAux.getId());
+        
+        //2   Comparar cantidad de partidos cargados, con la posibilidad de la ronda actual
+        int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;
+        
+        return numeroRondaActual;
+    }
+    public static ArrayList<PartidoAuxProxEncuentro> proximosEncuentros (CompetenciaAux compAux){
+        ArrayList<PartidoAuxProxEncuentro> proximosEncuentros= new ArrayList<>();
+        
+        //Buscar los proximos encuentros
+        ArrayList<Partido> partidos= getProximosEncuentros(compAux);
+        
+        // Recorrer los partidos y asignarlos al DTO
+        for (int i=0; i<partidos.size(); i++){
+            PartidoAuxProxEncuentro aux = new PartidoAuxProxEncuentro(partidos.get(i).getLR().getNombre(),
+                    partidos.get(i).getP0().getNombre(), partidos.get(i).getP1().getNombre());
+            proximosEncuentros.add(aux);
+        }
+        
+        return proximosEncuentros;
+    }
+    
+}

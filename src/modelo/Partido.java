@@ -15,6 +15,10 @@ public class Partido {
     // private String anterior1;
     // private String anterior2;
     
+    public String getResultadoString(){
+        return "";
+    }
+    
     public int getID() {
         return IDPartido; }
     

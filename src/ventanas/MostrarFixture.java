@@ -5,8 +5,11 @@
  */
 package ventanas;
 
+import gestor.GestorCD;
+import static gestor.GestorCD.getRondaActual;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.CompetenciaAux;
 import modelo.PartidoAux;
@@ -20,6 +23,7 @@ public class MostrarFixture extends javax.swing.JPanel {
     
     CompetenciaAux compAux;
     ArrayList<RondaAux> rondas;
+    SpinnerNumberModel modeloRondas;
     
     /**
      * Creates new form MostrarFixture
@@ -28,7 +32,8 @@ public class MostrarFixture extends javax.swing.JPanel {
     public MostrarFixture(CompetenciaAux param) {
         compAux=param;
         
-        //rondas=mostrarFixture();
+        buscarRondas();
+        modeloRondas= (new javax.swing.SpinnerNumberModel(getRondaActual(compAux), 1, rondas.size(), 1));
         
         initComponents();
         
@@ -86,6 +91,7 @@ public class MostrarFixture extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
         }
+        llenarTabla(1);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(48, 182, 695, 290);
@@ -161,8 +167,13 @@ public class MostrarFixture extends javax.swing.JPanel {
         jLabel7.setBounds(55, 140, 50, 30);
 
         jSpinner1.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
+        jSpinner1.setModel(modeloRondas);
         jSpinner1.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner1, ""));
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
         add(jSpinner1);
         jSpinner1.setBounds(110, 135, 40, 40);
 
@@ -193,6 +204,10 @@ public class MostrarFixture extends javax.swing.JPanel {
         V.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        llenarTabla((int)jSpinner1.getValue());
+    }//GEN-LAST:event_jSpinner1StateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -215,10 +230,12 @@ public class MostrarFixture extends javax.swing.JPanel {
         jLabel1.setText(compAux.getNombre());
     }
     
+    private void buscarRondas(){
+        // Se recuperan las rondasAux y partidosAux de la base de datos
+        rondas=GestorCD.mostrarFixture(compAux);
+    }
+    
     private void llenarTabla(int ronda){
-        
-
-        // Se recuperan las competenciasAux de la base de datos
         
         // Eliminacion de la tabla actual
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
@@ -228,9 +245,10 @@ public class MostrarFixture extends javax.swing.JPanel {
             modelo.removeRow(0);
         }
         
+        
         // LLenado de la tabla actual
         
-        RondaAux rondaActual=rondas.get(ronda-1);
+        RondaAux rondaActual=rondas.get(ronda-1); //-1 porque la interfaz va de 1 a N
         
         ArrayList<PartidoAux> listaPartidos=rondaActual.getPartidos();
         
