@@ -1,44 +1,35 @@
-
 package modelo;
 
-import java.util.*;
-
 public class Provincia {
-   
-    private int id;
+    private int ID;
     private String nombre;
-    private String pais;
-
-    public Provincia(int id_provincia, String nombre, String pais) {
-        this.id = id_provincia;
-        this.nombre = nombre;
-        this.pais = pais;
-    }
+    private Pais pais;
 
     public int getId() {
-        return id;
-    }
+        return ID; }
 
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
-    public String getPais() {
-        return pais;
-    }
+    public Pais getPais() {
+        return pais; }
 
-    public void setId_provincia(int id_provincia) {
-        this.id = id_provincia;
-    }
+    public void setID(int unID) {
+        this.ID = unID; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
+    public void setPais(Pais unPais) {
+        this.pais = unPais; }
     
+    // Sin ID
+    public Provincia(String unNombre, Pais unPais) {
+        this.nombre = unNombre;
+        this.pais = unPais; }
     
-    
-}
+    // Con ID
+    public Provincia(int unaID, String unNombre, Pais unPais) {
+        this.ID = unaID;
+        this.nombre = unNombre;
+        this.pais = unPais; } }

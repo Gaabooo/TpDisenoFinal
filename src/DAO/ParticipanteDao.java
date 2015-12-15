@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.HistorialParticipante;
 import modelo.Participante;
 
 /**
@@ -78,7 +79,7 @@ public class ParticipanteDao {
             /* Persistencia de la imagen, teniendo el path o FileInputStream (fis)
             ps.setBinaryStream(2, fis, (int)file.length());*/
             //ps.setNull(null, VARCHAR);
-            ps.setString(3, participante.getCorreo());
+            ps.setString(3, participante.getCorreoElectronico());
             ps.executeUpdate();
             ps.close();
             }
@@ -108,8 +109,9 @@ public class ParticipanteDao {
             
             rs = statement.executeQuery(_SQL_FIND_PARTICIPANTES);
             
+            ArrayList<HistorialParticipante> unHistorial = new ArrayList<>();
             while(rs.next()){
-                Participante comp= new Participante(rs.getString("nombre"),rs.getString("correo_electronico"));
+                Participante comp= new Participante(rs.getString("nombre"), rs.getString("correo_electronico"), unHistorial);
                 ls.add(comp);
             }
             

@@ -1,7 +1,4 @@
-
 package modelo;
-
- import java.util.*;
 
 public class ParticipanteAux {
     private String nombre;
@@ -22,6 +19,4 @@ public class ParticipanteAux {
         return correo; }
     
     public String getNombre() {
-        return nombre; }
-    
-}
+        return nombre; } }

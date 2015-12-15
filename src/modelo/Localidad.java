@@ -1,53 +1,46 @@
-
 package modelo;
 
 import java.util.*;
 
 public class Localidad {
-    
-    private int id;
+    private int ID;
     private String nombre;
-    private String coidgoPostal;
-    
-    ArrayList<Provincia> provincia;
+    private String codigoPostal;
+    ArrayList<Provincia> listaProvincias;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int unID) {
+        this.ID = unID; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
-    public void setCoidgoPostal(String coidgoPostal) {
-        this.coidgoPostal = coidgoPostal;
-    }
+    public void setCoidgoPostal(String unCP) {
+        this.codigoPostal = unCP; }
 
-    public void setProvincia(ArrayList<Provincia> provincia) {
-        this.provincia = provincia;
-    }
+    public void setProvincia(ArrayList<Provincia> unaLista) {
+        this.listaProvincias = unaLista; }
 
-    public int getId() {
-        return id;
-    }
+    public int getID() {
+        return ID; }
 
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
-    public String getCoidgoPostal() {
-        return coidgoPostal;
-    }
+    public String getCP() {
+        return codigoPostal; }
 
-    public ArrayList<Provincia> getProvincia() {
-        return provincia;
-    }
+    public ArrayList<Provincia> getProvincias() {
+        return listaProvincias; }
 
-    public Localidad(int id, String nombre, String codigoPostal, ArrayList<Provincia> provincia) {
-        this.id = id;
-        this.nombre = nombre;
-        this.coidgoPostal = codigoPostal;
-        this.provincia = provincia;
-    }
-      
-}
+    // Sin ID
+    public Localidad(String unNombre, String unCP, ArrayList<Provincia> unaLista) {
+        this.nombre = unNombre;
+        this.codigoPostal = unCP;
+        this.listaProvincias = unaLista; }    
+    
+    // Con ID
+    public Localidad(int unID, String unNombre, String unCP, ArrayList<Provincia> unaLista) {
+        this.ID = unID;
+        this.nombre = unNombre;
+        this.codigoPostal = unCP;
+        this.listaProvincias = unaLista; } }

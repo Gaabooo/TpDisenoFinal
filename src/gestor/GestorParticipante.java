@@ -7,10 +7,11 @@ package gestor;
 
 import DAO.CompetenciaDaoJDBC;
 import DAO.ParticipanteDao;
-import static gestor.GestorCD.obtenerIdCD;
+import static gestor.GestorCD.obtenerIDCD;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import modelo.CompetenciaAux;
+import modelo.HistorialParticipante;
 import modelo.Participante;
 import modelo.ParticipanteAux;
 
@@ -33,7 +34,8 @@ public class GestorParticipante {
     
     public static void altaParticipante(int idCD, String nombre, String correo, FileInputStream fis){
         // Nuevo participante
-        Participante participante= new Participante(nombre, correo);
+        ArrayList<HistorialParticipante> unHistorial = new ArrayList<>();
+        Participante participante= new Participante(nombre, correo, unHistorial);
         
         // Persistir participante
         ParticipanteDao.persistirParticipante(idCD, participante);
@@ -52,7 +54,7 @@ public class GestorParticipante {
         for(int i=0; i < participantes.size(); i++){
             
             aux= new ParticipanteAux(participantes.get(i).getNombre(),
-                    participantes.get(i).getCorreo());
+                    participantes.get(i).getCorreoElectronico());
             participantesAux.add(aux);
             
         }

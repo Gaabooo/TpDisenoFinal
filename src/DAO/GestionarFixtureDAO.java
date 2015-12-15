@@ -4,509 +4,291 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import modelo.*;
 
 public class GestionarFixtureDAO {
-    public static int getIDEstado(Estado unEstado) {
-        int unIDEstado = 0;
-        String getIDEstado = "SELECT id_estado FROM estado WHERE nombre = '" + unEstado.getNombre() + "'";
-        Connection conn = null; 
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(getIDEstado);
-            while (rs.next()) {
-                unIDEstado = rs.getInt("id_estado"); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unIDEstado; }
-    
-    public static int getIDParticipante(Participante unParticipante) {
-        int unIDParticipante = 0;
-        String getIDParticipante = "SELECT id_participante FROM participante WHERE nombre = '" + unParticipante.getNombre() + "'";
-        Connection conn = null; 
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(getIDParticipante);
-            while (rs.next()) {
-                unIDParticipante = rs.getInt("id_participante"); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unIDParticipante; }
-    
-    public static void deletePartidos(int unIDRonda) {
+   /* public static void deleteResultado(Resultado unResultado) {
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String deletePartidos = "DELETE FROM partido WHERE id_ronda = " + unIDRonda;
-            System.out.println("Borre los partidos de la ronda: " + unIDRonda);
-            statement.executeUpdate(deletePartidos); }
+            String deleteResultado = "DELETE FROM resultado WHERE id_resultado = " + unResultado.getID();
+            statement.executeUpdate(deleteResultado); }
         catch (SQLException ex) {
             System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static void deleteRondas(int unIDFixture) {
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } */
+     
+    // DONE!
+    public static void persistirPosicion(Competencia unaCompetencia, Posicion unaPosicion) {
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getIDRonda = "SELECT id_ronda FROM ronda WHERE id_fixture = " + unIDFixture;
-            ArrayList<Integer> listaIDRondas = new ArrayList<>();
-            ResultSet rs = statement.executeQuery(getIDRonda);
+            int IDCD = unaCompetencia.getID();
+            int IDParticipante = unaPosicion.getParticipante().getID();
+            int puntaje = unaPosicion.getPuntaje();
+            int partidosGanados = unaPosicion.getPartidosGanados();
+            int partidosPerdidos = unaPosicion.getPartidosPerdidos();
+            int partidosEmpatados = unaPosicion.getPartidosEmpatados();
+            int tantosAFavor = unaPosicion.getTantosAFavor();
+            int tantosEnContra = unaPosicion.getTantosEnContra();
+            String persistirPosicion = "INSERT INTO posicion VALUES (default, " + IDCD + ", " + IDParticipante + ", " + puntaje + ", " 
+                + partidosGanados + ", " + partidosPerdidos + ", " + partidosEmpatados + ", " + tantosAFavor + ", " + tantosEnContra + ")";
+            statement.executeUpdate(persistirPosicion); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+    
+    // REWORK! Ahora recibe un PartidoAux
+    /* public static Partido getPartido(int unID) {
+        Partido unPartido = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getPartido = "SELECT * FROM partido WHERE id_partido = " + unID;
+            ResultSet rs = statement.executeQuery(getPartido);
+            // NOTA: El ResultSet tiene un solo resultado
             while (rs.next()) {
-                listaIDRondas.add(rs.getInt("id_ronda")); }
+                int IDPartido = rs.getInt("id_partido");
+                int IDP0 = rs.getInt("id_participante1");
+                Participante P0 = getParticipante(IDP0);
+                int IDP1 = rs.getInt("id_participante2");
+                Participante P1 = getParticipante(IDP1);
+                int IDLR = rs.getInt("id_lugar");
+                LugarRealizacion LR = GenerarFixtureDAO.getLR(IDLR);
+                ArrayList<Resultado> listaResultados = getResultados(IDPartido);
+                int IDGanador = rs.getInt("id_ganador_partido");
+                if (rs.wasNull()) {
+                    Boolean huboEmpate = true;
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate); }
+                else {
+                    Participante unGanador = getParticipante(IDGanador);
+                    Boolean huboEmpate = false;
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate); } }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unPartido; } */
+    
+    // REWORK! Ahora recibe una RondaAux
+    /* public static Ronda getRonda(int unIDRonda) {
+        Ronda unaRonda = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getRonda = "SELECT * FROM ronda WHERE id_ronda = " + unIDRonda;
+            ResultSet rs = statement.executeQuery(getRonda);
+            // NOTA: El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                int unaID = rs.getInt("id_ronda");
+                int unNumero = rs.getInt("numero_ronda");
+                Boolean rondaPerdedores = rs.getBoolean("ronda_perdedores");
+                String unaFecha = rs.getString("fecha");
+                ArrayList<Partido> unaListaPartidos = GestionarFixtureDAO.getPartidos(unaID);
+                unaRonda = new Ronda(unaID, unNumero, rondaPerdedores, unaFecha, unaListaPartidos); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unaRonda; } */
+    
+    // DONE!
+    public static void persistirHistorialResultado(Partido unPartido, HistorialResultado unHR) {
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String persistirHR;
+            int IDPartido = unPartido.getID();
+            String fechaModificacion = unHR.getFechaModificacion();
+            String horaModificacion = unHR.getHoraModificacion();
+            Participante ganador = unHR.getGanador();
+            Boolean huboEmpate = unHR.getEmpate();
+            if (huboEmpate) {
+                ArrayList<Resultado> listaResultados = unHR.getListaResultados();
+                for (Resultado unResultado:listaResultados) {
+                    int IDResultado = unResultado.getID();
+                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido + ", " + IDResultado + ", null, " + huboEmpate + ", '" + fechaModificacion + "', '" + horaModificacion + "')";
+                    statement.executeUpdate(persistirHR); } }
+            else {
+                Object IDGanador = ganador.getID();
+                ArrayList<Resultado> listaResultados = unHR.getListaResultados(); 
+                for (Resultado unResultado:listaResultados) {
+                    int IDResultado = unResultado.getID();
+                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido + ", " + IDResultado + ", " + IDGanador + ", " + huboEmpate + ", '" + fechaModificacion + "', '" + horaModificacion + "')";
+                    statement.executeUpdate(persistirHR); } } }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+    
+    // DONE!
+    public static void updatePosicion(Competencia unaCompetencia, Participante unParticipante, Posicion unaPosicion) {
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int IDCD = unaCompetencia.getID();
+            int IDParticipante = unParticipante.getID();
+            int puntaje = unaPosicion.getPuntaje();
+            int partidosGanados = unaPosicion.getPartidosGanados();
+            int partidosPerdidos = unaPosicion.getPartidosPerdidos();
+            int partidosEmpatados = unaPosicion.getPartidosEmpatados();
+            int tantosAFavor = unaPosicion.getTantosAFavor();
+            int tantosEnContra = unaPosicion.getTantosEnContra();
+            String updatePosicion = "UPDATE posicion "
+                + "SET puntaje = " + puntaje + ", partidos_ganados = " + partidosGanados + ", partidos_perdidos = " + partidosPerdidos 
+                + ", partidos_empatados = " + partidosEmpatados + ", tantos_a_favor = " + tantosAFavor + ", tantos_en_contra = " + tantosEnContra
+                + " WHERE id_competencia = " + IDCD + " AND id_participante = " + IDParticipante;
+            statement.executeQuery(updatePosicion); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } 
+    
+    // DONE!
+    public static void setGanadorAndEmpate(Partido unPartido) {
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String updateGanador;
+            int IDPartido = unPartido.getID();
+            Boolean huboEmpate = unPartido.getEmpate();
+            if (huboEmpate) { 
+                updateGanador = "UPDATE partido SET id_ganador_partido = null, empate = " + huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
+            else {
+                int IDGanador = unPartido.getGanador().getID();
+                updateGanador = "UPDATE partido SET id_ganador_partido = " + IDGanador + ", empate = " + huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
+            ResultSet rs = statement.executeQuery(updateGanador);
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+    
+    // DONE!
+    public static void persistirResultado(Partido unPartido, Resultado unResultado) {
+        int IDPartido = unPartido.getID();
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int numResultado = unResultado.getNumero();
+            int PP0 = unResultado.getPuntajeP0();
+            int PP1 = unResultado.getPuntajeP1();
+            Boolean AP0 = unResultado.getAsistenciaP0();
+            Boolean AP1 = unResultado.getAsistenciaP1();
+            Participante unGanador = unResultado.getGanador();
+            String persistirResultado = "INSERT INTO resultado VALUES (default, " + IDPartido + ", " + numResultado + ", " + PP0 + ", " + PP1 + ", " + AP0 + ", " + AP1 + ", ";
+            if (unGanador == null) {
+                persistirResultado = persistirResultado + "null)"; }
+            else {
+                int IDGanador = unGanador.getID();
+                persistirResultado = persistirResultado + IDGanador + ")"; }
+            statement.executeUpdate(persistirResultado); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+    
+    // DONE!
+    public static ArrayList<Resultado> getResultados(int unIDPartido) {
+        ArrayList<Resultado> listaResultados = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getResultado = "SELECT * FROM resultado WHERE id_resultado IN " +
+                "((SELECT id_resultado FROM resultado WHERE id_partido = " + unIDPartido + ") EXCEPT " + 
+                "(SELECT id_resultado FROM historial_resultado))";
+            ResultSet rs = statement.executeQuery(getResultado);
+            while (rs.next()) {
+                int IDResultado = rs.getInt("id_resultado");
+                int numero = rs.getInt("numero");
+                int RP0 = rs.getInt("resultadoP1");
+                int RP1 = rs.getInt("resultadoP2");
+                Boolean PP0 = rs.getBoolean("asistenciaP1");
+                Boolean PP1 = rs.getBoolean("asistenciaP2");
+                // NOTA: id_ganador es NULL si la CD NO es por sets
+                int IDGanador = rs.getInt("id_ganador");
+                Resultado unResultado = null;
+                if (rs.wasNull()) {
+                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, null); }
+                else {
+                    Participante unGanador = getParticipante(IDGanador);
+                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, unGanador); }
+                listaResultados.add(unResultado); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return listaResultados; }
+    
+    // DONE!
+    public static Participante getParticipante(int unID) {
+        Participante unParticipante = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int unIDParticipante = 0; String unNombre = ""; String unCorreoElectronico = "";
+            String getParticipante = "SELECT * FROM participante WHERE id_participante = " + unID;
+            ResultSet rs = statement.executeQuery(getParticipante);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                unIDParticipante = rs.getInt("id_participante");
+                unNombre = rs.getString("nombre");
+                unCorreoElectronico = rs.getString("correo_electronico"); }
             rs.close();
-            for (Integer IDRonda:listaIDRondas) {
-                System.out.println("- IDRonda: " + IDRonda);
-                deletePartidos(IDRonda); }
-            String deleteRondas = "DELETE FROM ronda WHERE id_fixture = " + unIDFixture;
-            System.out.println("Borre las rondas del fixture: " + unIDFixture);
-            statement.executeUpdate(deleteRondas); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static void deleteFixture(Competencia unaCompetencia) {
-        Connection conn = null; 
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            int IDCD = getIDCompetencia(unaCompetencia);
-            int IDFixture = 0;
-            String getIDFixture = "SELECT id_fixture FROM fixture WHERE id_competencia = " + IDCD;
-            ResultSet rs = statement.executeQuery(getIDFixture);
-            // NOTA: El ResultSet solo contiene un resultado
-            while (rs.next()) {
-                IDFixture = rs.getInt("id_fixture"); }
-            rs.close();
-            deleteRondas(IDFixture);
-            String deleteFixture = "DELETE FROM fixture WHERE id_fixture = " + IDFixture;
-            System.out.println("Borre el fixture: " + IDFixture);
-            statement.executeUpdate(deleteFixture); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static int getIDCompetencia(Competencia unaCompetencia) {
-        int unIDCD = 0;
-        String getIDCD = "SELECT id_competencia FROM competencia WHERE nombre = '" + unaCompetencia.getNombre() + "'";
-        Connection conn = null; 
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(getIDCD);
-            while (rs.next()) {
-                unIDCD = rs.getInt("id_competencia"); }
-            rs.close();}
+            unParticipante = new Participante(unIDParticipante, unNombre, unCorreoElectronico, null); }
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unIDCD; }
+        return unParticipante; }
     
-    public static int getIDLR(LugarRealizacion unLR) {
-        int unIDLR = 0;
-        String getIDLR = "SELECT id_lugar FROM lugar WHERE nombre = '" + unLR.getNombre() + "'";
-        Connection conn = null; 
+    // DONE!
+    public static ArrayList<Partido> getPartidos(int unIDRonda) {
+        ArrayList<Partido> listaPartidos = new ArrayList<>();
+        Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(getIDLR);
+            String getPartidos = "SELECT * FROM partido WHERE id_ronda = " + unIDRonda;
+            ResultSet rs = statement.executeQuery(getPartidos);
             while (rs.next()) {
-                unIDLR = rs.getInt("id_lugar"); }
+                Partido unPartido;
+                int IDPartido = rs.getInt("id_partido");
+                int IDP0 = rs.getInt("id_participante1");
+                Participante P0 = getParticipante(IDP0);
+                int IDP1 = rs.getInt("id_participante2");
+                Participante P1 = getParticipante(IDP1);
+                int IDLR = rs.getInt("id_lugar");
+                LugarRealizacion LR = GenerarFixtureDAO.getLR(IDLR);
+                ArrayList<Resultado> listaResultados = getResultados(IDPartido);
+                int IDGanador = rs.getInt("id_ganador_partido");
+                if (rs.wasNull()) {
+                    Boolean huboEmpate = true;
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate); }
+                else {
+                    Participante unGanador = getParticipante(IDGanador);
+                    Boolean huboEmpate = false;
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate); }
+                listaPartidos.add(unPartido); }
             rs.close(); }
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unIDLR; }
-    
-    public static void persistirPartido(Partido unPartido, int IDRonda) {
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            // Busqueda de IDs necesarias
-            Participante P0 = unPartido.getP0();
-            Participante P1 = unPartido.getP1();
-            LugarRealizacion LR = unPartido.getLR();
-            int IDP0 = getIDParticipante(P0);
-            int IDP1 = getIDParticipante(P1);
-            int IDLR = getIDLR(LR);
-            // Persistencia partido
-            String persistirPartido = "INSERT INTO partido VALUES (default, " + IDRonda + ", " + IDP0 + ", " + IDP1 + ", " + IDLR + ", " + unPartido.getEmpatePermitido() + ", " + unPartido.getRondaPerdedores() + ", null, null)";
-            statement.executeUpdate(persistirPartido); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static void persistirRonda(Ronda unaRonda, int IDFixture) {
-        int IDRonda = 0;
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            // Persistencia ronda
-            String persistirRonda = "INSERT INTO ronda VALUES (default, " + IDFixture + ", " + unaRonda.getFecha() + ", " + unaRonda.getNumeroRonda() + ")";
-            statement.executeUpdate(persistirRonda);
-            // Obtengo IDRonda para persistir los partidos
-            String getIDRonda = "SELECT id_ronda FROM ronda WHERE id_fixture = " + IDFixture;
-            ResultSet rs = statement.executeQuery(getIDRonda);
-            // NOTA: El ResultSet solo contiene un resultado
-            while (rs.next()) {
-                IDRonda = rs.getInt("id_ronda"); }
-            // Persistencia partidos
-            for (Partido unPartido:(unaRonda.getListaPartidos())) {
-                persistirPartido(unPartido, IDRonda); }
-            rs.close(); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static void persistirFixture(Fixture unFixture, String nombreCD) {
-        int IDCD = 0; int IDFixture = 0;
-        Connection conn = null; 
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            // Obtengo IDCD para persistir el fixture
-            String getIDCompetencia = "SELECT id_competencia FROM competencia WHERE nombre = '" + nombreCD + "'";
-            ResultSet rs = statement.executeQuery(getIDCompetencia);
-            // NOTA: El ResultSet solo contiene un resultado
-            while (rs.next()) {
-                IDCD = rs.getInt("id_competencia"); }
-            // Persistencia fixture
-            String persistirFixture = "INSERT INTO fixture VALUES (default, " + IDCD + ")";
-            statement.executeUpdate(persistirFixture);
-            // Obtengo IDFixture para persistir la ronda
-            String getIDFixture = "SELECT id_fixture FROM fixture WHERE id_competencia = " + IDCD;
-            rs = statement.executeQuery(getIDFixture);
-            // NOTA: El ResultSet solo contiene un resultado
-            while (rs.next()) {
-                IDFixture = rs.getInt("id_fixture"); }
-            // Persistencia rondas
-            for (Ronda unaRonda:(unFixture.getListaRondas())) {
-                persistirRonda(unaRonda, IDFixture); }
-            rs.close(); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static ArrayList<HistorialParticipante> getHistorialParticipante(int unIDParticipante) {
-        ArrayList<HistorialParticipante> historial = new ArrayList();
-        HistorialParticipante unCambio;
-        String nombre, correo; Date fecha; Time hora;
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getHistorial = "SELECT * FROM historial_participante WHERE id_participante = " + unIDParticipante;
-            ResultSet rs = statement.executeQuery(getHistorial);
-            while (rs.next()) {
-                nombre = rs.getString("nombre");
-                correo = rs.getString("correo");
-                fecha = rs.getDate("fecha");
-                hora = rs.getTime("hora");
-                unCambio = new HistorialParticipante(nombre, correo, fecha, hora);
-                historial.add(unCambio); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return historial; }    
-    
-    public static ArrayList<Participante> getParticipantes(int unIDCompetencia) {
-        ArrayList<Participante> listaParticipantes = new ArrayList();
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getParticipantes = "SELECT * FROM participante WHERE id_competencia = " + unIDCompetencia;
-            ResultSet rs = statement.executeQuery(getParticipantes);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                int IDParticipante = rs.getInt("id_participante");
-                String nombre = rs.getString("nombre");
-                String correo = rs.getString("correo_electronico");
-                ArrayList<HistorialParticipante> historial = getHistorialParticipante(IDParticipante);
-                Participante unParticipante = new Participante(nombre, correo, historial);
-                listaParticipantes.add(unParticipante); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaParticipantes; }
-    
-    public static ArrayList<Disponibilidad> getDisponibilidades(int unIDCompetencia) {
-        ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getDisponibilidades = "SELECT * FROM disponibilidad WHERE id_competencia = " + unIDCompetencia;
-            ResultSet rs = statement.executeQuery(getDisponibilidades);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                int IDLugar = rs.getInt("id_lugar");
-                LugarRealizacion unLugarRealizacion = getLugarRealizacion(IDLugar);
-                int cantPartidos = rs.getInt("cantidad");
-                Disponibilidad unaDisponibilidad = new Disponibilidad(cantPartidos, unLugarRealizacion);
-                listaDisponibilidades.add(unaDisponibilidad); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaDisponibilidades; }
-    
-    public static ArrayList<Deporte> getDeportes(int unIDLR) {
-        ArrayList<Integer> listaIDDeportes = new ArrayList();
-        ArrayList<Deporte> listaDeportes = new ArrayList();
-        Deporte unDeporte;
-        int IDDeporte;
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getDeportes = "SELECT id_deporte FROM lugar_realiza_deporte WHERE id_lugar = " + unIDLR;
-            ResultSet rs = statement.executeQuery(getDeportes);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDDeporte = rs.getInt("id_deporte");
-                listaIDDeportes.add(IDDeporte); }
-            // Busqueda deportes por ID
-            for (Integer unIDDeporte:listaIDDeportes) {
-                unDeporte = getDeporte(unIDDeporte);
-                listaDeportes.add(unDeporte); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaDeportes; }
-    
-    public static LugarRealizacion getLugarRealizacion(int unID) {
-        LugarRealizacion unLR = null;
-        int IDLR = 0; String nombreLR = ""; String descripcionLR = "";
-        ArrayList<Deporte> listaDeportes;
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getLR = "SELECT * FROM lugar WHERE id_lugar = " + unID;
-            ResultSet rs = statement.executeQuery(getLR);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDLR = rs.getInt("id_lugar");
-                nombreLR = rs.getString("nombre");
-                descripcionLR = rs.getString("descripcion"); }
-            // Busqueda de deportes
-            listaDeportes = getDeportes(IDLR);
-            unLR = new LugarRealizacion(IDLR, nombreLR, descripcionLR, listaDeportes);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unLR; }
-    
-    public static Deporte getDeporte(int unID) {
-        Deporte unDeporte = null;
-        int IDDeporte = 0;
-        String nombreDeporte = "";
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getIDDeporte = "SELECT * FROM deporte WHERE id_deporte = " + unID;
-            ResultSet rs = statement.executeQuery(getIDDeporte);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDDeporte = rs.getInt("id_deporte");
-                nombreDeporte = rs.getString("nombre"); }
-            unDeporte = new Deporte(IDDeporte, nombreDeporte);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unDeporte; }
-    
-    public static Modalidad getModalidad(int unID) {
-        Modalidad unaModalidad = null;
-        int IDModalidad = 0;
-        String nombreModalidad = "";
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getIDModalidad = "SELECT * FROM modalidad WHERE id_modalidad = " + unID;
-            ResultSet rs = statement.executeQuery(getIDModalidad);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDModalidad = rs.getInt("id_modalidad");
-                nombreModalidad = rs.getString("nombre"); }
-            unaModalidad = new Modalidad(IDModalidad, nombreModalidad);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaModalidad; }
-    
-    public static void setEstado(Competencia unaCompetencia, Estado unEstado) {
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            int IDEstado = getIDEstado(unEstado);
-            String nombreCD = unaCompetencia.getNombre();
-            String getIDEstado = "UPDATE competencia SET id_estado = " + IDEstado + " WHERE nombre = '" + nombreCD + "'";
-            ResultSet rs = statement.executeQuery(getIDEstado);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
-    
-    public static Estado getEstado(int unID) {
-        Estado unEstado = null;
-        int IDEstado = 0;
-        String nombreEstado = "";
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getIDEstado = "SELECT * FROM estado WHERE id_estado = " + unID;
-            ResultSet rs = statement.executeQuery(getIDEstado);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDEstado = rs.getInt("id_estado");
-                nombreEstado = rs.getString("nombre"); }
-            unEstado = new Estado(nombreEstado);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unEstado; }
-    
-    public static Estado getEstado(String unNombre) {
-        Estado unEstado = null;
-        int IDEstado; String nombreEstado = "";
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getIDEstado = "SELECT * FROM estado WHERE nombre = '" + unNombre + "'";
-            ResultSet rs = statement.executeQuery(getIDEstado);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDEstado = rs.getInt("id_estado");
-                nombreEstado = rs.getString("nombre"); }
-            unEstado = new Estado(nombreEstado);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unEstado; }
-    
-    public static FormaPuntuacion getFormaPuntuacion(int unID) {
-        FormaPuntuacion unaFormaPuntuacion = null;
-        int IDFormaPuntuacion = 0;
-        String nombreFormaPuntuacion = "";
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String getIDFormaPuntuacion = "SELECT * FROM forma_puntuacion WHERE id_forma_puntuacion = " + unID;
-            ResultSet rs = statement.executeQuery(getIDFormaPuntuacion);
-            // El ResultSet tiene un solo resultado
-            while (rs.next()) {
-                IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
-                nombreFormaPuntuacion = rs.getString("nombre"); }
-            unaFormaPuntuacion = new FormaPuntuacion(IDFormaPuntuacion, nombreFormaPuntuacion);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaFormaPuntuacion; }        
-        
-    public static Competencia getCompetencia(String nombreCD) {
-        String _SQL_FIND_CDBYNAME = "SELECT * FROM competencia WHERE nombre = '" + nombreCD + "'";
-        Connection conn = null;
-        Competencia retorno = null;
-        try {
-            // Variables auxiliares
-            String unNombre = ""; String unReglamento = "";
-            int IDCompetencia = 0; int IDUsuario = 0; int IDEstado = 0; int IDFormaPuntuacion = 0; int IDModalidad = 0; int IDDeporte = 0;
-            Deporte unDeporte; Modalidad unaModalidad; Estado unEstado; FormaPuntuacion unaFormaPuntuacion;
-            ArrayList<Disponibilidad> listaDisponibilidades; ArrayList<Participante> listaParticipantes; ArrayList<TablaPosicionesParticipante> listaTablasPosiciones = null;
-            int cantMaxSets = 0; int tantosAusenciaRival = 0; int ptosPresentacion = 0; int ptosVictoria = 0; int ptosEmpate = 0;
-            Boolean permisoEmpate = false;
-            // Busqueda de la competencia
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(_SQL_FIND_CDBYNAME);
-            while(rs.next()) {
-                IDCompetencia = rs.getInt("id_competencia"); IDUsuario = rs.getInt("id_usuario");
-                IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
-                IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
-                unNombre = rs.getString("nombre"); unReglamento = rs.getString("reglamento");
-                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); /**/
-                ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
-                permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); }
-            /* while(rs.next()) {
-                unNombre = rs.getString("nombre"); unReglamento = rs.getString("reglamento");
-                IDCompetencia = rs.getInt("id_competencia"); IDUsuario = rs.getInt("id_usuario");
-                IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
-                IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
-                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival");
-                ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
-                permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); } */
-            // Busqueda de: Deporte, Modalidad, Estado, FormaPuntuacion
-            unDeporte = getDeporte(IDDeporte);
-            unaModalidad = getModalidad(IDModalidad);
-            unEstado = getEstado(IDEstado);
-            unaFormaPuntuacion = getFormaPuntuacion(IDFormaPuntuacion);
-            // Busqueda de: listaDisponibilidades, listaParticipantes
-            listaDisponibilidades = getDisponibilidades(IDCompetencia);
-            listaParticipantes = getParticipantes(IDCompetencia);
-            // Creacion del retorno
-            retorno = new Competencia(IDUsuario, unNombre, unReglamento, unDeporte, unaModalidad, unEstado, unaFormaPuntuacion,
-                listaDisponibilidades, listaParticipantes, listaTablasPosiciones,
-                cantMaxSets, tantosAusenciaRival, ptosPresentacion, ptosVictoria, permisoEmpate, ptosEmpate);
-            rs.close(); }
-        catch (SQLException e) {
-            System.out.println(e.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return retorno; } }
+        return listaPartidos; } }

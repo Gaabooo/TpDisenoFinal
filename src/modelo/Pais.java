@@ -1,30 +1,26 @@
-
 package modelo;
 
 public class Pais {
-    
-    private int id;
+    private int ID;
     private String nombre;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setID(int unID) {
+        this.ID = unID; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
-    public int getId() {
-        return id;
-    }
+    public int getID() {
+        return ID; }
 
     public String getNombre() {
-        return nombre;
-    }
-
-    public Pais(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+        return nombre; }
+   
+    // Sin ID
+    public Pais(String unNombre) {
+        this.nombre = unNombre; }    
     
-}
+    // Con ID
+    public Pais(int unID, String unNombre) {
+        this.ID = unID;
+        this.nombre = unNombre; } }

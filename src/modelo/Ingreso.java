@@ -1,50 +1,44 @@
-
 package modelo;
 
-
 public class Ingreso {
-    
-    private int id;
+    private int ID;
     private String hora;
     private String fecha;
-    private String ipConexion;
+    private String IP;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setID(int unID) {
+        this.ID = unID; }
 
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
+    public void setHora(String unaHora) {
+        this.hora = unaHora; }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+    public void setFecha(String unaFecha) {
+        this.fecha = unaFecha; }
 
-    public void setIpConexion(String ipConexion) {
-        this.ipConexion = ipConexion;
-    }
+    public void setIpConexion(String unaIP) {
+        this.IP = unaIP; }
 
-    public int getId() {
-        return id;
-    }
+    public int getID() {
+        return ID; }
 
     public String getHora() {
-        return hora;
-    }
+        return hora; }
 
     public String getFecha() {
-        return fecha;
-    }
+        return fecha; }
 
-    public String getIpConexion() {
-        return ipConexion;
-    }
-
-    public Ingreso(int id, String hora, String fecha, String ipConexion) {
-        this.id = id;
-        this.hora = hora;
-        this.fecha = fecha;
-        this.ipConexion = ipConexion;
-    }
-}
+    public String getIP() {
+        return IP; }
+    
+    // Sin ID
+    public Ingreso(String unaHora, String unaFecha, String unaIP) {
+        this.hora = unaHora;
+        this.fecha = unaFecha;
+        this.IP = unaIP; }
+    
+    // Con ID
+    public Ingreso(int unID, String unaHora, String unaFecha, String unaIP) {
+        this.ID = unID;
+        this.hora = unaHora;
+        this.fecha = unaFecha;
+        this.IP = unaIP; } }

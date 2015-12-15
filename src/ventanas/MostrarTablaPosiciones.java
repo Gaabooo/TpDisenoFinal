@@ -177,7 +177,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         //System.out.print(compAux.getId());
         
         // Se recuperan las TablaPosicionesParticipante de la base de datos
-        ArrayList<TablaPosicionesAux> listaTpp = GestorCD.listarTpp(compAux.getId());
+        ArrayList<PosicionAux> listaTpp = GestorCD.getPosicionesAux(compAux.getId());
         
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
         int diferencia;
@@ -186,7 +186,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         // Se le asignan las tablas recuperadas
         for(int i=0; i<listaTpp.size(); i++){
             
-            TablaPosicionesAux elem=listaTpp.get(i);
+            PosicionAux elem=listaTpp.get(i);
             
             Object fila[]=new Object[8];
             
@@ -195,11 +195,11 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             fila[2]= /*String.valueOf*/(elem.getPartidosGanados());
             fila[3]= /*String.valueOf*/(elem.getPartidosEmpatados());
             fila[4]= /*String.valueOf*/(elem.getPartidosPerdidos());
-            fila[5]= /*String.valueOf*/(elem.getTantoAFavor());
-            fila[6]= /*String.valueOf*/(elem.getTantoEnContra());
+            fila[5]= /*String.valueOf*/(elem.getTantosAFavor());
+            fila[6]= /*String.valueOf*/(elem.getTantosEnContra());
             
             
-            diferencia=  elem.getTantoAFavor()- elem.getTantoEnContra();
+            diferencia=  elem.getTantosAFavor()- elem.getTantosEnContra();
             fila[7]= /*String.valueOf*/(diferencia);
             
             modelo.addRow(fila);

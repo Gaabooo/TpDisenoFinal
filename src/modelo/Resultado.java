@@ -1,54 +1,52 @@
-
 package modelo;
 
 import java.util.ArrayList;
 
 public class Resultado {
+    private int ID;
+    private int numResultado;
+    private int puntajeP0;
+    private int puntajeP1;
+    private Boolean asistenciaP0;
+    private Boolean asistenciaP1;
+    private Participante ganador;
     
-    private int id;
-    private int resultadoP1;
-    private int resultadoP2;
-    private int presentadoP1;
-    private int presentadoP2;
-    private int ganoParticipanteP;
-         
-    ArrayList <HistorialResultado> HistorialResultado;
+    public int getID(){
+        return ID; }   
+    
+    public int getNumero() {
+        return numResultado; }
+        
+    public int getPuntajeP0() {
+        return puntajeP0; }
 
-    public int getId() {
-        return id;
-    }
+    public int getPuntajeP1() {
+        return puntajeP1; }
 
-    public int getResultadoP1() {
-        return resultadoP1;
-    }
+    public Boolean getAsistenciaP0() {
+        return asistenciaP0; }
 
-    public int getResultadoP2() {
-        return resultadoP2;
-    }
+    public Boolean getAsistenciaP1() {
+        return asistenciaP1; }
 
-    public int getPresentadoP1() {
-        return presentadoP1;
-    }
-
-    public int getPresentadoP2() {
-        return presentadoP2;
-    }
-
-    public int getGanoParticipanteP() {
-        return ganoParticipanteP;
-    }
-
-    public ArrayList<HistorialResultado> getHistorialResultado() {
-        return HistorialResultado;
-    }
-
-    public Resultado(int id, int resultadoP1, int resultadoP2, int presentadoP1, int presentadoP2, int ganoParticipanteP, ArrayList<HistorialResultado> HistorialResultado) {
-        this.id = id;
-        this.resultadoP1 = resultadoP1;
-        this.resultadoP2 = resultadoP2;
-        this.presentadoP1 = presentadoP1;
-        this.presentadoP2 = presentadoP2;
-        this.ganoParticipanteP = ganoParticipanteP;
-        this.HistorialResultado = HistorialResultado;
-    }
-}
+    public Participante getGanador() {
+        return ganador; }
+    
+    // Con ID
+    public Resultado(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, Participante unGanador) {
+        this.ID = unID;
+        this.numResultado = unNumero;
+        this.puntajeP0 = PP0;
+        this.puntajeP1 = PP1;
+        this.asistenciaP0 = AP0;
+        this.asistenciaP1 = AP1;
+        this.ganador = unGanador; }
+    
+    // Sin ID
+    public Resultado(int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, Participante unGanador) {
+        this.numResultado = unNumero;
+        this.puntajeP0 = PP0;
+        this.puntajeP1 = PP1;
+        this.asistenciaP0 = AP0;
+        this.asistenciaP1 = AP1;
+        this.ganador = unGanador; } }

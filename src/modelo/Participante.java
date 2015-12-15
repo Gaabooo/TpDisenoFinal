@@ -1,51 +1,53 @@
-
 package modelo;
 
  import java.util.*;
 
 public class Participante {
+    private int ID;
     private String nombre;
-    private String correo_electronico;
+    private String correoElectronico;
     // private String imagen;
     private ArrayList<HistorialParticipante> historial;
+    
+    public void setID(int unID) {
+        this.ID = unID; }
+    
+    public void setCorreoElectronico(String unCorreo) {
+        this.correoElectronico = unCorreo; }
 
-    public Participante(String nombre, String correo_electronico/*,String imagen, ArrayList<HistorialParticipante> HistP*/) {
-        this.correo_electronico = correo_electronico;
-        this.nombre = nombre;
-        /*this.imagen = imagen;
-        this.HistP = HistP;*/
-    }
-
-    // Constructor auxiliar, NO ES FINAL
-    public Participante(String nombre, String correo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> historial) {
-        this.nombre = nombre;
-        this.correo_electronico = correo;
-        this.historial = historial; }
-
-    public void setCorreo(String correo) {
-        this.correo_electronico = correo; }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre; }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
     /* public void setImagen(String imagen) {
         this.imagen = imagen; } */
 
-    public void setHistP(ArrayList<HistorialParticipante> HistP) {
-        this.HistP = HistP; }
- 
-    ArrayList<HistorialParticipante> HistP;
+    public void setHistorial(ArrayList<HistorialParticipante> HistP) {
+        this.historial = HistP; }
 
-    public String getCorreo() {
-        return correo_electronico; }
+    public int getID() {
+        return ID; }
+    
+    public String getCorreoElectronico() {
+        return correoElectronico; }
 
     public String getNombre() {
         return nombre; }
 
     /* public String getImagen() {
-        return imagen;
-    } */
+        return imagen; } */
 
-    public ArrayList<HistorialParticipante> getHistP() {
-        return HistP;
-    } }
+    public ArrayList<HistorialParticipante> getHistorial() {
+        return historial; } 
+
+    // Con ID
+    public Participante(int unID, String unNombre, String unCorreo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> histP) {
+        this.ID = unID;
+        this.nombre = unNombre;
+        this.correoElectronico = unCorreo;
+        this.historial = histP; }
+
+    // Sin ID
+    public Participante(String unNombre, String unCorreo, /* FKIN IMAGEN */ ArrayList<HistorialParticipante> histP) {
+        this.nombre = unNombre;
+        this.correoElectronico = unCorreo;
+        this.historial = histP; } }

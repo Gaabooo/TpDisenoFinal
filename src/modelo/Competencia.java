@@ -3,8 +3,7 @@ package modelo;
 import java.util.*;
 
 public class Competencia {
-    private int id;
-    private int IDUsuario;
+    private int ID;
     private String nombre;
     private String reglamento;
    
@@ -23,40 +22,7 @@ public class Competencia {
     
     private ArrayList<Participante> listaParticipantes;
     private ArrayList<Disponibilidad> listaDisponibilidades;
-    private ArrayList<TablaPosicionesParticipante> listaTablasPosiciones;
-    
-    
-    public int getId() {
-        return id;
-    }
-
-    public int getIDUsuario() {
-        return IDUsuario;
-    }
-
-    public boolean isEmpatePermitido() {
-        return empatePermitido;
-    }
-
-    public ArrayList<TablaPosicionesParticipante> getListaTablasPosiciones() {
-        return listaTablasPosiciones;
-    }
-    
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setIDUsuario(int IDUsuario) {
-        this.IDUsuario = IDUsuario;
-    }
-
-    public void setListaParticipantes(ArrayList<Participante> listaParticipantes) {
-        this.listaParticipantes = listaParticipantes;
-    }
-
-    public void setListaTablasPosiciones(ArrayList<TablaPosicionesParticipante> listaTablasPosiciones) {
-        this.listaTablasPosiciones = listaTablasPosiciones;
-    }
+    private ArrayList<Posicion> tablaPosiciones;
     
     public void setNombre(String nombre) {
         this.nombre = nombre; }
@@ -100,9 +66,12 @@ public class Competencia {
     public void setListaDisponibilidades(ArrayList<Disponibilidad> listaDisponibilidades) {
         this.listaDisponibilidades = listaDisponibilidades; } 
     
-    public void addTablaPosicionesParticipante(TablaPosicionesParticipante unaTabla) {
-        listaTablasPosiciones.add(unaTabla); }    
+    public void setTablaPosiciones(ArrayList<Posicion> unaTabla) {
+        this.tablaPosiciones = unaTabla; }    
 
+    public int getID() {
+        return ID; }
+    
     public String getNombre() {
         return nombre; }
 
@@ -148,8 +117,8 @@ public class Competencia {
     public ArrayList<Disponibilidad> getListaDisponibilidades() {
         return listaDisponibilidades; } 
     
-    public ArrayList<TablaPosicionesParticipante> getTablaPosicionesParticipante() {
-        return listaTablasPosiciones; }    
+    public ArrayList<Posicion> getTablaPosiciones() {
+        return tablaPosiciones; }    
     
     public Competencia(String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado,
                        ArrayList<Disponibilidad> listaDisponibilidades, FormaPuntuacion formaPuntuacion, int cantidadMaximaDeSets,
@@ -169,14 +138,14 @@ public class Competencia {
         this.puntosPorVictoria=puntosPorVictoria;
         this.empatePermitido=empatePermitido;
         this.puntosPorEmpate=puntosPorEmpate;
-        this.listaTablasPosiciones = new ArrayList<>(); }
+        this.tablaPosiciones = new ArrayList<>(); }
     
     // Constructor auxiliar
-    public Competencia(int IDUsuario, String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado, FormaPuntuacion formaPuntuacion,
-                       ArrayList<Disponibilidad> listaDisponibilidades, ArrayList<Participante> listaParticipantes, ArrayList<TablaPosicionesParticipante> listaTablasPosiciones,
+    public Competencia(int unaID, String nombre, String reglamento, Deporte deporte, Modalidad modalidad, Estado estado, FormaPuntuacion formaPuntuacion,
+                       ArrayList<Disponibilidad> listaDisponibilidades, ArrayList<Participante> listaParticipantes, ArrayList<Posicion> unaTablaPosiciones,
                        int cantidadMaximaDeSets, int tantosPorAusenciaDeRival, int puntosPorPresentacion,
                        int puntosPorVictoria, boolean empatePermitido, int puntosPorEmpate) {
-        this.IDUsuario = IDUsuario;
+        this.ID = unaID;
         this.nombre = nombre;
         this.reglamento = reglamento;
         this.deporte = deporte;
@@ -184,7 +153,7 @@ public class Competencia {
         this.estado = estado;
         this.listaDisponibilidades = listaDisponibilidades;
         this.listaParticipantes = listaParticipantes;
-        this.listaTablasPosiciones = listaTablasPosiciones;
+        this.tablaPosiciones = unaTablaPosiciones;
         this.formaPuntuacion = formaPuntuacion;
         this.cantidadMaximaDeSets = cantidadMaximaDeSets;
         this.tantosPorAusenciaDeRival = tantosPorAusenciaDeRival;
@@ -192,16 +161,13 @@ public class Competencia {
         this.puntosPorVictoria = puntosPorVictoria;
         this.empatePermitido = empatePermitido;
         this.puntosPorEmpate = puntosPorEmpate; }
-    
-    public Competencia(int id, String nombre, Deporte deporte, Modalidad modalidad,
-            Estado estado, FormaPuntuacion formaPuntuacion) {
+
+    public Competencia(int unID, String nombre, Deporte deporte, Modalidad modalidad,
+        Estado estado, FormaPuntuacion formaPuntuacion) {
         
-        this.id=id;
-        this.nombre=nombre;
-        this.deporte=deporte;
-        this.modalidad=modalidad;
-        this.estado=estado;
-        this.formaPuntuacion=formaPuntuacion;
-    }
-    
-}
+        this.ID = unID;
+        this.nombre = nombre;
+        this.deporte = deporte;
+        this.modalidad = modalidad;
+        this.estado = estado;
+        this.formaPuntuacion = formaPuntuacion; } }

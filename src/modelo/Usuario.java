@@ -1,112 +1,102 @@
-
 package modelo;
 
 import java.util.*;
 
 public class Usuario {
-  
- private int id;
- private String correo;
- private String contraseña;
- private String nroDoc;
- private String nombre;
- private String apellido;
- 
- private String tipodoc; 
- private String localidad;
- ArrayList <Ingreso> ingreso;
- ArrayList <Competencia> LugaresCompetencia;
+    private int ID;
+    private String correoElectronico;
+    private String contraseña;
+    private int numDocumento;
+    private String nombre;
+    private String apellido;
+    private String tipoDocumento; 
+    private Localidad localidad;
+    ArrayList<Ingreso> listaIngresos;
+    ArrayList<Competencia> listaCompetencias;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int unID) {
+        this.ID = unID; }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+    public void setCorreoElectronico(String unCorreo) {
+        this.correoElectronico = unCorreo; }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
+    public void setContraseña(String unaContraseña) {
+        this.contraseña = unaContraseña; }
 
-    public void setNroDoc(String nroDoc) {
-        this.nroDoc = nroDoc;
-    }
+    public void setNumDocumento(int unNumero) {
+        this.numDocumento = unNumero; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+    public void setApellido(String unApellido) {
+        this.apellido = unApellido; }
 
-    public void setTipodoc(String tipodoc) {
-        this.tipodoc = tipodoc;
-    }
+    public void setTipoDocumento(String unTipo) {
+        this.tipoDocumento = unTipo; }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
+    public void setLocalidad(Localidad unaLocalidad) {
+        this.localidad = unaLocalidad;  }
 
-    public void setIngreso(ArrayList<Ingreso> ingreso) {
-        this.ingreso = ingreso;
-    }
+    public void setIngresos(ArrayList<Ingreso> unaLista) {
+        this.listaIngresos = unaLista; }
 
-    public void setLugaresCompetencia(ArrayList<Competencia> LugaresCompetencia) {
-        this.LugaresCompetencia = LugaresCompetencia;
-    }
+    public void setCompetencias(ArrayList<Competencia> unaLista) {
+        this.listaCompetencias = unaLista; }
 
-    public int getId() {
-        return id;
-    }
+    public int getID() {
+        return ID; }
 
-    public String getCorreo() {
-        return correo;
-    }
+    public String getCorreoElectronico() {
+        return correoElectronico; }
 
     public String getContraseña() {
-        return contraseña;
-    }
+        return contraseña; }
 
-    public String getNroDoc() {
-        return nroDoc;
-    }
+    public int getNumoDocumento() {
+        return numDocumento; }
 
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
     public String getApellido() {
-        return apellido;
-    }
+        return apellido; }
 
-    public String getTipodoc() {
-        return tipodoc;
-    }
+    public String getTipoDocumento() {
+        return tipoDocumento; }
 
-    public String getLocalidad() {
-        return localidad;
-    }
+    public Localidad getLocalidad() {
+        return localidad; }
 
-    public ArrayList<Ingreso> getIngreso() {
-        return ingreso;
-    }
+    public ArrayList<Ingreso> getIngresos() {
+        return listaIngresos; }
 
-    public ArrayList<Competencia> getLugaresCompetencia() {
-        return LugaresCompetencia;
-    }
+    public ArrayList<Competencia> getCompetencias() {
+        return listaCompetencias; }
 
-    public Usuario(int id, String correo, String contraseña, String nroDoc, String nombre, String apellido, String tipodoc, String localidad, ArrayList<Ingreso> ingreso, ArrayList<Competencia> LugaresCompetencia) {
-        this.id = id;
-        this.correo = correo;
-        this.contraseña = contraseña;
-        this.nroDoc = nroDoc;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.tipodoc = tipodoc;
-        this.localidad = localidad;
-        this.ingreso = ingreso;
-        this.LugaresCompetencia = LugaresCompetencia;
-    }
-}
+    // Sin ID
+    public Usuario(String unCorreo, String unaContraseña, int unNumero, String unNombre, String unApellido,
+        String unTipo, Localidad unaLocalidad, ArrayList<Ingreso> unaLI, ArrayList<Competencia> unaLC) {
+        this.correoElectronico = unCorreo;
+        this.contraseña = unaContraseña;
+        this.numDocumento = unNumero;
+        this.nombre = unNombre;
+        this.apellido = unApellido;
+        this.tipoDocumento = unTipo;
+        this.localidad = unaLocalidad;
+        this.listaIngresos = unaLI;
+        this.listaCompetencias = unaLC; }
+    
+    // Con ID
+    public Usuario(int unID, String unCorreo, String unaContraseña, int unNumero, String unNombre, String unApellido,
+        String unTipo, Localidad unaLocalidad, ArrayList<Ingreso> unaLI, ArrayList<Competencia> unaLC) {
+        this.ID = unID;
+        this.correoElectronico = unCorreo;
+        this.contraseña = unaContraseña;
+        this.numDocumento = unNumero;
+        this.nombre = unNombre;
+        this.apellido = unApellido;
+        this.tipoDocumento = unTipo;
+        this.localidad = unaLocalidad;
+        this.listaIngresos = unaLI;
+        this.listaCompetencias = unaLC; } }

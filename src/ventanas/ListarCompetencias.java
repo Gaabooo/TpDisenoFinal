@@ -70,7 +70,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         comboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaND));
 
         comboBoxEstado.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "EnDisputa", "Finalizada" }));
+        comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "En disputa", "Finalizada" }));
 
         comboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         comboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
@@ -136,7 +136,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
                 .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonBuscar)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         textFieldCompetencia.addKeyListener(new KeyAdapter() {
@@ -151,7 +151,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         });
 
         add(jPanel2);
-        jPanel2.setBounds(28, 82, 197, 450);
+        jPanel2.setBounds(28, 82, 249, 450);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         jButtonAtras.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
@@ -162,7 +162,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonAtras);
-        jButtonAtras.setBounds(260, 500, 90, 31);
+        jButtonAtras.setBounds(260, 500, 90, 33);
 
         jButtonCrearCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonCrearCompetencia.setText("Crear Competencia");
@@ -172,7 +172,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonCrearCompetencia);
-        jButtonCrearCompetencia.setBounds(455, 500, 150, 31);
+        jButtonCrearCompetencia.setBounds(455, 500, 150, 33);
 
         jButtonVerCompetencia.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButtonVerCompetencia.setText("Ver Competencia");
@@ -182,7 +182,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
         });
         add(jButtonVerCompetencia);
-        jButtonVerCompetencia.setBounds(625, 500, 140, 31);
+        jButtonVerCompetencia.setBounds(625, 500, 140, 33);
 
         jButtonTitulo.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jButtonTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -321,7 +321,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             String modalidad=jTable1.getValueAt(row, 2).toString();
             String estado=jTable1.getValueAt(row, 3).toString(); 
             
-            int idComp=GestorCD.obtenerIdCD(nombre);
+            int idComp=GestorCD.obtenerIDCD(nombre);
             
             CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
             

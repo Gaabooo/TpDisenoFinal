@@ -289,7 +289,7 @@ public class VerCompetencia extends javax.swing.JPanel {
                     "Generar Fixture", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
                 // Generar el fixture
-                gestor.GestorGestionarFixture.generarFixture(compAux);
+                gestor.GenerarFixtureGestor.generarFixture(compAux);
                 compAux.setEstado("Planificada");
                 verNombre();
             }
@@ -362,7 +362,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         }
     }
     private boolean disputaOFinalizada(){
-        if("EnDisputa".equals(compAux.getEstado()) || "Finalizada".equals(compAux.getEstado())){
+        if("En disputa".equals(compAux.getEstado()) || "Finalizada".equals(compAux.getEstado())){
             return false;
         }
         else{

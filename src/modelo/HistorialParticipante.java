@@ -1,17 +1,16 @@
-
 package modelo;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class HistorialParticipante {
-    private int id;
+    private int ID;
     private String nombre;
     private String correo_electronico;
     // private String imagen;
-    private Date fecha;
-    private Time hora;
-
+    private String fecha;
+    private String hora;
+    
+    public void setID(int unID) {
+        this.ID = unID; }
+    
     public void setCorreo(String correo) {
         this.correo_electronico = correo; }
 
@@ -21,12 +20,15 @@ public class HistorialParticipante {
     /* public void setImagen(String imagen) {
         this.imagen = imagen; } */
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha; }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora; }
 
+    public int getID() {
+        return ID; }
+    
     public String getCorreo() {
         return correo_electronico; }
 
@@ -36,10 +38,10 @@ public class HistorialParticipante {
     /* public String getImagen() {
         return imagen; } */
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha; }
 
-    public Time getHora() {
+    public String getHora() {
         return hora; }
 
     /* public HistorialParticipante(int id, String correoElectronico, String nombre, String imagen, Date fecha, Time hora) {
@@ -49,8 +51,17 @@ public class HistorialParticipante {
         this.imagen = imagen;
         this.fecha = fecha;
         this.hora = hora; } */
-
-    public HistorialParticipante(String nombre, String correo, Date fecha, Time hora) {
+    
+    // Con ID
+    public HistorialParticipante(int unID, String nombre, String correo, String fecha, String hora) {
+        this.ID = unID;
+        this.nombre = nombre;
+        this.correo_electronico = correo;
+        this.fecha = fecha;
+        this.hora = hora; }
+    
+    // Sin ID
+    public HistorialParticipante(String nombre, String correo, String fecha, String hora) {
         this.nombre = nombre;
         this.correo_electronico = correo;
         this.fecha = fecha;

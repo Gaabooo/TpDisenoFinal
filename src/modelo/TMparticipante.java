@@ -73,7 +73,7 @@ public class TMparticipante implements TableModel {
          switch (columnIndex){
         
             case 0:{
-                valor = p.getCorreo();
+                valor = p.getCorreoElectronico();
                 break;
             }
             case 1:{
@@ -94,7 +94,7 @@ public class TMparticipante implements TableModel {
        switch (columnIndex){
         
             case 0:{
-                p.setCorreo(aValue.toString());/*si quiere modificar correo*/
+                p.setCorreoElectronico(aValue.toString());/*si quiere modificar correo*/
                 break;
             }
             case 1:{

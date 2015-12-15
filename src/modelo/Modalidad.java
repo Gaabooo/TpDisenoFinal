@@ -1,31 +1,26 @@
-
 package modelo;
 
 public class Modalidad {
-    
-    private int id;
+    private int ID;
     private String nombre;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int unID) {
+        this.ID = unID; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }
 
-    public int getId() {
-        return id;
-    }
+    public int getID() {
+        return ID; }
 
     public String getNombre() {
-        return nombre;
-    }
-
-    public Modalidad(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+        return nombre; }
     
-}
-
+    // Sin ID
+    public Modalidad(String unNombre) {
+        this.nombre = unNombre; }
+    
+    // Con ID
+    public Modalidad(int id, String nombre) {
+        this.ID = id;
+        this.nombre = nombre; } }

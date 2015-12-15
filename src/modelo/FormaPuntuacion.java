@@ -1,29 +1,21 @@
-
 package modelo;
 
 public class FormaPuntuacion {
+    private int ID;
+    private String nombre;
 
-     String nombre;
-     int id;
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-   public void setId(int id) {
-        this.id = id;
-    } 
+    public void setId(int unID) {
+        this.ID = unID; } 
     
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre; }   
+   
      public int getId() {
-        
-        return id;
-    }
+        return ID; }
+     
     public String getNombre() {
-        return nombre;
-    }
+        return nombre; }
 
-    public FormaPuntuacion(int id,String nombre) {
-         this.id=id;
-        this.nombre = nombre;
-    }
-}
+    public FormaPuntuacion(int unID, String unNombre) {
+        this.ID = unID;
+        this.nombre = unNombre; } }
