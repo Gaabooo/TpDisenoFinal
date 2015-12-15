@@ -310,6 +310,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         
         if(row == -1){
+            V.get().alerta();
             JOptionPane.showMessageDialog(null,"Debe seleccionar una competencia",
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -336,6 +337,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonIntegrantesActionPerformed
 
     private void errorFiltros(){
+        V.get().alerta();
         JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
     }
     

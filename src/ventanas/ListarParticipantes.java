@@ -175,6 +175,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"<html>La competencia debe estar en<br>"+
                                                 "estado 'Creada' o 'Planificada'",
                     "Error al agregar participante", JOptionPane.INFORMATION_MESSAGE);
+            V.get().alerta();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

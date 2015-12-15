@@ -6,6 +6,8 @@
 package ventanas;
 
 import modelo.CompetenciaAux;
+import modelo.PartidoAux;
+import modelo.RondaAux;
 
 /**
  *
@@ -13,15 +15,25 @@ import modelo.CompetenciaAux;
  */
 public class GestionarResultados extends javax.swing.JPanel {
     CompetenciaAux compAux;
+    RondaAux rondaAux;
+    PartidoAux partidoAux;
     /**
      * Creates new form GestionarResultados
+     * @param param
+     * @param param2
+     * @param param3
      */
-    public GestionarResultados(CompetenciaAux param) {
+    public GestionarResultados(CompetenciaAux param, RondaAux param2, PartidoAux param3) {
+        
         compAux=param;
+        rondaAux=param2;
+        partidoAux=param3;
         
         initComponents();
         verNombre();
-        crearYLlenarTabla();
+        if(param3!=null){
+            crearYLlenarTabla();
+        }
     }
 
     /**
@@ -101,6 +113,11 @@ public class GestionarResultados extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton3.setText("Menu P.");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         add(jButton3);
         jButton3.setBounds(48, 258, 90, 30);
 
@@ -137,12 +154,18 @@ public class GestionarResultados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        V.get().remove(this);
+        V.get().gestionarResultadosVolver();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         V.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        V.get().remove(this);
+        V.get().gestionarResultadosSalir();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void crearYLlenarTabla(){
         String formaPuntuacion = compAux.getFormaPuntuacion();

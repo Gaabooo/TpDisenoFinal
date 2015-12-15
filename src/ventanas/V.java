@@ -14,6 +14,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import modelo.CompetenciaAux;
+import modelo.PartidoAux;
+import modelo.RondaAux;
+import sonidos.alertaSuave;
 
 /**
  *
@@ -26,6 +29,14 @@ public class V extends javax.swing.JFrame {
     //private V() {}
     public static V get(){
         return SELF;
+    }
+    
+    
+    // Alerta de sonido para que se cargue una única vez
+    private alertaSuave alerta= new alertaSuave();
+    public void alerta(){
+        Thread thread = new Thread(alerta);
+        thread.start();
     }
     
     /**
@@ -118,6 +129,27 @@ public class V extends javax.swing.JFrame {
         add(aux);
         revalidate();
         repaint();
+    }
+    
+    public void gestionarResultados(CompetenciaAux compAux, RondaAux rondaAux, PartidoAux partidoAux){
+        aux.setVisible(false);
+        aux2 = new GestionarResultados(compAux, rondaAux, partidoAux);
+        add(aux2);
+        revalidate();
+        repaint();
+    }
+    public void gestionarResultadosVolver(){
+        aux.setVisible(true);
+        revalidate();
+        repaint();
+    }
+    public void gestionarResultadosVolver2(CompetenciaAux compAux, RondaAux rondaAux, PartidoAux partidoAux){
+        remove(aux);
+        gestionarResultados(compAux, rondaAux, partidoAux);
+    }
+    public void gestionarResultadosSalir(){
+        remove(aux);
+        verCompetenciaSalir();
     }
     
     public void listarParticipantes(CompetenciaAux compAux){

@@ -15,7 +15,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
-import sonidos.alertaSuave;
         
 
 /**
@@ -25,7 +24,8 @@ import sonidos.alertaSuave;
 public class AltaCompetencia extends javax.swing.JPanel {
     
     TablaDisponibilidad tablaDisp = new TablaDisponibilidad();
-    alertaSuave alerta= new alertaSuave();
+    //alertaSuave alerta= new alertaSuave();
+    
     // Analizar opcion de abajo, o alguna forma de que el primer sonido sea instantaneo
     //Thread thread = new Thread(new AlertaSuave());
     
@@ -423,8 +423,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         nomb = verificarNombreCompetencia();
         disp = verificarDisponibilidades();
         if(nomb || disp){
-            Thread thread = new Thread(alerta);
-            thread.start();
+            V.get().alerta();
         }
         else{
             // Se extraen todos los datos para pasar al gestor

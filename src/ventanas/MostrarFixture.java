@@ -5,21 +5,30 @@
  */
 package ventanas;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.CompetenciaAux;
+import modelo.PartidoAux;
+import modelo.RondaAux;
 
 /**
  *
  * @author GabrielV
  */
 public class MostrarFixture extends javax.swing.JPanel {
+    
     CompetenciaAux compAux;
-
+    ArrayList<RondaAux> rondas;
+    
     /**
      * Creates new form MostrarFixture
      * @param param
      */
     public MostrarFixture(CompetenciaAux param) {
         compAux=param;
+        
+        //rondas=mostrarFixture();
         
         initComponents();
         
@@ -45,7 +54,8 @@ public class MostrarFixture extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -55,33 +65,10 @@ public class MostrarFixture extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Ronda", "Fecha", "Participante 1", "Participante 2"
+                "Fecha", "Participante 1", "Participante 2", "Resultado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -95,9 +82,13 @@ public class MostrarFixture extends javax.swing.JPanel {
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(48, 132, 695, 340);
+        jScrollPane1.setBounds(48, 182, 695, 290);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 23)); // NOI18N
         jLabel4.setText("Competencia Seleccionada:");
@@ -164,9 +155,16 @@ public class MostrarFixture extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(544, 550, 110, 14);
 
-        jLabel6.setText("*");
-        add(jLabel6);
-        jLabel6.setBounds(750, 130, 34, 14);
+        jLabel7.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
+        jLabel7.setText("Ronda");
+        add(jLabel7);
+        jLabel7.setBounds(55, 140, 50, 30);
+
+        jSpinner1.setFont(new java.awt.Font("Agency FB", 1, 20)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
+        jSpinner1.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner1, ""));
+        add(jSpinner1);
+        jSpinner1.setBounds(110, 135, 40, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel3);
@@ -179,7 +177,11 @@ public class MostrarFixture extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        if(true){
+            
+            V.get().gestionarResultados(compAux, null, null);
+            
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -202,14 +204,55 @@ public class MostrarFixture extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     private void verNombre(){
         jLabel1.setVisible(true);
         jLabel1.setText(compAux.getNombre());
+    }
+    
+    private void llenarTabla(int ronda){
+        
+
+        // Se recuperan las competenciasAux de la base de datos
+        
+        // Eliminacion de la tabla actual
+        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        int filas=jTable1.getRowCount();
+        int i;
+        for (i=0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
+        
+        // LLenado de la tabla actual
+        
+        RondaAux rondaActual=rondas.get(ronda-1);
+        
+        ArrayList<PartidoAux> listaPartidos=rondaActual.getPartidos();
+        
+        for(i=0;i < listaPartidos.size();i++){
+            
+            PartidoAux partAux=listaPartidos.get(i);
+            
+            String fila[]=new String[4];
+            
+            fila[0]= partAux.getFecha();
+            fila[1]= partAux.getParticipante1();
+            fila[2]= partAux.getParticipante2();
+            fila[3]= partAux.getResultado();
+            
+            modelo.addRow(fila);
+        }
+        jTable1.setModel(modelo);
+        
+        if(jTable1.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"No se han encontrado resultados.",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }
