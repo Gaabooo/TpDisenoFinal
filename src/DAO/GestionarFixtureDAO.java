@@ -46,19 +46,6 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return empatePermitido; }
     
-   /* public static void deleteResultado(Resultado unResultado) {
-        Connection conn = null;
-        try {
-            conn = DBConnection.get();
-            Statement statement = conn.createStatement();
-            String deleteResultado = "DELETE FROM resultado WHERE id_resultado = " + unResultado.getID();
-            statement.executeUpdate(deleteResultado); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
-        finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } */
-     
     // DONE!
     public static void persistirPosicion(Competencia unaCompetencia, Posicion unaPosicion) {
         Connection conn = null;
