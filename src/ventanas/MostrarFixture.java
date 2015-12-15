@@ -198,10 +198,13 @@ public class MostrarFixture extends javax.swing.JPanel {
         }
         
         else{
+            rondas.get(((int)jSpinner1.getValue())-1);
+            ArrayList<PartidoAux> listaPartidos= rondas.get(((int)jSpinner1.getValue())-1).getPartidos();
+            int id = listaPartidos.get(row).getId();
             String part1=jTable1.getValueAt(row, 1).toString();
             String part2=jTable1.getValueAt(row, 2).toString();
             
-            PartidoAux partidoActual= new PartidoAux(0, part1, part2, "");
+            PartidoAux partidoActual= new PartidoAux(id, part1, part2, "");
             RondaAux rondaActual=rondas.get((int)jSpinner1.getValue()-1);
             V.get().gestionarResultados(compAux, rondaActual, partidoActual);
         }

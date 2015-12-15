@@ -97,6 +97,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        crearYLlenarTabla();
 
         add(jScrollPane1);
         jScrollPane1.setBounds(47, 148, 720, 100);
