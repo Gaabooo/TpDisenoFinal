@@ -83,7 +83,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Competidores", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7to Set", "8vo Set", "9no Set", "Asistencia"
+                "Competidores", "1er Set", "BASE", "BASE", "BASE", "BASE", "BASE", "BASE", "BASE", "BASE", "Asistencia"
             }
         ) {
             Class[] types = new Class [] {
@@ -96,8 +96,8 @@ public class GestionarResultados extends javax.swing.JPanel {
         });
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
         crearYLlenarTabla();
+        jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(47, 148, 720, 100);
@@ -175,11 +175,18 @@ public class GestionarResultados extends javax.swing.JPanel {
                 Boolean asispar1=(Boolean)jTable1.getValueAt(0, cantSets+1);
                 Boolean asispar2=(Boolean)jTable1.getValueAt(1, cantSets+1);
                 
-                checkearSets();
+                
                 ArrayList<Integer> listaSets = new ArrayList<>();
                 for (int i=1; i<=cantSets; i++) {
+                    /*if((Integer)jTable1.getValueAt(0, i) == (Integer)jTable1.getValueAt(1, i)){
+                    JOptionPane.showMessageDialog(null, "No se permite empate por sets", "", JOptionPane.INFORMATION_MESSAGE);
+                        
+                    }
+                    else{*/
                     listaSets.add((Integer)jTable1.getValueAt(0, i));
-                    listaSets.add((Integer)jTable1.getValueAt(1, i)); }
+                    listaSets.add((Integer)jTable1.getValueAt(1, i));
+                    //}
+                }
                 
                 
                 for (int i=0; i<cantSets; i+=2) {
@@ -258,40 +265,23 @@ public class GestionarResultados extends javax.swing.JPanel {
             jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
             jLabel5.setVisible(true);
             crearTablaPuntuacion();
+            repaint();
         }
         else if ("Sets".equals(formaPuntuacion)) {
             crearTablaSet();
+            repaint();
         }
         else if ("Resultado Final".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
             jLabel5.setVisible(true);
             crearTablaResFinal();
+            repaint();
         }
     }
-    
-    private void formaPPuntuacion(){
-        // metodo que modifica y llena tabla
-        repaint();
-    }
-    //Habilitacion de campos para forma de puntuacion, sets
-    private void formaPSets(){
-        // metodo que modifica y llena tabla
-        repaint();
-    }
-    //Habilitacion de campos para forma de puntuacion, Resultado final
-    private void formaPResultadoFinal(){
-        // metodo que modifica y llena tabla
-        repaint();
-    }
-    
     private void verNombre(){
     
      jLabel3.setVisible(true);
      jLabel3.setText(compAux.getNombre());
-    }
-    
-    private void checkearSets(){
-        
     }
     
     
