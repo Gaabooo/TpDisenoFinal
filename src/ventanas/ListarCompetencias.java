@@ -11,7 +11,9 @@ import javax.swing.text.AbstractDocument;
 import modelo.CompetenciaAux;
 
 public class ListarCompetencias extends javax.swing.JPanel {
-
+    
+    ArrayList<CompetenciaAux> listaprueba;
+    
     /**
      * Creates new form Auxiliar
      */
@@ -266,7 +268,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
             
             // Se recuperan las competenciasAux de la base de datos
-            ArrayList<CompetenciaAux> listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
+            listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
             
             
             // Eliminacion de la tabla actual
@@ -324,12 +326,14 @@ public class ListarCompetencias extends javax.swing.JPanel {
             
             int idComp=GestorCD.obtenerIDCD(nombre);
             
-            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
+            CompetenciaAux elem=listaprueba.get(row);
             
+            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad,
+                    nombre, elem.getFormaPuntuacion(), idComp);
             V.get().verCompetencia(compAux);
         }
-    
-    
+        
+        
     }//GEN-LAST:event_jButtonVerCompetenciaActionPerformed
 
     private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed

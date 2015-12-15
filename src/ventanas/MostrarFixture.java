@@ -188,10 +188,22 @@ public class MostrarFixture extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if(true){
+        
+        int row = jTable1.getSelectedRow();
+        
+        if(row == -1){
+            V.get().alerta();
+            JOptionPane.showMessageDialog(null,"Debe seleccionar un partido",
+                    "Error al gestionar resultado", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else{
+            String part1=jTable1.getValueAt(row, 1).toString();
+            String part2=jTable1.getValueAt(row, 2).toString();
             
-            V.get().gestionarResultados(compAux, null, null);
-            
+            PartidoAux partidoActual= new PartidoAux(0, part1, part2, "");
+            RondaAux rondaActual=rondas.get((int)jSpinner1.getValue()-1);
+            V.get().gestionarResultados(compAux, rondaActual, partidoActual);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 

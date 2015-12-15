@@ -94,7 +94,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        crearTablaSet();
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
@@ -253,20 +252,18 @@ public class GestionarResultados extends javax.swing.JPanel {
     private void crearYLlenarTabla(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
 
-        switch (formaPuntuacion) {
-        case "Puntuacion":
+        if("Puntuacion".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
             jLabel5.setVisible(true);
             crearTablaPuntuacion();
-            break;
-        case "Sets":
+        }
+        else if ("Sets".equals(formaPuntuacion)) {
             crearTablaSet();
-            break;
-        default:
+        }
+        else if ("Resultado Final".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
             jLabel5.setVisible(true);
             crearTablaResFinal();
-            break;
         }
     }
     
