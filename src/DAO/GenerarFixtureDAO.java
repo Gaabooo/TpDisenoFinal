@@ -44,12 +44,13 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    public static void deleteFixture(Competencia unaCompetencia) {
+    // DONE!
+    public static void deleteFixture(int unaIDCD) {
         Connection conn = null; 
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getIDFixture = "SELECT id_fixture FROM fixture WHERE id_competencia = " + unaCompetencia.getID();
+            String getIDFixture = "SELECT id_fixture FROM fixture WHERE id_competencia = " + unaIDCD;
             ResultSet rs = statement.executeQuery(getIDFixture);
             // NOTA: El ResultSet solo contiene un resultado
             while (rs.next()) {
@@ -93,8 +94,13 @@ public class GenerarFixtureDAO {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             // Persistencia ronda
-            String persistirRonda = "INSERT INTO ronda VALUES (default, " + IDFixture + ", " + unaRonda.getFecha() + ", " + unaRonda.getNumero() + ") RETURNING id_ronda";
-            int IDRonda = statement.executeUpdate(persistirRonda);
+            int IDRonda = 0;
+            String persistirRonda = "INSERT INTO ronda VALUES (default, " + IDFixture + ", " + unaRonda.getFecha() + ", " + unaRonda.getNumero() + ")";
+            statement.executeUpdate(persistirRonda, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = statement.getGeneratedKeys();
+            while(rs.next()) {
+                IDRonda = rs.getInt(1); // Notese el 1 ;)
+                System.out.println("Hi, I'm the DAO! IDRonda: " + IDRonda); }
             // Persistencia partidos
             for (Partido unPartido:(unaRonda.getListaPartidos())) {
                 persistirPartido(unPartido, IDRonda); } }
@@ -110,12 +116,16 @@ public class GenerarFixtureDAO {
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            int IDCD = unaCompetencia.getID();
-            String persistirFixture = "INSERT INTO fixture VALUES (default, " + IDCD + ") RETURNING id_fixture";
-            int IDFixture = statement.executeUpdate(persistirFixture); // FOOKIN JOOCEY
+            int IDCD = unaCompetencia.getID(); int IDFixture = 0;
+            String persistirFixture = "INSERT INTO fixture VALUES (default, " + IDCD + ")";
+            statement.executeUpdate(persistirFixture, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = statement.getGeneratedKeys();
+            while(rs.next()) {
+                IDFixture = rs.getInt(1); // Notese el 1 ;)
+                System.out.println("Hi, I'm the DAO! IDFixture: " + IDFixture); }
             // Persistencia rondas
             for (Ronda unaRonda:(unFixture.getListaRondas())) {
-                persistirRonda(unaRonda, IDFixture); } }
+                persistirRonda(unaRonda, IDFixture); } }   
         catch (SQLException ex) {
             System.out.println(ex.getMessage()); }
         finally {

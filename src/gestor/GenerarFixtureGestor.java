@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GenerarFixtureGestor {
+    // Llamado desde Ventanas:ListarParticipantes.java
+    public static void deleteFixture(CompetenciaAux unaCompetenciaAux) {
+        GenerarFixtureDAO.deleteFixture(unaCompetenciaAux.getId()); }
+    
     public static int randomInt(int min, int max) {
         int rand = ThreadLocalRandom.current().nextInt(min, max+1);
         return rand; }
@@ -63,6 +67,6 @@ public class GenerarFixtureGestor {
                 unaCompetencia.setEstado(nuevoEstado);
                 GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado); }
             else {
-                GenerarFixtureDAO.deleteFixture(unaCompetencia); }
+                GenerarFixtureDAO.deleteFixture(unaCompetencia.getID()); }
             unaCompetencia.setFixture(unFixture);
             GenerarFixtureDAO.persistirFixture(unaCompetencia, unFixture); } } }

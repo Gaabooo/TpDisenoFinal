@@ -164,6 +164,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "Si agrega un participante se eliminara el fixture",
                     "Agregar participante", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
+                gestor.GenerarFixtureGestor.deleteFixture(compAux);
                 V.get().altaParticipante(compAux);
             }
         }
