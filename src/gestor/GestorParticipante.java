@@ -37,13 +37,20 @@ public class GestorParticipante {
         ArrayList<HistorialParticipante> unHistorial = new ArrayList<>();
         Participante participante= new Participante(nombre, correo, unHistorial);
         
-        // Persistir participante
+        //Buscar competencia de la BD
+        
+        // Agregar el participante a la competencia
+        
+        // Persistir participante/competencia
+        //persistirCompetencia
         ParticipanteDao.persistirParticipante(idCD, participante);
     }
     
     public static ArrayList<ParticipanteAux> listarParticipantes (int idCD) {
         
-        // Se obtienen los participantes de la BD
+        // Se obtiene la competencia CON los participantes
+        
+        // Se obtienen los participantes desde la competencia
         ArrayList<Participante> participantes;
         participantes = ParticipanteDao.getParticipantes(idCD);
         

@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import gestor.GestorCD;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -218,7 +219,9 @@ public class MostrarFixture extends javax.swing.JPanel {
     private void llenarTabla(int ronda){
         
 
-        // Se recuperan las competenciasAux de la base de datos
+        // Se recuperan las rondasAux y partidosAux de la base de datos
+        rondas=GestorCD.mostrarFixture(compAux);
+        
         
         // Eliminacion de la tabla actual
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();

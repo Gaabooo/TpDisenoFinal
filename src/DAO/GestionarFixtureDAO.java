@@ -291,4 +291,58 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaPartidos; } }
+        return listaPartidos;
+    }
+    
+     // DONE!
+    public static ArrayList<Ronda> getRondas(int idFixture) {
+        ArrayList<Ronda> listaRondas = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getPartidos = "SELECT * FROM ronda WHERE id_fixture = " + idFixture;
+            ResultSet rs = statement.executeQuery(getPartidos);
+            while (rs.next()) {
+                
+                int idRonda = rs.getInt("id_ronda");
+                int numero = rs.getInt("numero_ronda");
+                
+                //Buscar los partidos
+                ArrayList<Partido> listaPartidos=getPartidos(idRonda);
+                
+                //Crear la ronda
+                Ronda rondaAux= new Ronda(idRonda, numero, false, "", listaPartidos);
+                
+                listaRondas.add(rondaAux);
+            }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return listaRondas;
+    }
+    
+    public static Fixture getFixture(int idCD) {
+        Fixture unFixture = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int idFixture = 0;
+            String getParticipante = "SELECT * FROM fixture WHERE id_competencia = " + idCD;
+            ResultSet rs = statement.executeQuery(getParticipante);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                idFixture = rs.getInt("id_fixture");}
+            rs.close();
+            ArrayList<Ronda> rondas=getRondas(idFixture);
+            unFixture = new Fixture(idFixture, rondas); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unFixture;
+    }
+}

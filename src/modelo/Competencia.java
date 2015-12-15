@@ -170,4 +170,9 @@ public class Competencia {
         this.deporte = deporte;
         this.modalidad = modalidad;
         this.estado = estado;
-        this.formaPuntuacion = formaPuntuacion; } }
+        this.formaPuntuacion = formaPuntuacion; }
+    
+    public Competencia(int unID, String nombre, Deporte deporte, Modalidad modalidad,
+            Estado estado, FormaPuntuacion formaPuntuacion, Fixture fixt) {
+        this(unID, nombre, deporte, modalidad, estado, formaPuntuacion);
+        fixture=fixt; } }

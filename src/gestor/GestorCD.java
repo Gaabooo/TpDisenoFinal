@@ -1,6 +1,7 @@
 package gestor;
 
 import DAO.*;
+import static DAO.CompetenciaDaoJDBC.getCompetenciaMostrarFixt;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -127,4 +128,25 @@ public class GestorCD {
                     unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
         
         // Persistencia
-        CompetenciaDaoJDBC.persistirCD(nuevaCD); } }
+        CompetenciaDaoJDBC.persistirCD(nuevaCD); }
+    
+    
+    
+    public static ArrayList<RondaAux> mostrarFixture(CompetenciaAux compAux){
+        
+        ArrayList<RondaAux> rondasAux= new ArrayList<>();
+        
+        Competencia comp = getCompetenciaMostrarFixt(compAux);
+        
+        Fixture fixt=comp.getFixture();
+        
+        ArrayList<Ronda> rondas= fixt.getListaRondas();
+        
+        for(int i=0; i<rondas.size(); i++){
+            
+        }
+        
+        return rondasAux;
+    }
+    
+}

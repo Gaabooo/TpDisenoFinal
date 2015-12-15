@@ -1,5 +1,7 @@
 package DAO;
 
+import static DAO.GenerarFixtureDAO.getDeporte;
+import static DAO.GestionarFixtureDAO.getFixture;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -142,6 +144,43 @@ public class CompetenciaDaoJDBC {
         return IdCompetencia;
     }
     
+    // USADO PARA MOSTRAR FIXTURE
+    public static Competencia getCompetenciaMostrarFixt(CompetenciaAux unaCDAUX) {
+        Competencia unaCompetencia = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            // Variables auxiliares
+            String unNombre = ""; String unReglamento = ""; int IDCompetencia = 0;
+            int IDEstado = 0; int IDFormaPuntuacion = 0; int IDModalidad = 0; int IDDeporte = 0;
+            Deporte unDeporte; Modalidad unaModalidad; Estado unEstado; FormaPuntuacion unaFormaPuntuacion;
+            
+            // Busqueda de la competencia
+            String getCD = "SELECT * FROM competencia WHERE id_competencia = '" + unaCDAUX.getId() + "'";
+            ResultSet rs = statement.executeQuery(getCD);
+            while(rs.next()) {
+                IDCompetencia = rs.getInt("id_competencia");
+                IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
+                IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
+                unNombre = rs.getString("nombre"); }
+            unDeporte = getDeportePorId(IDDeporte);
+            unaModalidad = getModalidadPorId(IDModalidad);
+            unEstado = getEstadoPorId(IDEstado);
+            unaFormaPuntuacion = getFormaPuntuacionPorId(IDFormaPuntuacion);
+            
+            Fixture fixture=getFixture(unaCDAUX.getId());
+            
+            // Creacion del retorno
+            unaCompetencia = new Competencia(IDCompetencia, unNombre, unDeporte, unaModalidad,
+                    unEstado, unaFormaPuntuacion, fixture);
+            rs.close(); }
+        catch (SQLException e) {
+            System.out.println(e.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unaCompetencia; }
     
     public static Estado getEstadoPorNombre(String unNombre) {
         Estado unEstado = null;
@@ -298,28 +337,23 @@ public class CompetenciaDaoJDBC {
     public static Deporte getDeportePorId(int idDeporte){
         
          
-        String _SQL_FK_DEPORTE ="SELECT nombre FROM deporte  WHERE id_deporte = '" + idDeporte + "' ";
+        String _SQL_FK_DEPORTE ="SELECT nombre FROM deporte WHERE id_deporte = '" + idDeporte + "' ";
         
         Connection conn = null; 
         Deporte unDeporte = null;
         
         try{
-        
-        conn = DBConnection.get();
-        
-        ResultSet  rs;
-        
-        Statement stmt = conn.createStatement();
-         
-        rs=stmt.executeQuery(_SQL_FK_DEPORTE);
-        
-        rs.next();
-        
-        int id_deporte= idDeporte;
-        String nomb=rs.getString("nombre");
-        
-        unDeporte = new Deporte(id_deporte, nomb);
-        
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(_SQL_FK_DEPORTE);
+            rs.next();
+            
+            int id_deporte= idDeporte;
+            String nomb=rs.getString("nombre");
+            
+            unDeporte = new Deporte(id_deporte, nomb);
+            
         }catch (SQLException ex) {
             
             Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
