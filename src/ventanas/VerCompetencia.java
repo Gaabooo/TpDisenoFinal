@@ -87,7 +87,10 @@ public class VerCompetencia extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        llenarProximosEncuentros();
+        if("Planificada".equals(compAux.getEstado()) ||
+            "En disputa".equals(compAux.getEstado())){
+            llenarProximosEncuentros();
+        }
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setFocusable(false);
 
