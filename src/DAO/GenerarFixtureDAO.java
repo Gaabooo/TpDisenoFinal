@@ -7,7 +7,28 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.*;
 
-public class GenerarFixtureDAO {        
+public class GenerarFixtureDAO {   
+    public static ArrayList<Integer> getIDParticipantesJugandoRonda(int unIDRonda) {
+        ArrayList<Integer> listaIDParticipantes = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getRonda = "SELECT id_participante1, id_participante2 FROM partido WHERE id_ronda = " + unIDRonda;
+            ResultSet rs = statement.executeQuery(getRonda);
+            // NOTA: El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                int IDP0 = rs.getInt("id_participante0");
+                int IDP1 = rs.getInt("id_participante1");
+                listaIDParticipantes.add(IDP0);
+                listaIDParticipantes.add(IDP1); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return listaIDParticipantes; }
+    
     // DONE!
     public static void deletePartidos(int unIDRonda) {
         Connection conn = null;

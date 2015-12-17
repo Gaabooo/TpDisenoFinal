@@ -39,10 +39,15 @@ public class GenerarFixtureGestor {
         if ("Creada".equals(unEstado.getNombre()) || "Planificada".equals(unEstado.getNombre())) {
             for (int i=0; i<listaParticipantes.size()-1; i++) {
                 ArrayList<Partido> listaPartidos = new ArrayList();
+                ArrayList<Integer> listaIDParticipantesJugandoRonda = GenerarFixtureDAO.getIDParticipantesJugandoRonda(i);
                 for (int j=0; j<listaParticipantes.size()/2; j++) {
                     // Participantes
-                    int PIndex = randomInt(0, LLPA.size()-1);
-                    ArrayList<Participante> LPA = LLPA.get(PIndex);
+                    ArrayList<Participante> LPA;
+                    int PIndex;
+                    do {
+                        PIndex = randomInt(0, LLPA.size()-1);
+                        LPA = LLPA.get(PIndex); } while (listaIDParticipantesJugandoRonda.contains(LPA.get(0).getID()) ||
+                                                      listaIDParticipantesJugandoRonda.contains(LPA.get(1).getID()));
                     int LPAIndex = randomInt(0, LPA.size()-1);
                     Participante P0 = LPA.get(LPAIndex);
                     Participante P1;

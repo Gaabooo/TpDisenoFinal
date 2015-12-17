@@ -392,5 +392,6 @@ public class VerCompetencia extends javax.swing.JPanel {
             return true;
         }
     }
+ 
 }
 
