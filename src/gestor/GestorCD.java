@@ -199,7 +199,9 @@ public class GestorCD {
     public static ArrayList<PartidoAuxProxEncuentro> proximosEncuentros (CompetenciaAux compAux){
         ArrayList<PartidoAuxProxEncuentro> proximosEncuentros= new ArrayList<>();
         
-        //Buscar los proximos encuentros
+        //Buscar la competencia
+        
+        //Metodo para devolver los proximos encuentros
         ArrayList<Partido> partidos= getProximosEncuentros(compAux);
         
         // Recorrer los partidos y asignarlos al DTO

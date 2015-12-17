@@ -11,6 +11,7 @@ public class GenerarFixtureGestor {
         GenerarFixtureDAO.deleteFixture(unaCompetenciaAux.getId()); }
     
     public static int randomInt(int min, int max) {
+        // Error ??????? java.lang.IllegalArgumentException: bound must be greater than origin
         int rand = ThreadLocalRandom.current().nextInt(min, max+1);
         return rand; }
     

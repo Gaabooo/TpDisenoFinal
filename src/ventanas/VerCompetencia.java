@@ -91,6 +91,9 @@ public class VerCompetencia extends javax.swing.JPanel {
             "En disputa".equals(compAux.getEstado())){
             llenarProximosEncuentros();
         }
+        else {
+            jTable1.setEnabled(false);
+        }
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setFocusable(false);
 
@@ -410,6 +413,8 @@ public class VerCompetencia extends javax.swing.JPanel {
     
     
     private void llenarProximosEncuentros(){
+        
+        jTable1.setEnabled(true);
         
         // Eliminacion de la tabla actual
         DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
