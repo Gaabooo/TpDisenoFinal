@@ -59,12 +59,12 @@
                           <Component id="labelDeporte" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelEstado" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="comboBoxDeporte" alignment="0" max="32767" attributes="0"/>
-                          <Component id="comboBoxEstado" alignment="0" max="32767" attributes="0"/>
-                          <Component id="comboBoxModalidad" min="-2" pref="118" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="labelCompetencia2" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="comboBoxDeporte" alignment="0" pref="136" max="32767" attributes="0"/>
+                          <Component id="comboBoxModalidad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="comboBoxEstado" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -132,11 +132,11 @@
               <Font name="Agency FB" size="18" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(listaND)" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;String&gt;(listaND)" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.GestorCD.getListaDeportes();&#xa;String[] listaND= new String[listaNombresDeportes.length+1];&#xa;listaND[0]=&quot;&quot;;&#xa;for(int j=0; j&lt;listaNombresDeportes.length; j++){&#xa;    listaND[j+1]=listaNombresDeportes[j];&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] listaNombresDeportes = gestor.GestorCD.getListaDeportes();&#xa;String[] listaND= new String[listaNombresDeportes.length+1];&#xa;listaND[0]=&quot;&quot;;&#xa;for(int j=0; j&lt;listaNombresDeportes.length; j++){&#xa;    listaND[j+1]=listaNombresDeportes[j];&#xa;}&#xa;Arrays.sort(listaND);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxEstado">
@@ -151,16 +151,11 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxModalidad">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="String[] listaModalidades = gestor.GestorCD.getListaModalidades();&#xa;String[] listaM= new String[listaModalidades.length+1];&#xa;listaM[0]=&quot;&quot;;&#xa;for(int j=0; j&lt;listaModalidades.length; j++){&#xa;    listaM[j+1]=listaModalidades[j];&#xa;}&#xa;Arrays.sort(listaM);">
               <Font name="Agency FB" size="18" style="1"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value=" "/>
-                <StringItem index="1" value="Liga"/>
-                <StringItem index="2" value="Eliminatoria Simple"/>
-                <StringItem index="3" value="Eliminatoria Doble"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(listaM)" type="code"/>
             </Property>
           </Properties>
         </Component>

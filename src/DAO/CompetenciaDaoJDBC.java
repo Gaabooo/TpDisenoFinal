@@ -1,5 +1,8 @@
 package DAO;
 
+import static DAO.GenerarFixtureDAO.getDeporte;
+import static DAO.GestionarFixtureDAO.getFixture;
+import static DAO.GestionarFixtureDAO.getPartidos;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,21 +14,153 @@ import java.util.logging.Logger;
 import modelo.*;
 
 public class CompetenciaDaoJDBC {
-    private static final String _SQL_INSERT_COMPETENCIA = "INSERT INTO "+ "competencia" +" "
-            + "(id_competencia,id_estado,id_forma_Puntuacion,id_modalidad,id_deporte,id_disponibiliad,"
-            + "id_usuario, id_tablaPosicionesParticipante,id_fixture,nombre,reglamento,"
-            + "cantidad_maxima_de_sets,tanto_por_ausencia_rival,puntos_por_presentacion,puntos_por_victoria,"
-            + "empate_permitido,puntos_por_empate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-  
-    private static final String _SQL_FIND_ALL_ESTADO="SELECT * FROM"+ "estado";
-    private static final String _SQL_FIND_ALL_FORMA_PUNTUACION="SELECT * FROM"+ "forma_puntuacion";
-    private static final String _SQL_FIND_ALL_MODALIDAD="SELECT * FROM"+ "modalidad";
-    private static final String _SQL_INSERT_DISPONIBILIADAD="SELECT * FROM"+ "disponibilidad";
-    private static final String _SQL_FIND_ALL_USUARIO="SELECT * FROM"+ "usuario";
-    private static final String _SQL_FIND_ALL_TABLA_POSICIONES_PARTICIPANTE="SELECT * FROM"+ "tabla_posiciones";
-    private static final String _SQL_FIND_ALL_DEPORTE = "SELECT * FROM " + "deporte";
-    private static final String _SQL_FIND_ALL_FIXTURE="SELECT * FROM"+ "fixture";
     
+    public static ArrayList<Partido> getProximosEncuentros(CompetenciaAux compAux){
+        ArrayList<Partido> partidos = new ArrayList<>();
+        
+        // Todos los partidos que pertenezcan a la ronda actual
+        //////////////////////////////////////////////////////
+        
+        //1  Cantidad de partidos con resultado cargado
+        int cantidadPartidosCargados = cantidadPartidosCargados(compAux.getId());
+        int cantidadPartidosPorRonda = cantidadPartidosPorRonda(compAux.getId());
+        
+        //2   Comparar cantidad de partidos cargados, con la posibilidad de la ronda actual
+        int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda);
+        /*int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;*/
+        if(numeroRondaActual>cantRondas(compAux.getId()))
+            numeroRondaActual--;
+        //3 Buscar en la bd todos los partidos de la ronda con numero ACTUAL 'numeroRondaActual'
+        int idRonda=getIdRondaPorNumero(numeroRondaActual, compAux.getId());
+        
+        partidos=getPartidos(idRonda);
+        
+        return partidos;
+    }
+    
+    public static int cantidadPartidosCargados(int id){
+        int cantidad=1;
+        Connection conn = null;
+        String SQL_CANT_CARGADOS ="SELECT count(p.id_partido) AS total " +
+                             "FROM partido AS p " +
+                             "JOIN ronda AS r ON r.id_ronda=p.id_ronda " +
+                             "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
+                             "JOIN competencia AS c ON c.id_competencia=f.id_competencia " +
+                             "JOIN resultado AS res ON res.id_partido=p.id_partido " +
+                             "WHERE c.id_competencia="+id;
+        
+        try{
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_CANT_CARGADOS);
+            rs.next();
+            cantidad=rs.getInt("total");
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return cantidad;
+    }
+    public static int cantidadPartidosPorRonda(int id){
+        int cantidad=1;
+        Connection conn = null;
+        String SQL_CANT_PART_POR_RONDA ="SELECT count (p.id_ronda) AS total " +
+                                        "FROM partido AS p " +
+                                        "JOIN ronda AS r ON r.id_ronda=p.id_ronda " +
+                                        "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
+                                        "JOIN competencia AS c ON c.id_competencia=f.id_competencia " +
+                                        "WHERE r.numero_ronda=0 AND c.id_competencia="+id; 
+        
+        try{
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_CANT_PART_POR_RONDA);
+            rs.next();
+            cantidad=rs.getInt("total");
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return cantidad;
+    }
+    public static int getIdRondaPorNumero(int numero, int idComp){
+        
+        Connection conn = null;
+        String SQL_ID_RONDA ="SELECT r.id_ronda AS result " +
+                             "FROM ronda AS r " +
+                             "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
+                             "JOIN competencia AS c ON c.id_competencia=f.id_competencia " +
+                             "WHERE r.numero_ronda="+ (numero-1) +"AND c.id_competencia="+ idComp;
+        
+        int idRonda=0;
+        
+        try{
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_ID_RONDA);
+            rs.next();
+            idRonda=rs.getInt("result");
+           
+            
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return idRonda;
+    }
+    public static int cantRondas(int id){
+        int cantidad=1;
+        Connection conn = null;
+        String SQL_CANT_PART_POR_RONDA ="SELECT count (r.id_ronda) AS total " +
+                                        "FROM ronda AS r " +
+                                        "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
+                                        "JOIN competencia AS c ON c.id_competencia=f.id_competencia " +
+                                        "WHERE c.id_competencia="+id; 
+        
+        try{
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_CANT_PART_POR_RONDA);
+            rs.next();
+            cantidad=rs.getInt("total");
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(conn!=null)try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return cantidad;
+    }
     
     public static ArrayList<PosicionAux> getPosicionesAux(int unIDCD) {
         ArrayList<PosicionAux> listaPosiciones = new ArrayList<>();
@@ -142,6 +277,43 @@ public class CompetenciaDaoJDBC {
         return IdCompetencia;
     }
     
+    // USADO PARA MOSTRAR FIXTURE
+    public static Competencia getCompetenciaMostrarFixt(CompetenciaAux unaCDAUX) {
+        Competencia unaCompetencia = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            // Variables auxiliares
+            String unNombre = ""; String unReglamento = ""; int IDCompetencia = 0;
+            int IDEstado = 0; int IDFormaPuntuacion = 0; int IDModalidad = 0; int IDDeporte = 0;
+            Deporte unDeporte; Modalidad unaModalidad; Estado unEstado; FormaPuntuacion unaFormaPuntuacion;
+            
+            // Busqueda de la competencia
+            String getCD = "SELECT * FROM competencia WHERE id_competencia = '" + unaCDAUX.getId() + "'";
+            ResultSet rs = statement.executeQuery(getCD);
+            while(rs.next()) {
+                IDCompetencia = rs.getInt("id_competencia");
+                IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
+                IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
+                unNombre = rs.getString("nombre"); }
+            unDeporte = getDeportePorId(IDDeporte);
+            unaModalidad = getModalidadPorId(IDModalidad);
+            unEstado = getEstadoPorId(IDEstado);
+            unaFormaPuntuacion = getFormaPuntuacionPorId(IDFormaPuntuacion);
+            
+            Fixture fixture=getFixture(unaCDAUX.getId());
+            
+            // Creacion del retorno
+            unaCompetencia = new Competencia(IDCompetencia, unNombre, unDeporte, unaModalidad,
+                    unEstado, unaFormaPuntuacion, fixture);
+            rs.close(); }
+        catch (SQLException e) {
+            System.out.println(e.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unaCompetencia; }
     
     public static Estado getEstadoPorNombre(String unNombre) {
         Estado unEstado = null;
@@ -226,22 +398,22 @@ public class CompetenciaDaoJDBC {
     
     public static String getNombrePorId(int id_comp){
         
-            Connection conn = null;
-            String SQL_NOMBRE_CD ="SELECT nombre FROM competencia WHERE id_competencia = '" + id_comp + "' ";
-            String nomb=null;
+        Connection conn = null;
+        String SQL_NOMBRE_CD ="SELECT nombre FROM competencia WHERE id_competencia = '" + id_comp + "' ";
+        String nomb=null;
+        
+        try{
             
-            try{
-        
-                conn = DBConnection.get();
-                ResultSet  rs;
-                Statement stmt = conn.createStatement(); 
-                rs=stmt.executeQuery(SQL_NOMBRE_CD);
-        
-                rs.next();
- 
-                nomb=rs.getString("nombre");
- 
-
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(SQL_NOMBRE_CD);
+            
+            rs.next();
+            
+            nomb=rs.getString("nombre");
+            
+            
         }catch (SQLException ex) {
             
             Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,10 +423,10 @@ public class CompetenciaDaoJDBC {
             } catch (SQLException ex) {
                 Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
-     
-        return nomb;
         }
+        
+        return nomb;
+    }
     
     public static Estado getEstadoPorId(int idEstado){
         
@@ -298,28 +470,23 @@ public class CompetenciaDaoJDBC {
     public static Deporte getDeportePorId(int idDeporte){
         
          
-        String _SQL_FK_DEPORTE ="SELECT nombre FROM deporte  WHERE id_deporte = '" + idDeporte + "' ";
+        String _SQL_FK_DEPORTE ="SELECT nombre FROM deporte WHERE id_deporte = '" + idDeporte + "' ";
         
         Connection conn = null; 
         Deporte unDeporte = null;
         
         try{
-        
-        conn = DBConnection.get();
-        
-        ResultSet  rs;
-        
-        Statement stmt = conn.createStatement();
-         
-        rs=stmt.executeQuery(_SQL_FK_DEPORTE);
-        
-        rs.next();
-        
-        int id_deporte= idDeporte;
-        String nomb=rs.getString("nombre");
-        
-        unDeporte = new Deporte(id_deporte, nomb);
-        
+            conn = DBConnection.get();
+            ResultSet  rs;
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(_SQL_FK_DEPORTE);
+            rs.next();
+            
+            int id_deporte= idDeporte;
+            String nomb=rs.getString("nombre");
+            
+            unDeporte = new Deporte(id_deporte, nomb);
+            
         }catch (SQLException ex) {
             
             Logger.getLogger(CompetenciaDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);

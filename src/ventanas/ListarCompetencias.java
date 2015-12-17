@@ -5,13 +5,16 @@ import gestor.GestorCD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
 import modelo.CompetenciaAux;
 
 public class ListarCompetencias extends javax.swing.JPanel {
-
+    
+    ArrayList<CompetenciaAux> listaprueba;
+    
     /**
      * Creates new form Auxiliar
      */
@@ -66,14 +69,22 @@ public class ListarCompetencias extends javax.swing.JPanel {
         for(int j=0; j<listaNombresDeportes.length; j++){
             listaND[j+1]=listaNombresDeportes[j];
         }
+        Arrays.sort(listaND);
         comboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        comboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaND));
+        comboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel<String>(listaND));
 
         comboBoxEstado.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Creada", "Planificada", "En disputa", "Finalizada" }));
 
         comboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        comboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Liga", "Eliminatoria Simple", "Eliminatoria Doble" }));
+        String[] listaModalidades = gestor.GestorCD.getListaModalidades();
+        String[] listaM= new String[listaModalidades.length+1];
+        listaM[0]="";
+        for(int j=0; j<listaModalidades.length; j++){
+            listaM[j+1]=listaModalidades[j];
+        }
+        Arrays.sort(listaM);
+        comboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(listaM));
 
         labelModalidad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         labelModalidad.setText("Modalidad");
@@ -106,11 +117,11 @@ public class ListarCompetencias extends javax.swing.JPanel {
                         .addComponent(labelModalidad, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(labelDeporte, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(labelEstado, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(labelCompetencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(comboBoxDeporte, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboBoxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboBoxModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(labelCompetencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboBoxDeporte, javax.swing.GroupLayout.Alignment.LEADING, 0, 136, Short.MAX_VALUE)
+                        .addComponent(comboBoxModalidad, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -266,7 +277,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
             }
             
             // Se recuperan las competenciasAux de la base de datos
-            ArrayList<CompetenciaAux> listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
+            listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
             
             
             // Eliminacion de la tabla actual
@@ -324,12 +335,14 @@ public class ListarCompetencias extends javax.swing.JPanel {
             
             int idComp=GestorCD.obtenerIDCD(nombre);
             
-            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad, nombre, idComp);
+            CompetenciaAux elem=listaprueba.get(row);
             
+            CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad,
+                    nombre, elem.getFormaPuntuacion(), idComp);
             V.get().verCompetencia(compAux);
         }
-    
-    
+        
+        
     }//GEN-LAST:event_jButtonVerCompetenciaActionPerformed
 
     private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed

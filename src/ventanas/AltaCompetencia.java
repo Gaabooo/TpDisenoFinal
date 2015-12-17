@@ -13,6 +13,7 @@ import gestor.*;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
         
@@ -34,6 +35,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
      */
     public AltaCompetencia() {
         initComponents();
+        verModalidad();
+        verFormaP();
     }
     
     //private Vector< Vector<Object> > tabla;
@@ -130,6 +133,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelFormaPuntuacion.setVisible(true);
 
         String[] listaNombresDeportes = gestor.GestorCD.getListaDeportes();
+        Arrays.sort(listaNombresDeportes);
         jComboBoxDeporte.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxDeporte.setModel(new javax.swing.DefaultComboBoxModel(listaNombresDeportes));
         jComboBoxDeporte.addItemListener(new java.awt.event.ItemListener() {
@@ -171,9 +175,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
         add(jLabelLugar);
         jLabelLugar.setBounds(50, 160, 50, 30);
 
-        String[] cadena3l = gestor.GestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        String[] cadena3 = gestor.GestorCD.getListaLugares(jComboBoxDeporte.getSelectedItem().toString());
+        Arrays.sort(cadena3);
         jComboBoxLugares.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(cadena3l));
+        jComboBoxLugares.setModel(new javax.swing.DefaultComboBoxModel(cadena3));
         jComboBoxLugares.setMinimumSize(new java.awt.Dimension(64, 20));
         add(jComboBoxLugares);
         jComboBoxLugares.setBounds(50, 190, 140, 30);
@@ -208,8 +213,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelPuntuacion.setBounds(465, 130, 120, 28);
         jLabelFormaPuntuacion.setVisible(true);
 
-        // String[] cadena2= new String[] { "Puntuacion", "Sets", "Resultado Final" };
         String[] cadena2 = gestor.GestorCD.getListaPuntuaciones();
+        Arrays.sort(cadena2);
         jComboBoxPuntuacion.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxPuntuacion.setModel(new javax.swing.DefaultComboBoxModel(cadena2));
         jComboBoxPuntuacion.addItemListener(new java.awt.event.ItemListener() {
@@ -228,6 +233,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
 
         // String[] cadena= new String[] { "Liga", "Eliminacion Simple", "Eliminacion Doble" };
         String[] cadena = gestor.GestorCD.getListaModalidades();
+        Arrays.sort(cadena);
         jComboBoxModalidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jComboBoxModalidad.setModel(new javax.swing.DefaultComboBoxModel(cadena));
         jComboBoxModalidad.addItemListener(new java.awt.event.ItemListener() {
@@ -298,7 +304,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelEmpate.setText("Permite empate?");
         add(jLabelEmpate);
         jLabelEmpate.setBounds(465, 300, 130, 22);
-        jLabelEmpate.setVisible(true);
+        jLabelEmpate.setVisible(false);
 
         jCheckBoxEmpate.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -307,7 +313,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         });
         add(jCheckBoxEmpate);
         jCheckBoxEmpate.setBounds(680, 300, 20, 20);
-        jCheckBoxEmpate.setVisible(true);
+        jCheckBoxEmpate.setVisible(false);
 
         jLabelPtosEmpate.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabelPtosEmpate.setText("Puntos por empate:");
@@ -440,7 +446,9 @@ public class AltaCompetencia extends javax.swing.JPanel {
             boolean j5c = jCheckBoxEmpate.isSelected();
             int j5a = (int) jSpinnerPtosEmpate.getValue();
             
-            gestor.GestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2, j2b, j3 , j4, j5c, j5a);
+            System.out.print(j2);
+            
+            gestor.GestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2b, j2, j3 , j4, j5c, j5a);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             
             V.get().remove(this);
@@ -454,18 +462,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void jComboBoxPuntuacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPuntuacionItemStateChanged
-        if(null != (String)jComboBoxPuntuacion.getSelectedItem())
-            switch ((String)jComboBoxPuntuacion.getSelectedItem()) {
-            case "Puntuacion":
-                formaPPuntuacion();
-                break;
-            case "Sets":
-                formaPSets();
-                break;
-            default:
-                formaPResultadoFinal();
-                break;
-        }
+        verFormaP();
     }//GEN-LAST:event_jComboBoxPuntuacionItemStateChanged
 
     private void jCheckBoxEmpateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxEmpateStateChanged
@@ -524,8 +521,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldNombreCompetenciaFocusGained
 
     private void jComboBoxModalidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModalidadItemStateChanged
-        if("Liga".equals((String)jComboBoxModalidad.getSelectedItem())){modalidadLiga();}
-        else modalidadEliminatoria();
+        verModalidad();
     }//GEN-LAST:event_jComboBoxModalidadItemStateChanged
 
     private void jComboBoxDeporteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDeporteItemStateChanged
@@ -587,15 +583,48 @@ public class AltaCompetencia extends javax.swing.JPanel {
     
     //(Des)habilitacion de botones dependiendo de los comboBox
     
+    private void verFormaP(){
+        if(null != (String)jComboBoxPuntuacion.getSelectedItem())
+            switch ((String)jComboBoxPuntuacion.getSelectedItem()) {
+            case "Puntuacion":
+                formaPPuntuacion();
+                if(!"Liga".equals((String)jComboBoxModalidad.getSelectedItem())){
+                    jLabelEmpate.setVisible(false);
+                    jCheckBoxEmpate.setVisible(false);
+                }
+                break;
+            case "Sets":
+                formaPSets();
+                if(!"Liga".equals((String)jComboBoxModalidad.getSelectedItem())){
+                    jLabelEmpate.setVisible(false);
+                    jCheckBoxEmpate.setVisible(false);
+                }
+                break;
+            default:
+                formaPResultadoFinal();
+                break;
+        }
+    }
+    private void verModalidad(){
+        if("Liga".equals((String)jComboBoxModalidad.getSelectedItem())){modalidadLiga();}
+        else modalidadEliminatoria();
+    }
+    
     //Habilitacion de campos para la modalidad de liga
     private void modalidadLiga(){
         jSpinnerPtosGanado.setVisible(true);
         jSpinnerPtosPresentarse.setVisible(true);
-        jCheckBoxEmpate.setVisible(true);
         jLabelPtosPresentarse.setVisible(true);
         jLabelPtosGanado.setVisible(true);
-        jLabelEmpate.setVisible(true);
-        verEmpate();
+        if("Sets".equals((String)jComboBoxPuntuacion.getSelectedItem())){
+            jCheckBoxEmpate.setVisible(false);
+            jLabelEmpate.setVisible(false);
+        }
+        else {
+            jCheckBoxEmpate.setVisible(true);
+            jLabelEmpate.setVisible(true);
+            verEmpate();
+        }
     }
     
     //Habilitacion de campos para modalidad de eliminatorias
@@ -615,7 +644,10 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelFormaPuntuacion.setVisible(true);
         jSpinnerPuntuacion.setVisible(true);
         jSpinnerSets.setVisible(false);
+        jLabelEmpate.setVisible(true);
+        jCheckBoxEmpate.setVisible(true);
         jLabelFormaPuntuacion.setText("Tantos por no presentarse");
+        verModalidad();
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, sets
@@ -623,6 +655,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelFormaPuntuacion.setVisible(true);
         jSpinnerSets.setVisible(true);
         jSpinnerPuntuacion.setVisible(false);
+        jLabelEmpate.setVisible(false);
+        jCheckBoxEmpate.setVisible(false);
         jLabelFormaPuntuacion.setText("Cant. max. de sets");
         repaint();
     }

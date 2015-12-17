@@ -61,14 +61,14 @@
               <Table columnCount="11" rowCount="2">
                 <Column editable="true" title="Competidores" type="java.lang.Object"/>
                 <Column editable="true" title="1er Set" type="java.lang.Integer"/>
-                <Column editable="true" title="2do Set" type="java.lang.Integer"/>
-                <Column editable="true" title="3er Set" type="java.lang.Integer"/>
-                <Column editable="true" title="4to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="5to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="6to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="7to Set" type="java.lang.Integer"/>
-                <Column editable="true" title="8vo Set" type="java.lang.Integer"/>
-                <Column editable="true" title="9no Set" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
+                <Column editable="true" title="BASE" type="java.lang.Integer"/>
                 <Column editable="true" title="Asistencia" type="java.lang.Boolean"/>
               </Table>
             </Property>
@@ -135,6 +135,9 @@
               <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="crearYLlenarTabla();"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -230,6 +233,19 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="55" y="90" width="190" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos."/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel5.setVisible(false);"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="274" y="314" width="490" height="90"/>
         </Constraint>
       </Constraints>
     </Component>

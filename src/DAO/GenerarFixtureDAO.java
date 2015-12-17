@@ -7,8 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.*;
 
-public class GenerarFixtureDAO {   
-    public static ArrayList<Integer> getIDParticipantesJugandoRonda(int unIDRonda) {
+public class GenerarFixtureDAO {
+    
+        public static ArrayList<Integer> getIDParticipantesJugandoRonda(int unIDRonda) {
         ArrayList<Integer> listaIDParticipantes = new ArrayList<>();
         Connection conn = null;
         try {

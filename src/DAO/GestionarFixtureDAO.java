@@ -8,19 +8,44 @@ import java.util.ArrayList;
 import modelo.*;
 
 public class GestionarFixtureDAO {
-   /* public static void deleteResultado(Resultado unResultado) {
+    public static int getCantSets(CompetenciaAux unaCDAUX) {
+        int cantSets = 0;
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String deleteResultado = "DELETE FROM resultado WHERE id_resultado = " + unResultado.getID();
-            statement.executeUpdate(deleteResultado); }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
+            int unIDCDAUX = unaCDAUX.getId();
+            String getCantSets = "SELECT * FROM competencia WHERE id_competencia = " + unIDCDAUX;
+            ResultSet rs = statement.executeQuery(getCantSets);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                cantSets = rs.getInt("cantidad_maxima_de_sets"); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } */
-     
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return cantSets; }
+    
+    public static Boolean getEmpatePermitido(CompetenciaAux unaCDAUX) {
+        Boolean empatePermitido = false;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int unIDCDAUX = unaCDAUX.getId();
+            String getCantSets = "SELECT * FROM competencia WHERE id_competencia = " + unIDCDAUX;
+            ResultSet rs = statement.executeQuery(getCantSets);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                empatePermitido = rs.getBoolean("empate_permitido"); }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return empatePermitido; }
+    
     // DONE!
     public static void persistirPosicion(Competencia unaCompetencia, Posicion unaPosicion) {
         Connection conn = null;
@@ -44,13 +69,13 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
     // REWORK! Ahora recibe un PartidoAux
-    /* public static Partido getPartido(int unID) {
+    public static Partido getPartido(PartidoAux unPartidoAux) {
         Partido unPartido = null;
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getPartido = "SELECT * FROM partido WHERE id_partido = " + unID;
+            String getPartido = "SELECT * FROM partido WHERE id_partido = " + unPartidoAux.getId();
             ResultSet rs = statement.executeQuery(getPartido);
             // NOTA: El ResultSet tiene un solo resultado
             while (rs.next()) {
@@ -75,16 +100,16 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unPartido; } */
+        return unPartido; }
     
     // REWORK! Ahora recibe una RondaAux
-    /* public static Ronda getRonda(int unIDRonda) {
+    public static Ronda getRonda(RondaAux unaRondaAux) {
         Ronda unaRonda = null;
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            String getRonda = "SELECT * FROM ronda WHERE id_ronda = " + unIDRonda;
+            String getRonda = "SELECT * FROM ronda WHERE id_ronda = " + unaRondaAux.getId();
             ResultSet rs = statement.executeQuery(getRonda);
             // NOTA: El ResultSet tiene un solo resultado
             while (rs.next()) {
@@ -99,7 +124,7 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaRonda; } */
+        return unaRonda; }
     
     // DONE!
     public static void persistirHistorialResultado(Partido unPartido, HistorialResultado unHR) {
@@ -291,4 +316,58 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaPartidos; } }
+        return listaPartidos;
+    }
+    
+    // DONE!
+    public static ArrayList<Ronda> getRondas(int idFixture) {
+        ArrayList<Ronda> listaRondas = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            String getPartidos = "SELECT * FROM ronda WHERE id_fixture = " + idFixture;
+            ResultSet rs = statement.executeQuery(getPartidos);
+            while (rs.next()) {
+                
+                int idRonda = rs.getInt("id_ronda");
+                int numero = rs.getInt("numero_ronda");
+                
+                //Buscar los partidos
+                ArrayList<Partido> listaPartidos=getPartidos(idRonda);
+                
+                //Crear la ronda
+                Ronda rondaAux= new Ronda(idRonda, numero, false, "", listaPartidos);
+                
+                listaRondas.add(rondaAux);
+            }
+            rs.close(); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return listaRondas;
+    }
+    
+    public static Fixture getFixture(int idCD) {
+        Fixture unFixture = null;
+        Connection conn = null;
+        try {
+            conn = DBConnection.get();
+            Statement statement = conn.createStatement();
+            int idFixture = 0;
+            String getFixture = "SELECT * FROM fixture WHERE id_competencia = " + idCD;
+            ResultSet rs = statement.executeQuery(getFixture);
+            // El ResultSet tiene un solo resultado
+            while (rs.next()) {
+                idFixture = rs.getInt("id_fixture");}
+            rs.close();
+            ArrayList<Ronda> rondas=getRondas(idFixture);
+            unFixture = new Fixture(idFixture, rondas); }
+        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        finally {
+            if (conn != null) try { conn.close(); }
+            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+        return unFixture;
+    }
+}

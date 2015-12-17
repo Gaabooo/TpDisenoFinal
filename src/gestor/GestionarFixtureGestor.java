@@ -8,6 +8,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class GestionarFixtureGestor {
+    public static int getCantSets(CompetenciaAux unaCDAUX) {
+        int cantSets = GestionarFixtureDAO.getCantSets(unaCDAUX);
+        return cantSets; }
+
+    public static Boolean getEmpatePermitido(CompetenciaAux unaCDAUX) {
+        Boolean empatePermitido = GestionarFixtureDAO.getEmpatePermitido(unaCDAUX);
+        return empatePermitido; }
+    
     public static Posicion getPosicion(ArrayList<Posicion> tablaPosiciones, Participante unParticipante) {
         for (Posicion unaPosicion:tablaPosiciones) {
             // NOTA: Lo va a encontrar SI O SI
@@ -379,12 +387,31 @@ public class GestionarFixtureGestor {
     
     // Modalidad: LIGA
     public static void gestionarFixture(CompetenciaAux unaCompetenciaAux,
-            Ronda unaRonda /* RondaAux unaRondaAux */, Partido unPartido /* PartidoAux unPartidoAux */,
-            ArrayList<Resultado> listaNuevosResultados) {
+            RondaAux unaRondaAux, PartidoAux unPartidoAux,
+            ArrayList<ResultadoAux> listaNuevosResultadosAux) {
         Competencia unaCompetencia = GenerarFixtureDAO.getCompetencia(unaCompetenciaAux);
-        // Ronda unaRonda = GenerarFixtureDAO.getRonda(unaRondaAux);
-        // Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);
+        Ronda unaRonda = GestionarFixtureDAO.getRonda(unaRondaAux);
+        Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);
         ArrayList<Resultado> listaResultadosAnteriores = unPartido.getListaResultados();
+        ArrayList<Resultado> listaNuevosResultados = new ArrayList<>();
+        // Creo la lista de nuevos resultados (NO auxiliares)
+        for (ResultadoAux unResultadoAux:listaNuevosResultadosAux) {
+            int unNumero = unResultadoAux.getNumero();
+            int PP0 = unResultadoAux.getPuntajeP0();
+            int PP1 = unResultadoAux.getPuntajeP1();
+            Boolean AP0 = unResultadoAux.getAsistenciaP0();
+            Boolean AP1 = unResultadoAux.getAsistenciaP1();
+            int indiceGanador = unResultadoAux.getIndiceParticipante();
+            Resultado unResultado;
+            if(indiceGanador == 2){
+                unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, null); 
+            }
+            else{
+                Participante ganador = unaCompetencia.getListaParticipantes().get(indiceGanador);
+                unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
+            }
+            
+            listaNuevosResultados.add(unResultado); }
         // Si ya tengo resultados cargados
         if (!listaResultadosAnteriores.isEmpty()) {
             System.out.println("listaResultadosAnteriores != empty");
