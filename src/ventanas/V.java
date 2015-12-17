@@ -109,6 +109,13 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    public void verCompetenciaRecargar(CompetenciaAux compAux){
+        remove(verComp);
+        verComp = new VerCompetencia(compAux);
+        add(verComp);
+        revalidate();
+        repaint();
+    }
     public void verCompetenciaSalir(){
         remove(verComp);
         listarCompetenciasSalir();

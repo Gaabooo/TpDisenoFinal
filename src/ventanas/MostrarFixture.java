@@ -222,7 +222,7 @@ public class MostrarFixture extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         V.get().remove(this);
-        V.get().verCompetenciaVolver();
+        V.get().verCompetenciaRecargar(compAux);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

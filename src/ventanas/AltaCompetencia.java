@@ -439,16 +439,24 @@ public class AltaCompetencia extends javax.swing.JPanel {
             String modalidad = jComboBoxModalidad.getSelectedItem().toString();
             String matriz[][] = tablaDisponibilidades();
             String puntuacion = jComboBoxPuntuacion.getSelectedItem().toString();
-            int j2 = (int) jSpinnerSets.getValue();
-            int j2b = (int) jSpinnerPuntuacion.getValue();
-            int j4 = (int) jSpinnerPtosPresentarse.getValue();
-            int j3 = (int) jSpinnerPtosGanado.getValue();
-            boolean j5c = jCheckBoxEmpate.isSelected();
-            int j5a = (int) jSpinnerPtosEmpate.getValue();
-            
-            System.out.print(j2);
-            
-            gestor.GestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, j2b, j2, j3 , j4, j5c, j5a);
+            int jSets = (int) jSpinnerSets.getValue();
+            int jPuntuacion = (int) jSpinnerPuntuacion.getValue();
+            int jPresentarse = (int) jSpinnerPtosPresentarse.getValue();
+            int jPtosGanado = (int) jSpinnerPtosGanado.getValue();
+            boolean jEmpate = jCheckBoxEmpate.isSelected();
+            int jPtosEmpate = (int) jSpinnerPtosEmpate.getValue();
+            /**
+     *
+     * 
+     * @param nombreFormaPuntuacion
+     * @param tantosPorAusenciaDeRival
+     * @param cantMaximaDeSets
+     * @param puntosPorVictoria
+     * @param puntosPorPresentacion
+     * @param empatePermitido
+     * @param puntosPorEmpate
+     */
+            gestor.GestorCD.darDeAltaCD(nombreCompetencia, reglamento, deporte, modalidad, matriz, puntuacion, jPuntuacion, jSets, jPtosGanado , jPresentarse, jEmpate, jPtosEmpate);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             
             V.get().remove(this);
