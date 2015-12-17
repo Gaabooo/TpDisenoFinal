@@ -181,7 +181,7 @@ public class ListarParticipantes extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         V.get().remove(this);
-        V.get().verCompetenciaVolver();
+        V.get().verCompetenciaRecargar(compAux);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
